@@ -422,6 +422,71 @@
       z-index: 3001;
     }
 
+
+    /* Asset download buttons */
+    .asset-download-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .asset-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--gray-200);
+      background: transparent;
+      color: var(--gray-600);
+      transition: all 0.18s;
+    }
+
+    .asset-dl-btn:hover {
+      border-color: var(--blue-primary);
+      color: var(--blue-primary);
+      background: rgba(43,108,176,0.05);
+    }
+
+    .asset-dl-btn svg {
+      width: 11px;
+      height: 11px;
+    }
+
+    .section-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 10px;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--blue-primary);
+      background: transparent;
+      color: var(--blue-primary);
+      transition: all 0.18s;
+      margin-top: 1.5rem;
+    }
+
+    .section-dl-btn:hover {
+      background: var(--blue-primary);
+      color: #FFFFFF;
+    }
+
+    .section-dl-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -1288,6 +1353,7 @@
     }
   
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
 <body>
 
@@ -2255,6 +2321,62 @@
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') navigateLightbox(-1);
     if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  // Download mockup as PNG
+  async function downloadMockupAsPng(sectionId, filename) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    // Find the main visual element (first large container with box-shadow)
+    const visual = section.querySelector('.lightbox-trigger') || section.querySelector('[style*="box-shadow"]');
+    if (!visual) return;
+
+    const canvas = await html2canvas(visual, {
+      backgroundColor: null,
+      scale: 3,
+      useCORS: true,
+      logging: false
+    });
+
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename + '.png';
+      a.click();
+      URL.revokeObjectURL(url);
+      showCopyToast('Download: ' + filename + '.png');
+    }, 'image/png');
+  }
+
+  // Add download buttons to application sections
+  const sectionDownloads = [
+    { id: 'cartao-visita', name: 'sysled-cartao-visita' },
+    { id: 'assinatura-email', name: 'sysled-assinatura-email' },
+    { id: 'capa-linkedin', name: 'sysled-capa-linkedin' },
+    { id: 'papel-timbrado', name: 'sysled-papel-timbrado' },
+    { id: 'pitch-deck', name: 'sysled-pitch-deck' },
+    { id: 'favicon-og', name: 'sysled-favicon-og' },
+    { id: 'mockups', name: 'sysled-mockup-flatlay' }
+  ];
+
+  sectionDownloads.forEach(({id, name}) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const header = section.querySelector('.section-header');
+    if (!header) return;
+    const btn = document.createElement('button');
+    btn.className = 'section-dl-btn';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar como PNG';
+    btn.onclick = () => downloadMockupAsPng(id, name);
+    header.after(section.querySelector('p'));
+    // Insert after the first <p> in the section
+    const firstP = section.querySelector('p');
+    if (firstP) {
+      firstP.after(btn);
+    } else {
+      header.after(btn);
+    }
   });
 
 </script>

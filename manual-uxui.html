@@ -1721,6 +1721,7 @@
   <a href="#loading">Loading e Skeleton</a>
   <a href="#tooltips">Tooltips e Dropdowns</a>
   <a href="#breadcrumbs">Breadcrumbs</a>
+  <a href="#stepper">Stepper / Wizard</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1762,10 +1763,11 @@
         <a href="#loading"><span class="toc-num">11</span> Loading</a>
         <a href="#tooltips"><span class="toc-num">12</span> Tooltips</a>
         <a href="#breadcrumbs"><span class="toc-num">13</span> Breadcrumbs</a>
-        <a href="#iconografia"><span class="toc-num">14</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">15</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">16</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">17</span> Design Tokens</a>
+        <a href="#stepper"><span class="toc-num">14</span> Stepper</a>
+        <a href="#iconografia"><span class="toc-num">15</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">16</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">17</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">18</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -4745,10 +4747,397 @@
     </table>
   </section>
 
+
+  <!-- ==================== STEPPER / WIZARD ==================== -->
+  <section class="section" id="stepper">
+    <div class="section-header">
+      <div class="section-number">14 — Stepper / Wizard</div>
+      <h2>Stepper / Wizard</h2>
+    </div>
+
+    <p>Steppers guiam o usuário por fluxos de múltiplas etapas como cadastros, configurações e processos de importação. Cada etapa mostra o progresso e permite navegação controlada entre fases.</p>
+
+    <h3>Stepper Horizontal</h3>
+
+    <div class="component-toggle" data-target="code-stepper">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-stepper-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Stepper Horizontal --&gt;
+&lt;nav class="stepper" aria-label="Progresso do cadastro"&gt;
+  &lt;ol&gt;
+    &lt;li class="step step-complete"&gt;
+      &lt;div class="step-indicator"&gt;
+        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="3"&gt;
+          &lt;polyline points="20 6 9 17 4 12"/&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class="step-content"&gt;
+        &lt;span class="step-title"&gt;Dados Básicos&lt;/span&gt;
+        &lt;span class="step-desc"&gt;Nome, categoria&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="step step-active"&gt;
+      &lt;div class="step-indicator"&gt;2&lt;/div&gt;
+      &lt;div class="step-content"&gt;
+        &lt;span class="step-title"&gt;Especificações&lt;/span&gt;
+        &lt;span class="step-desc"&gt;Dimensões, peso&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="step step-pending"&gt;
+      &lt;div class="step-indicator"&gt;3&lt;/div&gt;
+      &lt;div class="step-content"&gt;
+        &lt;span class="step-title"&gt;Preço e Estoque&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="step step-pending"&gt;
+      &lt;div class="step-indicator"&gt;4&lt;/div&gt;
+      &lt;div class="step-content"&gt;
+        &lt;span class="step-title"&gt;Revisão&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Stepper Vertical --&gt;
+&lt;nav class="stepper stepper-vertical"&gt;
+  &lt;ol&gt;
+    &lt;li class="step step-complete"&gt;...&lt;/li&gt;
+    &lt;li class="step step-active"&gt;...&lt;/li&gt;
+    &lt;li class="step step-error"&gt;
+      &lt;div class="step-indicator"&gt;!&lt;/div&gt;
+      &lt;div class="step-content"&gt;
+        &lt;span class="step-title"&gt;Validação&lt;/span&gt;
+        &lt;span class="step-desc step-error-msg"&gt;
+          Campo obrigatório
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="step step-pending"&gt;...&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-stepper-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Stepper Horizontal */
+.stepper ol {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+/* Connector line */
+.step + .step::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: #E2E8F0;
+  z-index: 0;
+}
+.step-complete + .step::before,
+.step-complete + .step-active::before {
+  background: #2B6CB0;
+}
+
+/* Step Indicator (circle) */
+.step-indicator {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: all 0.2s;
+}
+.step-indicator svg {
+  width: 16px; height: 16px;
+}
+
+/* States */
+.step-complete .step-indicator {
+  background: #2B6CB0;
+  color: #FFFFFF;
+}
+.step-active .step-indicator {
+  background: #FFFFFF;
+  color: #2B6CB0;
+  border: 2px solid #2B6CB0;
+  box-shadow: 0 0 0 4px rgba(43,108,176,0.15);
+}
+.step-pending .step-indicator {
+  background: #F1F5F9;
+  color: #94A3B8;
+  border: 2px solid #E2E8F0;
+}
+.step-error .step-indicator {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 2px solid #DC2626;
+}
+
+/* Step Content */
+.step-content {
+  margin-top: 0.75rem;
+}
+.step-title {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #334155;
+}
+.step-active .step-title { color: #2B6CB0; }
+.step-pending .step-title { color: #94A3B8; }
+.step-error .step-title { color: #DC2626; }
+
+.step-desc {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+.step-error-msg { color: #DC2626; }
+
+/* Stepper Vertical */
+.stepper-vertical ol {
+  flex-direction: column;
+  gap: 0;
+}
+.stepper-vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 0;
+  min-height: 72px;
+}
+.stepper-vertical .step + .step::before {
+  top: 0;
+  left: 17px;
+  right: auto;
+  width: 2px;
+  height: 100%;
+}
+.stepper-vertical .step-content {
+  margin-top: 0;
+  margin-left: 1rem;
+  padding-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .stepper:not(.stepper-vertical) .step-content { display: none; }
+  .stepper:not(.stepper-vertical) .step-active .step-content { display: block; }
+}</code></pre>
+    </div>
+
+    <!-- Preview: Stepper Horizontal -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Horizontal — Cadastro de Produto</p>
+
+      <nav style="width: 100%;">
+        <ol style="display: flex; align-items: flex-start; list-style: none; padding: 0; margin: 0;">
+          <!-- Step 1: Complete -->
+          <li style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; text-align: center;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #2B6CB0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="margin-top: 0.75rem;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #334155;">Dados Básicos</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 2px;">Nome, categoria</span>
+            </div>
+          </li>
+          <!-- Step 2: Active -->
+          <li style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; text-align: center;">
+            <div style="position: absolute; top: 18px; right: 50%; width: 100%; height: 2px; background: #2B6CB0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #FFFFFF; color: #2B6CB0; border: 2px solid #2B6CB0; box-shadow: 0 0 0 4px rgba(43,108,176,0.15); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; position: relative; z-index: 1;">2</div>
+            <div style="margin-top: 0.75rem;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #2B6CB0;">Especificações</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 2px;">Dimensões, peso</span>
+            </div>
+          </li>
+          <!-- Step 3: Pending -->
+          <li style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; text-align: center;">
+            <div style="position: absolute; top: 18px; right: 50%; width: 100%; height: 2px; background: #E2E8F0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #F1F5F9; color: #94A3B8; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; position: relative; z-index: 1;">3</div>
+            <div style="margin-top: 0.75rem;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #94A3B8;">Preço e Estoque</span>
+            </div>
+          </li>
+          <!-- Step 4: Pending -->
+          <li style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; text-align: center;">
+            <div style="position: absolute; top: 18px; right: 50%; width: 100%; height: 2px; background: #E2E8F0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #F1F5F9; color: #94A3B8; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; position: relative; z-index: 1;">4</div>
+            <div style="margin-top: 0.75rem;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #94A3B8;">Revisão</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Preview: Stepper Vertical -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Vertical — Importação de Dados</p>
+
+      <nav style="max-width: 320px;">
+        <ol style="display: flex; flex-direction: column; list-style: none; padding: 0; margin: 0;">
+          <!-- Step 1: Complete -->
+          <li style="display: flex; align-items: flex-start; position: relative; min-height: 72px;">
+            <div style="position: absolute; top: 36px; left: 17px; width: 2px; height: calc(100% - 36px); background: #2B6CB0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #2B6CB0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="margin-left: 1rem; padding-top: 6px;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #334155;">Upload do Arquivo</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 2px;">produtos_estoque.csv enviado</span>
+            </div>
+          </li>
+          <!-- Step 2: Complete -->
+          <li style="display: flex; align-items: flex-start; position: relative; min-height: 72px;">
+            <div style="position: absolute; top: 36px; left: 17px; width: 2px; height: calc(100% - 36px); background: #2B6CB0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #2B6CB0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="margin-left: 1rem; padding-top: 6px;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #334155;">Mapeamento de Colunas</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 2px;">8 colunas mapeadas</span>
+            </div>
+          </li>
+          <!-- Step 3: Error -->
+          <li style="display: flex; align-items: flex-start; position: relative; min-height: 72px;">
+            <div style="position: absolute; top: 36px; left: 17px; width: 2px; height: calc(100% - 36px); background: #E2E8F0; z-index: 0;"></div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #FEE2E2; color: #DC2626; border: 2px solid #DC2626; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; position: relative; z-index: 1;">!</div>
+            <div style="margin-left: 1rem; padding-top: 6px;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #DC2626;">Validação</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #DC2626; margin-top: 2px;">3 erros encontrados nas linhas 12, 45, 89</span>
+            </div>
+          </li>
+          <!-- Step 4: Pending -->
+          <li style="display: flex; align-items: flex-start; position: relative; min-height: 56px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #F1F5F9; color: #94A3B8; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; position: relative; z-index: 1;">4</div>
+            <div style="margin-left: 1rem; padding-top: 6px;">
+              <span style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #94A3B8;">Importar</span>
+              <span style="display: block; font-family: var(--font-body); font-size: 0.7rem; color: #CBD5E1; margin-top: 2px;">Aguardando validação</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Preview: Stepper Minimal (dots) -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Minimal (Dots) — Onboarding</p>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+        <!-- Dots -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #2B6CB0;"></div>
+          <div style="width: 32px; height: 2px; background: #2B6CB0;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #2B6CB0;"></div>
+          <div style="width: 32px; height: 2px; background: #2B6CB0;"></div>
+          <div style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid #2B6CB0; background: #FFFFFF; box-shadow: 0 0 0 3px rgba(43,108,176,0.15);"></div>
+          <div style="width: 32px; height: 2px; background: #E2E8F0;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #E2E8F0;"></div>
+          <div style="width: 32px; height: 2px; background: #E2E8F0;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #E2E8F0;"></div>
+        </div>
+        <!-- Label -->
+        <div style="text-align: center;">
+          <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #2B6CB0; text-transform: uppercase; letter-spacing: 0.04em;">Passo 3 de 5</span>
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">Configurar notificações</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step Actions Bar -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Barra de Ações do Step</p>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border-top: 1px solid #E2E8F0; background: var(--white); border-radius: 0 0 12px 12px;">
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 10px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Voltar
+        </button>
+        <div style="display: flex; gap: 0.75rem;">
+          <button style="padding: 10px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Salvar Rascunho</button>
+          <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 10px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">
+            Próximo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quando Usar</strong></td><td>Processos com 3-7 etapas sequenciais. Para &gt; 7 etapas, agrupar em fases. Para 2 etapas, usar apenas botões Voltar/Próximo.</td></tr>
+        <tr><td><strong>Horizontal vs Vertical</strong></td><td><strong>Horizontal</strong>: até 5 etapas, desktop. <strong>Vertical</strong>: &gt; 5 etapas ou quando há descrições longas. <strong>Dots</strong>: onboarding simples.</td></tr>
+        <tr><td><strong>Navegação</strong></td><td>Permitir voltar para steps completos (clicáveis). Não permitir pular para steps futuros pendentes.</td></tr>
+        <tr><td><strong>Estado de Erro</strong></td><td>Indicador vermelho com "!" no step. Mensagem de erro na descrição. Bloquear avanço até resolver.</td></tr>
+        <tr><td><strong>Barra de Ações</strong></td><td>Fixa no rodapé: "Voltar" (esquerda), "Salvar Rascunho" + "Próximo" (direita). Último step: "Concluir" ou "Enviar".</td></tr>
+        <tr><td><strong>Persistência</strong></td><td>Salvar dados parciais ao sair. Ao retornar, restaurar o último step ativo com dados preenchidos.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td><code>aria-label</code> no nav, <code>aria-current="step"</code> no ativo. Steps completos: <code>aria-label="Concluído"</code>.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Horizontal: ocultar labels dos steps pendentes, mostrar apenas o ativo. Ou converter para variante dots com label abaixo.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Indicator Size</td><td><code>36px × 36px</code>, border-radius <code>50%</code></td></tr>
+        <tr><td>Indicator Font</td><td>Montserrat, <code>0.8rem</code>, weight 700</td></tr>
+        <tr><td>Check Icon</td><td>SVG <code>16px</code>, stroke-width <code>3</code></td></tr>
+        <tr><td>Connector Line</td><td><code>2px</code> height (h) / width (v)</td></tr>
+        <tr><td>Complete</td><td>Indicator: bg <code>#2B6CB0</code>, cor <code>#FFFFFF</code>. Line: <code>#2B6CB0</code></td></tr>
+        <tr><td>Active</td><td>Indicator: bg <code>#FFFFFF</code>, border <code>2px #2B6CB0</code>, shadow <code>0 0 0 4px rgba(43,108,176,0.15)</code></td></tr>
+        <tr><td>Pending</td><td>Indicator: bg <code>#F1F5F9</code>, border <code>2px #E2E8F0</code>, cor <code>#94A3B8</code></td></tr>
+        <tr><td>Error</td><td>Indicator: bg <code>#FEE2E2</code>, border <code>2px #DC2626</code>, cor <code>#DC2626</code></td></tr>
+        <tr><td>Title Font</td><td>Montserrat, <code>0.75rem</code>, weight 600</td></tr>
+        <tr><td>Description Font</td><td>Inter, <code>0.7rem</code>, cor <code>#94A3B8</code></td></tr>
+        <tr><td>Dots Size</td><td>Normal: <code>10px</code>, Active: <code>12px</code> + border + shadow</td></tr>
+        <tr><td>Transition</td><td><code>all 0.2s ease</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">14 — Iconografia</div>
+      <div class="section-number">15 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -4835,7 +5224,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">15 — Acessibilidade</div>
+      <div class="section-number">16 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -4927,7 +5316,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">16 — Responsividade</div>
+      <div class="section-number">17 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -4980,7 +5369,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">17 — Design Tokens</div>
+      <div class="section-number">18 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

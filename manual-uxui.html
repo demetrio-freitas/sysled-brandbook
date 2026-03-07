@@ -1719,6 +1719,7 @@
   <a href="#tabelas">Tabelas de Dados</a>
   <a href="#tabs">Tabs e Navegação</a>
   <a href="#loading">Loading e Skeleton</a>
+  <a href="#tooltips">Tooltips e Dropdowns</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1758,10 +1759,11 @@
         <a href="#tabelas"><span class="toc-num">09</span> Tabelas</a>
         <a href="#tabs"><span class="toc-num">10</span> Tabs</a>
         <a href="#loading"><span class="toc-num">11</span> Loading</a>
-        <a href="#iconografia"><span class="toc-num">12</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">13</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">14</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">15</span> Design Tokens</a>
+        <a href="#tooltips"><span class="toc-num">12</span> Tooltips</a>
+        <a href="#iconografia"><span class="toc-num">13</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">14</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">15</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">16</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -4058,10 +4060,394 @@
     </table>
   </section>
 
+
+  <!-- ==================== TOOLTIPS, POPOVERS E DROPDOWNS ==================== -->
+  <section class="section" id="tooltips">
+    <div class="section-header">
+      <div class="section-number">12 — Tooltips, Popovers e Dropdowns</div>
+      <h2>Tooltips, Popovers e Dropdowns</h2>
+    </div>
+
+    <p>Componentes flutuantes exibem informações contextuais sem sair da tela atual. Tooltips são rápidos e textuais, popovers trazem conteúdo rico, e dropdowns listam ações ou opções.</p>
+
+    <h3>Tooltips</h3>
+
+    <div class="component-toggle" data-target="code-tooltips">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-tooltips-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Tooltip (CSS-only, sem JS) --&gt;
+&lt;span class="tooltip-wrapper"&gt;
+  &lt;button class="btn-icon" aria-describedby="tip1"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;span class="tooltip tooltip-top" id="tip1"
+        role="tooltip"&gt;Editar produto&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Posições: tooltip-top | tooltip-bottom
+               tooltip-left | tooltip-right --&gt;
+
+&lt;!-- Popover (click) --&gt;
+&lt;div class="popover-wrapper"&gt;
+  &lt;button class="btn-secondary-sm"
+          onclick="this.parentElement.classList.toggle('open')"&gt;
+    Mais info
+  &lt;/button&gt;
+  &lt;div class="popover popover-bottom"&gt;
+    &lt;div class="popover-header"&gt;Detalhes do Produto&lt;/div&gt;
+    &lt;div class="popover-body"&gt;
+      &lt;p&gt;SKU: LED-001&lt;/p&gt;
+      &lt;p&gt;Última atualização: 05/03/2026&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dropdown Menu --&gt;
+&lt;div class="dropdown-wrapper"&gt;
+  &lt;button class="btn-icon"
+          onclick="this.parentElement.classList.toggle('open')"&gt;
+    •••
+  &lt;/button&gt;
+  &lt;div class="dropdown-menu"&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;svg&gt;...&lt;/svg&gt; Editar
+    &lt;/button&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;svg&gt;...&lt;/svg&gt; Duplicar
+    &lt;/button&gt;
+    &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="dropdown-item dropdown-danger"&gt;
+      &lt;svg&gt;...&lt;/svg&gt; Excluir
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-tooltips-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* ============ TOOLTIP ============ */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+.tooltip {
+  position: absolute;
+  padding: 6px 12px;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 50;
+}
+
+/* Posições */
+.tooltip-top    { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); }
+.tooltip-bottom { top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-4px); }
+.tooltip-left   { right: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(4px); }
+.tooltip-right  { left: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(-4px); }
+
+/* Show on hover */
+.tooltip-wrapper:hover .tooltip,
+.tooltip-wrapper:focus-within .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0); /* adjust per position */
+}
+.tooltip-wrapper:hover .tooltip-left,
+.tooltip-wrapper:focus-within .tooltip-left {
+  transform: translateY(-50%) translateX(0);
+}
+.tooltip-wrapper:hover .tooltip-right,
+.tooltip-wrapper:focus-within .tooltip-right {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Arrow (optional) */
+.tooltip::after {
+  content: '';
+  position: absolute;
+  border: 5px solid transparent;
+}
+.tooltip-top::after {
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border-top-color: #0F172A;
+}
+.tooltip-bottom::after {
+  bottom: 100%; left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: #0F172A;
+}
+
+/* ============ POPOVER ============ */
+.popover-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+.popover {
+  position: absolute;
+  min-width: 240px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+.popover-wrapper.open .popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.popover-bottom { top: calc(100% + 8px); left: 0; }
+.popover-top    { bottom: calc(100% + 8px); left: 0; }
+
+.popover-header {
+  padding: 0.75rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0F172A;
+  border-bottom: 1px solid #F1F5F9;
+}
+.popover-body {
+  padding: 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+/* ============ DROPDOWN ============ */
+.dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 180px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  padding: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: all 0.15s ease;
+  z-index: 50;
+}
+.dropdown-wrapper.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #334155;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.dropdown-item:hover { background: #F8FAFC; }
+.dropdown-item svg { width: 16px; height: 16px; color: #64748B; }
+.dropdown-danger { color: #DC2626; }
+.dropdown-danger:hover { background: #FEF2F2; }
+.dropdown-danger svg { color: #DC2626; }
+.dropdown-divider {
+  height: 1px;
+  background: #F1F5F9;
+  margin: 4px 0;
+}</code></pre>
+    </div>
+
+    <!-- Preview: Tooltips 4 posições -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Tooltips (hover nos ícones)</p>
+      <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; padding: 3rem 1rem;">
+
+        <!-- Tooltip Top -->
+        <span style="position: relative; display: inline-flex;" class="tt-wrap" onmouseenter="this.querySelector('.tt').style.opacity='1';this.querySelector('.tt').style.transform='translateX(-50%) translateY(0)'" onmouseleave="this.querySelector('.tt').style.opacity='0';this.querySelector('.tt').style.transform='translateX(-50%) translateY(4px)'">
+          <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <span class="tt" style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Editar produto<span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #0F172A;"></span></span>
+        </span>
+
+        <!-- Tooltip Bottom -->
+        <span style="position: relative; display: inline-flex;" onmouseenter="this.querySelector('.tt').style.opacity='1';this.querySelector('.tt').style.transform='translateX(-50%) translateY(0)'" onmouseleave="this.querySelector('.tt').style.opacity='0';this.querySelector('.tt').style.transform='translateX(-50%) translateY(-4px)'">
+          <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+          <span class="tt" style="position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Excluir item<span style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: #0F172A;"></span></span>
+        </span>
+
+        <!-- Tooltip Left -->
+        <span style="position: relative; display: inline-flex;" onmouseenter="this.querySelector('.tt').style.opacity='1';this.querySelector('.tt').style.transform='translateY(-50%) translateX(0)'" onmouseleave="this.querySelector('.tt').style.opacity='0';this.querySelector('.tt').style.transform='translateY(-50%) translateX(4px)'">
+          <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <span class="tt" style="position: absolute; right: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Buscar<span style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-left-color: #0F172A;"></span></span>
+        </span>
+
+        <!-- Tooltip Right -->
+        <span style="position: relative; display: inline-flex;" onmouseenter="this.querySelector('.tt').style.opacity='1';this.querySelector('.tt').style.transform='translateY(-50%) translateX(0)'" onmouseleave="this.querySelector('.tt').style.opacity='0';this.querySelector('.tt').style.transform='translateY(-50%) translateX(-4px)'">
+          <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+          <span class="tt" style="position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Configurações<span style="position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-right-color: #0F172A;"></span></span>
+        </span>
+
+      </div>
+      <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 0.5rem;">
+        <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.04em;">Top</span>
+        <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.04em;">Bottom</span>
+        <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.04em;">Left</span>
+        <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.04em;">Right</span>
+      </div>
+    </div>
+
+    <!-- Preview: Popover -->
+    <h3 style="margin-top: 2.5rem;">Popover</h3>
+    <p>Exibem conteúdo rico ao clicar. Diferente do tooltip, o popover tem header, body e pode conter links e botões.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; padding: 1rem 0;">
+        <!-- Popover exemplo -->
+        <div style="position: relative; display: inline-flex;" id="popover-demo-1">
+          <button onclick="document.getElementById('popover-demo-1').classList.toggle('pop-open')" style="padding: 8px 18px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: var(--white); color: var(--dark-text); cursor: pointer;">Detalhes ▾</button>
+          <div id="popover-panel-1" style="position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all 0.2s ease; z-index: 50;">
+            <div style="padding: 0.75rem 1rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9;">Detalhes do Produto</div>
+            <div style="padding: 0.75rem 1rem; font-family: var(--font-body); font-size: 0.8rem; color: #475569; line-height: 1.6;">
+              <div><strong style="color: #64748B;">SKU:</strong> LED-001</div>
+              <div><strong style="color: #64748B;">Estoque:</strong> 1.240 unidades</div>
+              <div><strong style="color: #64748B;">Atualizado:</strong> 05/03/2026</div>
+              <div style="margin-top: 0.75rem;">
+                <a href="#" style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #2B6CB0; text-decoration: none;">Ver página completa →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Dropdown Menu -->
+    <h3 style="margin-top: 2.5rem;">Dropdown Menu</h3>
+    <p>Listam ações contextuais. Abrem ao clicar e fecham ao selecionar uma opção ou clicar fora.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; padding: 1rem 0; min-height: 240px;">
+
+        <!-- Dropdown de ações -->
+        <div style="position: relative; display: inline-flex;" id="dropdown-demo-1">
+          <button onclick="document.getElementById('dropdown-demo-1').classList.toggle('dd-open')" style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B; font-size: 1.2rem; letter-spacing: 2px;">•••</button>
+          <div id="dd-menu-1" style="position: absolute; top: calc(100% + 6px); right: 0; min-width: 180px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 50;">
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Editar
+            </button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Duplicar
+            </button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar
+            </button>
+            <div style="height: 1px; background: #F1F5F9; margin: 4px 0;"></div>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #DC2626; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#FEF2F2'" onmouseout="this.style.background='none'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Excluir
+            </button>
+          </div>
+        </div>
+
+        <!-- Dropdown com select -->
+        <div style="position: relative; display: inline-flex;" id="dropdown-demo-2">
+          <button onclick="document.getElementById('dropdown-demo-2').classList.toggle('dd-open')" style="padding: 8px 18px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: var(--white); color: var(--dark-text); cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+            Categoria
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div id="dd-menu-2" style="position: absolute; top: calc(100% + 6px); left: 0; min-width: 200px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 50;">
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #2B6CB0; background: #EFF6FF; border: none; border-radius: 6px; cursor: pointer; text-align: left; font-weight: 600;">✓ Todas</button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Energia Solar</button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Iluminação</button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Automação</button>
+            <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Decoração</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Tooltip vs Popover</strong></td><td><strong>Tooltip</strong>: texto curto, trigger hover, sem interação. <strong>Popover</strong>: conteúdo rico, trigger click, permite links e botões.</td></tr>
+        <tr><td><strong>Tooltip Texto</strong></td><td>Máximo 1 linha, ~60 caracteres. Sem HTML, sem links. Capitalização: sentence case.</td></tr>
+        <tr><td><strong>Delay</strong></td><td>Tooltip: aparecer após 200ms de hover, desaparecer após 100ms. Evitar flash em movimentos rápidos do mouse.</td></tr>
+        <tr><td><strong>Posição</strong></td><td>Padrão: <strong>top</strong>. Auto-flip se sair da viewport. Manter 8px de gap entre trigger e flutuante.</td></tr>
+        <tr><td><strong>Dropdown Fechar</strong></td><td>Fechar ao: clicar em um item, clicar fora, pressionar Escape. Não fechar ao scroll.</td></tr>
+        <tr><td><strong>Dropdown Ações</strong></td><td>Máximo 6 itens. Agrupar com dividers. Ação destrutiva (excluir) sempre por último, em vermelho.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Tooltip: <code>role="tooltip"</code> + <code>aria-describedby</code>. Dropdown: <code>aria-expanded</code> + <code>aria-haspopup</code>.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Tooltips não funcionam com touch — usar long-press ou substituir por label. Dropdowns: bottom sheet em mobile.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Tooltip</th><th>Popover</th><th>Dropdown</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Background</td><td><code>#0F172A</code></td><td><code>#FFFFFF</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Border</td><td>Nenhum</td><td><code>1px #E2E8F0</code></td><td><code>1px #E2E8F0</code></td></tr>
+        <tr><td>Radius</td><td><code>8px</code></td><td><code>12px</code></td><td><code>10px</code></td></tr>
+        <tr><td>Shadow</td><td>Nenhum</td><td><code>0 4px 20px rgba(0,0,0,0.12)</code></td><td><code>0 4px 20px rgba(0,0,0,0.12)</code></td></tr>
+        <tr><td>Padding</td><td><code>6px 12px</code></td><td><code>0.75rem 1rem</code></td><td><code>4px</code> (container)</td></tr>
+        <tr><td>Font</td><td>Inter, <code>0.75rem</code>, 500</td><td>Inter, <code>0.8rem</code></td><td>Inter, <code>0.8rem</code></td></tr>
+        <tr><td>Min Width</td><td>Auto</td><td><code>240px</code></td><td><code>180px</code></td></tr>
+        <tr><td>Gap (trigger)</td><td><code>8px</code></td><td><code>8px</code></td><td><code>6px</code></td></tr>
+        <tr><td>Z-Index</td><td><code>50</code></td><td><code>50</code></td><td><code>50</code></td></tr>
+        <tr><td>Animation</td><td>opacity + translate <code>0.15s</code></td><td>opacity + translate <code>0.2s</code></td><td>opacity + translate <code>0.15s</code></td></tr>
+        <tr><td>Trigger</td><td>Hover / Focus</td><td>Click</td><td>Click</td></tr>
+        <tr><td>Arrow</td><td>Sim (<code>5px</code> border)</td><td>Opcional</td><td>Não</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">12 — Iconografia</div>
+      <div class="section-number">13 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -4148,7 +4534,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">13 — Acessibilidade</div>
+      <div class="section-number">14 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -4240,7 +4626,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">14 — Responsividade</div>
+      <div class="section-number">15 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -4293,7 +4679,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">15 — Design Tokens</div>
+      <div class="section-number">16 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 
@@ -4733,6 +5119,41 @@
       btn.style.color = '#FFFFFF';
     }
   }
+
+
+  // Popover toggle
+  document.addEventListener('click', function(e) {
+    // Popover
+    document.querySelectorAll('[id^="popover-demo-"]').forEach(function(w) {
+      var panel = w.querySelector('[id^="popover-panel-"]');
+      if (!panel) return;
+      if (w.contains(e.target) && (e.target.tagName === 'BUTTON' || e.target.closest('button'))) {
+        var isOpen = panel.style.opacity === '1';
+        panel.style.opacity = isOpen ? '0' : '1';
+        panel.style.visibility = isOpen ? 'hidden' : 'visible';
+        panel.style.transform = isOpen ? 'translateY(4px)' : 'translateY(0)';
+      } else if (!w.contains(e.target)) {
+        panel.style.opacity = '0';
+        panel.style.visibility = 'hidden';
+        panel.style.transform = 'translateY(4px)';
+      }
+    });
+    // Dropdowns
+    document.querySelectorAll('[id^="dropdown-demo-"]').forEach(function(w) {
+      var menu = w.querySelector('[id^="dd-menu-"]');
+      if (!menu) return;
+      if (w.contains(e.target) && (e.target.tagName === 'BUTTON' || e.target.closest('button')) && e.target.closest('[id^="dropdown-demo-"]') === w && !e.target.closest('[id^="dd-menu-"]')) {
+        var isOpen = menu.style.opacity === '1';
+        menu.style.opacity = isOpen ? '0' : '1';
+        menu.style.visibility = isOpen ? 'hidden' : 'visible';
+        menu.style.transform = isOpen ? 'translateY(-4px)' : 'translateY(0)';
+      } else if (!w.contains(e.target)) {
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+        menu.style.transform = 'translateY(-4px)';
+      }
+    });
+  });
 
 </script>
 

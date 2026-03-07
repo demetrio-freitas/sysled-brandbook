@@ -151,6 +151,63 @@
     [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
     [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: var(--nav-width);
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-primary), var(--cyan-medium), var(--cyan-light));
+      z-index: 1002;
+      transition: width 0.1s linear;
+    }
+
+    @media (max-width: 1024px) {
+      .scroll-progress { left: 0; }
+    }
+
+    /* Copy to clipboard */
+    .color-codes {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .color-codes:hover {
+      color: var(--blue-primary) !important;
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--dark-primary);
+      color: #FFFFFF;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-theme="dark"] .copy-toast {
+      background: #334155;
+    }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -1019,6 +1076,12 @@
   </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="copy-toast" id="copyToast">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  Copiado!
+</div>
 
 <!-- Mobile Toggle -->
 <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Abrir menu">
@@ -1986,15 +2049,23 @@
     });
   });
 
-  // Active nav link on scroll
+  // Active nav link on scroll + scroll progress bar
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav a');
+  const progressBar = document.getElementById('scrollProgress');
 
   window.addEventListener('scroll', () => {
+    // Scroll progress
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+
+    // Active nav link
     let current = '';
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) {
+      if (scrollTop >= sectionTop) {
         current = section.getAttribute('id');
       }
     });
@@ -2004,6 +2075,28 @@
       if (link.getAttribute('href') === '#' + current) {
         link.classList.add('active');
       }
+    });
+  });
+
+  // Copy to clipboard
+  let toastTimeout;
+  function showCopyToast(text) {
+    const toast = document.getElementById('copyToast');
+    toast.textContent = '';
+    toast.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> ' + text;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+
+  document.querySelectorAll('.color-codes').forEach(el => {
+    el.addEventListener('click', () => {
+      const text = el.textContent.trim();
+      const hex = text.match(/HEX:\s*(#[A-Fa-f0-9]+)/);
+      const copyText = hex ? hex[1] : text.split('\n')[0].trim();
+      navigator.clipboard.writeText(copyText).then(() => {
+        showCopyToast('Copiado: ' + copyText);
+      });
     });
   });
 </script>

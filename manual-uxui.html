@@ -1724,6 +1724,11 @@
   <a href="#stepper">Stepper / Wizard</a>
   <a href="#animacoes">Animações</a>
   <a href="#patterns">Patterns de Layout</a>
+  <a href="#avatares">Avatares e Tags</a>
+  <a href="#empty-states">Empty States</a>
+  <a href="#sidebars">Sidebars</a>
+  <a href="#inputs-avancados">Inputs Avançados</a>
+  <a href="#tipografia-aplicada">Tipografia Aplicada</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1768,10 +1773,15 @@
         <a href="#stepper"><span class="toc-num">14</span> Stepper</a>
         <a href="#animacoes"><span class="toc-num">15</span> Animações</a>
         <a href="#patterns"><span class="toc-num">16</span> Patterns</a>
-        <a href="#iconografia"><span class="toc-num">17</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">18</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">19</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">20</span> Design Tokens</a>
+        <a href="#avatares"><span class="toc-num">17</span> Avatares</a>
+        <a href="#empty-states"><span class="toc-num">18</span> Empty States</a>
+        <a href="#sidebars"><span class="toc-num">19</span> Sidebars</a>
+        <a href="#inputs-avancados"><span class="toc-num">20</span> Inputs</a>
+        <a href="#tipografia-aplicada"><span class="toc-num">21</span> Tipografia</a>
+        <a href="#iconografia"><span class="toc-num">22</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">23</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">24</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">25</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -5753,10 +5763,489 @@
     </table>
   </section>
 
+
+  <!-- ==================== AVATARES, BADGES E TAGS ==================== -->
+  <section class="section section-dark" id="avatares">
+    <div class="section-header">
+      <div class="section-number">17 — Avatares, Badges e Tags</div>
+      <h2>Avatares, Badges e Tags</h2>
+    </div>
+
+    <p>Avatares representam usuários e entidades. Tags categorizam e filtram conteúdo. Ambos são componentes compactos usados em listagens, headers, cards e tabelas.</p>
+
+    <h3>Avatares</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Tamanhos e Variantes</p>
+      <div style="display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap;">
+        <!-- XS -->
+        <div style="text-align: center;">
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: #2B6CB0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700;">JS</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">XS · 24px</div>
+        </div>
+        <!-- SM -->
+        <div style="text-align: center;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: #3A8FD6; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700;">MS</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">SM · 32px</div>
+        </div>
+        <!-- MD -->
+        <div style="text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #48C9B0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;">CL</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">MD · 40px</div>
+        </div>
+        <!-- LG -->
+        <div style="text-align: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #5BB8F5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1rem; font-weight: 700;">DF</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">LG · 56px</div>
+        </div>
+        <!-- XL -->
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700;">SL</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">XL · 80px</div>
+        </div>
+        <!-- Fallback icon -->
+        <div style="text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #F1F5F9; color: #94A3B8; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.55rem; color: var(--gray-400); margin-top: 0.4rem;">Fallback</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Group + Status -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Grupo + Status Indicator</p>
+      <div style="display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;">
+        <!-- Group overlapping -->
+        <div>
+          <div style="display: flex;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #2B6CB0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; border: 2px solid #FFFFFF;">JS</div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #48C9B0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; border: 2px solid #FFFFFF; margin-left: -10px;">MS</div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #3A8FD6; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; border: 2px solid #FFFFFF; margin-left: -10px;">CL</div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #F1F5F9; color: #64748B; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 700; border: 2px solid #FFFFFF; margin-left: -10px;">+5</div>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400); margin-top: 0.5rem;">Grupo (overlap -10px)</div>
+        </div>
+        <!-- Status indicators -->
+        <div style="display: flex; gap: 1.5rem;">
+          <div style="text-align: center;">
+            <div style="position: relative; display: inline-block;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #2B6CB0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;">JS</div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-radius: 50%; background: #059669; border: 2px solid #FFFFFF;"></div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #059669; margin-top: 0.4rem;">Online</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="position: relative; display: inline-block;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #3A8FD6; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;">MS</div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-radius: 50%; background: #D97706; border: 2px solid #FFFFFF;"></div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #D97706; margin-top: 0.4rem;">Ausente</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="position: relative; display: inline-block;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #48C9B0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;">CL</div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-radius: 50%; background: #94A3B8; border: 2px solid #FFFFFF;"></div>
+            </div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 0.4rem;">Offline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <h3 style="margin-top: 2.5rem;">Tags Editáveis</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 4px 10px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #DBEAFE; color: #2B6CB0;">Iluminação <span style="cursor: pointer; opacity: 0.6; font-size: 0.85rem; line-height: 1;">×</span></span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 4px 10px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Solar <span style="cursor: pointer; opacity: 0.6; font-size: 0.85rem; line-height: 1;">×</span></span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 4px 10px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #FEF3C7; color: #D97706;">Promoção <span style="cursor: pointer; opacity: 0.6; font-size: 0.85rem; line-height: 1;">×</span></span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 4px 10px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #EDE9FE; color: #7C3AED;">Premium <span style="cursor: pointer; opacity: 0.6; font-size: 0.85rem; line-height: 1;">×</span></span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 4px 10px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: 1.5px dashed #CBD5E1; color: #94A3B8; cursor: pointer;">+ Adicionar</span>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Componente</th><th>Sizes</th><th>Specs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Avatar</strong></td><td>XS 24px · SM 32px · MD 40px · LG 56px · XL 80px</td><td>border-radius: 50%, font: Montserrat 700, fallback: ícone SVG user</td></tr>
+        <tr><td><strong>Grupo</strong></td><td>Máx 4 visíveis + "+N"</td><td>overlap: margin-left -10px, border: 2px solid #FFFFFF</td></tr>
+        <tr><td><strong>Status</strong></td><td>12px indicator</td><td>Online #059669 · Ausente #D97706 · Offline #94A3B8 · border 2px #FFF</td></tr>
+        <tr><td><strong>Tag</strong></td><td>padding 4px 10px</td><td>radius 8px, font 0.7rem 600, "×" para remover, dashed para adicionar</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== EMPTY STATES E FEEDBACK VISUAL ==================== -->
+  <section class="section" id="empty-states">
+    <div class="section-header">
+      <div class="section-number">18 — Empty States e Feedback Visual</div>
+      <h2>Empty States e Feedback Visual</h2>
+    </div>
+
+    <p>Empty states comunicam quando não há dados para exibir e guiam o próximo passo. Telas de erro informam problemas. Ambos devem ser visuais, claros e conter uma ação.</p>
+
+    <h3>Empty States</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        <!-- Nenhum resultado -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2.5rem 1.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6;">📦</div>
+          <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: #0F172A;">Nenhum produto encontrado</div>
+          <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 0.4rem; line-height: 1.5;">Tente ajustar os filtros ou cadastre um novo produto.</div>
+          <button style="margin-top: 1rem; padding: 8px 20px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">+ Novo Produto</button>
+        </div>
+        <!-- Primeiro uso -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2.5rem 1.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6;">🚀</div>
+          <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: #0F172A;">Comece por aqui</div>
+          <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 0.4rem; line-height: 1.5;">Importe seu catálogo ou cadastre produtos manualmente.</div>
+          <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+            <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Importar CSV</button>
+            <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cadastrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error pages -->
+    <h3 style="margin-top: 2.5rem;">Telas de Erro</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2rem 1.25rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: #E2E8F0;">404</div>
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A; margin-top: 0.25rem;">Página não encontrada</div>
+          <div style="font-family: var(--font-body); font-size: 0.75rem; color: #64748B; margin-top: 0.3rem;">O link pode estar incorreto ou a página foi removida.</div>
+          <button style="margin-top: 1rem; padding: 6px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Voltar ao Início</button>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2rem 1.25rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: #E2E8F0;">500</div>
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A; margin-top: 0.25rem;">Erro no servidor</div>
+          <div style="font-family: var(--font-body); font-size: 0.75rem; color: #64748B; margin-top: 0.3rem;">Estamos trabalhando na correção. Tente novamente em instantes.</div>
+          <button style="margin-top: 1rem; padding: 6px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Tentar Novamente</button>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2rem 1.25rem; text-align: center;">
+          <div style="font-size: 2.5rem; opacity: 0.5;">📡</div>
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A; margin-top: 0.25rem;">Sem conexão</div>
+          <div style="font-family: var(--font-body); font-size: 0.75rem; color: #64748B; margin-top: 0.3rem;">Verifique sua internet e tente novamente.</div>
+          <button style="margin-top: 1rem; padding: 6px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Reconectar</button>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Estrutura</strong></td><td>Ilustração/emoji + título + descrição (1-2 linhas) + CTA primário. Centralizado verticalmente.</td></tr>
+        <tr><td><strong>Tom</strong></td><td>Empático e construtivo. Nunca culpar o usuário. Sugerir próximo passo concreto.</td></tr>
+        <tr><td><strong>CTA</strong></td><td>Sempre incluir pelo menos 1 ação. Primeiro uso: 2 opções (importar ou manual). Busca vazia: "Limpar filtros".</td></tr>
+        <tr><td><strong>Ilustrações</strong></td><td>Emojis ou SVGs leves. Evitar imagens pesadas. Opacidade 0.5-0.6 para não competir com o texto.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== SIDEBARS E NAVEGAÇÃO PRINCIPAL ==================== -->
+  <section class="section section-dark" id="sidebars">
+    <div class="section-header">
+      <div class="section-number">19 — Sidebars e Navegação Principal</div>
+      <h2>Sidebars e Navegação Principal</h2>
+    </div>
+
+    <p>A sidebar é o principal elemento de navegação da aplicação Sysled. Contém logo, menu de módulos, atalhos e acesso ao perfil. Suporta modo expandido e colapsado.</p>
+
+    <h3>Sidebar Expandida vs Colapsada</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+        <!-- Expanded -->
+        <div style="width: 240px; background: #0F172A; border-radius: 12px; padding: 1.25rem 0; display: flex; flex-direction: column; min-height: 360px;">
+          <div style="padding: 0 1.25rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #2B6CB0, #48C9B0);"></div>
+            <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Sysled</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; margin: 0 0.5rem; border-radius: 8px; background: rgba(43,108,176,0.2); display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0;"></div>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #FFFFFF; font-weight: 600;">Dashboard</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; margin: 0.15rem 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Produtos</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; margin: 0.15rem 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Pedidos</span>
+            <span style="margin-left: auto; min-width: 18px; height: 18px; border-radius: 99px; background: #DC2626; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 700;">3</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; margin: 0.15rem 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Estoque</span>
+          </div>
+          <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 0.75rem 1.25rem;"></div>
+          <div style="padding: 0.5rem 0.75rem; margin: 0.15rem 0.5rem; border-radius: 8px; display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Configurações</span>
+          </div>
+          <div style="flex: 1;"></div>
+          <div style="padding: 0 1.25rem; display: flex; align-items: center; gap: 0.6rem;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: #2B6CB0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700;">DF</div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 0.7rem; color: #FFFFFF; font-weight: 500;">Demétrio F.</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #64748B;">Admin</div>
+            </div>
+          </div>
+        </div>
+        <!-- Collapsed -->
+        <div style="width: 56px; background: #0F172A; border-radius: 12px; padding: 1.25rem 0; display: flex; flex-direction: column; align-items: center; min-height: 360px; gap: 0.5rem;">
+          <div style="width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #2B6CB0, #48C9B0); margin-bottom: 1rem;"></div>
+          <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(43,108,176,0.2); display: flex; align-items: center; justify-content: center;"><div style="width: 16px; height: 16px; border-radius: 4px; background: #2B6CB0;"></div></div>
+          <div style="width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><div style="width: 16px; height: 16px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div></div>
+          <div style="width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; position: relative;"><div style="width: 16px; height: 16px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div><div style="position: absolute; top: 4px; right: 4px; width: 8px; height: 8px; border-radius: 50%; background: #DC2626;"></div></div>
+          <div style="width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><div style="width: 16px; height: 16px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div></div>
+          <div style="height: 1px; width: 24px; background: rgba(255,255,255,0.08); margin: 0.25rem 0;"></div>
+          <div style="width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><div style="width: 16px; height: 16px; border-radius: 4px; background: rgba(255,255,255,0.15);"></div></div>
+          <div style="flex: 1;"></div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #2B6CB0; color: #FFF; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700;">DF</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Propriedade</th><th>Expandida</th><th>Colapsada</th><th>Mobile</th></tr></thead>
+      <tbody>
+        <tr><td>Largura</td><td><code>240px</code></td><td><code>56px</code></td><td>Drawer <code>280px</code></td></tr>
+        <tr><td>Background</td><td colspan="3"><code>#0F172A</code> (dark primary)</td></tr>
+        <tr><td>Item Ativo</td><td colspan="2"><code>rgba(43,108,176,0.2)</code> + ícone azul</td><td>Idem</td></tr>
+        <tr><td>Item Padding</td><td><code>0.5rem 0.75rem</code></td><td><code>center 36×36px</code></td><td>Idem expandida</td></tr>
+        <tr><td>Item Font</td><td>Inter, <code>0.75rem</code></td><td>Tooltip no hover</td><td>Idem expandida</td></tr>
+        <tr><td>Divider</td><td colspan="3"><code>1px rgba(255,255,255,0.08)</code></td></tr>
+        <tr><td>Badge</td><td><code>18px</code> pill vermelho</td><td><code>8px</code> dot</td><td>Idem expandida</td></tr>
+        <tr><td>Overlay (mobile)</td><td colspan="2">N/A</td><td><code>rgba(0,0,0,0.5)</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== INPUTS AVANÇADOS ==================== -->
+  <section class="section" id="inputs-avancados">
+    <div class="section-header">
+      <div class="section-number">20 — Inputs Avançados</div>
+      <h2>Inputs Avançados</h2>
+    </div>
+
+    <p>Componentes de formulário além do básico: toggles, file upload com drag & drop, date picker, search autocomplete e inputs com máscara.</p>
+
+    <h3>Toggle Switch</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 360px;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--dark-text);">Notificações por e-mail</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400);">Receber alertas de estoque baixo</div>
+          </div>
+          <div style="width: 44px; height: 24px; border-radius: 99px; background: #2B6CB0; position: relative; cursor: pointer;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.15);"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 360px;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--dark-text);">Modo escuro</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400);">Alternar tema da interface</div>
+          </div>
+          <div style="width: 44px; height: 24px; border-radius: 99px; background: #E2E8F0; position: relative; cursor: pointer;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.15);"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 360px; opacity: 0.5;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--dark-text);">Autenticação 2FA</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400);">Requer plano Premium</div>
+          </div>
+          <div style="width: 44px; height: 24px; border-radius: 99px; background: #E2E8F0; position: relative; cursor: not-allowed;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.15);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Upload -->
+    <h3 style="margin-top: 2.5rem;">File Upload (Drag & Drop)</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="border: 2px dashed #CBD5E1; border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; background: #FAFBFC; max-width: 480px; cursor: pointer; transition: border-color 0.15s, background 0.15s;" onmouseover="this.style.borderColor='#2B6CB0';this.style.background='#EFF6FF'" onmouseout="this.style.borderColor='#CBD5E1';this.style.background='#FAFBFC'">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5;">📁</div>
+        <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: #0F172A;">Arraste o arquivo ou <span style="color: #2B6CB0; text-decoration: underline;">clique para selecionar</span></div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 0.4rem;">CSV, XLSX ou PDF · Máx 10MB</div>
+      </div>
+      <!-- Uploaded file -->
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 0.75rem 1rem; border: 1px solid #E2E8F0; border-radius: 10px; max-width: 480px; background: #FFFFFF;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0;">CSV</div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #0F172A; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">produtos_estoque_marco_2026.csv</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8;">248 KB · Enviado</div>
+        </div>
+        <span style="color: #059669; font-size: 1rem;">✓</span>
+        <span style="color: #94A3B8; cursor: pointer; font-size: 1rem;">×</span>
+      </div>
+    </div>
+
+    <!-- Search Autocomplete -->
+    <h3 style="margin-top: 2.5rem;">Search Autocomplete</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="position: relative; max-width: 400px;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; padding: 10px 14px; border: 1.5px solid #3A8FD6; border-radius: 8px; background: #FFFFFF; box-shadow: 0 0 0 3px rgba(58,143,214,0.15);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span style="font-family: var(--font-body); font-size: 0.85rem; color: #0F172A;">Painel Sol</span>
+          <span style="font-family: var(--font-body); font-size: 0.85rem; color: #CBD5E1;">|</span>
+        </div>
+        <!-- Dropdown results -->
+        <div style="position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; z-index: 10;">
+          <div style="padding: 0.5rem 0.75rem; border-radius: 6px; background: #F8FAFC; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--font-body); font-size: 0.8rem; color: #0F172A;"><strong>Painel Sol</strong>ar 200W</span>
+            <span style="margin-left: auto; font-size: 0.6rem; padding: 2px 6px; border-radius: 99px; background: #D1FAE5; color: #059669; font-weight: 600;">Ativo</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; border-radius: 6px; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--font-body); font-size: 0.8rem; color: #334155;"><strong>Painel Sol</strong>ar 400W</span>
+            <span style="margin-left: auto; font-size: 0.6rem; padding: 2px 6px; border-radius: 99px; background: #D1FAE5; color: #059669; font-weight: 600;">Ativo</span>
+          </div>
+          <div style="padding: 0.5rem 0.75rem; border-radius: 6px; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: var(--font-body); font-size: 0.8rem; color: #334155;"><strong>Painel Sol</strong>ar 100W Mini</span>
+            <span style="margin-left: auto; font-size: 0.6rem; padding: 2px 6px; border-radius: 99px; background: #FEE2E2; color: #DC2626; font-weight: 600;">Esgotado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2.5rem;">
+      <thead><tr><th>Componente</th><th>Specs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Toggle</strong></td><td>Track: 44×24px, radius 99px. Thumb: 20×20px. On: bg <code>#2B6CB0</code>. Off: bg <code>#E2E8F0</code>. Transition: 150ms.</td></tr>
+        <tr><td><strong>File Upload</strong></td><td>Border: 2px dashed <code>#CBD5E1</code>. Hover: border <code>#2B6CB0</code>, bg <code>#EFF6FF</code>. Radius: 12px.</td></tr>
+        <tr><td><strong>Autocomplete</strong></td><td>Input padrão + dropdown de resultados. Highlight do match em <code>&lt;strong&gt;</code>. Debounce: 300ms.</td></tr>
+        <tr><td><strong>Disabled</strong></td><td>Opacidade 0.5, cursor not-allowed. Mesmo visual mas sem interação.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== TIPOGRAFIA APLICADA ==================== -->
+  <section class="section section-dark" id="tipografia-aplicada">
+    <div class="section-header">
+      <div class="section-number">21 — Tipografia Aplicada e Hierarquia</div>
+      <h2>Tipografia Aplicada e Hierarquia</h2>
+    </div>
+
+    <p>Exemplos práticos de como a tipografia Montserrat + Inter cria hierarquia visual em contextos reais: página de produto, dashboard e artigo.</p>
+
+    <h3>Página de Produto</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 2rem; max-width: 540px;">
+        <!-- Breadcrumb -->
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-bottom: 1rem;">Produtos › Iluminação › <span style="color: #64748B;">LED Industrial</span></div>
+        <!-- Title -->
+        <h1 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin: 0; line-height: 1.2;">Luminária Industrial LED 150W</h1>
+        <!-- Subtitle -->
+        <p style="font-family: var(--font-body); font-size: 0.85rem; color: #64748B; margin: 0.5rem 0 0; line-height: 1.5;">Alta performance para galpões e áreas industriais. IP65, 120lm/W, vida útil 50.000h.</p>
+        <!-- Price -->
+        <div style="margin-top: 1.25rem; display: flex; align-items: baseline; gap: 0.5rem;">
+          <span style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: #0F172A;">R$ 329,00</span>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #94A3B8; text-decoration: line-through;">R$ 399,00</span>
+          <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #059669; background: #D1FAE5; padding: 2px 8px; border-radius: 99px;">-18%</span>
+        </div>
+        <!-- Specs -->
+        <div style="margin-top: 1.5rem; border-top: 1px solid #F1F5F9; padding-top: 1.25rem;">
+          <h3 style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.75rem;">Especificações</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div>
+              <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Potência</div>
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #0F172A;">150W</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Fluxo</div>
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #0F172A;">18.000lm</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Proteção</div>
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #0F172A;">IP65</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Vida Útil</div>
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #0F172A;">50.000h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hierarchy Scale -->
+    <h3 style="margin-top: 2.5rem;">Escala Tipográfica em Contexto</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 540px;">
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">2rem</span>
+          <span style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--dark-text); line-height: 1.2;">Page Title</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400);">Montserrat 800</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">1.5rem</span>
+          <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--dark-text); line-height: 1.3;">Section Heading</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400);">Montserrat 700</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">1.1rem</span>
+          <span style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--dark-text); line-height: 1.4;">Card Title / Modal Title</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400);">Montserrat 700</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">1rem</span>
+          <span style="font-family: var(--font-body); font-size: 1rem; color: var(--dark-text); line-height: 1.6;">Body text. Parágrafos e descrições usam Inter regular 16px com line-height 1.6.</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400); white-space: nowrap;">Inter 400</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">0.875</span>
+          <span style="font-family: var(--font-body); font-size: 0.875rem; color: #64748B; line-height: 1.5;">Secondary text. Descrições menores, labels de formulário e textos auxiliares.</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400); white-space: nowrap;">Inter 400</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">0.75</span>
+          <span style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">OVERLINE / TABLE HEADER / LABEL</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400); white-space: nowrap;">Montserrat 600</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 1rem;">
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); min-width: 50px;">0.8rem</span>
+          <span style="font-family: var(--font-mono, monospace); font-size: 0.8rem; color: #2B6CB0; background: #F1F5F9; padding: 2px 8px; border-radius: 4px;">code / monospace</span>
+          <span style="font-family: var(--font-body); font-size: 0.6rem; color: var(--gray-400); white-space: nowrap;">JetBrains Mono</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Truncation -->
+    <h3 style="margin-top: 2.5rem;">Truncamento de Texto</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px;">
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; margin-bottom: 4px;">Single line (ellipsis)</div>
+          <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--dark-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 1px solid var(--gray-200); padding: 0.5rem; border-radius: 8px;">Luminária Industrial LED 150W IP65 Alta Performance</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; margin-bottom: 4px;">Multi line (2 linhas max)</div>
+          <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--dark-text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; border: 1px solid var(--gray-200); padding: 0.5rem; border-radius: 8px; line-height: 1.5;">Luminária Industrial LED 150W IP65 Alta Performance para galpões industriais e áreas externas com proteção total contra poeira e água.</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Regra</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Heading Font</strong></td><td>Montserrat para títulos, labels de seção, badges, botões, overlines.</td></tr>
+        <tr><td><strong>Body Font</strong></td><td>Inter para parágrafos, inputs, descrições, tabelas, tooltips.</td></tr>
+        <tr><td><strong>Mono Font</strong></td><td>JetBrains Mono para código, SKUs, IDs, valores técnicos.</td></tr>
+        <tr><td><strong>Line Height</strong></td><td>Headings: 1.2-1.3. Body: 1.5-1.6. Compact (tables, labels): 1.3-1.4.</td></tr>
+        <tr><td><strong>Truncamento</strong></td><td>1 linha: <code>text-overflow: ellipsis</code>. Multi-linha: <code>-webkit-line-clamp</code>. Sempre com <code>title</code> para hover.</td></tr>
+        <tr><td><strong>Responsivo</strong></td><td>Page title: 2rem → 1.5rem (mobile). Section: 1.5rem → 1.25rem. Body: mantém 1rem.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">17 — Iconografia</div>
+      <div class="section-number">22 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -5843,7 +6332,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">18 — Acessibilidade</div>
+      <div class="section-number">23 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -5935,7 +6424,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">19 — Responsividade</div>
+      <div class="section-number">24 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -5988,7 +6477,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">20 — Design Tokens</div>
+      <div class="section-number">25 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

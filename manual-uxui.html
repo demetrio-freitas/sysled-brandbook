@@ -387,6 +387,368 @@
       color: #FFFFFF;
     }
 
+
+    /* 11. Table of Contents on Cover */
+    .cover-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      max-width: 600px;
+    }
+
+    .cover-toc a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 99px;
+      font-family: var(--font-heading);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      transition: all 0.18s;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .cover-toc a:hover {
+      color: #FFFFFF;
+      border-color: var(--blue-light);
+      background: rgba(91,184,245,0.1);
+    }
+
+    .cover-toc a .toc-num {
+      color: var(--blue-light);
+      font-weight: 700;
+    }
+
+    /* 12. Presentation Mode */
+    .present-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 5rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--dark-secondary);
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 1500;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .present-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .present-btn:hover {
+      background: var(--blue-primary);
+      border-color: var(--blue-primary);
+    }
+
+    .present-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--dark-primary);
+      z-index: 5000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .present-overlay.active {
+      display: flex;
+    }
+
+    .present-toolbar {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 5001;
+    }
+
+    .present-toolbar button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s;
+      font-size: 1rem;
+    }
+
+    .present-toolbar button:hover {
+      background: rgba(255,255,255,0.15);
+      color: #FFFFFF;
+    }
+
+    .present-counter {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.35);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 5001;
+    }
+
+    .present-slide {
+      flex: 1;
+      overflow-y: auto;
+      padding: 3rem 5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .present-slide > * {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* 13. Version Badge & Changelog */
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 99px;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 1rem;
+    }
+
+    .changelog-toggle {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.3);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-decoration: underline;
+      margin-top: 0.75rem;
+      padding: 0;
+      transition: color 0.18s;
+    }
+
+    .changelog-toggle:hover {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .changelog-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .changelog-panel.open {
+      max-height: 600px;
+    }
+
+    .changelog-panel ul {
+      list-style: none;
+      padding: 1rem 0 0;
+    }
+
+    .changelog-panel li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    .changelog-panel li strong {
+      color: rgba(255,255,255,0.7);
+      font-weight: 700;
+    }
+
+    .changelog-panel li .cl-date {
+      color: var(--blue-light);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.6rem;
+    }
+
+    /* 14. Tints & Shades Generator */
+    .tints-generator {
+      margin: 2rem 0;
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-card);
+    }
+
+    .tints-generator h4 {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark-text);
+      margin-bottom: 1rem;
+    }
+
+    .tints-color-select {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tints-color-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .tints-color-btn:hover,
+    .tints-color-btn.active {
+      border-color: var(--dark-text);
+      transform: scale(1.15);
+    }
+
+    .tints-output {
+      display: flex;
+      gap: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .tints-output .swatch {
+      flex: 1;
+      height: 60px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 0.4rem;
+      cursor: pointer;
+      transition: transform 0.15s;
+      position: relative;
+    }
+
+    .tints-output .swatch:hover {
+      transform: scaleY(1.15);
+      z-index: 1;
+    }
+
+    .tints-output .swatch span {
+      font-family: 'SF Mono', monospace;
+      font-size: 0.5rem;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    .tints-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      color: var(--gray-400);
+    }
+
+    /* 15. Print Mode */
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      margin: auto 1rem 0.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: all 0.18s;
+    }
+
+    .print-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .print-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media print {
+      .nav, .mobile-toggle, .back-to-top, .scroll-progress,
+      .copy-toast, .present-btn, .theme-toggle, .print-btn,
+      .cover-toc, .download-bar, .download-btn, .asset-download-bar,
+      .section-dl-btn, .nav-search { display: none !important; }
+
+      .main { margin-left: 0 !important; }
+
+      body {
+        background: #FFFFFF !important;
+        color: #1E293B !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .cover {
+        min-height: auto !important;
+        padding: 4rem 3rem !important;
+        page-break-after: always;
+      }
+
+      .section {
+        break-inside: avoid;
+        padding: 2.5rem 3rem !important;
+        page-break-before: auto;
+        border-bottom: 1px solid #E2E8F0 !important;
+      }
+
+      .section h2 { color: #0F172A !important; }
+      .section p { color: #475569 !important; }
+
+      .logo-card, .color-card, .card-demo, .component-demo,
+      .spec-table, .do-card, .dont-card {
+        break-inside: avoid;
+      }
+
+      .tints-generator { display: none; }
+    }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -1262,6 +1624,20 @@
   Copiado!
 </div>
 
+<button class="present-btn" id="presentBtn" onclick="openPresentation()" aria-label="Modo apresentação" title="Modo Apresentação">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+</button>
+
+<div class="present-overlay" id="presentOverlay">
+  <div class="present-toolbar">
+    <button onclick="presentNav(-1)" title="Anterior">&#8249;</button>
+    <button onclick="presentNav(1)" title="Próximo">&#8250;</button>
+    <button onclick="closePresentation()" title="Fechar">&times;</button>
+  </div>
+  <div class="present-slide" id="presentSlide"></div>
+  <div class="present-counter" id="presentCounter"></div>
+</div>
+
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
@@ -1309,6 +1685,10 @@
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
   <a href="#design-tokens">Design Tokens</a>
+  <button class="print-btn" onclick="window.print()" aria-label="Imprimir">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Imprimir
+  </button>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -1328,6 +1708,18 @@
       </div>
       <h1>Manual<br>UX/UI</h1>
       <p class="cover-subtitle">Sistema de design, componentes, padrões de interface e diretrizes de experiência do usuário.</p>
+      <div class="cover-toc">
+        <a href="#principios"><span class="toc-num">01</span> Princípios</a>
+        <a href="#grid"><span class="toc-num">02</span> Grid</a>
+        <a href="#espacamento"><span class="toc-num">03</span> Espaçamento</a>
+        <a href="#botoes"><span class="toc-num">04</span> Botões</a>
+        <a href="#formularios"><span class="toc-num">05</span> Formulários</a>
+        <a href="#cards"><span class="toc-num">06</span> Cards</a>
+        <a href="#iconografia"><span class="toc-num">07</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">08</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">09</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">10</span> Design Tokens</a>
+      </div>
     </div>
   </div>
 
@@ -2491,6 +2883,59 @@
     navigator.clipboard.writeText(ta.value).then(() => {
       showCopyToast('Código copiado!');
     });
+  }
+
+  // Presentation Mode
+  let presentIndex = 0;
+  let presentSections = [];
+
+  function openPresentation() {
+    const overlay = document.getElementById('presentOverlay');
+    presentSections = Array.from(document.querySelectorAll('section[id]'));
+    if (presentSections.length === 0) return;
+    presentIndex = 0;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    showPresentSlide();
+  }
+
+  function closePresentation() {
+    document.getElementById('presentOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showPresentSlide() {
+    const slide = document.getElementById('presentSlide');
+    const counter = document.getElementById('presentCounter');
+    const section = presentSections[presentIndex];
+    slide.innerHTML = '';
+    const clone = section.cloneNode(true);
+    clone.style.border = 'none';
+    clone.style.margin = '0';
+    clone.classList.remove('reveal', 'visible');
+    slide.appendChild(clone);
+    counter.textContent = (presentIndex + 1) + ' / ' + presentSections.length;
+  }
+
+  function presentNav(dir) {
+    presentIndex = Math.max(0, Math.min(presentSections.length - 1, presentIndex + dir));
+    showPresentSlide();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('presentOverlay');
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closePresentation();
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); presentNav(1); }
+    if (e.key === 'ArrowLeft') presentNav(-1);
+  });
+
+  // Show present button after scroll
+  const presentBtn = document.getElementById('presentBtn');
+  if (presentBtn) {
+    window.addEventListener('scroll', () => {
+      presentBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
   }
 
 </script>

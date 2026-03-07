@@ -1683,6 +1683,7 @@
   <a href="#cards">Cards</a>
   <a href="#modais">Modais e Dialogs</a>
   <a href="#notificacoes">Notificações e Toasts</a>
+  <a href="#tabelas">Tabelas de Dados</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1719,10 +1720,11 @@
         <a href="#cards"><span class="toc-num">06</span> Cards</a>
         <a href="#modais"><span class="toc-num">07</span> Modais</a>
         <a href="#notificacoes"><span class="toc-num">08</span> Notificações</a>
-        <a href="#iconografia"><span class="toc-num">09</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">10</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">11</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">12</span> Design Tokens</a>
+        <a href="#tabelas"><span class="toc-num">09</span> Tabelas</a>
+        <a href="#iconografia"><span class="toc-num">10</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">11</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">12</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">13</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -2984,10 +2986,403 @@
     </table>
   </section>
 
+
+  <!-- ==================== TABELAS DE DADOS ==================== -->
+  <section class="section section-dark" id="tabelas">
+    <div class="section-header">
+      <div class="section-number">09 — Tabelas de Dados</div>
+      <h2>Tabelas de Dados</h2>
+    </div>
+
+    <p>Tabelas organizam dados estruturados em linhas e colunas para facilitar leitura, comparação e análise. No contexto Sysled, são usadas em listagens de produtos, relatórios logísticos, dashboards de estoque e históricos de operações.</p>
+
+    <h3>Tabela Padrão</h3>
+
+    <div class="component-toggle" data-target="code-tabelas">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-tabelas-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;div class="table-wrapper"&gt;
+  &lt;table class="data-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;
+          &lt;input type="checkbox" class="table-check" /&gt;
+        &lt;/th&gt;
+        &lt;th class="sortable"&gt;
+          Código &lt;span class="sort-icon"&gt;&amp;#x25B4;&amp;#x25BE;&lt;/span&gt;
+        &lt;/th&gt;
+        &lt;th class="sortable active-sort"&gt;
+          Produto &lt;span class="sort-icon"&gt;&amp;#x25B4;&lt;/span&gt;
+        &lt;/th&gt;
+        &lt;th&gt;Categoria&lt;/th&gt;
+        &lt;th class="text-right"&gt;Estoque&lt;/th&gt;
+        &lt;th class="text-right"&gt;Preço&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th&gt;Ações&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" class="table-check" /&gt;&lt;/td&gt;
+        &lt;td class="text-mono"&gt;#LED-001&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;Painel Solar 200W&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;Energia Solar&lt;/td&gt;
+        &lt;td class="text-right"&gt;1.240&lt;/td&gt;
+        &lt;td class="text-right"&gt;R$ 489,90&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-success"&gt;Ativo&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button class="table-action"&gt;•••&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Paginação --&gt;
+&lt;div class="table-footer"&gt;
+  &lt;span class="table-info"&gt;Mostrando 1-5 de 48 itens&lt;/span&gt;
+  &lt;div class="table-pagination"&gt;
+    &lt;button class="page-btn" disabled&gt;&amp;laquo;&lt;/button&gt;
+    &lt;button class="page-btn active"&gt;1&lt;/button&gt;
+    &lt;button class="page-btn"&gt;2&lt;/button&gt;
+    &lt;button class="page-btn"&gt;3&lt;/button&gt;
+    &lt;span class="page-ellipsis"&gt;…&lt;/span&gt;
+    &lt;button class="page-btn"&gt;10&lt;/button&gt;
+    &lt;button class="page-btn"&gt;&amp;raquo;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-tabelas-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Table Wrapper (scroll horizontal em mobile) */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+}
+
+/* Header */
+.data-table thead {
+  background: #F8FAFC;
+  border-bottom: 2px solid #E2E8F0;
+}
+.data-table th {
+  padding: 0.75rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Sortable columns */
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { color: #2B6CB0; }
+.sort-icon { font-size: 0.65rem; margin-left: 4px; opacity: 0.4; }
+.active-sort { color: #2B6CB0; }
+.active-sort .sort-icon { opacity: 1; }
+
+/* Body */
+.data-table td {
+  padding: 0.75rem 1rem;
+  color: #334155;
+  border-bottom: 1px solid #F1F5F9;
+  vertical-align: middle;
+}
+.data-table tbody tr:hover {
+  background: #F8FAFC;
+}
+
+/* Striped variant */
+.data-table.striped tbody tr:nth-child(even) {
+  background: #F8FAFC;
+}
+
+/* Text alignment helpers */
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+/* Checkbox */
+.table-check {
+  width: 16px; height: 16px;
+  accent-color: #2B6CB0;
+  cursor: pointer;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-success { background: #D1FAE5; color: #059669; }
+.badge-warning { background: #FEF3C7; color: #D97706; }
+.badge-error   { background: #FEE2E2; color: #DC2626; }
+.badge-info    { background: #DBEAFE; color: #2B6CB0; }
+.badge-neutral { background: #F1F5F9; color: #64748B; }
+
+/* Action button */
+.table-action {
+  background: none; border: none;
+  font-size: 1.2rem; color: #94A3B8;
+  cursor: pointer; padding: 4px 8px;
+  border-radius: 6px; letter-spacing: 2px;
+}
+.table-action:hover { background: #F1F5F9; color: #475569; }
+
+/* Table Footer */
+.table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: #64748B;
+  border-top: 1px solid #E2E8F0;
+}
+
+/* Pagination */
+.table-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.page-btn {
+  min-width: 32px; height: 32px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px; background: #FFFFFF;
+  font-size: 0.8rem; color: #475569;
+  cursor: pointer; transition: all 0.15s;
+}
+.page-btn:hover:not(:disabled) {
+  border-color: #2B6CB0; color: #2B6CB0;
+}
+.page-btn.active {
+  background: #2B6CB0; color: #FFFFFF;
+  border-color: #2B6CB0;
+}
+.page-btn:disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+.page-ellipsis { color: #94A3B8; padding: 0 4px; }
+
+/* Responsive: card view em mobile */
+@media (max-width: 640px) {
+  .data-table thead { display: none; }
+  .data-table tbody tr {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .data-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    border: none;
+  }
+  .data-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #64748B;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+}</code></pre>
+    </div>
+
+    <!-- Preview: Tabela completa -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Tabela com Sorting, Badges e Paginação</p>
+
+      <!-- Table wrapper -->
+      <div style="overflow-x: auto; border: 1px solid #E2E8F0; border-radius: 12px; background: #FFFFFF;">
+        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.85rem;">
+          <thead>
+            <tr style="background: #F8FAFC; border-bottom: 2px solid #E2E8F0;">
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; width: 36px;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap;">Código <span style="font-size: 0.6rem; opacity: 0.4;">▴▾</span></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #2B6CB0; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap;">Produto <span style="font-size: 0.6rem;">▴</span></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Categoria</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Estoque</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Preço</th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Status</th>
+              <th style="padding: 0.75rem 1rem; text-align: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; width: 60px;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #64748B;">#LED-001</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Painel Solar 200W</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Energia Solar</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">1.240</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 489,90</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="background: #FAFBFC; border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" checked /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #64748B;">#LED-042</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Luminária Industrial 150W</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Iluminação</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">856</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 329,00</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #64748B;">#LED-078</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Refletor LED 500W IP65</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Iluminação Externa</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #D97706; font-weight: 500;">23</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 1.249,00</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #FEF3C7; color: #D97706;">Estoque Baixo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="background: #FAFBFC; border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #64748B;">#LED-103</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Fita LED RGB 5m</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Decoração</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #DC2626; font-weight: 500;">0</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 89,90</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #FEE2E2; color: #DC2626;">Esgotado</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono, monospace); font-size: 0.78rem; color: #64748B;">#LED-156</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Sensor de Presença PIR</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Automação</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">3.720</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 42,50</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination footer -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-top: 1px solid #E2E8F0; font-family: var(--font-body); font-size: 0.78rem; color: #64748B;">
+          <span>Mostrando 1–5 de 48 itens</span>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #CBD5E1; cursor: not-allowed;">«</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 0.78rem; background: #2B6CB0; color: #FFFFFF; font-weight: 600;">1</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">2</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">3</span>
+            <span style="color: #94A3B8; padding: 0 4px;">…</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">10</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">»</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges / Status -->
+    <h3 style="margin-top: 2.5rem;">Badges de Status</h3>
+    <p>Badges comunicam estados de forma visual e compacta. Use cores semânticas consistentes em toda a aplicação.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #FEF3C7; color: #D97706;">Pendente</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #FEE2E2; color: #DC2626;">Esgotado</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #DBEAFE; color: #2B6CB0;">Em Trânsito</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #F1F5F9; color: #64748B;">Rascunho</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #EDE9FE; color: #7C3AED;">Premium</span>
+      </div>
+    </div>
+
+    <!-- Variantes -->
+    <h3 style="margin-top: 2.5rem;">Variantes de Tabela</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Padrão</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Hover row, borders sutis. Uso geral para listagens.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Striped</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Linhas zebradas para tabelas densas e relatórios.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Compacta</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Padding reduzido (0.5rem). Para dashboards com muitos dados.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Card View</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Em mobile, cada row vira card com labels. Responsivo.</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Alinhamento</strong></td><td>Texto à esquerda. Números à direita (para facilitar comparação). Ações centralizadas.</td></tr>
+        <tr><td><strong>Sorting</strong></td><td>Indicar coluna ativa com cor <code>#2B6CB0</code>. Setas ▴▾ para direção. Uma coluna ordenada por vez.</td></tr>
+        <tr><td><strong>Seleção</strong></td><td>Checkbox na primeira coluna. Header checkbox seleciona todos. Destacar row selecionada com <code>background: #EFF6FF</code>.</td></tr>
+        <tr><td><strong>Empty State</strong></td><td>Quando sem dados, exibir ilustração + mensagem + CTA. Nunca deixar a tabela vazia sem feedback.</td></tr>
+        <tr><td><strong>Loading</strong></td><td>Usar skeleton rows (5 linhas) com animação pulse enquanto dados carregam.</td></tr>
+        <tr><td><strong>Paginação</strong></td><td>Exibir "Mostrando X-Y de Z" + controles. Padrão: 10 itens/página. Opções: 10, 25, 50.</td></tr>
+        <tr><td><strong>Responsivo</strong></td><td>Desktop: tabela completa. Tablet: scroll horizontal. Mobile: card view com <code>data-label</code> em cada <code>&lt;td&gt;</code>.</td></tr>
+        <tr><td><strong>Ações</strong></td><td>Botão "•••" abre dropdown com opções (Editar, Duplicar, Excluir). Máximo 4 ações no dropdown.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Wrapper Border</td><td><code>1px solid #E2E8F0</code>, radius <code>12px</code></td></tr>
+        <tr><td>Header Background</td><td><code>#F8FAFC</code></td></tr>
+        <tr><td>Header Font</td><td>Montserrat, <code>0.75rem</code>, 600, uppercase, <code>#64748B</code></td></tr>
+        <tr><td>Header Border</td><td><code>2px solid #E2E8F0</code> (bottom)</td></tr>
+        <tr><td>Cell Padding</td><td><code>0.75rem 1rem</code> (padrão) · <code>0.5rem 0.75rem</code> (compacta)</td></tr>
+        <tr><td>Cell Font</td><td>Inter, <code>0.875rem</code>, <code>#334155</code></td></tr>
+        <tr><td>Row Border</td><td><code>1px solid #F1F5F9</code></td></tr>
+        <tr><td>Row Hover</td><td><code>background: #F8FAFC</code></td></tr>
+        <tr><td>Selected Row</td><td><code>background: #EFF6FF</code></td></tr>
+        <tr><td>Badge Padding</td><td><code>3px 10px</code>, radius <code>99px</code>, font <code>0.7rem</code> 600</td></tr>
+        <tr><td>Pagination Button</td><td><code>32px × 32px</code>, radius <code>8px</code>, border <code>1px #E2E8F0</code></td></tr>
+        <tr><td>Checkbox</td><td><code>16px × 16px</code>, <code>accent-color: #2B6CB0</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">09 — Iconografia</div>
+      <div class="section-number">10 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -3074,7 +3469,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">10 — Acessibilidade</div>
+      <div class="section-number">11 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -3166,7 +3561,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">11 — Responsividade</div>
+      <div class="section-number">12 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -3219,7 +3614,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">12 — Design Tokens</div>
+      <div class="section-number">13 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

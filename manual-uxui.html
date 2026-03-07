@@ -1682,6 +1682,7 @@
   <a href="#formularios">Formulários</a>
   <a href="#cards">Cards</a>
   <a href="#modais">Modais e Dialogs</a>
+  <a href="#notificacoes">Notificações e Toasts</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1717,10 +1718,11 @@
         <a href="#formularios"><span class="toc-num">05</span> Formulários</a>
         <a href="#cards"><span class="toc-num">06</span> Cards</a>
         <a href="#modais"><span class="toc-num">07</span> Modais</a>
-        <a href="#iconografia"><span class="toc-num">08</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">09</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">10</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">11</span> Design Tokens</a>
+        <a href="#notificacoes"><span class="toc-num">08</span> Notificações</a>
+        <a href="#iconografia"><span class="toc-num">09</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">10</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">11</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">12</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -2640,10 +2642,352 @@
     </table>
   </section>
 
+
+  <!-- ==================== NOTIFICAÇÕES E TOASTS ==================== -->
+  <section class="section" id="notificacoes">
+    <div class="section-header">
+      <div class="section-number">08 — Notificações e Toasts</div>
+      <h2>Notificações e Toasts</h2>
+    </div>
+
+    <p>Notificações fornecem feedback contextual ao usuário sobre ações realizadas, erros, avisos ou informações importantes. Toasts são temporários e não-intrusivos; Banners são persistentes e exigem ação.</p>
+
+    <h3>Toast Notifications</h3>
+
+    <div class="component-toggle" data-target="code-toasts">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-toasts-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Toast Container (posição fixa) --&gt;
+&lt;div class="toast-container" role="alert" aria-live="polite"&gt;
+
+  &lt;!-- Toast Sucesso --&gt;
+  &lt;div class="toast toast-success"&gt;
+    &lt;div class="toast-icon"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2"&gt;
+        &lt;polyline points="20 6 9 17 4 12"/&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="toast-content"&gt;
+      &lt;strong&gt;Sucesso&lt;/strong&gt;
+      &lt;span&gt;Produto cadastrado com sucesso.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="toast-close" aria-label="Fechar"&gt;&amp;times;&lt;/button&gt;
+    &lt;div class="toast-progress"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Toast Erro --&gt;
+  &lt;div class="toast toast-error"&gt;...&lt;/div&gt;
+
+  &lt;!-- Toast Aviso --&gt;
+  &lt;div class="toast toast-warning"&gt;...&lt;/div&gt;
+
+  &lt;!-- Toast Info --&gt;
+  &lt;div class="toast toast-info"&gt;...&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Banner de Alerta (inline, persistente) --&gt;
+&lt;div class="alert-banner alert-warning"&gt;
+  &lt;div class="alert-icon"&gt;⚠&lt;/div&gt;
+  &lt;div class="alert-content"&gt;
+    &lt;strong&gt;Atenção:&lt;/strong&gt;
+    Sua licença expira em 7 dias.
+    &lt;a href="#"&gt;Renovar agora&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;button class="alert-dismiss"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-toasts-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Toast Container */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 380px;
+}
+
+/* Toast Base */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border-left: 4px solid;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12),
+              0 1px 4px rgba(0,0,0,0.06);
+  animation: toastSlideIn 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Variantes */
+.toast-success { border-color: #059669; }
+.toast-error   { border-color: #DC2626; }
+.toast-warning { border-color: #D97706; }
+.toast-info    { border-color: #2B6CB0; }
+
+/* Ícone */
+.toast-icon {
+  width: 24px; height: 24px;
+  border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center;
+  justify-content: center;
+}
+.toast-icon svg { width: 16px; height: 16px; }
+
+.toast-success .toast-icon { background: #D1FAE5; color: #059669; }
+.toast-error .toast-icon   { background: #FEE2E2; color: #DC2626; }
+.toast-warning .toast-icon { background: #FEF3C7; color: #D97706; }
+.toast-info .toast-icon    { background: #DBEAFE; color: #2B6CB0; }
+
+/* Conteúdo */
+.toast-content {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #334155;
+}
+.toast-content strong {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+/* Close */
+.toast-close {
+  background: none; border: none;
+  font-size: 1.1rem; color: #94A3B8;
+  cursor: pointer; padding: 0 0 0 0.5rem;
+  line-height: 1;
+}
+.toast-close:hover { color: #475569; }
+
+/* Progress bar (auto-dismiss) */
+.toast-progress {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 3px; width: 100%;
+  animation: toastProgress 5s linear forwards;
+}
+.toast-success .toast-progress { background: #059669; }
+.toast-error .toast-progress   { background: #DC2626; }
+.toast-warning .toast-progress { background: #D97706; }
+.toast-info .toast-progress    { background: #2B6CB0; }
+
+@keyframes toastProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+/* Alert Banners (inline) */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+}
+.alert-success { background: #F0FDF4; border-color: #BBF7D0; color: #166534; }
+.alert-error   { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+.alert-warning { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
+.alert-info    { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+
+.alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+.alert-content { flex: 1; }
+.alert-content a { font-weight: 600; text-decoration: underline; }
+.alert-dismiss {
+  background: none; border: none;
+  font-size: 1.2rem; cursor: pointer;
+  opacity: 0.5; color: inherit;
+}
+.alert-dismiss:hover { opacity: 1; }</code></pre>
+    </div>
+
+    <!-- Preview: Toasts -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Toast Notifications</p>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px;">
+
+        <!-- Toast Sucesso -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #059669; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">✓</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Sucesso</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Produto cadastrado com sucesso.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">✕</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 70%; background: #059669; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Erro -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #DC2626; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #FEE2E2; color: #DC2626; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">✕</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Erro</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Falha ao conectar com o servidor.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">✕</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 45%; background: #DC2626; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Aviso -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #D97706; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">!</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Aviso</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Sua sessão expira em 5 minutos.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">✕</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 90%; background: #D97706; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Info -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #2B6CB0; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #DBEAFE; color: #2B6CB0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">i</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Informação</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Nova atualização disponível (v2.1).</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">✕</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 20%; background: #2B6CB0; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Preview: Alert Banners -->
+    <h3 style="margin-top: 2.5rem;">Alert Banners (Inline)</h3>
+    <p>Banners são persistentes e exibidos inline no conteúdo. Usados para mensagens que exigem atenção contínua ou ação do usuário.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+        <!-- Banner Sucesso -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #F0FDF4; border: 1px solid #BBF7D0; font-family: var(--font-body); font-size: 0.85rem; color: #166534;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">✅</span>
+          <div style="flex: 1;"><strong>Importação concluída.</strong> 248 produtos foram adicionados ao catálogo.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">✕</span>
+        </div>
+
+        <!-- Banner Erro -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #FEF2F2; border: 1px solid #FECACA; font-family: var(--font-body); font-size: 0.85rem; color: #991B1B;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">❌</span>
+          <div style="flex: 1;"><strong>Erro de sincronização.</strong> Verifique sua conexão e <a href="#" style="color: #991B1B; font-weight: 600; text-decoration: underline;">tente novamente</a>.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">✕</span>
+        </div>
+
+        <!-- Banner Aviso -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #FFFBEB; border: 1px solid #FDE68A; font-family: var(--font-body); font-size: 0.85rem; color: #92400E;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">⚠️</span>
+          <div style="flex: 1;"><strong>Atenção:</strong> Sua licença expira em 7 dias. <a href="#" style="color: #92400E; font-weight: 600; text-decoration: underline;">Renovar agora</a></div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">✕</span>
+        </div>
+
+        <!-- Banner Info -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #EFF6FF; border: 1px solid #BFDBFE; font-family: var(--font-body); font-size: 0.85rem; color: #1E40AF;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">ℹ️</span>
+          <div style="flex: 1;"><strong>Manutenção programada</strong> para sábado, 08/03, das 02h às 06h.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">✕</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Posicionamento -->
+    <h3 style="margin-top: 2.5rem;">Posicionamento dos Toasts</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; text-align: center; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Top Right</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">top: 1.5rem; right: 1.5rem;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Padrão recomendado</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Top Center</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">top: 1.5rem; left: 50%;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Ações globais</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Bottom Right</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">bottom: 1.5rem; right: 1.5rem;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Chat, uploads</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Bottom Center</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">bottom: 1.5rem; left: 50%;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Mobile (snackbar)</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Duração</strong></td><td>Toasts de sucesso/info: 5 segundos. Toasts de erro: persistente até dismiss manual. Avisos: 8 segundos.</td></tr>
+        <tr><td><strong>Empilhamento</strong></td><td>Máximo de 3 toasts visíveis. Novos toasts empurram os anteriores para baixo. Mais antigos saem primeiro (FIFO).</td></tr>
+        <tr><td><strong>Progress Bar</strong></td><td>Barra de progresso na base indica tempo restante antes do auto-dismiss. Pausar ao hover.</td></tr>
+        <tr><td><strong>Ações</strong></td><td>Toasts podem ter 1 ação (ex: "Desfazer"). Máximo de 1 botão de ação + botão de fechar.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Container com <code>role="alert"</code> e <code>aria-live="polite"</code>. Toasts de erro usar <code>aria-live="assertive"</code>.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Em telas &lt; 640px, toasts ocupam largura total com <code>margin: 0 1rem</code>. Posição: bottom center (snackbar).</td></tr>
+        <tr><td><strong>Banners vs Toasts</strong></td><td>Usar <strong>toast</strong> para feedback de ação (salvar, excluir). Usar <strong>banner</strong> para estados persistentes (expiração, manutenção).</td></tr>
+        <tr><td><strong>Cores Semânticas</strong></td><td>Success: <code>#059669</code> · Error: <code>#DC2626</code> · Warning: <code>#D97706</code> · Info: <code>#2B6CB0</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Toast</th><th>Banner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Max Width</td><td><code>380px</code></td><td><code>100%</code> (inline)</td></tr>
+        <tr><td>Padding</td><td><code>1rem 1.25rem</code></td><td><code>0.875rem 1.25rem</code></td></tr>
+        <tr><td>Border Radius</td><td><code>12px</code></td><td><code>10px</code></td></tr>
+        <tr><td>Border</td><td><code>4px left</code> (cor semântica)</td><td><code>1px solid</code> (cor clara)</td></tr>
+        <tr><td>Background</td><td><code>#FFFFFF</code></td><td>Cor semântica clara (ex: <code>#F0FDF4</code>)</td></tr>
+        <tr><td>Shadow</td><td><code>0 4px 20px rgba(0,0,0,0.12)</code></td><td>Nenhuma</td></tr>
+        <tr><td>Ícone</td><td><code>28px</code> circular com bg</td><td>Emoji ou SVG <code>1.1rem</code></td></tr>
+        <tr><td>Título</td><td>Montserrat, <code>0.85rem</code>, 600</td><td>Inter bold inline</td></tr>
+        <tr><td>Texto</td><td>Inter, <code>0.8rem</code>, #64748B</td><td>Inter, <code>0.875rem</code></td></tr>
+        <tr><td>Animação</td><td><code>slideIn 300ms</code> ease</td><td>Nenhuma (inline)</td></tr>
+        <tr><td>Z-Index</td><td><code>9999</code> (--z-toast)</td><td>Herda do contexto</td></tr>
+        <tr><td>Auto-dismiss</td><td>5s (progress bar)</td><td>Não (manual)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">08 — Iconografia</div>
+      <div class="section-number">09 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -2730,7 +3074,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">09 — Acessibilidade</div>
+      <div class="section-number">10 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -2822,7 +3166,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">10 — Responsividade</div>
+      <div class="section-number">11 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -2875,7 +3219,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">11 — Design Tokens</div>
+      <div class="section-number">12 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

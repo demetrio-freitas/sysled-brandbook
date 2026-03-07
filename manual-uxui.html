@@ -1684,6 +1684,7 @@
   <a href="#modais">Modais e Dialogs</a>
   <a href="#notificacoes">Notificações e Toasts</a>
   <a href="#tabelas">Tabelas de Dados</a>
+  <a href="#tabs">Tabs e Navegação</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1721,10 +1722,11 @@
         <a href="#modais"><span class="toc-num">07</span> Modais</a>
         <a href="#notificacoes"><span class="toc-num">08</span> Notificações</a>
         <a href="#tabelas"><span class="toc-num">09</span> Tabelas</a>
-        <a href="#iconografia"><span class="toc-num">10</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">11</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">12</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">13</span> Design Tokens</a>
+        <a href="#tabs"><span class="toc-num">10</span> Tabs</a>
+        <a href="#iconografia"><span class="toc-num">11</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">12</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">13</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">14</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -3381,10 +3383,323 @@
     </table>
   </section>
 
+
+  <!-- ==================== TABS E NAVEGAÇÃO ==================== -->
+  <section class="section" id="tabs">
+    <div class="section-header">
+      <div class="section-number">10 — Tabs e Navegação por Abas</div>
+      <h2>Tabs e Navegação por Abas</h2>
+    </div>
+
+    <p>Tabs organizam conteúdo em painéis alternáveis, permitindo ao usuário navegar entre seções relacionadas sem sair da página. Essenciais para dashboards, configurações e páginas de detalhe de produtos.</p>
+
+    <h3>Variantes de Tabs</h3>
+
+    <div class="component-toggle" data-target="code-tabs">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-tabs-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Tabs Underline (padrão) --&gt;
+&lt;div class="tabs-container"&gt;
+  &lt;nav class="tabs tabs-underline" role="tablist"&gt;
+    &lt;button class="tab active" role="tab"
+            aria-selected="true" aria-controls="panel-1"&gt;
+      Visão Geral
+    &lt;/button&gt;
+    &lt;button class="tab" role="tab"
+            aria-selected="false" aria-controls="panel-2"&gt;
+      Estoque
+    &lt;/button&gt;
+    &lt;button class="tab" role="tab"
+            aria-selected="false" aria-controls="panel-3"&gt;
+      Histórico
+    &lt;/button&gt;
+    &lt;button class="tab disabled" role="tab"
+            aria-disabled="true"&gt;
+      Relatórios
+    &lt;/button&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="tab-panel active" id="panel-1"
+       role="tabpanel"&gt;
+    &lt;!-- Conteúdo da aba --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabs Pill --&gt;
+&lt;nav class="tabs tabs-pill" role="tablist"&gt;
+  &lt;button class="tab active"&gt;Todos&lt;/button&gt;
+  &lt;button class="tab"&gt;Ativos&lt;/button&gt;
+  &lt;button class="tab"&gt;Inativos&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tabs Boxed --&gt;
+&lt;nav class="tabs tabs-boxed" role="tablist"&gt;
+  &lt;button class="tab active"&gt;Mensal&lt;/button&gt;
+  &lt;button class="tab"&gt;Trimestral&lt;/button&gt;
+  &lt;button class="tab"&gt;Anual&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tabs com Ícone + Badge --&gt;
+&lt;nav class="tabs tabs-underline" role="tablist"&gt;
+  &lt;button class="tab active"&gt;
+    &lt;svg&gt;...&lt;/svg&gt; Pedidos
+    &lt;span class="tab-badge"&gt;12&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="tab"&gt;
+    &lt;svg&gt;...&lt;/svg&gt; Devoluções
+    &lt;span class="tab-badge"&gt;3&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-tabs-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Tabs Container */
+.tabs-container {
+  width: 100%;
+}
+
+/* Tabs Nav Base */
+.tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+/* Tab Button Base */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  position: relative;
+}
+.tab:hover { color: #2B6CB0; }
+.tab.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Underline Variant ---- */
+.tabs-underline {
+  border-bottom: 2px solid #E2E8F0;
+}
+.tabs-underline .tab {
+  margin-bottom: -2px;
+  border-bottom: 2px solid transparent;
+}
+.tabs-underline .tab.active {
+  color: #2B6CB0;
+  border-bottom-color: #2B6CB0;
+}
+
+/* ---- Pill Variant ---- */
+.tabs-pill {
+  background: #F1F5F9;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+.tabs-pill .tab {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+.tabs-pill .tab.active {
+  background: #FFFFFF;
+  color: #0F172A;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ---- Boxed Variant ---- */
+.tabs-boxed {
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 0;
+  display: inline-flex;
+}
+.tabs-boxed .tab {
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.75rem;
+}
+.tabs-boxed .tab.active {
+  background: #2B6CB0;
+  color: #FFFFFF;
+}
+
+/* Tab Badge */
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px; height: 20px;
+  border-radius: 99px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: #EFF6FF;
+  color: #2B6CB0;
+  padding: 0 5px;
+}
+.tab.active .tab-badge {
+  background: #2B6CB0;
+  color: #FFFFFF;
+}
+
+/* Tab Icon */
+.tab svg {
+  width: 16px; height: 16px;
+}
+
+/* Tab Panel */
+.tab-panel {
+  display: none;
+  padding: 1.5rem 0;
+}
+.tab-panel.active { display: block; }
+
+/* Responsive: scroll horizontal */
+@media (max-width: 640px) {
+  .tabs { gap: 0; }
+  .tab { padding: 0.6rem 0.75rem; font-size: 0.75rem; }
+}</code></pre>
+    </div>
+
+    <!-- Preview: Underline Tabs -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Underline (Padrão)</p>
+
+      <div style="width: 100%;">
+        <nav id="demo-tabs-underline" style="display: flex; border-bottom: 2px solid #E2E8F0; gap: 0;">
+          <button onclick="switchDemoTab(this, 'underline')" class="demo-tab-active" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #2B6CB0; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid #2B6CB0;">Visão Geral</button>
+          <button onclick="switchDemoTab(this, 'underline')" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">Estoque</button>
+          <button onclick="switchDemoTab(this, 'underline')" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">Histórico</button>
+          <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent; opacity: 0.4; cursor: not-allowed;">Relatórios</button>
+        </nav>
+        <div style="padding: 1.25rem 0.5rem; font-family: var(--font-body); font-size: 0.85rem; color: var(--gray-500);">
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Produtos</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">1.248</div>
+            </div>
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Categorias</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">24</div>
+            </div>
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Valor Total</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">R$ 2.4M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Pill Tabs -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Pill</p>
+      <nav id="demo-tabs-pill" style="display: inline-flex; background: #F1F5F9; border-radius: 10px; padding: 4px; gap: 4px;">
+        <button onclick="switchDemoTab(this, 'pill')" class="demo-tab-active" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: #FFFFFF; color: #0F172A; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Todos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Ativos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Inativos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Esgotados</button>
+      </nav>
+    </div>
+
+    <!-- Preview: Boxed Tabs -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Boxed</p>
+      <nav id="demo-tabs-boxed" style="display: inline-flex; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 4px; gap: 0;">
+        <button onclick="switchDemoTab(this, 'boxed')" class="demo-tab-active" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: #2B6CB0; color: #FFFFFF;">Mensal</button>
+        <button onclick="switchDemoTab(this, 'boxed')" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Trimestral</button>
+        <button onclick="switchDemoTab(this, 'boxed')" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Anual</button>
+      </nav>
+    </div>
+
+    <!-- Preview: Tabs com Ícone + Badge -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Com Ícone + Badge</p>
+      <nav style="display: flex; border-bottom: 2px solid #E2E8F0; gap: 0;">
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #2B6CB0; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid #2B6CB0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Pedidos
+          <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; background: #2B6CB0; color: #FFFFFF; padding: 0 5px;">12</span>
+        </button>
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Devoluções
+          <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; background: #EFF6FF; color: #2B6CB0; padding: 0 5px;">3</span>
+        </button>
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Notas Fiscais
+        </button>
+      </nav>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quando Usar</strong></td><td>Para alternar entre visões do mesmo contexto (ex: abas de um produto). <strong>Não usar</strong> para navegação entre páginas diferentes — use menu/sidebar.</td></tr>
+        <tr><td><strong>Quantidade</strong></td><td>Mínimo 2, máximo 6 tabs. Se precisar de mais, agrupar ou usar dropdown "Mais ▾".</td></tr>
+        <tr><td><strong>Labels</strong></td><td>Curtos (1-2 palavras). Substantivos, não verbos. Capitalização: Title Case.</td></tr>
+        <tr><td><strong>Underline vs Pill</strong></td><td><strong>Underline</strong>: navegação principal de página. <strong>Pill</strong>: filtros dentro de uma seção. <strong>Boxed</strong>: alternância binária/ternária (ex: período).</td></tr>
+        <tr><td><strong>Estado Disabled</strong></td><td>Opacidade 0.4, <code>cursor: not-allowed</code>. Usar tooltip para explicar por que está desabilitado.</td></tr>
+        <tr><td><strong>Badge</strong></td><td>Contador numérico ao lado do label. Ativo: fundo azul + texto branco. Inativo: fundo claro + texto azul. Máx 3 dígitos.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td><code>role="tablist"</code> no nav, <code>role="tab"</code> nos botões, <code>role="tabpanel"</code> nos painéis. <code>aria-selected</code> e <code>aria-controls</code>.</td></tr>
+        <tr><td><strong>Teclado</strong></td><td>Setas ← → navegam entre tabs. Enter/Space ativa. Home/End vai para primeira/última.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Scroll horizontal com <code>overflow-x: auto</code> e <code>scrollbar-width: none</code>. Nunca quebrar tabs em múltiplas linhas.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Underline</th><th>Pill</th><th>Boxed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Padding</td><td><code>0.75rem 1.25rem</code></td><td><code>0.5rem 1rem</code></td><td><code>0.5rem 1.25rem</code></td></tr>
+        <tr><td>Font Size</td><td><code>0.8rem</code></td><td><code>0.75rem</code></td><td><code>0.75rem</code></td></tr>
+        <tr><td>Font</td><td colspan="3">Montserrat, weight 600</td></tr>
+        <tr><td>Cor Inativo</td><td colspan="3"><code>#64748B</code></td></tr>
+        <tr><td>Cor Ativo</td><td><code>#2B6CB0</code></td><td><code>#0F172A</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Indicador Ativo</td><td>Border-bottom <code>2px #2B6CB0</code></td><td>Background <code>#FFF</code> + shadow</td><td>Background <code>#2B6CB0</code></td></tr>
+        <tr><td>Container</td><td>Border-bottom <code>2px #E2E8F0</code></td><td>Background <code>#F1F5F9</code>, radius <code>10px</code></td><td>Border <code>1.5px #E2E8F0</code>, radius <code>10px</code></td></tr>
+        <tr><td>Gap</td><td><code>0</code></td><td><code>4px</code></td><td><code>0</code></td></tr>
+        <tr><td>Tab Radius</td><td>Nenhum</td><td><code>8px</code></td><td><code>8px</code></td></tr>
+        <tr><td>Badge Size</td><td colspan="3"><code>20px</code> height, radius <code>99px</code>, font <code>0.65rem</code> 700</td></tr>
+        <tr><td>Transição</td><td colspan="3"><code>all 0.15s ease</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">10 — Iconografia</div>
+      <div class="section-number">11 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -3471,7 +3786,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">11 — Acessibilidade</div>
+      <div class="section-number">12 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -3563,7 +3878,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">12 — Responsividade</div>
+      <div class="section-number">13 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -3616,7 +3931,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">13 — Design Tokens</div>
+      <div class="section-number">14 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 
@@ -4024,6 +4339,37 @@
     window.addEventListener('scroll', () => {
       presentBtn.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
+  }
+
+  // Demo tabs interactivity
+  function switchDemoTab(btn, variant) {
+    const nav = btn.parentElement;
+    nav.querySelectorAll('button').forEach(b => {
+      b.classList.remove('demo-tab-active');
+      if (variant === 'underline') {
+        b.style.color = '#64748B';
+        b.style.borderBottomColor = 'transparent';
+      } else if (variant === 'pill') {
+        b.style.background = 'transparent';
+        b.style.color = '#64748B';
+        b.style.boxShadow = 'none';
+      } else if (variant === 'boxed') {
+        b.style.background = 'transparent';
+        b.style.color = '#64748B';
+      }
+    });
+    btn.classList.add('demo-tab-active');
+    if (variant === 'underline') {
+      btn.style.color = '#2B6CB0';
+      btn.style.borderBottomColor = '#2B6CB0';
+    } else if (variant === 'pill') {
+      btn.style.background = '#FFFFFF';
+      btn.style.color = '#0F172A';
+      btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+    } else if (variant === 'boxed') {
+      btn.style.background = '#2B6CB0';
+      btn.style.color = '#FFFFFF';
+    }
   }
 
 </script>

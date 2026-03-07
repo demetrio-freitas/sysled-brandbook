@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/aplicacoes", "destination": "/aplicacoes.html" },
+    { "source": "/manual-uxui", "destination": "/manual-uxui.html" }
+  ]
+}

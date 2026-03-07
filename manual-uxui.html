@@ -749,6 +749,39 @@
       .tints-generator { display: none; }
     }
 
+
+    /* Skeleton Loading Animation */
+    @keyframes skeletonPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    .skel {
+      background: linear-gradient(90deg, #E2E8F0 25%, #EDF2F7 50%, #E2E8F0 75%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.5s ease infinite;
+      border-radius: 6px;
+    }
+    @keyframes skeletonShimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    [data-theme="dark"] .skel {
+      background: linear-gradient(90deg, #2D3748 25%, #4A5568 50%, #2D3748 75%);
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.5s ease infinite;
+    }
+
+    /* Spinner */
+    @keyframes spinnerRotate {
+      to { transform: rotate(360deg); }
+    }
+
+
+    @keyframes indeterminate {
+      0%   { left: -30%; }
+      100% { left: 100%; }
+    }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -1685,6 +1718,7 @@
   <a href="#notificacoes">Notificações e Toasts</a>
   <a href="#tabelas">Tabelas de Dados</a>
   <a href="#tabs">Tabs e Navegação</a>
+  <a href="#loading">Loading e Skeleton</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1723,10 +1757,11 @@
         <a href="#notificacoes"><span class="toc-num">08</span> Notificações</a>
         <a href="#tabelas"><span class="toc-num">09</span> Tabelas</a>
         <a href="#tabs"><span class="toc-num">10</span> Tabs</a>
-        <a href="#iconografia"><span class="toc-num">11</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">12</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">13</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">14</span> Design Tokens</a>
+        <a href="#loading"><span class="toc-num">11</span> Loading</a>
+        <a href="#iconografia"><span class="toc-num">12</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">13</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">14</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">15</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -3696,10 +3731,337 @@
     </table>
   </section>
 
+
+  <!-- ==================== LOADING E SKELETON ==================== -->
+  <section class="section section-dark" id="loading">
+    <div class="section-header">
+      <div class="section-number">11 — Loading e Skeleton States</div>
+      <h2>Loading e Skeleton States</h2>
+    </div>
+
+    <p>Estados de carregamento mantêm o usuário informado enquanto dados são processados. Skeletons preservam o layout, spinners indicam processamento, e botões com loading previnem cliques duplicados.</p>
+
+    <h3>Skeleton Screens</h3>
+
+    <div class="component-toggle" data-target="code-loading">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-loading-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Skeleton Card --&gt;
+&lt;div class="skeleton-card"&gt;
+  &lt;div class="skel" style="height: 12px; width: 40%;"&gt;&lt;/div&gt;
+  &lt;div class="skel" style="height: 24px; width: 60%; margin-top: 8px;"&gt;&lt;/div&gt;
+  &lt;div class="skel" style="height: 12px; width: 100%; margin-top: 16px;"&gt;&lt;/div&gt;
+  &lt;div class="skel" style="height: 12px; width: 80%; margin-top: 6px;"&gt;&lt;/div&gt;
+  &lt;div class="skel" style="height: 36px; width: 120px; margin-top: 16px; border-radius: 8px;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Skeleton Table Row --&gt;
+&lt;tr class="skeleton-row"&gt;
+  &lt;td&gt;&lt;div class="skel" style="height: 16px; width: 16px; border-radius: 4px;"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div class="skel" style="height: 14px; width: 70px;"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div class="skel" style="height: 14px; width: 150px;"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div class="skel" style="height: 14px; width: 90px;"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div class="skel" style="height: 22px; width: 60px; border-radius: 99px;"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;!-- Spinner --&gt;
+&lt;div class="spinner" role="status" aria-label="Carregando"&gt;
+  &lt;div class="spinner-ring"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Button Loading --&gt;
+&lt;button class="btn-primary btn-loading" disabled&gt;
+  &lt;span class="btn-spinner"&gt;&lt;/span&gt;
+  Salvando...
+&lt;/button&gt;
+
+&lt;!-- Progress Bar --&gt;
+&lt;div class="progress-track"&gt;
+  &lt;div class="progress-fill" style="width: 65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-loading-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Skeleton Base */
+.skel {
+  background: linear-gradient(90deg,
+    #E2E8F0 25%, #EDF2F7 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease infinite;
+  border-radius: 6px;
+}
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Skeleton Card Container */
+.skeleton-card {
+  padding: 24px;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  background: #FFFFFF;
+}
+
+/* Spinner */
+.spinner-ring {
+  width: 32px; height: 32px;
+  border: 3px solid #E2E8F0;
+  border-top-color: #2B6CB0;
+  border-radius: 50%;
+  animation: spinnerRotate 0.7s linear infinite;
+}
+@keyframes spinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Tamanhos de Spinner */
+.spinner-sm .spinner-ring { width: 16px; height: 16px; border-width: 2px; }
+.spinner-md .spinner-ring { width: 32px; height: 32px; border-width: 3px; }
+.spinner-lg .spinner-ring { width: 48px; height: 48px; border-width: 4px; }
+
+/* Button Loading */
+.btn-loading {
+  position: relative;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.btn-spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spinnerRotate 0.6s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Progress Bar */
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2B6CB0, #3A8FD6);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .skel {
+  background: linear-gradient(90deg,
+    #2D3748 25%, #4A5568 50%, #2D3748 75%);
+  background-size: 200% 100%;
+}
+[data-theme="dark"] .spinner-ring {
+  border-color: #4A5568;
+  border-top-color: #3A8FD6;
+}
+[data-theme="dark"] .progress-track {
+  background: #2D3748;
+}</code></pre>
+    </div>
+
+    <!-- Preview: Skeleton Cards -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Skeleton Cards</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+        <!-- Skeleton Card 1 -->
+        <div style="padding: 1.25rem; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF;">
+          <div class="skel" style="height: 10px; width: 35%;"></div>
+          <div class="skel" style="height: 20px; width: 65%; margin-top: 8px;"></div>
+          <div class="skel" style="height: 10px; width: 100%; margin-top: 14px;"></div>
+          <div class="skel" style="height: 10px; width: 75%; margin-top: 6px;"></div>
+          <div class="skel" style="height: 32px; width: 100px; margin-top: 14px; border-radius: 8px;"></div>
+        </div>
+        <!-- Skeleton Card 2 -->
+        <div style="padding: 1.25rem; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF;">
+          <div class="skel" style="height: 10px; width: 45%;"></div>
+          <div class="skel" style="height: 20px; width: 55%; margin-top: 8px;"></div>
+          <div class="skel" style="height: 10px; width: 100%; margin-top: 14px;"></div>
+          <div class="skel" style="height: 10px; width: 60%; margin-top: 6px;"></div>
+          <div class="skel" style="height: 32px; width: 100px; margin-top: 14px; border-radius: 8px;"></div>
+        </div>
+        <!-- Skeleton Card 3 -->
+        <div style="padding: 1.25rem; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF;">
+          <div class="skel" style="height: 10px; width: 30%;"></div>
+          <div class="skel" style="height: 20px; width: 70%; margin-top: 8px;"></div>
+          <div class="skel" style="height: 10px; width: 100%; margin-top: 14px;"></div>
+          <div class="skel" style="height: 10px; width: 85%; margin-top: 6px;"></div>
+          <div class="skel" style="height: 32px; width: 100px; margin-top: 14px; border-radius: 8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Skeleton Table -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Skeleton Table Rows</p>
+      <div style="overflow-x: auto; border: 1px solid #E2E8F0; border-radius: 12px; background: #FFFFFF;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background: #F8FAFC; border-bottom: 2px solid #E2E8F0;">
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; width: 36px;"><div class="skel" style="height: 14px; width: 14px; border-radius: 3px;"></div></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase;">Código</th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase;">Produto</th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase;">Categoria</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase;">Estoque</th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F1F5F9;"><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 14px; width: 14px; border-radius: 3px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 70px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 160px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 100px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 40px; margin-left: auto;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 20px; width: 56px; border-radius: 99px;"></div></td></tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;"><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 14px; width: 14px; border-radius: 3px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 65px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 130px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 80px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 35px; margin-left: auto;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 20px; width: 50px; border-radius: 99px;"></div></td></tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;"><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 14px; width: 14px; border-radius: 3px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 75px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 145px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 110px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 45px; margin-left: auto;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 20px; width: 62px; border-radius: 99px;"></div></td></tr>
+            <tr><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 14px; width: 14px; border-radius: 3px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 68px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 155px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 95px;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 13px; width: 38px; margin-left: auto;"></div></td><td style="padding: 0.75rem 1rem;"><div class="skel" style="height: 20px; width: 54px; border-radius: 99px;"></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Preview: Spinners -->
+    <h3 style="margin-top: 2.5rem;">Spinners</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Tamanhos</p>
+      <div style="display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;">
+        <!-- Small -->
+        <div style="text-align: center;">
+          <div style="width: 16px; height: 16px; border: 2px solid #E2E8F0; border-top-color: #2B6CB0; border-radius: 50%; animation: spinnerRotate 0.7s linear infinite;"></div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; color: var(--gray-400); margin-top: 0.5rem;">SM · 16px</div>
+        </div>
+        <!-- Medium -->
+        <div style="text-align: center;">
+          <div style="width: 32px; height: 32px; border: 3px solid #E2E8F0; border-top-color: #2B6CB0; border-radius: 50%; animation: spinnerRotate 0.7s linear infinite;"></div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; color: var(--gray-400); margin-top: 0.5rem;">MD · 32px</div>
+        </div>
+        <!-- Large -->
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; border: 4px solid #E2E8F0; border-top-color: #2B6CB0; border-radius: 50%; animation: spinnerRotate 0.7s linear infinite;"></div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; color: var(--gray-400); margin-top: 0.5rem;">LG · 48px</div>
+        </div>
+        <!-- XL (page loader) -->
+        <div style="text-align: center;">
+          <div style="width: 64px; height: 64px; border: 4px solid #E2E8F0; border-top-color: #2B6CB0; border-radius: 50%; animation: spinnerRotate 0.7s linear infinite;"></div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; color: var(--gray-400); margin-top: 0.5rem;">XL · 64px</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Button Loading States -->
+    <h3 style="margin-top: 2.5rem;">Botões com Loading</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <!-- Primary loading -->
+        <button style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; opacity: 0.8; cursor: not-allowed;">
+          <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #FFFFFF; border-radius: 50%; animation: spinnerRotate 0.6s linear infinite;"></span>
+          Salvando...
+        </button>
+        <!-- Secondary loading -->
+        <button style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; opacity: 0.8; cursor: not-allowed;">
+          <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #E2E8F0; border-top-color: #64748B; border-radius: 50%; animation: spinnerRotate 0.6s linear infinite;"></span>
+          Carregando...
+        </button>
+        <!-- Normal state (for comparison) -->
+        <button style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">
+          Salvar
+        </button>
+      </div>
+    </div>
+
+    <!-- Preview: Progress Bars -->
+    <h3 style="margin-top: 2.5rem;">Progress Bars</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px;">
+        <!-- 25% -->
+        <div>
+          <div style="display: flex; justify-content: space-between; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--gray-500); margin-bottom: 6px;">
+            <span>Importando produtos...</span><span>25%</span>
+          </div>
+          <div style="width: 100%; height: 6px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 25%; height: 100%; background: linear-gradient(90deg, #2B6CB0, #3A8FD6); border-radius: 99px;"></div>
+          </div>
+        </div>
+        <!-- 65% -->
+        <div>
+          <div style="display: flex; justify-content: space-between; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--gray-500); margin-bottom: 6px;">
+            <span>Sincronizando estoque...</span><span>65%</span>
+          </div>
+          <div style="width: 100%; height: 6px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 65%; height: 100%; background: linear-gradient(90deg, #2B6CB0, #3A8FD6); border-radius: 99px;"></div>
+          </div>
+        </div>
+        <!-- 100% success -->
+        <div>
+          <div style="display: flex; justify-content: space-between; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #059669; margin-bottom: 6px;">
+            <span>Upload concluído!</span><span>100%</span>
+          </div>
+          <div style="width: 100%; height: 6px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 100%; height: 100%; background: #059669; border-radius: 99px;"></div>
+          </div>
+        </div>
+        <!-- Indeterminate -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--gray-500); margin-bottom: 6px;">Processando... (indeterminado)</div>
+          <div style="width: 100%; height: 6px; background: #E2E8F0; border-radius: 99px; overflow: hidden; position: relative;">
+            <div style="width: 30%; height: 100%; background: linear-gradient(90deg, #2B6CB0, #3A8FD6); border-radius: 99px; position: absolute; animation: indeterminate 1.5s ease infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Skeleton vs Spinner</strong></td><td>Usar <strong>skeleton</strong> quando o layout final é conhecido (cards, tabelas, listas). Usar <strong>spinner</strong> para ações pontuais (submit, processar).</td></tr>
+        <tr><td><strong>Shimmer Direction</strong></td><td>Animação shimmer sempre da esquerda para direita. Duração: 1.5s, easing: ease, loop infinito.</td></tr>
+        <tr><td><strong>Skeleton Shapes</strong></td><td>Respeitar a forma do conteúdo final: retângulos para texto, círculos para avatares, retângulos arredondados para badges/botões.</td></tr>
+        <tr><td><strong>Button Loading</strong></td><td>Desabilitar o botão (<code>pointer-events: none</code>), exibir spinner inline + texto "Salvando...", opacidade 0.8.</td></tr>
+        <tr><td><strong>Progress Bar</strong></td><td>Determinada: exibir porcentagem. Indeterminada: animação loop. Concluída: trocar cor para <code>#059669</code> (success).</td></tr>
+        <tr><td><strong>Duração</strong></td><td>&lt; 1s: nenhum indicador. 1-3s: spinner. &gt; 3s: skeleton ou progress bar. &gt; 10s: progress bar com estimativa.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Spinners: <code>role="status"</code> + <code>aria-label="Carregando"</code>. Progress: <code>role="progressbar"</code> + <code>aria-valuenow</code>.</td></tr>
+        <tr><td><strong>Dark Mode</strong></td><td>Skeleton usa <code>#2D3748</code> → <code>#4A5568</code>. Spinner track: <code>#4A5568</code>. Progress track: <code>#2D3748</code>.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Componente</th><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="3"><strong>Skeleton</strong></td><td>Background</td><td><code>#E2E8F0</code> → <code>#EDF2F7</code> (gradient shimmer)</td></tr>
+        <tr><td>Animation</td><td><code>1.5s ease infinite</code></td></tr>
+        <tr><td>Border Radius</td><td><code>6px</code> (texto), <code>8px</code> (botão), <code>50%</code> (avatar), <code>99px</code> (badge)</td></tr>
+        <tr><td rowspan="4"><strong>Spinner</strong></td><td>Border</td><td>Track: <code>#E2E8F0</code>, Active: <code>#2B6CB0</code></td></tr>
+        <tr><td>Sizes</td><td>SM: <code>16px/2px</code> · MD: <code>32px/3px</code> · LG: <code>48px/4px</code> · XL: <code>64px/4px</code></td></tr>
+        <tr><td>Animation</td><td><code>rotate 0.7s linear infinite</code></td></tr>
+        <tr><td>Button Spinner</td><td><code>14px/2px</code>, track <code>rgba(255,255,255,0.3)</code></td></tr>
+        <tr><td rowspan="3"><strong>Progress</strong></td><td>Track</td><td>Height <code>6px</code>, bg <code>#E2E8F0</code>, radius <code>99px</code></td></tr>
+        <tr><td>Fill</td><td><code>linear-gradient(90deg, #2B6CB0, #3A8FD6)</code></td></tr>
+        <tr><td>Complete</td><td>Fill: <code>#059669</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">11 — Iconografia</div>
+      <div class="section-number">12 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -3786,7 +4148,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">12 — Acessibilidade</div>
+      <div class="section-number">13 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -3878,7 +4240,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">13 — Responsividade</div>
+      <div class="section-number">14 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -3931,7 +4293,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">14 — Design Tokens</div>
+      <div class="section-number">15 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

@@ -1720,6 +1720,7 @@
   <a href="#tabs">Tabs e Navegação</a>
   <a href="#loading">Loading e Skeleton</a>
   <a href="#tooltips">Tooltips e Dropdowns</a>
+  <a href="#breadcrumbs">Breadcrumbs</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1760,10 +1761,11 @@
         <a href="#tabs"><span class="toc-num">10</span> Tabs</a>
         <a href="#loading"><span class="toc-num">11</span> Loading</a>
         <a href="#tooltips"><span class="toc-num">12</span> Tooltips</a>
-        <a href="#iconografia"><span class="toc-num">13</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">14</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">15</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">16</span> Design Tokens</a>
+        <a href="#breadcrumbs"><span class="toc-num">13</span> Breadcrumbs</a>
+        <a href="#iconografia"><span class="toc-num">14</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">15</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">16</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">17</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -4444,10 +4446,309 @@
     </table>
   </section>
 
+
+  <!-- ==================== BREADCRUMBS E NAVEGAÇÃO ESTRUTURAL ==================== -->
+  <section class="section section-dark" id="breadcrumbs">
+    <div class="section-header">
+      <div class="section-number">13 — Breadcrumbs e Navegação Estrutural</div>
+      <h2>Breadcrumbs e Navegação Estrutural</h2>
+    </div>
+
+    <p>Breadcrumbs mostram a localização do usuário na hierarquia do sistema, permitindo navegar para níveis anteriores. Essenciais para aplicações com múltiplos níveis de profundidade como catálogo de produtos, configurações e relatórios.</p>
+
+    <h3>Variantes de Breadcrumb</h3>
+
+    <div class="component-toggle" data-target="code-breadcrumbs">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-breadcrumbs-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Breadcrumb com separador › --&gt;
+&lt;nav class="breadcrumb" aria-label="Navegação estrutural"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" width="14" height="14"&gt;
+        &lt;path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/&gt;
+        &lt;polyline points="9 22 9 12 15 12 15 22"/&gt;
+      &lt;/svg&gt;
+      Início
+    &lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/produtos"&gt;Produtos&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/produtos/iluminacao"&gt;Iluminação&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Painel Solar 200W&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumb com separador / --&gt;
+&lt;nav class="breadcrumb breadcrumb-slash" aria-label="Navegação"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Início&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/config"&gt;Configurações&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Integrações&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumb com truncamento --&gt;
+&lt;nav class="breadcrumb" aria-label="Navegação"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Início&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-ellipsis"&gt;
+      &lt;button aria-label="Mostrar caminhos ocultos"&gt;…&lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="/cat"&gt;Iluminação&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;LED-001&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-breadcrumbs-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Breadcrumb */
+.breadcrumb ol {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+/* Separador › (padrão) */
+.breadcrumb li + li::before {
+  content: '›';
+  margin: 0 0.5rem;
+  color: #CBD5E1;
+  font-size: 0.9rem;
+}
+
+/* Separador / */
+.breadcrumb-slash li + li::before {
+  content: '/';
+  margin: 0 0.4rem;
+  color: #CBD5E1;
+  font-size: 0.8rem;
+}
+
+/* Links */
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.breadcrumb a:hover { color: #2B6CB0; }
+
+/* Página atual */
+.breadcrumb li[aria-current="page"] {
+  color: #0F172A;
+  font-weight: 600;
+}
+
+/* Ícone Home */
+.breadcrumb svg {
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+}
+
+/* Ellipsis para caminhos longos */
+.breadcrumb-ellipsis button {
+  background: none; border: none;
+  font-size: 1rem; color: #94A3B8;
+  cursor: pointer; padding: 0 2px;
+  letter-spacing: 2px;
+}
+.breadcrumb-ellipsis button:hover {
+  color: #2B6CB0;
+}
+
+/* Breadcrumb com background (variante card) */
+.breadcrumb-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .breadcrumb li { font-size: 0.75rem; }
+  .breadcrumb li + li::before { margin: 0 0.35rem; }
+}</code></pre>
+    </div>
+
+    <!-- Preview: Breadcrumbs -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Separador › (Padrão)</p>
+
+      <!-- Breadcrumb com home icon -->
+      <nav style="margin-bottom: 1.5rem;">
+        <ol style="display: flex; align-items: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;">
+            <a href="#" style="display: inline-flex; align-items: center; gap: 0.3rem; color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Início
+            </a>
+          </li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Produtos</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Iluminação</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; font-weight: 600;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span>Painel Solar 200W</li>
+        </ol>
+      </nav>
+
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Separador /</p>
+
+      <!-- Breadcrumb com / -->
+      <nav style="margin-bottom: 1.5rem;">
+        <ol style="display: flex; align-items: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;">
+            <a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Início</a>
+          </li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.4rem; color: #CBD5E1; font-size: 0.8rem;">/</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Configurações</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.4rem; color: #CBD5E1; font-size: 0.8rem;">/</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Módulos</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; font-weight: 600;"><span style="margin: 0 0.4rem; color: #CBD5E1; font-size: 0.8rem;">/</span>Integrações</li>
+        </ol>
+      </nav>
+
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Com Truncamento (…)</p>
+
+      <!-- Breadcrumb truncado -->
+      <nav style="margin-bottom: 1.5rem;">
+        <ol style="display: flex; align-items: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;">
+            <a href="#" style="display: inline-flex; align-items: center; gap: 0.3rem; color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </a>
+          </li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span><button style="background: none; border: none; font-size: 1rem; color: #94A3B8; cursor: pointer; padding: 0 2px; letter-spacing: 2px;" title="Mostrar caminhos ocultos">…</button></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Iluminação Externa</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; font-weight: 600;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span>Refletor LED 500W IP65</li>
+        </ol>
+      </nav>
+
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Variante Card (com fundo)</p>
+
+      <!-- Breadcrumb card -->
+      <nav style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.6rem 1rem; display: inline-flex;">
+        <ol style="display: flex; align-items: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;">
+            <a href="#" style="display: inline-flex; align-items: center; gap: 0.3rem; color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Dashboard
+            </a>
+          </li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span><a href="#" style="color: #64748B; text-decoration: none;" onmouseover="this.style.color='#2B6CB0'" onmouseout="this.style.color='#64748B'">Relatórios</a></li>
+          <li style="display: inline-flex; align-items: center; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; font-weight: 600;"><span style="margin: 0 0.5rem; color: #CBD5E1; font-size: 0.9rem;">›</span>Vendas Março 2026</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Paginação -->
+    <h3 style="margin-top: 2.5rem;">Paginação</h3>
+    <p>Componente complementar para navegar entre páginas de resultados em listagens e tabelas.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Paginação Numérica</p>
+
+      <!-- Paginação padrão -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <span style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B;">Mostrando 1–10 de 248 resultados</span>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #CBD5E1; cursor: not-allowed;">«</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #CBD5E1; cursor: not-allowed;">‹</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 0.8rem; background: #2B6CB0; color: #FFFFFF; font-weight: 600;">1</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #475569; cursor: pointer;">2</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #475569; cursor: pointer;">3</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #94A3B8;">…</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #475569; cursor: pointer;">25</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #475569; cursor: pointer;">›</span>
+          <span style="min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.8rem; color: #475569; cursor: pointer;">»</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Paginação Simples (Prev / Next)</p>
+
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 8px 16px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: var(--white); color: #475569; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Anterior
+          </button>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B;">Página 3 de 25</span>
+          <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 8px 16px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: var(--white); color: #475569; cursor: pointer;">
+            Próxima
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Mini Paginação (compacta)</p>
+
+        <div style="display: inline-flex; align-items: center; gap: 0; border: 1.5px solid #E2E8F0; border-radius: 8px; overflow: hidden;">
+          <span style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #475569; cursor: pointer; border-right: 1px solid #E2E8F0;">‹</span>
+          <span style="padding: 0 12px; height: 36px; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #0F172A;">3 / 25</span>
+          <span style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #475569; cursor: pointer; border-left: 1px solid #E2E8F0;">›</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quando Usar</strong></td><td>Breadcrumbs: hierarquias com ≥ 3 níveis. Não usar em fluxos lineares (wizard) — para esses, use stepper.</td></tr>
+        <tr><td><strong>Home</strong></td><td>Primeiro item sempre é "Início" ou ícone de casa. Nunca omitir o ponto de partida.</td></tr>
+        <tr><td><strong>Página Atual</strong></td><td>Último item sem link, com <code>font-weight: 600</code> e <code>aria-current="page"</code>. Cor <code>#0F172A</code>.</td></tr>
+        <tr><td><strong>Truncamento</strong></td><td>Se &gt; 4 níveis, colapsar intermediários com "…" (ellipsis). Manter primeiro, penúltimo e atual visíveis.</td></tr>
+        <tr><td><strong>Separador</strong></td><td>Padrão: <strong>›</strong> (chevron). Alternativa: <strong>/</strong> (slash). Consistente em toda a aplicação.</td></tr>
+        <tr><td><strong>Paginação</strong></td><td>Exibir "Mostrando X–Y de Z". Numérica para ≤ 10 páginas visíveis. Simples (Prev/Next) para mobile ou listagens menores.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Breadcrumb: <code>aria-label="Navegação estrutural"</code>. Paginação: <code>aria-label="Paginação"</code>, <code>aria-current="page"</code> no ativo.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Breadcrumbs: mostrar apenas último nível + botão "← Voltar". Paginação: versão mini (compacta) ou prev/next.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Breadcrumb</th><th>Paginação</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Font</td><td>Inter, <code>0.8rem</code></td><td>Inter, <code>0.8rem</code></td></tr>
+        <tr><td>Link Color</td><td><code>#64748B</code> → hover <code>#2B6CB0</code></td><td><code>#475569</code> → hover border <code>#2B6CB0</code></td></tr>
+        <tr><td>Active Color</td><td><code>#0F172A</code>, weight 600</td><td>Background <code>#2B6CB0</code>, cor <code>#FFFFFF</code></td></tr>
+        <tr><td>Separador</td><td><code>›</code> ou <code>/</code>, cor <code>#CBD5E1</code></td><td>N/A</td></tr>
+        <tr><td>Gap</td><td><code>0.5rem</code> (entre separador)</td><td><code>4px</code> (entre botões)</td></tr>
+        <tr><td>Icon Size</td><td><code>14px</code> (home)</td><td><code>14px</code> (setas)</td></tr>
+        <tr><td>Button Size</td><td>N/A</td><td><code>36px × 36px</code>, radius <code>8px</code></td></tr>
+        <tr><td>Disabled</td><td>N/A</td><td>Cor <code>#CBD5E1</code>, <code>cursor: not-allowed</code></td></tr>
+        <tr><td>Card Variant</td><td>Background <code>#F8FAFC</code>, border <code>#E2E8F0</code>, radius <code>10px</code></td><td>N/A</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">13 — Iconografia</div>
+      <div class="section-number">14 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -4534,7 +4835,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">14 — Acessibilidade</div>
+      <div class="section-number">15 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -4626,7 +4927,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">15 — Responsividade</div>
+      <div class="section-number">16 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -4679,7 +4980,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">16 — Design Tokens</div>
+      <div class="section-number">17 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

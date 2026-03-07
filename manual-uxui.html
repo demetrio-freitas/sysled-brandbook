@@ -2659,7 +2659,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem; font-weight: 600;
   border: none; border-radius: 8px;
-  background: #E53E3E; color: #FFFFFF;
+  background: #DC2626; color: #FFFFFF;
   cursor: pointer; transition: all 0.15s;
 }
 .btn-danger-sm:hover { background: #C53030; }</code></pre>
@@ -2711,7 +2711,7 @@
           </div>
           <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem 1.5rem;">
             <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cancelar</button>
-            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #E53E3E; color: #FFFFFF; cursor: pointer;">Excluir</button>
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #DC2626; color: #FFFFFF; cursor: pointer;">Excluir</button>
           </div>
         </div>
       </div>
@@ -2772,7 +2772,7 @@
         <tr><td><strong>Scroll do Body</strong></td><td>Adicionar <code>overflow: hidden</code> ao <code>&lt;body&gt;</code> quando modal está aberto para evitar scroll duplo.</td></tr>
         <tr><td><strong>ARIA</strong></td><td>Usar <code>role="dialog"</code>, <code>aria-modal="true"</code>, e <code>aria-labelledby</code> apontando para o título.</td></tr>
         <tr><td><strong>Mobile</strong></td><td>Em telas &lt; 640px, modais devem expandir para largura total com <code>border-radius</code> apenas no topo (estilo bottom sheet).</td></tr>
-        <tr><td><strong>Ações Destrutivas</strong></td><td>Botões de exclusão/perigo usam cor <code>#E53E3E</code>. Sempre exigir confirmação explícita.</td></tr>
+        <tr><td><strong>Ações Destrutivas</strong></td><td>Botões de exclusão/perigo usam cor <code>#DC2626</code>. Sempre exigir confirmação explícita.</td></tr>
         <tr><td><strong>Máximo de Profundidade</strong></td><td>Evitar modais sobre modais (máximo 1 nível). Para fluxos complexos, usar stepper dentro do modal.</td></tr>
       </tbody>
     </table>
@@ -4267,7 +4267,7 @@
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.15s, transform 0.15s;
-  z-index: 50;
+  z-index: 200; /* var(--z-tooltip) */
 }
 
 /* Posições */
@@ -4324,7 +4324,7 @@
   visibility: hidden;
   transform: translateY(4px);
   transition: all 0.2s ease;
-  z-index: 50;
+  z-index: 100; /* var(--z-dropdown) */
 }
 .popover-wrapper.open .popover {
   opacity: 1;
@@ -4368,7 +4368,7 @@
   visibility: hidden;
   transform: translateY(-4px);
   transition: all 0.15s ease;
-  z-index: 50;
+  z-index: 100; /* var(--z-dropdown) */
 }
 .dropdown-wrapper.open .dropdown-menu {
   opacity: 1;
@@ -4412,7 +4412,7 @@
           <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           </button>
-          <span class="tt" style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Editar produto<span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #0F172A;"></span></span>
+          <span class="tt" style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 200;">Editar produto<span style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #0F172A;"></span></span>
         </span>
 
         <!-- Tooltip Bottom -->
@@ -4420,7 +4420,7 @@
           <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
           </button>
-          <span class="tt" style="position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Excluir item<span style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: #0F172A;"></span></span>
+          <span class="tt" style="position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 200;">Excluir item<span style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: #0F172A;"></span></span>
         </span>
 
         <!-- Tooltip Left -->
@@ -4428,7 +4428,7 @@
           <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </button>
-          <span class="tt" style="position: absolute; right: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Buscar<span style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-left-color: #0F172A;"></span></span>
+          <span class="tt" style="position: absolute; right: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 200;">Buscar<span style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-left-color: #0F172A;"></span></span>
         </span>
 
         <!-- Tooltip Right -->
@@ -4436,7 +4436,7 @@
           <button style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           </button>
-          <span class="tt" style="position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 50;">Configurações<span style="position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-right-color: #0F172A;"></span></span>
+          <span class="tt" style="position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(-4px); padding: 6px 12px; background: #0F172A; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; border-radius: 8px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s, transform 0.15s; z-index: 200;">Configurações<span style="position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-right-color: #0F172A;"></span></span>
         </span>
 
       </div>
@@ -4457,7 +4457,7 @@
         <!-- Popover exemplo -->
         <div style="position: relative; display: inline-flex;" id="popover-demo-1">
           <button onclick="document.getElementById('popover-demo-1').classList.toggle('pop-open')" style="padding: 8px 18px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: var(--white); color: var(--dark-text); cursor: pointer;">Detalhes ▾</button>
-          <div id="popover-panel-1" style="position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all 0.2s ease; z-index: 50;">
+          <div id="popover-panel-1" style="position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all 0.2s ease; z-index: 100;">
             <div style="padding: 0.75rem 1rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A; border-bottom: 1px solid #F1F5F9;">Detalhes do Produto</div>
             <div style="padding: 0.75rem 1rem; font-family: var(--font-body); font-size: 0.8rem; color: #475569; line-height: 1.6;">
               <div><strong style="color: #64748B;">SKU:</strong> LED-001</div>
@@ -4482,7 +4482,7 @@
         <!-- Dropdown de ações -->
         <div style="position: relative; display: inline-flex;" id="dropdown-demo-1">
           <button onclick="document.getElementById('dropdown-demo-1').classList.toggle('dd-open')" style="width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid #E2E8F0; background: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748B; font-size: 1.2rem; letter-spacing: 2px;">•••</button>
-          <div id="dd-menu-1" style="position: absolute; top: calc(100% + 6px); right: 0; min-width: 180px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 50;">
+          <div id="dd-menu-1" style="position: absolute; top: calc(100% + 6px); right: 0; min-width: 180px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 100;">
             <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
               Editar
@@ -4509,7 +4509,7 @@
             Categoria
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div id="dd-menu-2" style="position: absolute; top: calc(100% + 6px); left: 0; min-width: 200px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 50;">
+          <div id="dd-menu-2" style="position: absolute; top: calc(100% + 6px); left: 0; min-width: 200px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); padding: 4px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.15s ease; z-index: 100;">
             <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #2B6CB0; background: #EFF6FF; border: none; border-radius: 6px; cursor: pointer; text-align: left; font-weight: 600;">✓ Todas</button>
             <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Energia Solar</button>
             <button style="display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.75rem; font-family: var(--font-body); font-size: 0.8rem; color: #334155; background: none; border: none; border-radius: 6px; cursor: pointer; text-align: left;" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='none'">Iluminação</button>
@@ -4554,7 +4554,7 @@
         <tr><td>Font</td><td>Inter, <code>0.75rem</code>, 500</td><td>Inter, <code>0.8rem</code></td><td>Inter, <code>0.8rem</code></td></tr>
         <tr><td>Min Width</td><td>Auto</td><td><code>240px</code></td><td><code>180px</code></td></tr>
         <tr><td>Gap (trigger)</td><td><code>8px</code></td><td><code>8px</code></td><td><code>6px</code></td></tr>
-        <tr><td>Z-Index</td><td><code>50</code></td><td><code>50</code></td><td><code>50</code></td></tr>
+        <tr><td>Z-Index</td><td><code>200</code> (--z-tooltip)</td><td><code>100</code> (--z-dropdown)</td><td><code>100</code> (--z-dropdown)</td></tr>
         <tr><td>Animation</td><td>opacity + translate <code>0.15s</code></td><td>opacity + translate <code>0.2s</code></td><td>opacity + translate <code>0.15s</code></td></tr>
         <tr><td>Trigger</td><td>Hover / Focus</td><td>Click</td><td>Click</td></tr>
         <tr><td>Arrow</td><td>Sim (<code>5px</code> border)</td><td>Opcional</td><td>Não</td></tr>
@@ -6443,8 +6443,8 @@
           <!-- Badge row -->
           <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
             <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #EBF8FF; color: #2B6CB0; white-space: nowrap;">Ativo</span>
-            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #F0FFF4; color: #38A169; white-space: nowrap;">Estoque OK</span>
-            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #FFF5F5; color: #E53E3E; white-space: nowrap;">Urgente</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #D1FAE5; color: #059669; white-space: nowrap;">Estoque OK</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #FFF5F5; color: #DC2626; white-space: nowrap;">Urgente</span>
           </div>
         </div>
         <!-- Dark Components -->
@@ -6538,8 +6538,8 @@
             <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B; margin-top: 0.25rem;">#334155 on #1E293B</div>
           </div>
           <div style="background: #FFFFFF; padding: 0.5rem; text-align: center;">
-            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #E53E3E;">1.5:1</span>
-            <span style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #E53E3E; margin-left: 4px;">FAIL</span>
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #DC2626;">1.5:1</span>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #DC2626; margin-left: 4px;">FAIL</span>
           </div>
         </div>
       </div>
@@ -6579,7 +6579,7 @@
         <div style="flex: 1; height: 56px; background: #48C9B0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#48C9B0</span></div>
         <div style="flex: 1; height: 56px; background: #5BB8F5; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#5BB8F5</span></div>
         <div style="flex: 1; height: 56px; background: #ECC94B; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#ECC94B</span></div>
-        <div style="flex: 1; height: 56px; background: #E53E3E; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#E53E3E</span></div>
+        <div style="flex: 1; height: 56px; background: #DC2626; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#DC2626</span></div>
         <div style="flex: 1; height: 56px; background: #9F7AEA; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#9F7AEA</span></div>
       </div>
       <div style="margin-top: 0.5rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Ordem de uso: Serie 1 (Primary) &rarr; Serie 2 (Cyan) &rarr; Serie 3 (Light Blue) &rarr; Serie 4 (Yellow) &rarr; Serie 5 (Red) &rarr; Serie 6 (Purple)</div>
@@ -6664,8 +6664,8 @@
           <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Ticket Medio</div>
           <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem;">R$ 1.4K</div>
           <div style="display: flex; align-items: center; gap: 4px; margin-top: 0.5rem;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #E53E3E;">-3.1%</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #DC2626;">-3.1%</span>
             <span style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">vs mes anterior</span>
           </div>
         </div>
@@ -6797,20 +6797,20 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
         <!-- Warning Banner -->
-        <div style="background: #FFFFF0; border: 1px solid #FEFCBF; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D69E2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #975A16;"><strong>Estoque baixo:</strong> 3 produtos estao abaixo do nivel minimo. <a href="#" style="color: #975A16; font-weight: 600; text-decoration: underline;">Ver detalhes</a></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="#975A16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
         <!-- Error Banner -->
         <div style="background: #FFF5F5; border: 1px solid #FED7D7; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
           <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #C53030;"><strong>Falha na sincronizacao:</strong> Nao foi possivel conectar ao ERP. <a href="#" style="color: #C53030; font-weight: 600; text-decoration: underline;">Tentar novamente</a></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="#C53030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
         <!-- Success Banner -->
-        <div style="background: #F0FFF4; border: 1px solid #C6F6D5; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div style="background: #D1FAE5; border: 1px solid #6EE7B7; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #276749;"><strong>Importacao concluida!</strong> 342 produtos foram atualizados com sucesso.</div>
           <svg viewBox="0 0 24 24" fill="none" stroke="#276749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </div>
@@ -6823,18 +6823,18 @@
       <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; max-width: 400px;">
         <div style="margin-bottom: 1rem;">
           <label style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email</label>
-          <input type="text" value="usuario@" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #E53E3E; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFF5F5;" readonly>
+          <input type="text" value="usuario@" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #DC2626; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFF5F5;" readonly>
           <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #E53E3E;">Digite um email valido (ex: nome@empresa.com)</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #DC2626;">Digite um email valido (ex: nome@empresa.com)</span>
           </div>
         </div>
         <div>
           <label style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
-          <input type="text" value="150" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #D69E2E; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFFFF0;" readonly>
+          <input type="text" value="150" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #D97706; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFFBEB;" readonly>
           <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#D69E2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #D69E2E;">Quantidade acima do estoque disponivel (127 un.)</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #D97706;">Quantidade acima do estoque disponivel (127 un.)</span>
           </div>
         </div>
       </div>
@@ -6848,7 +6848,7 @@
           <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #2B6CB0; margin-bottom: 0.25rem;">Dica</div>
           <div style="font-family: var(--font-body); font-size: 0.75rem; color: #2C5282; line-height: 1.5;">Use filtros combinados para encontrar produtos rapidamente. Voce pode filtrar por categoria, status e faixa de preco ao mesmo tempo.</div>
         </div>
-        <div style="background: #FFFFF0; border-left: 4px solid #ECC94B; border-radius: 0 10px 10px 0; padding: 1rem 1.25rem;">
+        <div style="background: #FFFBEB; border-left: 4px solid #D97706; border-radius: 0 10px 10px 0; padding: 1rem 1.25rem;">
           <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #975A16; margin-bottom: 0.25rem;">Atencao</div>
           <div style="font-family: var(--font-body); font-size: 0.75rem; color: #975A16; line-height: 1.5;">Alteracoes de preco em lote afetam todos os produtos selecionados. Esta acao nao pode ser desfeita.</div>
         </div>
@@ -6861,7 +6861,7 @@
         <tr><td><strong>Banner</strong></td><td>Topo da pagina, largura total. Icone SVG (18px) + texto + botao fechar (X). Border-radius 10px. Dismissable com X.</td></tr>
         <tr><td><strong>Inline (form)</strong></td><td>Abaixo do input com erro/warning. Icone 12px + texto 0.65rem. Borda do input muda para a cor do estado.</td></tr>
         <tr><td><strong>Callout</strong></td><td>Border-left 4px + background suave. Titulo bold + descricao. Nao e dismissable — sempre visivel.</td></tr>
-        <tr><td><strong>Cores</strong></td><td>Info: azul (#2B6CB0/#EBF8FF). Warning: amarelo (#D69E2E/#FFFFF0). Error: vermelho (#E53E3E/#FFF5F5). Success: verde (#38A169/#F0FFF4).</td></tr>
+        <tr><td><strong>Cores</strong></td><td>Info: azul (#2B6CB0/#EBF8FF). Warning: amarelo (#D97706/#FFFBEB). Error: vermelho (#DC2626/#FFF5F5). Success: verde (#059669/#D1FAE5).</td></tr>
         <tr><td><strong>Persistencia</strong></td><td>Banners de sistema (manutencao): persistem ate o usuario fechar. Erros criticos: nao podem ser fechados ate resolver.</td></tr>
       </tbody>
     </table>
@@ -6919,7 +6919,7 @@
         <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
             <div style="display: flex; align-items: center; gap: 6px;">
-              <div style="width: 8px; height: 8px; border-radius: 50%; background: #ECC94B;"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #D97706;"></div>
               <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Pendente</span>
             </div>
             <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8; background: #E2E8F0; padding: 2px 6px; border-radius: 4px;">3</span>
@@ -7293,7 +7293,7 @@
           <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Categoria: Paineis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
           <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Status: Ativo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
           <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Preco: R$100 - R$500 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #E53E3E; cursor: pointer;">Limpar todos</button>
+          <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #DC2626; cursor: pointer;">Limpar todos</button>
         </div>
         <!-- Results count -->
         <div style="padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -7360,7 +7360,7 @@
   border: none;
   font-size: 0.6rem;
   font-weight: 600;
-  color: #E53E3E;
+  color: #DC2626;
   cursor: pointer;
 }</div>
 
@@ -7369,7 +7369,7 @@
       <tbody>
         <tr><td><strong>Filter Chips</strong></td><td>Background <code>#EBF8FF</code>, border <code>#BEE3F8</code>, pill shape. Icone X para remover. <code>white-space: nowrap</code>.</td></tr>
         <tr><td><strong>Contagem</strong></td><td>Badge circular no botao Filtros mostrando quantidade ativa. Badge no resultado: "47 resultados encontrados".</td></tr>
-        <tr><td><strong>Limpar</strong></td><td>Botao "Limpar todos" em vermelho (<code>#E53E3E</code>), text-only. Aparece so quando ha filtros ativos.</td></tr>
+        <tr><td><strong>Limpar</strong></td><td>Botao "Limpar todos" em vermelho (<code>#DC2626</code>), text-only. Aparece so quando ha filtros ativos.</td></tr>
         <tr><td><strong>Busca</strong></td><td>Input com icone lupa. Placeholder "Buscar...". Sugestoes em dropdown apos 2 caracteres. Highlight do match em bold.</td></tr>
         <tr><td><strong>View Toggle</strong></td><td>Grid / Lista — botoes icone com estado ativo (borda azul, bg <code>#EBF8FF</code>).</td></tr>
       </tbody>
@@ -7400,7 +7400,7 @@
           <div style="position: relative; width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
             <svg viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
             <!-- Badge -->
-            <div style="position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; background: #E53E3E; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF;"><span style="font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #FFFFFF;">4</span></div>
+            <div style="position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; background: #DC2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF;"><span style="font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #FFFFFF;">4</span></div>
           </div>
           <!-- Dropdown Panel -->
           <div style="position: absolute; top: 48px; right: 0; width: 340px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); z-index: 10; overflow: hidden;">
@@ -7426,7 +7426,7 @@
               <!-- Unread -->
               <div style="padding: 12px 16px; border-left: 3px solid #2B6CB0; background: #F8FAFC; display: flex; gap: 10px; cursor: pointer; border-top: 1px solid #F1F5F9;">
                 <div style="width: 32px; height: 32px; border-radius: 8px; background: #FFF5F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
                 <div style="flex: 1; min-width: 0;">
                   <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Alerta de estoque baixo</div>
@@ -7437,8 +7437,8 @@
               </div>
               <!-- Read -->
               <div style="padding: 12px 16px; display: flex; gap: 10px; cursor: pointer; border-top: 1px solid #F1F5F9;">
-                <div style="width: 32px; height: 32px; border-radius: 8px; background: #F0FFF4; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #D1FAE5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 </div>
                 <div style="flex: 1; min-width: 0;">
                   <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B;">Pedido #1845 enviado</div>
@@ -7507,7 +7507,7 @@
   position: absolute;
   top: -4px; right: -4px;
   width: 18px; height: 18px;
-  background: #E53E3E;
+  background: #DC2626;
   border-radius: 50%;
   font-size: 0.5rem;
   font-weight: 700;
@@ -7535,12 +7535,12 @@
 }
 .notif-icon--info { background: #EBF8FF; }
 .notif-icon--error { background: #FFF5F5; }
-.notif-icon--success { background: #F0FFF4; }</div>
+.notif-icon--success { background: #D1FAE5; }</div>
 
     <table class="spec-table" style="margin-top: 2rem;">
       <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
       <tbody>
-        <tr><td><strong>Badge</strong></td><td>Circulo vermelho (<code>#E53E3E</code>) com borda branca 2px. Max "9+". Desaparece quando nao ha novas.</td></tr>
+        <tr><td><strong>Badge</strong></td><td>Circulo vermelho (<code>#DC2626</code>) com borda branca 2px. Max "9+". Desaparece quando nao ha novas.</td></tr>
         <tr><td><strong>Nao lida</strong></td><td>Background <code>#F8FAFC</code>, border-left 3px azul, titulo bold, dot azul 8px a direita.</td></tr>
         <tr><td><strong>Lida</strong></td><td>Background branco, sem border-left, titulo cinza (<code>#64748B</code>), sem dot.</td></tr>
         <tr><td><strong>Icones</strong></td><td>Por tipo: info (azul), warning (amarelo), error (vermelho), success (verde). Icones SVG outline em fundo colorido suave 32x32.</td></tr>
@@ -7586,7 +7586,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
               Editar preco
             </button>
-            <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1.5px solid #FED7D7; border-radius: 6px; background: #FFF5F5; color: #E53E3E; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+            <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1.5px solid #FED7D7; border-radius: 6px; background: #FFF5F5; color: #DC2626; cursor: pointer; display: flex; align-items: center; gap: 4px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
               Excluir
             </button>
@@ -7612,7 +7612,7 @@
               <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-001</td>
               <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 1.299</td>
               <td style="padding: 10px 8px; text-align: center; color: #0F172A;">142</td>
-              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
             </tr>
             <!-- Selected Row -->
             <tr style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8;">
@@ -7621,7 +7621,7 @@
               <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-002</td>
               <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 489</td>
               <td style="padding: 10px 8px; text-align: center; color: #0F172A;">87</td>
-              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
             </tr>
             <!-- Normal Row -->
             <tr style="border-bottom: 1px solid #F1F5F9;">
@@ -7629,8 +7629,8 @@
               <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">Sensor IP65</td>
               <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-003</td>
               <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 189</td>
-              <td style="padding: 10px 8px; text-align: center; color: #E53E3E; font-weight: 600;">3</td>
-              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #FFF5F5; color: #E53E3E; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;" title="Estoque Baixo">Baixo</span></td>
+              <td style="padding: 10px 8px; text-align: center; color: #DC2626; font-weight: 600;">3</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #FFF5F5; color: #DC2626; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;" title="Estoque Baixo">Baixo</span></td>
             </tr>
             <!-- Selected Row -->
             <tr style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8;">
@@ -7639,7 +7639,7 @@
               <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-004</td>
               <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 3.450</td>
               <td style="padding: 10px 8px; text-align: center; color: #0F172A;">24</td>
-              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
             </tr>
             <!-- Normal Row -->
             <tr>
@@ -7648,7 +7648,7 @@
               <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-005</td>
               <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 79</td>
               <td style="padding: 10px 8px; text-align: center; color: #0F172A;">215</td>
-              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
             </tr>
           </tbody>
         </table>
@@ -7699,7 +7699,7 @@
 .btn-bulk--danger {
   border-color: #FED7D7;
   background: #FFF5F5;
-  color: #E53E3E;
+  color: #DC2626;
 }
 
 .row-selected {
@@ -8052,8 +8052,8 @@
           <div style="position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: #E2E8F0;"></div>
           <!-- Event 1 -->
           <div style="position: relative; margin-bottom: 1.25rem;">
-            <div style="position: absolute; left: -32px; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #F0FFF4; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: center; z-index: 1;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <div style="position: absolute; left: -32px; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #D1FAE5; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: center; z-index: 1;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
               <div style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; line-height: 1.5;"><strong>Carlos Lima</strong> aprovou o pedido <strong>#1847</strong></div>
@@ -8073,7 +8073,7 @@
           <!-- Event 3 -->
           <div style="position: relative; margin-bottom: 1.25rem;">
             <div style="position: absolute; left: -32px; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #FFF5F5; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: center; z-index: 1;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
             <div>
               <div style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; line-height: 1.5;"><strong>Sistema</strong> alertou estoque baixo do <strong>Sensor IP65</strong> — 3 unidades restantes</div>
@@ -8137,7 +8137,7 @@
   justify-content: center;
   z-index: 1;
 }
-.timeline-dot--success { background: #F0FFF4; }
+.timeline-dot--success { background: #D1FAE5; }
 .timeline-dot--edit { background: #EBF8FF; }
 .timeline-dot--alert { background: #FFF5F5; }
 .timeline-dot--user { background: #F8FAFC; }
@@ -8196,7 +8196,7 @@
           <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.5rem;">Este artigo foi util?</div>
           <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-bottom: 0.75rem;">Ajude-nos a melhorar nossa documentacao.</div>
           <div style="display: flex; gap: 8px;">
-            <button style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1.5px solid #C6F6D5; border-radius: 8px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; cursor: pointer;">
+            <button style="display: flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1.5px solid #6EE7B7; border-radius: 8px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; cursor: pointer;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
               Sim (84)
             </button>
@@ -8211,22 +8211,22 @@
           <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.5rem;">NPS — Net Promoter Score</div>
           <div style="font-family: var(--font-body); font-size: 0.65rem; color: #64748B; margin-bottom: 0.75rem;">De 0 a 10, qual a chance de recomendar?</div>
           <div style="display: flex; gap: 3px;">
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">0</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">1</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">2</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">3</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">4</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">5</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; cursor: pointer;">6</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFFFF0; border: 1px solid #FEFCBF; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #D69E2E; cursor: pointer;">7</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFFFF0; border: 1px solid #FEFCBF; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #D69E2E; cursor: pointer;">8</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #F0FFF4; border: 2px solid #38A169; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #38A169; cursor: pointer;">9</div>
-            <div style="width: 26px; height: 30px; border-radius: 5px; background: #F0FFF4; border: 1px solid #C6F6D5; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #38A169; cursor: pointer;">10</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">0</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">1</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">2</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">3</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">4</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">5</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFF5F5; border: 1px solid #FED7D7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; cursor: pointer;">6</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFFBEB; border: 1px solid #FDE68A; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #D97706; cursor: pointer;">7</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #FFFBEB; border: 1px solid #FDE68A; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #D97706; cursor: pointer;">8</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #D1FAE5; border: 2px solid #059669; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #059669; cursor: pointer;">9</div>
+            <div style="width: 26px; height: 30px; border-radius: 5px; background: #D1FAE5; border: 1px solid #6EE7B7; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6rem; color: #059669; cursor: pointer;">10</div>
           </div>
           <div style="display: flex; justify-content: space-between; margin-top: 4px;">
-            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #E53E3E;">Detrator</span>
-            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #D69E2E;">Neutro</span>
-            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #38A169;">Promotor</span>
+            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #DC2626;">Detrator</span>
+            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #D97706;">Neutro</span>
+            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #059669;">Promotor</span>
           </div>
         </div>
       </div>
@@ -8270,9 +8270,9 @@
   cursor: pointer;
 }
 .thumb--up.active {
-  background: #F0FFF4;
-  border-color: #C6F6D5;
-  color: #38A169;
+  background: #D1FAE5;
+  border-color: #6EE7B7;
+  color: #059669;
 }
 
 .nps-btn {
@@ -8282,9 +8282,9 @@
   font-size: 0.6rem;
   cursor: pointer;
 }
-.nps-detractor { background: #FFF5F5; color: #E53E3E; border: 1px solid #FED7D7; }
-.nps-passive { background: #FFFFF0; color: #D69E2E; border: 1px solid #FEFCBF; }
-.nps-promoter { background: #F0FFF4; color: #38A169; border: 1px solid #C6F6D5; }
+.nps-detractor { background: #FFF5F5; color: #DC2626; border: 1px solid #FED7D7; }
+.nps-passive { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+.nps-promoter { background: #D1FAE5; color: #059669; border: 1px solid #6EE7B7; }
 .nps-btn.selected { border-width: 2px; font-weight: 700; }</div>
 
     <table class="spec-table" style="margin-top: 2rem;">
@@ -8371,7 +8371,7 @@
           <!-- Form Fields -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
             <div>
-              <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Preco de venda <span style="color: #E53E3E;">*</span></label>
+              <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Preco de venda <span style="color: #DC2626;">*</span></label>
               <div style="display: flex; align-items: center; border: 1.5px solid #E2E8F0; border-radius: 8px; overflow: hidden;">
                 <span style="padding: 8px 10px; background: #F8FAFC; border-right: 1px solid #E2E8F0; font-family: var(--font-body); font-size: 0.75rem; color: #64748B;">R$</span>
                 <span style="padding: 8px 10px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; flex: 1;">1.299,00</span>
@@ -8387,7 +8387,7 @@
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
             <div>
-              <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Estoque inicial <span style="color: #E53E3E;">*</span></label>
+              <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Estoque inicial <span style="color: #DC2626;">*</span></label>
               <div style="border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 10px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">150</div>
             </div>
             <div>
@@ -8647,9 +8647,9 @@
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #3A8FD6; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #5BB8F5; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #48C9B0; cursor: pointer;"></div>
-          <div style="width: 28px; height: 28px; border-radius: 6px; background: #38A169; cursor: pointer;"></div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #059669; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #ECC94B; cursor: pointer;"></div>
-          <div style="width: 28px; height: 28px; border-radius: 6px; background: #E53E3E; cursor: pointer;"></div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #DC2626; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #9F7AEA; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #0F172A; cursor: pointer;"></div>
           <div style="width: 28px; height: 28px; border-radius: 6px; background: #1E293B; cursor: pointer;"></div>
@@ -8663,7 +8663,7 @@
         <!-- Recent Colors -->
         <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Recentes</div>
         <div style="display: flex; gap: 4px; margin-bottom: 1rem;">
-          <div style="width: 24px; height: 24px; border-radius: 5px; background: #E53E3E; cursor: pointer;"></div>
+          <div style="width: 24px; height: 24px; border-radius: 5px; background: #DC2626; cursor: pointer;"></div>
           <div style="width: 24px; height: 24px; border-radius: 5px; background: #48C9B0; cursor: pointer;"></div>
           <div style="width: 24px; height: 24px; border-radius: 5px; background: #9F7AEA; cursor: pointer;"></div>
         </div>
@@ -8899,8 +8899,8 @@
         <div style="position: absolute; top: 16px; right: 16px; display: flex; flex-direction: column; gap: 8px; width: 300px;">
           <!-- Toast 1 - Success -->
           <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-            <div style="width: 20px; height: 20px; border-radius: 50%; background: #F0FFF4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 11px; height: 11px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #D1FAE5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 11px; height: 11px;"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div style="flex: 1;">
               <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Produto salvo</div>
@@ -9112,7 +9112,7 @@
         <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.5rem; text-align: center;">
           <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Retry Automatico</div>
           <div style="width: 48px; height: 48px; margin: 0 auto 0.75rem; border-radius: 50%; background: #FFF5F5; display: flex; align-items: center; justify-content: center;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
           </div>
           <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Falha ao carregar</div>
           <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-top: 0.25rem; line-height: 1.5;">Nao foi possivel conectar ao servidor.</div>
@@ -9123,7 +9123,7 @@
         <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.5rem; text-align: center;">
           <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Modo Offline</div>
           <div style="background: #FFF5F5; border: 1px solid #FED7D7; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: #E53E3E;"></div>
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #DC2626;"></div>
             <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #C53030;">Sem conexao</span>
           </div>
           <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; line-height: 1.5;">Voce esta offline. Alteracoes serao sincronizadas automaticamente quando a conexao voltar.</div>
@@ -9174,7 +9174,7 @@
   border-radius: 50%;
 }
 .status-dot.online { background: #48C9B0; }
-.status-dot.offline { background: #E53E3E; }
+.status-dot.offline { background: #DC2626; }
 
 .fallback-ui {
   background: #F8FAFC;
@@ -9218,7 +9218,7 @@
           <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Confirmacao Simples</div>
           <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="width: 36px; height: 36px; border-radius: 10px; background: #FFF5F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
             </div>
             <div>
               <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Excluir produto?</div>
@@ -9227,7 +9227,7 @@
           </div>
           <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 1rem;">
             <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; cursor: pointer;">Cancelar</button>
-            <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #E53E3E; color: #FFFFFF; cursor: pointer;">Excluir</button>
+            <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #DC2626; color: #FFFFFF; cursor: pointer;">Excluir</button>
           </div>
         </div>
         <!-- Type to Confirm -->
@@ -9235,7 +9235,7 @@
           <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Type-to-Confirm</div>
           <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem;">
             <div style="width: 36px; height: 36px; border-radius: 10px; background: #FFF5F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
             <div>
               <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Excluir catalogo inteiro?</div>
@@ -9243,7 +9243,7 @@
             </div>
           </div>
           <div>
-            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Digite <strong style="color: #E53E3E;">EXCLUIR</strong> para confirmar</label>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Digite <strong style="color: #DC2626;">EXCLUIR</strong> para confirmar</label>
             <input type="text" value="EXCLU" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: #0F172A; outline: none;" readonly>
           </div>
           <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 1rem;">
@@ -9270,7 +9270,7 @@
 &lt;input type="text" class="confirm-input" /&gt;
 &lt;button class="btn-danger" disabled&gt;Excluir tudo&lt;/button&gt;</div>
     <div class="code-block" id="code-confirm-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.btn-danger {
-  background: #E53E3E;
+  background: #DC2626;
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -9300,7 +9300,7 @@
         <tr><td><strong>Simples</strong></td><td>Excluir 1 item. Modal com titulo + descricao + Cancelar/Excluir. Botao vermelho.</td></tr>
         <tr><td><strong>Type-to-confirm</strong></td><td>Acoes em massa ou irreversiveis (excluir catalogo, reset dados). Digitar palavra exata para habilitar botao.</td></tr>
         <tr><td><strong>Undo window</strong></td><td>Para exclusoes leves: toast com "Desfazer" por 10 segundos em vez de modal. Nao pedir confirmacao.</td></tr>
-        <tr><td><strong>Botao destrutivo</strong></td><td>Sempre vermelho (<code>#E53E3E</code>). Disabled ate confirmacao. Nunca ser o primeiro botao focado — Cancelar recebe foco.</td></tr>
+        <tr><td><strong>Botao destrutivo</strong></td><td>Sempre vermelho (<code>#DC2626</code>). Disabled ate confirmacao. Nunca ser o primeiro botao focado — Cancelar recebe foco.</td></tr>
       </tbody>
     </table>
   </section>
@@ -9333,7 +9333,7 @@
           <div style="padding: 14px 20px; border-bottom: 1px solid #F1F5F9; cursor: pointer;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;"><mark style="background: #FEF9C3; color: #0F172A; padding: 1px 2px; border-radius: 2px;">Painel</mark> <mark style="background: #FEF9C3; color: #0F172A; padding: 1px 2px; border-radius: 2px;">Solar</mark> Monocristalino 400W</div>
-              <span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 600; white-space: nowrap;">Ativo</span>
+              <span style="padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #059669; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 600; white-space: nowrap;">Ativo</span>
             </div>
             <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-top: 4px; line-height: 1.5;"><mark style="background: #FEF9C3; color: #64748B; padding: 1px 2px; border-radius: 2px;">Painel</mark> <mark style="background: #FEF9C3; color: #64748B; padding: 1px 2px; border-radius: 2px;">solar</mark> de alta eficiencia 21.5%, ideal para instalacoes residenciais e comerciais...</div>
             <div style="display: flex; gap: 12px; margin-top: 6px;">
@@ -9476,10 +9476,10 @@
             </div>
           </div>
           <!-- Completed file -->
-          <div style="border: 1.5px solid #C6F6D5; border-radius: 10px; padding: 10px; background: #F0FFF4;">
+          <div style="border: 1.5px solid #6EE7B7; border-radius: 10px; padding: 10px; background: #D1FAE5;">
             <div style="display: flex; align-items: center; gap: 8px;">
-              <div style="width: 32px; height: 32px; border-radius: 8px; background: #F0FFF4; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="1.5" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div style="width: 32px; height: 32px; border-radius: 8px; background: #D1FAE5; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.5" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               </div>
               <div style="flex: 1;">
                 <div style="font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; color: #276749;">logo_sysled.png</div>
@@ -9536,8 +9536,8 @@
 }
 
 .upload-item.completed {
-  border-color: #C6F6D5;
-  background: #F0FFF4;
+  border-color: #6EE7B7;
+  background: #D1FAE5;
 }</div>
 
     <table class="spec-table" style="margin-top: 2rem;">
@@ -9712,25 +9712,25 @@
         <!-- Do -->
         <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
-            <div style="width: 20px; height: 20px; border-radius: 50%; background: #F0FFF4; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="2.5" style="width: 11px; height: 11px;"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #38A169;">Correto</span>
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #D1FAE5; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" style="width: 11px; height: 11px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #059669;">Correto</span>
           </div>
           <div style="margin-bottom: 1rem;">
-            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email corporativo <span style="color: #E53E3E;">*</span></label>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email corporativo <span style="color: #DC2626;">*</span></label>
             <div style="border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">nome@empresa.com</div>
             <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 4px;">Usado para login e recuperacao de senha.</div>
           </div>
           <div>
             <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
-            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
-            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #E53E3E; margin-top: 4px;">Insira um valor entre 1 e 9999.</div>
+            <div style="border: 1.5px solid #DC2626; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #DC2626; margin-top: 4px;">Insira um valor entre 1 e 9999.</div>
           </div>
         </div>
         <!-- Don't -->
         <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
-            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFF5F5; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2.5" style="width: 11px; height: 11px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #E53E3E;">Evitar</span>
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFF5F5; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" style="width: 11px; height: 11px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #DC2626;">Evitar</span>
           </div>
           <div style="margin-bottom: 1rem;">
             <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email</label>
@@ -9739,8 +9739,8 @@
           </div>
           <div>
             <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
-            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
-            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #E53E3E; margin-top: 4px; text-decoration: line-through; opacity: 0.6;">Erro: campo invalido</div>
+            <div style="border: 1.5px solid #DC2626; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #DC2626; margin-top: 4px; text-decoration: line-through; opacity: 0.6;">Erro: campo invalido</div>
           </div>
         </div>
       </div>
@@ -9761,7 +9761,7 @@
 }
 .error-text {
   font-size: 0.6rem;
-  color: #E53E3E;
+  color: #DC2626;
   margin-top: 4px;
 }</div>
 
@@ -9771,7 +9771,7 @@
         <tr><td><strong>Labels</strong></td><td>Descritivos: "Email corporativo", nao "Email". Incluir <code>*</code> vermelho para obrigatorios. Montserrat 0.65rem bold.</td></tr>
         <tr><td><strong>Placeholders</strong></td><td>Exemplo real, nao instrucao: <code>nome@empresa.com</code>, nao "Digite seu email". Cor <code>#94A3B8</code>.</td></tr>
         <tr><td><strong>Helper text</strong></td><td>Explicar por que a informacao e necessaria ou formato esperado. Inter 0.6rem <code>#94A3B8</code>. Abaixo do input.</td></tr>
-        <tr><td><strong>Errors</strong></td><td>Dizer o que corrigir: "Insira um valor entre 1 e 9999", nao "Campo invalido". Inter 0.6rem <code>#E53E3E</code>.</td></tr>
+        <tr><td><strong>Errors</strong></td><td>Dizer o que corrigir: "Insira um valor entre 1 e 9999", nao "Campo invalido". Inter 0.6rem <code>#DC2626</code>.</td></tr>
         <tr><td><strong>Botoes</strong></td><td>Acao especifica: "Salvar produto", nao "Submeter". "Excluir pedido", nao "OK". Verbos no infinitivo.</td></tr>
         <tr><td><strong>Tom</strong></td><td>Direto e humano. Sem jargao tecnico. Sem culpar o usuario. Sem "por favor" excessivo.</td></tr>
       </tbody>
@@ -9800,14 +9800,14 @@
         <div style="position: relative; border: 2px solid #5BB8F5; border-radius: 12px;">
           <!-- Top padding indicator -->
           <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;">
-            <div style="width: 1px; height: 16px; background: #E53E3E;"></div>
-            <span style="font-family: var(--font-mono); font-size: 0.5rem; color: #E53E3E; background: #FFFFFF; padding: 0 4px;">16px</span>
+            <div style="width: 1px; height: 16px; background: #DC2626;"></div>
+            <span style="font-family: var(--font-mono); font-size: 0.5rem; color: #DC2626; background: #FFFFFF; padding: 0 4px;">16px</span>
           </div>
           <div style="padding: 16px;">
             <!-- Title with bottom margin indicator -->
             <div style="position: relative;">
               <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A;">Painel Solar 400W</div>
-              <div style="position: absolute; right: -28px; top: 50%; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.45rem; color: #E53E3E; background: #FFF5F5; padding: 1px 3px; border-radius: 2px;">mb-8</span></div>
+              <div style="position: absolute; right: -28px; top: 50%; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.45rem; color: #DC2626; background: #FFF5F5; padding: 1px 3px; border-radius: 2px;">mb-8</span></div>
             </div>
             <div style="height: 8px;"></div>
             <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; line-height: 1.5;">Monocristalino, eficiencia 21.5%</div>
@@ -9818,7 +9818,7 @@
                 <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%);"><span style="font-family: var(--font-mono); font-size: 0.4rem; color: #9F7AEA; background: #F5F3FF; padding: 1px 3px; border-radius: 2px;">py-8 px-16</span></div>
               </div>
               <div style="position: relative;">
-                <div style="position: absolute; top: 50%; left: -6px; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.4rem; color: #48C9B0; background: #F0FFF4; padding: 1px 3px; border-radius: 2px; white-space: nowrap;">gap-8</span></div>
+                <div style="position: absolute; top: 50%; left: -6px; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.4rem; color: #48C9B0; background: #D1FAE5; padding: 1px 3px; border-radius: 2px; white-space: nowrap;">gap-8</span></div>
               </div>
               <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B;">Editar</button>
             </div>
@@ -9899,24 +9899,25 @@
         <!-- Modal -->
         <div style="position: absolute; bottom: 180px; left: 32px; right: 32px; height: 36px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">z-40 — Modal / Dialog</span></div>
         <!-- Toast -->
-        <div style="position: absolute; bottom: 224px; left: 40px; right: 40px; height: 32px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; font-weight: 600;">z-50 — Toast / Tooltip</span></div>
+        <div style="position: absolute; bottom: 224px; left: 40px; right: 40px; height: 32px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #DC2626; font-weight: 600;">z-50 — Toast / Tooltip</span></div>
       </div>
     </div>
 
     <div class="code-block" id="code-zindex-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Z-index usage examples --&gt;
 &lt;header style="z-index: var(--z-sticky);"&gt;...&lt;/header&gt;
 &lt;div class="dropdown" style="z-index: var(--z-dropdown);"&gt;...&lt;/div&gt;
-&lt;div class="modal-overlay" style="z-index: var(--z-modal-overlay);"&gt;...&lt;/div&gt;
+&lt;div class="tooltip" style="z-index: var(--z-tooltip);"&gt;...&lt;/div&gt;
+&lt;div class="modal-overlay" style="z-index: var(--z-overlay);"&gt;...&lt;/div&gt;
 &lt;div class="modal" style="z-index: var(--z-modal);"&gt;...&lt;/div&gt;
 &lt;div class="toast" style="z-index: var(--z-toast);"&gt;...&lt;/div&gt;</div>
     <div class="code-block" id="code-zindex-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
-  --z-base: 0;
-  --z-sticky: 10;       /* sticky headers, bulk action bars */
-  --z-dropdown: 20;     /* dropdowns, popovers, date pickers */
-  --z-modal-overlay: 30; /* dark overlay behind modals */
-  --z-modal: 40;         /* modals, dialogs, drawers */
-  --z-toast: 50;         /* toasts, tooltips, notifications */
-  --z-max: 9999;         /* command palette, onboarding tour */
+  --z-base: 1;           /* conteudo normal */
+  --z-dropdown: 100;     /* dropdowns, popovers, date pickers */
+  --z-tooltip: 200;      /* tooltips */
+  --z-sticky: 300;       /* sticky headers, bulk action bars */
+  --z-overlay: 500;      /* dark overlay behind modals */
+  --z-modal: 1000;       /* modals, dialogs, drawers */
+  --z-toast: 9999;       /* toasts, notifications */
 }
 
 /* NUNCA usar valores arbitrarios (z-index: 999999) */
@@ -10447,7 +10448,7 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
 
         <!-- Campo valido -->
         <div style="margin-bottom: 1.25rem;">
-          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Nome do produto <span style="color: #E53E3E;">*</span></label>
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Nome do produto <span style="color: #DC2626;">*</span></label>
           <div style="position: relative;">
             <div style="border: 1.5px solid #10B981; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #F0FDF4; padding-right: 32px;">Luminaria LED 24W Slim</div>
             <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -10457,12 +10458,12 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
 
         <!-- Campo com erro -->
         <div style="margin-bottom: 1.25rem;">
-          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Preco (R$) <span style="color: #E53E3E;">*</span></label>
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Preco (R$) <span style="color: #DC2626;">*</span></label>
           <div style="position: relative;">
-            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5; padding-right: 32px;">-50</div>
-            <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div style="border: 1.5px solid #DC2626; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5; padding-right: 32px;">-50</div>
+            <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
           </div>
-          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #E53E3E; margin-top: 3px;">Insira um valor entre R$ 0,01 e R$ 999.999,99</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #DC2626; margin-top: 3px;">Insira um valor entre R$ 0,01 e R$ 999.999,99</div>
         </div>
 
         <!-- Campo com warning -->
@@ -10486,7 +10487,7 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
           <button style="flex: 1; padding: 8px; border-radius: 8px; border: 1.5px solid #CBD5E1; background: white; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; cursor: pointer;">Cancelar</button>
           <button style="flex: 1; padding: 8px; border-radius: 8px; border: none; background: #94A3B8; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: white; cursor: not-allowed; opacity: 0.6;">Salvar produto</button>
         </div>
-        <div style="font-family: var(--font-body); font-size: 0.55rem; color: #E53E3E; margin-top: 0.5rem; text-align: center;">Corrija os erros acima para salvar</div>
+        <div style="font-family: var(--font-body); font-size: 0.55rem; color: #DC2626; margin-top: 0.5rem; text-align: center;">Corrija os erros acima para salvar</div>
       </div>
     </div>
 
@@ -10526,9 +10527,9 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
 .form-group.is-valid .feedback { color: #10B981; }
 
 /* Invalid */
-.form-group.is-invalid input { border-color: #E53E3E; background: #FFF5F5; }
-.form-group.is-invalid .input-icon { stroke: #E53E3E; }
-.form-group.is-invalid .feedback { color: #E53E3E; }
+.form-group.is-invalid input { border-color: #DC2626; background: #FFF5F5; }
+.form-group.is-invalid .input-icon { stroke: #DC2626; }
+.form-group.is-invalid .feedback { color: #DC2626; }
 
 /* Warning */
 .form-group.is-warning input { border-color: #F59E0B; background: #FFFBEB; }
@@ -10543,7 +10544,7 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
 
 /* Validacao em tempo real */
 input:focus { border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
-input:invalid:not(:placeholder-shown) { border-color: #E53E3E; }</div>
+input:invalid:not(:placeholder-shown) { border-color: #DC2626; }</div>
 
     <table class="spec-table" style="margin-top: 2rem;">
       <thead><tr><th>Estado</th><th>Borda</th><th>Background</th><th>Icone</th><th>Texto</th></tr></thead>
@@ -10551,7 +10552,7 @@ input:invalid:not(:placeholder-shown) { border-color: #E53E3E; }</div>
         <tr><td><strong>Neutro</strong></td><td><code>#CBD5E1</code></td><td><code>#FFFFFF</code></td><td>Nenhum</td><td><code>#94A3B8</code> — helper text</td></tr>
         <tr><td><strong>Focus</strong></td><td><code>#3B82F6</code></td><td><code>#FFFFFF</code></td><td>Nenhum</td><td>—</td></tr>
         <tr><td><strong>Valido</strong></td><td><code>#10B981</code></td><td><code>#F0FDF4</code></td><td>Check verde</td><td><code>#10B981</code> — confirmacao</td></tr>
-        <tr><td><strong>Erro</strong></td><td><code>#E53E3E</code></td><td><code>#FFF5F5</code></td><td>X vermelho</td><td><code>#E53E3E</code> — como corrigir</td></tr>
+        <tr><td><strong>Erro</strong></td><td><code>#DC2626</code></td><td><code>#FFF5F5</code></td><td>X vermelho</td><td><code>#DC2626</code> — como corrigir</td></tr>
         <tr><td><strong>Warning</strong></td><td><code>#F59E0B</code></td><td><code>#FFFBEB</code></td><td>Alert amarelo</td><td><code>#F59E0B</code> — aviso</td></tr>
         <tr><td><strong>Submit</strong></td><td colspan="4">Desabilitado enquanto houver erros. Mensagem abaixo: "Corrija os erros acima".</td></tr>
       </tbody>
@@ -11130,7 +11131,7 @@ input[type="checkbox"] { accent-color: #3B82F6; }</div>
               </div>
               <div style="display: flex; align-items: center; gap: 4px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                <span style="background: #FFF5F5; color: #E53E3E; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Admin</span>
+                <span style="background: #FFF5F5; color: #DC2626; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Admin</span>
               </div>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 8px; opacity: 0.6;">
@@ -11140,7 +11141,7 @@ input[type="checkbox"] { accent-color: #3B82F6; }</div>
               </div>
               <div style="display: flex; align-items: center; gap: 4px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                <span style="background: #FFF5F5; color: #E53E3E; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Gerente</span>
+                <span style="background: #FFF5F5; color: #DC2626; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Gerente</span>
               </div>
             </div>
           </div>
@@ -11185,7 +11186,7 @@ input[type="checkbox"] { accent-color: #3B82F6; }</div>
 /* Permission badge */
 .perm-badge { font-size: 0.5rem; padding: 2px 8px; border-radius: 4px; }
 .perm-badge.allowed { background: #F0FDF4; color: #16A34A; }
-.perm-badge.denied  { background: #FFF5F5; color: #E53E3E; }</div>
+.perm-badge.denied  { background: #FFF5F5; color: #DC2626; }</div>
 
     <table class="spec-table" style="margin-top: 2rem;">
       <thead><tr><th>Elemento</th><th>Especificacao</th></tr></thead>
@@ -12962,15 +12963,15 @@ kbd {
       </div>
       <div style="background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
         <div style="width: 30px; height: 30px; border-radius: 8px; background: #48C9B0; flex-shrink: 0;"></div>
-        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-success</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#48C9B0</div></div>
+        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-success</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#059669</div></div>
       </div>
       <div style="background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
-        <div style="width: 30px; height: 30px; border-radius: 8px; background: #E53E3E; flex-shrink: 0;"></div>
-        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-error</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#E53E3E</div></div>
+        <div style="width: 30px; height: 30px; border-radius: 8px; background: #DC2626; flex-shrink: 0;"></div>
+        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-error</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#DC2626</div></div>
       </div>
       <div style="background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
-        <div style="width: 30px; height: 30px; border-radius: 8px; background: #ECC94B; flex-shrink: 0;"></div>
-        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-warning</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#ECC94B</div></div>
+        <div style="width: 30px; height: 30px; border-radius: 8px; background: #D97706; flex-shrink: 0;"></div>
+        <div><div style="font-family: monospace; font-size: 0.72rem; color: #2B6CB0; font-weight: 600;">--color-warning</div><div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8;">#D97706</div></div>
       </div>
       <div style="background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
         <div style="width: 30px; height: 30px; border-radius: 8px; background: #3A8FD6; flex-shrink: 0;"></div>
@@ -13032,17 +13033,19 @@ kbd {
       <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 4px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-sm</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">4px</div></div>
       <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 8px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-md</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">8px</div></div>
       <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 12px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-lg</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">12px</div></div>
-      <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 20px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-xl</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">20px</div></div>
-      <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 99px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-full</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">99px</div></div>
+      <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 16px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-xl</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">16px</div></div>
+      <div style="text-align: center;"><div style="width: 32px; height: 32px; background: #2B6CB0; border-radius: 9999px;"></div><div style="font-family: monospace; font-size: 0.6rem; color: #94A3B8; margin-top: 6px;">--radius-full</div><div style="font-family: monospace; font-size: 0.55rem; color: #CBD5E0;">9999px</div></div>
     </div>
 
     <h3>Z-Index</h3>
-    <div style="position: relative; height: 120px; margin: 1rem 0 2rem;">
-      <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 28px; background: #E2E8F0; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.65rem; color: #475569;">--z-base <span style="color: #94A3B8; margin-left: 8px;">1</span> — Conteúdo</div>
-      <div style="position: absolute; bottom: 18px; left: 14px; width: 85%; height: 28px; background: #CBD5E0; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.65rem; color: #475569;">--z-dropdown <span style="color: #94A3B8; margin-left: 8px;">10</span> — Dropdowns</div>
-      <div style="position: absolute; bottom: 36px; left: 28px; width: 70%; height: 28px; background: #94A3B8; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.65rem; color: #FFF;">--z-sticky <span style="color: rgba(255,255,255,0.6); margin-left: 8px;">100</span> — Headers fixos</div>
-      <div style="position: absolute; bottom: 54px; left: 42px; width: 55%; height: 28px; background: #475569; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.65rem; color: #FFF;">--z-modal <span style="color: rgba(255,255,255,0.5); margin-left: 8px;">1000</span> — Modais</div>
-      <div style="position: absolute; bottom: 72px; left: 56px; width: 40%; height: 28px; background: #1E293B; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.65rem; color: #FFF;">--z-toast <span style="color: rgba(255,255,255,0.4); margin-left: 8px;">9999</span> — Toasts</div>
+    <div style="position: relative; height: 148px; margin: 1rem 0 2rem;">
+      <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 24px; background: #E2E8F0; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #475569;">--z-base <span style="color: #94A3B8; margin-left: 8px;">1</span> — Conteudo</div>
+      <div style="position: absolute; bottom: 18px; left: 10px; width: 90%; height: 24px; background: #CBD5E0; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #475569;">--z-dropdown <span style="color: #94A3B8; margin-left: 8px;">100</span> — Dropdowns, popovers</div>
+      <div style="position: absolute; bottom: 36px; left: 20px; width: 80%; height: 24px; background: #A0AEC0; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #FFF;">--z-tooltip <span style="color: rgba(255,255,255,0.7); margin-left: 8px;">200</span> — Tooltips</div>
+      <div style="position: absolute; bottom: 54px; left: 30px; width: 70%; height: 24px; background: #94A3B8; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #FFF;">--z-sticky <span style="color: rgba(255,255,255,0.6); margin-left: 8px;">300</span> — Headers fixos</div>
+      <div style="position: absolute; bottom: 72px; left: 40px; width: 60%; height: 24px; background: #64748B; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #FFF;">--z-overlay <span style="color: rgba(255,255,255,0.5); margin-left: 8px;">500</span> — Overlay</div>
+      <div style="position: absolute; bottom: 90px; left: 50px; width: 50%; height: 24px; background: #475569; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #FFF;">--z-modal <span style="color: rgba(255,255,255,0.5); margin-left: 8px;">1000</span> — Modais</div>
+      <div style="position: absolute; bottom: 108px; left: 60px; width: 40%; height: 24px; background: #1E293B; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-family: monospace; font-size: 0.6rem; color: #FFF;">--z-toast <span style="color: rgba(255,255,255,0.4); margin-left: 8px;">9999</span> — Toasts</div>
     </div>
 
     <h3>Transições</h3>

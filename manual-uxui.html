@@ -1730,6 +1730,10 @@
   <a href="#inputs-avancados">Inputs Avançados</a>
   <a href="#tipografia-aplicada">Tipografia Aplicada</a>
   <a href="#dark-mode">Dark Mode</a>
+  <a href="#data-visualization">Data Visualization</a>
+  <a href="#paginacao">Paginacao</a>
+  <a href="#alertas-banners">Alertas e Banners</a>
+  <a href="#drag-drop">Drag &amp; Drop</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1780,10 +1784,14 @@
         <a href="#inputs-avancados"><span class="toc-num">20</span> Inputs</a>
         <a href="#tipografia-aplicada"><span class="toc-num">21</span> Tipografia</a>
         <a href="#dark-mode"><span class="toc-num">22</span> Dark Mode</a>
-        <a href="#iconografia"><span class="toc-num">23</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">24</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">25</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">26</span> Design Tokens</a>
+        <a href="#data-visualization"><span class="toc-num">23</span> Data Visualization</a>
+        <a href="#paginacao"><span class="toc-num">24</span> Paginacao</a>
+        <a href="#alertas-banners"><span class="toc-num">25</span> Alertas e Banners</a>
+        <a href="#drag-drop"><span class="toc-num">26</span> Drag &amp; Drop</a>
+        <a href="#iconografia"><span class="toc-num">27</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">28</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">29</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">30</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -6463,10 +6471,440 @@
     </table>
   </section>
 
+
+  <!-- ==================== DATA VISUALIZATION ==================== -->
+  <section class="section" id="data-visualization">
+    <div class="section-header">
+      <div class="section-number">23 — Data Visualization</div>
+      <h2>Data Visualization — Graficos e Dashboards</h2>
+    </div>
+
+    <p>Graficos traduzem dados complexos em insights visuais. A paleta Sysled para data viz usa cores distintas com contraste suficiente entre si e segue ordem semantica consistente.</p>
+
+    <!-- Chart Color Palette -->
+    <h3>Paleta para Graficos</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 0; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0;">
+        <div style="flex: 1; height: 56px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#2B6CB0</span></div>
+        <div style="flex: 1; height: 56px; background: #48C9B0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#48C9B0</span></div>
+        <div style="flex: 1; height: 56px; background: #5BB8F5; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#5BB8F5</span></div>
+        <div style="flex: 1; height: 56px; background: #ECC94B; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">#ECC94B</span></div>
+        <div style="flex: 1; height: 56px; background: #E53E3E; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#E53E3E</span></div>
+        <div style="flex: 1; height: 56px; background: #9F7AEA; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #FFFFFF; font-weight: 600;">#9F7AEA</span></div>
+      </div>
+      <div style="margin-top: 0.5rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Ordem de uso: Serie 1 (Primary) &rarr; Serie 2 (Cyan) &rarr; Serie 3 (Light Blue) &rarr; Serie 4 (Yellow) &rarr; Serie 5 (Red) &rarr; Serie 6 (Purple)</div>
+    </div>
+
+    <!-- Bar Chart Example -->
+    <h3 style="margin-top: 2rem;">Grafico de Barras</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A;">Vendas por Categoria</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Ultimos 6 meses</div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #2B6CB0;"></div><span style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B;">Paineis</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #48C9B0;"></div><span style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B;">Luminárias</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #5BB8F5;"></div><span style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B;">Sensores</span></div>
+          </div>
+        </div>
+        <!-- Bars -->
+        <div style="display: flex; align-items: end; gap: 1.5rem; height: 140px; border-bottom: 1px solid #E2E8F0; padding-bottom: 0.5rem;">
+          <div style="flex: 1; display: flex; gap: 3px; align-items: end; justify-content: center;">
+            <div style="width: 14px; height: 90px; background: #2B6CB0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 60px; background: #48C9B0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 40px; background: #5BB8F5; border-radius: 4px 4px 0 0;"></div>
+          </div>
+          <div style="flex: 1; display: flex; gap: 3px; align-items: end; justify-content: center;">
+            <div style="width: 14px; height: 110px; background: #2B6CB0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 50px; background: #48C9B0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 70px; background: #5BB8F5; border-radius: 4px 4px 0 0;"></div>
+          </div>
+          <div style="flex: 1; display: flex; gap: 3px; align-items: end; justify-content: center;">
+            <div style="width: 14px; height: 75px; background: #2B6CB0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 95px; background: #48C9B0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 55px; background: #5BB8F5; border-radius: 4px 4px 0 0;"></div>
+          </div>
+          <div style="flex: 1; display: flex; gap: 3px; align-items: end; justify-content: center;">
+            <div style="width: 14px; height: 130px; background: #2B6CB0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 85px; background: #48C9B0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 65px; background: #5BB8F5; border-radius: 4px 4px 0 0;"></div>
+          </div>
+          <div style="flex: 1; display: flex; gap: 3px; align-items: end; justify-content: center;">
+            <div style="width: 14px; height: 100px; background: #2B6CB0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 120px; background: #48C9B0; border-radius: 4px 4px 0 0;"></div>
+            <div style="width: 14px; height: 80px; background: #5BB8F5; border-radius: 4px 4px 0 0;"></div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1.5rem; margin-top: 0.4rem;">
+          <div style="flex: 1; text-align: center; font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Jan</div>
+          <div style="flex: 1; text-align: center; font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Fev</div>
+          <div style="flex: 1; text-align: center; font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Mar</div>
+          <div style="flex: 1; text-align: center; font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Abr</div>
+          <div style="flex: 1; text-align: center; font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Mai</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <h3 style="margin-top: 2rem;">KPI Cards</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Receita Total</div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem;">R$ 1.2M</div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-top: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#48C9B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #48C9B0;">+12.5%</span>
+            <span style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">vs mes anterior</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Pedidos</div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem;">847</div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-top: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#48C9B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #48C9B0;">+8.3%</span>
+            <span style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">vs mes anterior</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Ticket Medio</div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem;">R$ 1.4K</div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-top: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #E53E3E;">-3.1%</span>
+            <span style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">vs mes anterior</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donut Chart -->
+    <h3 style="margin-top: 2rem;">Grafico Donut</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+        <div style="position: relative; width: 140px; height: 140px; flex-shrink: 0;">
+          <svg viewBox="0 0 36 36" style="width: 140px; height: 140px; transform: rotate(-90deg);">
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#E2E8F0" stroke-width="4"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#2B6CB0" stroke-width="4" stroke-dasharray="39.6 88" stroke-dashoffset="0" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#48C9B0" stroke-width="4" stroke-dasharray="22 88" stroke-dashoffset="-39.6" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#5BB8F5" stroke-width="4" stroke-dasharray="15.4 88" stroke-dashoffset="-61.6" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#ECC94B" stroke-width="4" stroke-dasharray="11 88" stroke-dashoffset="-77" stroke-linecap="round"/>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: #0F172A;">1.2K</div>
+            <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">produtos</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 10px; height: 10px; border-radius: 3px; background: #2B6CB0;"></div><span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Paineis Solares <strong>45%</strong></span></div>
+          <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 10px; height: 10px; border-radius: 3px; background: #48C9B0;"></div><span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Luminarias LED <strong>25%</strong></span></div>
+          <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 10px; height: 10px; border-radius: 3px; background: #5BB8F5;"></div><span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Sensores <strong>17.5%</strong></span></div>
+          <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 10px; height: 10px; border-radius: 3px; background: #ECC94B;"></div><span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Acessorios <strong>12.5%</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Paleta</strong></td><td>Maximo 6 cores por grafico. Usar a sequencia definida (Primary &rarr; Cyan &rarr; Light Blue &rarr; Yellow &rarr; Red &rarr; Purple).</td></tr>
+        <tr><td><strong>Legendas</strong></td><td>Posicionar acima ou ao lado do grafico. Usar dot (10px) + label. Nunca sobrepor ao grafico.</td></tr>
+        <tr><td><strong>KPI Cards</strong></td><td>Valor principal em <code>font-weight: 800</code>, tamanho 1.5rem. Indicador de tendencia com seta SVG + percentual colorido (verde/vermelho).</td></tr>
+        <tr><td><strong>Tooltips</strong></td><td>Ao passar o mouse em barras/fatias, mostrar tooltip com valor exato. Background <code>#0F172A</code>, texto branco, border-radius 8px.</td></tr>
+        <tr><td><strong>Eixos</strong></td><td>Labels em <code>Inter 0.6rem #94A3B8</code>. Gridlines em <code>#F1F5F9</code> (light) ou <code>#1E293B</code> (dark). Sem bordas nos eixos.</td></tr>
+        <tr><td><strong>Responsivo</strong></td><td>Graficos devem usar <code>width: 100%</code> e viewBox SVG. Em mobile, legendas abaixo do grafico.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== PAGINACAO E INFINITE SCROLL ==================== -->
+  <section class="section section-dark" id="paginacao">
+    <div class="section-header">
+      <div class="section-number">24 — Paginacao e Infinite Scroll</div>
+      <h2>Paginacao e Infinite Scroll</h2>
+    </div>
+
+    <p>Paginacao divide resultados em paginas discretas. Cada padrão serve um caso de uso diferente: numerico para navegacao precisa, compact para mobile, load more para feeds, e infinite scroll para galerias.</p>
+
+    <!-- Numeric Pagination -->
+    <h3>Paginacao Numerica</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+        <button style="width: 36px; height: 36px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; font-family: var(--font-heading); font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button style="width: 36px; height: 36px; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; cursor: pointer;">1</button>
+        <button style="width: 36px; height: 36px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; cursor: pointer;">2</button>
+        <button style="width: 36px; height: 36px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; cursor: pointer;">3</button>
+        <span style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">...</span>
+        <button style="width: 36px; height: 36px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; cursor: pointer;">12</button>
+        <button style="width: 36px; height: 36px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; font-family: var(--font-heading); font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div style="text-align: center; margin-top: 0.75rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Exibindo 1-20 de 235 resultados</div>
+    </div>
+
+    <!-- Compact Pagination -->
+    <h3 style="margin-top: 2rem;">Paginacao Compact (Mobile)</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+        <button style="padding: 8px 16px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="15 18 9 12 15 6"/></svg>
+          Anterior
+        </button>
+        <span style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #0F172A;">3 <span style="color: #94A3B8; font-weight: 400;">de</span> 12</span>
+        <button style="padding: 8px 16px; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+          Proximo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Load More -->
+    <h3 style="margin-top: 2rem;">Load More Button</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="text-align: center;">
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-bottom: 0.75rem;">Exibindo 20 de 84 produtos</div>
+        <div style="width: 100%; height: 4px; background: #E2E8F0; border-radius: 4px; margin-bottom: 1rem; overflow: hidden;"><div style="width: 24%; height: 100%; background: linear-gradient(90deg, #2B6CB0, #48C9B0); border-radius: 4px;"></div></div>
+        <button style="padding: 10px 32px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; cursor: pointer;">Carregar mais produtos</button>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Padrao</th><th>Quando usar</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Numerico</strong></td><td>Tabelas de dados, listagens com busca. Quando o usuario precisa navegar para pagina especifica. Desktop.</td></tr>
+        <tr><td><strong>Compact</strong></td><td>Mobile e espacos restritos. Anterior/Proximo com indicador de pagina atual.</td></tr>
+        <tr><td><strong>Load More</strong></td><td>Feeds, catalogos de produtos. Barra de progresso mostra quanto ja foi carregado. Max 3 cliques antes de sugerir filtros.</td></tr>
+        <tr><td><strong>Infinite Scroll</strong></td><td>Galerias de imagens, timelines. Usar sentinel element + Intersection Observer. Mostrar spinner ao carregar.</td></tr>
+        <tr><td><strong>Items por pagina</strong></td><td>Padrao: 20. Opcoes: 10, 20, 50, 100. Dropdown ao lado da paginacao.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== ALERTAS INLINE E BANNERS ==================== -->
+  <section class="section" id="alertas-banners">
+    <div class="section-header">
+      <div class="section-number">25 — Alertas Inline e Banners</div>
+      <h2>Alertas Inline e Banners</h2>
+    </div>
+
+    <p>Alertas inline e banners sao mensagens <strong>persistentes</strong> (diferente de toasts que desaparecem). Banners ficam no topo da pagina; alertas inline aparecem dentro do contexto do conteudo.</p>
+
+    <!-- Top Banners -->
+    <h3>Banners de Topo</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <!-- Info Banner -->
+        <div style="background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #2B6CB0;"><strong>Atualizacao agendada:</strong> O sistema ficara em manutencao dia 15/03 das 02h as 04h.</div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <!-- Warning Banner -->
+        <div style="background: #FFFFF0; border: 1px solid #FEFCBF; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D69E2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #975A16;"><strong>Estoque baixo:</strong> 3 produtos estao abaixo do nivel minimo. <a href="#" style="color: #975A16; font-weight: 600; text-decoration: underline;">Ver detalhes</a></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#975A16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <!-- Error Banner -->
+        <div style="background: #FFF5F5; border: 1px solid #FED7D7; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #C53030;"><strong>Falha na sincronizacao:</strong> Nao foi possivel conectar ao ERP. <a href="#" style="color: #C53030; font-weight: 600; text-decoration: underline;">Tentar novamente</a></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C53030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <!-- Success Banner -->
+        <div style="background: #F0FFF4; border: 1px solid #C6F6D5; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div style="flex: 1; font-family: var(--font-body); font-size: 0.75rem; color: #276749;"><strong>Importacao concluida!</strong> 342 produtos foram atualizados com sucesso.</div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#276749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; cursor: pointer; opacity: 0.6; flex-shrink: 0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Alerts in Forms -->
+    <h3 style="margin-top: 2.5rem;">Alertas Inline em Formularios</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; max-width: 400px;">
+        <div style="margin-bottom: 1rem;">
+          <label style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email</label>
+          <input type="text" value="usuario@" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #E53E3E; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFF5F5;" readonly>
+          <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #E53E3E;">Digite um email valido (ex: nome@empresa.com)</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
+          <input type="text" value="150" style="width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1.5px solid #D69E2E; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; outline: none; background: #FFFFF0;" readonly>
+          <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D69E2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.65rem; color: #D69E2E;">Quantidade acima do estoque disponivel (127 un.)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Callout -->
+    <h3 style="margin-top: 2.5rem;">Callouts de Destaque</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="background: #EBF8FF; border-left: 4px solid #2B6CB0; border-radius: 0 10px 10px 0; padding: 1rem 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #2B6CB0; margin-bottom: 0.25rem;">Dica</div>
+          <div style="font-family: var(--font-body); font-size: 0.75rem; color: #2C5282; line-height: 1.5;">Use filtros combinados para encontrar produtos rapidamente. Voce pode filtrar por categoria, status e faixa de preco ao mesmo tempo.</div>
+        </div>
+        <div style="background: #FFFFF0; border-left: 4px solid #ECC94B; border-radius: 0 10px 10px 0; padding: 1rem 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #975A16; margin-bottom: 0.25rem;">Atencao</div>
+          <div style="font-family: var(--font-body); font-size: 0.75rem; color: #975A16; line-height: 1.5;">Alteracoes de preco em lote afetam todos os produtos selecionados. Esta acao nao pode ser desfeita.</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Tipo</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Banner</strong></td><td>Topo da pagina, largura total. Icone SVG (18px) + texto + botao fechar (X). Border-radius 10px. Dismissable com X.</td></tr>
+        <tr><td><strong>Inline (form)</strong></td><td>Abaixo do input com erro/warning. Icone 12px + texto 0.65rem. Borda do input muda para a cor do estado.</td></tr>
+        <tr><td><strong>Callout</strong></td><td>Border-left 4px + background suave. Titulo bold + descricao. Nao e dismissable — sempre visivel.</td></tr>
+        <tr><td><strong>Cores</strong></td><td>Info: azul (#2B6CB0/#EBF8FF). Warning: amarelo (#D69E2E/#FFFFF0). Error: vermelho (#E53E3E/#FFF5F5). Success: verde (#38A169/#F0FFF4).</td></tr>
+        <tr><td><strong>Persistencia</strong></td><td>Banners de sistema (manutencao): persistem ate o usuario fechar. Erros criticos: nao podem ser fechados ate resolver.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== DRAG AND DROP ==================== -->
+  <section class="section section-dark" id="drag-drop">
+    <div class="section-header">
+      <div class="section-number">26 — Drag &amp; Drop e Reordenacao</div>
+      <h2>Drag &amp; Drop e Reordenacao</h2>
+    </div>
+
+    <p>Drag &amp; drop permite que usuarios reorganizem elementos visualmente. Os indicadores visuais (grab cursor, ghost, drop zone) devem ser claros para comunicar o que esta acontecendo.</p>
+
+    <!-- Sortable List -->
+    <h3>Lista Reordenavel</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="max-width: 400px; display: flex; flex-direction: column; gap: 6px;">
+        <!-- Item 1 - normal -->
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; cursor: grab;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#CBD5E0" stroke-width="2" style="width: 16px; height: 16px; flex-shrink: 0;"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; flex: 1;">1. Painel Solar Monocristalino 400W</span>
+          <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">SKU-001</span>
+        </div>
+        <!-- Item 2 - being dragged (ghost state) -->
+        <div style="background: #EBF8FF; border: 2px dashed #2B6CB0; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; opacity: 0.85; box-shadow: 0 8px 25px rgba(43,108,176,0.15); transform: scale(1.02); cursor: grabbing;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="2" style="width: 16px; height: 16px; flex-shrink: 0;"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #2B6CB0; flex: 1; font-weight: 600;">2. Luminaria LED Industrial 150W</span>
+          <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #2B6CB0;">SKU-002</span>
+        </div>
+        <!-- Drop zone indicator -->
+        <div style="border: 2px dashed #48C9B0; border-radius: 10px; padding: 10px 14px; background: rgba(72,201,176,0.08); text-align: center;">
+          <span style="font-family: var(--font-body); font-size: 0.7rem; color: #48C9B0;">Soltar aqui</span>
+        </div>
+        <!-- Item 3 - normal -->
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; cursor: grab;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#CBD5E0" stroke-width="2" style="width: 16px; height: 16px; flex-shrink: 0;"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; flex: 1;">3. Sensor de Presenca IP65</span>
+          <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">SKU-003</span>
+        </div>
+        <!-- Item 4 - normal -->
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; cursor: grab;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#CBD5E0" stroke-width="2" style="width: 16px; height: 16px; flex-shrink: 0;"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          <span style="font-family: var(--font-body); font-size: 0.8rem; color: #0F172A; flex: 1;">4. Inversor Solar 5kW</span>
+          <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">SKU-004</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kanban Columns -->
+    <h3 style="margin-top: 2.5rem;">Kanban Board — Drag entre Colunas</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <!-- Column 1 -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #ECC94B;"></div>
+              <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Pendente</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8; background: #E2E8F0; padding: 2px 6px; border-radius: 4px;">3</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; cursor: grab;">
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Pedido #1847</div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 2px;">Solar Panel 400W x12</div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; cursor: grab;">
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Pedido #1848</div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 2px;">LED Strip 5m x24</div>
+            </div>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #2B6CB0;"></div>
+              <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Em Separacao</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8; background: #E2E8F0; padding: 2px 6px; border-radius: 4px;">1</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; cursor: grab;">
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Pedido #1845</div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 2px;">Sensor IP65 x8</div>
+            </div>
+            <!-- Drop zone -->
+            <div style="border: 2px dashed #CBD5E0; border-radius: 8px; padding: 16px; text-align: center;">
+              <span style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E0;">Arraste cards aqui</span>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #48C9B0;"></div>
+              <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Enviado</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8; background: #E2E8F0; padding: 2px 6px; border-radius: 4px;">2</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Pedido #1840</div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 2px;">Inversor 5kW x2</div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Pedido #1839</div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 2px;">LED Painel 60x60 x16</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Estado</th><th>Visual</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Default</strong></td><td>Handle com icone grip (6 dots). Cursor <code>grab</code>. Border normal <code>#E2E8F0</code>.</td></tr>
+        <tr><td><strong>Dragging</strong></td><td>Cursor <code>grabbing</code>. Border dashed <code>#2B6CB0</code>. Background <code>#EBF8FF</code>. Shadow elevada. <code>transform: scale(1.02)</code>. Opacity 0.85.</td></tr>
+        <tr><td><strong>Drop Zone</strong></td><td>Border dashed <code>#48C9B0</code>. Background <code>rgba(72,201,176,0.08)</code>. Texto "Soltar aqui".</td></tr>
+        <tr><td><strong>Drop Zone inativa</strong></td><td>Border dashed <code>#CBD5E0</code>. Texto "Arraste cards aqui" em <code>#CBD5E0</code>.</td></tr>
+        <tr><td><strong>Acessibilidade</strong></td><td>Suporte a teclado: Space para pegar, setas para mover, Space para soltar, Esc para cancelar. <code>aria-grabbed</code>, <code>aria-dropeffect</code>.</td></tr>
+        <tr><td><strong>Feedback</strong></td><td>Apos soltar: toast de confirmacao "Ordem atualizada". Animacao suave de reposicionamento (200ms ease).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">23 — Iconografia</div>
+      <div class="section-number">27 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -6553,7 +6991,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">24 — Acessibilidade</div>
+      <div class="section-number">28 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -6645,7 +7083,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">25 — Responsividade</div>
+      <div class="section-number">29 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -6698,7 +7136,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">26 — Design Tokens</div>
+      <div class="section-number">30 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

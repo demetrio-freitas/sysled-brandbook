@@ -1722,6 +1722,7 @@
   <a href="#tooltips">Tooltips e Dropdowns</a>
   <a href="#breadcrumbs">Breadcrumbs</a>
   <a href="#stepper">Stepper / Wizard</a>
+  <a href="#animacoes">Animações</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1764,10 +1765,11 @@
         <a href="#tooltips"><span class="toc-num">12</span> Tooltips</a>
         <a href="#breadcrumbs"><span class="toc-num">13</span> Breadcrumbs</a>
         <a href="#stepper"><span class="toc-num">14</span> Stepper</a>
-        <a href="#iconografia"><span class="toc-num">15</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">16</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">17</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">18</span> Design Tokens</a>
+        <a href="#animacoes"><span class="toc-num">15</span> Animações</a>
+        <a href="#iconografia"><span class="toc-num">16</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">17</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">18</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">19</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -5134,10 +5136,345 @@
     </table>
   </section>
 
+
+  <!-- ==================== ANIMAÇÕES E MICRO-INTERAÇÕES ==================== -->
+  <section class="section section-dark" id="animacoes">
+    <div class="section-header">
+      <div class="section-number">15 — Animações e Micro-interações</div>
+      <h2>Animações e Micro-interações</h2>
+    </div>
+
+    <p>Animações comunicam mudanças de estado, guiam a atenção e tornam a interface mais fluida. Devem ser sutis, rápidas e com propósito — nunca decorativas. Todas as animações respeitam <code>prefers-reduced-motion</code> para acessibilidade.</p>
+
+    <h3>Tokens de Motion</h3>
+
+    <div class="component-toggle" data-target="code-animacoes">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-animacoes-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Aplicando tokens de motion --&gt;
+&lt;button class="btn-primary"
+  style="transition: all var(--duration-normal) var(--ease-out);"&gt;
+  Salvar
+&lt;/button&gt;
+
+&lt;!-- Animação de entrada --&gt;
+&lt;div class="animate-fade-in"&gt;Conteúdo&lt;/div&gt;
+&lt;div class="animate-slide-up"&gt;Conteúdo&lt;/div&gt;
+&lt;div class="animate-scale-in"&gt;Conteúdo&lt;/div&gt;
+
+&lt;!-- Respeitar preferência do usuário --&gt;
+&lt;!-- As classes já incluem a media query --&gt;
+
+&lt;!-- Staggered animation (delay escalonado) --&gt;
+&lt;div class="animate-slide-up" style="--delay: 0ms"&gt;Item 1&lt;/div&gt;
+&lt;div class="animate-slide-up" style="--delay: 50ms"&gt;Item 2&lt;/div&gt;
+&lt;div class="animate-slide-up" style="--delay: 100ms"&gt;Item 3&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-animacoes-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* ============ MOTION TOKENS ============ */
+:root {
+  /* Durações */
+  --duration-instant: 100ms;   /* Hover, focus */
+  --duration-fast:    150ms;   /* Tooltips, toggles */
+  --duration-normal:  250ms;   /* Modais, dropdowns */
+  --duration-slow:    350ms;   /* Page transitions */
+  --duration-slower:  500ms;   /* Complex animations */
+
+  /* Easing Curves */
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============ ENTRADA (APPEAR) ============ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Classes utilitárias */
+.animate-fade-in  { animation: fadeIn var(--duration-normal) var(--ease-out) var(--delay, 0ms) both; }
+.animate-slide-up { animation: slideUp var(--duration-normal) var(--ease-out) var(--delay, 0ms) both; }
+.animate-slide-down { animation: slideDown var(--duration-normal) var(--ease-out) var(--delay, 0ms) both; }
+.animate-scale-in { animation: scaleIn var(--duration-fast) var(--ease-spring) var(--delay, 0ms) both; }
+
+/* ============ HOVER EFFECTS ============ */
+/* Lift (cards) */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+/* Glow (botões primários) */
+.hover-glow {
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+.hover-glow:hover {
+  box-shadow: 0 0 0 4px rgba(43,108,176,0.15);
+}
+
+/* Scale (ícones, avatares) */
+.hover-scale {
+  transition: transform var(--duration-instant) var(--ease-spring);
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ============ FOCUS RING ============ */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(58,143,214,0.3);
+  transition: box-shadow var(--duration-instant) var(--ease-out);
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></pre>
+    </div>
+
+    <!-- Preview: Duration Scale -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Escala de Duração</p>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px;">
+        <!-- Instant 100ms -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="min-width: 90px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">Instant</div>
+          <div style="flex: 1; height: 8px; background: #E2E8F0; border-radius: 99px; overflow: hidden; position: relative;">
+            <div style="width: 10%; height: 100%; background: #2B6CB0; border-radius: 99px;"></div>
+          </div>
+          <div style="min-width: 50px; font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); text-align: right;">100ms</div>
+          <div style="min-width: 110px; font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400);">Hover, focus</div>
+        </div>
+        <!-- Fast 150ms -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="min-width: 90px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">Fast</div>
+          <div style="flex: 1; height: 8px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 15%; height: 100%; background: #3A8FD6; border-radius: 99px;"></div>
+          </div>
+          <div style="min-width: 50px; font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); text-align: right;">150ms</div>
+          <div style="min-width: 110px; font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400);">Tooltips, toggles</div>
+        </div>
+        <!-- Normal 250ms -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="min-width: 90px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #2B6CB0;">Normal</div>
+          <div style="flex: 1; height: 8px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 25%; height: 100%; background: #2B6CB0; border-radius: 99px;"></div>
+          </div>
+          <div style="min-width: 50px; font-family: var(--font-mono, monospace); font-size: 0.7rem; color: #2B6CB0; text-align: right; font-weight: 600;">250ms</div>
+          <div style="min-width: 110px; font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400);">Modais, dropdowns</div>
+        </div>
+        <!-- Slow 350ms -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="min-width: 90px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">Slow</div>
+          <div style="flex: 1; height: 8px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 35%; height: 100%; background: #5BB8F5; border-radius: 99px;"></div>
+          </div>
+          <div style="min-width: 50px; font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); text-align: right;">350ms</div>
+          <div style="min-width: 110px; font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400);">Page transitions</div>
+        </div>
+        <!-- Slower 500ms -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="min-width: 90px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">Slower</div>
+          <div style="flex: 1; height: 8px; background: #E2E8F0; border-radius: 99px; overflow: hidden;">
+            <div style="width: 50%; height: 100%; background: #48C9B0; border-radius: 99px;"></div>
+          </div>
+          <div style="min-width: 50px; font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-500); text-align: right;">500ms</div>
+          <div style="min-width: 110px; font-family: var(--font-body); font-size: 0.65rem; color: var(--gray-400);">Complex anim.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Easing Curves -->
+    <h3 style="margin-top: 2.5rem;">Easing Curves</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+        <!-- ease-out -->
+        <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">ease-out</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.65rem; color: var(--gray-500); margin-top: 0.25rem;">cubic-bezier(0, 0, 0.2, 1)</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Padrão. Entrada rápida, desaceleração suave. Para a maioria dos casos.</div>
+        </div>
+        <!-- ease-in -->
+        <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">ease-in</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.65rem; color: var(--gray-500); margin-top: 0.25rem;">cubic-bezier(0.4, 0, 1, 1)</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Aceleração gradual. Saída de elementos (fade out, slide out).</div>
+        </div>
+        <!-- ease-in-out -->
+        <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">ease-in-out</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.65rem; color: var(--gray-500); margin-top: 0.25rem;">cubic-bezier(0.4, 0, 0.2, 1)</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Suave nos dois extremos. Transições de estado (expand/collapse).</div>
+        </div>
+        <!-- spring -->
+        <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">spring</div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.65rem; color: var(--gray-500); margin-top: 0.25rem;">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Efeito "bounce" sutil. Scale in de modais, popovers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Hover Effects -->
+    <h3 style="margin-top: 2.5rem;">Hover Effects (interaja com os cards)</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;">
+        <!-- Lift -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: transform 0.25s cubic-bezier(0,0,0.2,1), box-shadow 0.25s cubic-bezier(0,0,0.2,1);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">↑</div>
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Lift</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 0.25rem;">translateY(-2px) + shadow</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: #CBD5E1; margin-top: 0.25rem;">Cards, rows</div>
+        </div>
+        <!-- Glow -->
+        <div style="background: #2B6CB0; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: box-shadow 0.15s cubic-bezier(0,0,0.2,1);" onmouseover="this.style.boxShadow='0 0 0 4px rgba(43,108,176,0.25)'" onmouseout="this.style.boxShadow='none'">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #FFFFFF;">◎</div>
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #FFFFFF;">Glow</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem;">box-shadow ring 4px</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem;">Botões primários</div>
+        </div>
+        <!-- Scale -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: transform 0.1s cubic-bezier(0.34,1.56,0.64,1);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⤢</div>
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Scale</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 0.25rem;">scale(1.05) spring</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: #CBD5E1; margin-top: 0.25rem;">Ícones, avatares</div>
+        </div>
+        <!-- Color -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;" onmouseover="this.style.background='#EFF6FF';this.style.borderColor='#2B6CB0'" onmouseout="this.style.background='#FFFFFF';this.style.borderColor='#E2E8F0'">
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎨</div>
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Color</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 0.25rem;">bg + border transition</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: #CBD5E1; margin-top: 0.25rem;">Links, nav items</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Entry Animations -->
+    <h3 style="margin-top: 2.5rem;">Animações de Entrada (clique para replay)</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem;">
+        <!-- Fade In -->
+        <div style="text-align: center;">
+          <div id="anim-fade" onclick="replayAnim(this, 'fadeIn 0.3s cubic-bezier(0,0,0.2,1) both')" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; cursor: pointer; animation: fadeIn 0.3s cubic-bezier(0,0,0.2,1) both;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Fade In</div>
+          </div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); margin-top: 0.5rem;">opacity 0→1</div>
+        </div>
+        <!-- Slide Up -->
+        <div style="text-align: center;">
+          <div id="anim-slide" onclick="replayAnim(this, 'slideUp 0.3s cubic-bezier(0,0,0.2,1) both')" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; cursor: pointer; animation: slideUp 0.3s cubic-bezier(0,0,0.2,1) both;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Slide Up</div>
+          </div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); margin-top: 0.5rem;">translateY(16px→0)</div>
+        </div>
+        <!-- Scale In -->
+        <div style="text-align: center;">
+          <div id="anim-scale" onclick="replayAnim(this, 'scaleIn 0.2s cubic-bezier(0.34,1.56,0.64,1) both')" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; cursor: pointer; animation: scaleIn 0.2s cubic-bezier(0.34,1.56,0.64,1) both;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Scale In</div>
+          </div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); margin-top: 0.5rem;">scale(0.95→1)</div>
+        </div>
+        <!-- Slide Down -->
+        <div style="text-align: center;">
+          <div id="anim-slidedown" onclick="replayAnim(this, 'slideDown 0.3s cubic-bezier(0,0,0.2,1) both')" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; cursor: pointer; animation: slideDown 0.3s cubic-bezier(0,0,0.2,1) both;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Slide Down</div>
+          </div>
+          <div style="font-family: var(--font-mono, monospace); font-size: 0.6rem; color: var(--gray-400); margin-top: 0.5rem;">translateY(-16px→0)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Focus Ring -->
+    <h3 style="margin-top: 2.5rem;">Focus Ring</h3>
+    <p>Ring visível ao navegar com teclado (Tab). Usa <code>:focus-visible</code> para não aparecer em cliques.</p>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+        <button style="padding: 10px 24px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; outline: none; box-shadow: 0 0 0 3px rgba(58,143,214,0.3);">Botão com Focus</button>
+        <div style="padding: 10px 16px; border: 1.5px solid #3A8FD6; border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: var(--dark-text); box-shadow: 0 0 0 3px rgba(58,143,214,0.15); min-width: 180px;">Input com Focus</div>
+        <a href="#" style="font-family: var(--font-body); font-size: 0.85rem; color: #2B6CB0; text-decoration: underline; outline: none; border-radius: 4px; padding: 2px 4px; box-shadow: 0 0 0 3px rgba(58,143,214,0.3);">Link com Focus</a>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Propósito</strong></td><td>Toda animação deve ter um motivo: feedback, orientação ou continuidade. Se remover a animação e nada se perde, ela é desnecessária.</td></tr>
+        <tr><td><strong>Duração Máx</strong></td><td>Interfaces: máx <code>500ms</code>. Hover: <code>100-150ms</code>. Modais/pages: <code>250-350ms</code>. Usuários percebem &gt; 400ms como lento.</td></tr>
+        <tr><td><strong>Easing Padrão</strong></td><td>Usar <code>ease-out</code> para entradas (elemento aparecendo), <code>ease-in</code> para saídas. <code>linear</code> apenas para spinners.</td></tr>
+        <tr><td><strong>Stagger</strong></td><td>Para listas/grids, atrasar cada item em <code>50ms</code>. Máximo <code>10 items</code> com stagger, depois aparecer junto.</td></tr>
+        <tr><td><strong>Reduced Motion</strong></td><td>Obrigatório: <code>@media (prefers-reduced-motion: reduce)</code> desativa todas as animações. Substituir por transições instantâneas.</td></tr>
+        <tr><td><strong>Performance</strong></td><td>Animar apenas <code>transform</code> e <code>opacity</code> (GPU-accelerated). Evitar animar <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>margin</code>.</td></tr>
+        <tr><td><strong>Consistência</strong></td><td>Mesma ação = mesma animação em toda a aplicação. Modal sempre <code>fadeIn + scaleIn</code>. Dropdown sempre <code>slideDown</code>.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Reduzir duração em 20% em mobile. Desativar hover effects. Preferir animações mais curtas em dispositivos menos potentes.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Mapa de Animações por Componente</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Componente</th><th>Animação</th><th>Duração</th><th>Easing</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Botão (hover)</td><td>background + shadow</td><td><code>150ms</code></td><td>ease-out</td></tr>
+        <tr><td>Botão (focus)</td><td>box-shadow ring</td><td><code>100ms</code></td><td>ease-out</td></tr>
+        <tr><td>Card (hover)</td><td>translateY(-2px) + shadow</td><td><code>250ms</code></td><td>ease-out</td></tr>
+        <tr><td>Tooltip</td><td>opacity + translateY</td><td><code>150ms</code></td><td>ease-out</td></tr>
+        <tr><td>Dropdown</td><td>opacity + translateY</td><td><code>150ms</code></td><td>ease-out</td></tr>
+        <tr><td>Modal (overlay)</td><td>fadeIn</td><td><code>200ms</code></td><td>ease</td></tr>
+        <tr><td>Modal (container)</td><td>scaleIn + fadeIn</td><td><code>250ms</code></td><td>spring</td></tr>
+        <tr><td>Toast</td><td>slideLeft (from right)</td><td><code>300ms</code></td><td>ease-out</td></tr>
+        <tr><td>Page transition</td><td>fadeIn + slideUp</td><td><code>350ms</code></td><td>ease-out</td></tr>
+        <tr><td>Skeleton</td><td>shimmer gradient</td><td><code>1500ms</code></td><td>ease (loop)</td></tr>
+        <tr><td>Spinner</td><td>rotate</td><td><code>700ms</code></td><td>linear (loop)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">15 — Iconografia</div>
+      <div class="section-number">16 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -5224,7 +5561,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">16 — Acessibilidade</div>
+      <div class="section-number">17 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -5316,7 +5653,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">17 — Responsividade</div>
+      <div class="section-number">18 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -5369,7 +5706,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">18 — Design Tokens</div>
+      <div class="section-number">19 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 
@@ -5844,6 +6181,14 @@
       }
     });
   });
+
+
+  // Replay animation on click
+  function replayAnim(el, animValue) {
+    el.style.animation = 'none';
+    el.offsetHeight; // trigger reflow
+    el.style.animation = animValue;
+  }
 
 </script>
 

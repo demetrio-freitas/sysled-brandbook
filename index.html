@@ -208,6 +208,191 @@
       background: #334155;
     }
 
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--blue-primary);
+      color: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(43,108,176,0.35);
+      z-index: 1500;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--blue-medium);
+      box-shadow: 0 6px 24px rgba(43,108,176,0.5);
+      transform: translateY(-2px);
+    }
+
+    .copy-toast {
+      bottom: 5rem;
+    }
+
+    /* Search bar */
+    .nav-search {
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 0.5rem 0.75rem 0.5rem 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      outline: none;
+      transition: all 0.18s;
+    }
+
+    .nav-search input::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .nav-search input:focus {
+      border-color: var(--blue-medium);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav-search-wrap {
+      position: relative;
+    }
+
+    .nav-search-wrap svg {
+      position: absolute;
+      left: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 13px;
+      height: 13px;
+      color: rgba(255,255,255,0.25);
+      pointer-events: none;
+    }
+
+    .nav a.search-hidden {
+      display: none;
+    }
+
+    .nav .nav-label.search-hidden {
+      display: none;
+    }
+
+    .nav-no-results {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      display: none;
+    }
+
+
+    /* WCAG Contrast Badges */
+    .contrast-badges {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contrast-badge {
+      font-family: var(--font-heading);
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .contrast-badge.pass {
+      background: #ECFDF5;
+      color: #065F46;
+    }
+
+    .contrast-badge.fail {
+      background: #FEF2F2;
+      color: #991B1B;
+    }
+
+    [data-theme="dark"] .contrast-badge.pass {
+      background: #064E3B;
+      color: #6EE7B7;
+    }
+
+    [data-theme="dark"] .contrast-badge.fail {
+      background: #7F1D1D;
+      color: #FCA5A5;
+    }
+
+
+    /* Download/Export */
+    .download-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1.5px solid var(--blue-primary);
+      background: transparent;
+      color: var(--blue-primary);
+      transition: all 0.18s;
+    }
+
+    .download-btn:hover {
+      background: var(--blue-primary);
+      color: #FFFFFF;
+    }
+
+    .download-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -1083,6 +1268,10 @@
   Copiado!
 </div>
 
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <!-- Mobile Toggle -->
 <button class="mobile-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Abrir menu">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -1108,6 +1297,13 @@
       Manual UX/UI
     </a>
   </div>
+    <div class="nav-search">
+    <div class="nav-search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="navSearch" placeholder="Buscar..." autocomplete="off">
+    </div>
+  </div>
+  <div class="nav-no-results" id="navNoResults">Nenhum resultado</div>
   <div class="nav-label">Brandbook</div>
   <a href="#sobre">Identidade</a>
   <a href="#logo">Logotipo</a>
@@ -1449,6 +1645,23 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <h3>Exportar Paleta</h3>
+    <p>Baixe a paleta de cores da Sysled nos formatos abaixo para uso em projetos de design e desenvolvimento.</p>
+    <div class="download-bar">
+      <button class="download-btn" onclick="downloadCSS()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSS Variables
+      </button>
+      <button class="download-btn" onclick="downloadJSON()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        JSON Palette
+      </button>
+      <button class="download-btn" onclick="downloadTokens()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Design Tokens
+      </button>
     </div>
 
     <h3>Proporção de Uso</h3>
@@ -2099,6 +2312,159 @@
       });
     });
   });
+
+  // Scroll reveal (IntersectionObserver)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.section, .cover').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+
+  // Back to top
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // Search in nav
+  const searchInput = document.getElementById('navSearch');
+  const allNavLinks = document.querySelectorAll('.nav a[href^="#"]');
+  const allNavLabels = document.querySelectorAll('.nav .nav-label');
+  const noResults = document.getElementById('navNoResults');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    let found = 0;
+    allNavLinks.forEach(link => {
+      const text = link.textContent.toLowerCase();
+      const sectionId = link.getAttribute('href').replace('#', '');
+      const section = document.getElementById(sectionId);
+      const sectionText = section ? section.textContent.toLowerCase().substring(0, 500) : '';
+      if (!q || text.includes(q) || sectionText.includes(q)) {
+        link.classList.remove('search-hidden');
+        found++;
+      } else {
+        link.classList.add('search-hidden');
+      }
+    });
+    allNavLabels.forEach(label => {
+      if (!q) { label.classList.remove('search-hidden'); return; }
+      const next = [];
+      let el = label.nextElementSibling;
+      while (el && !el.classList.contains('nav-label') && !el.classList.contains('theme-toggle')) {
+        if (el.tagName === 'A') next.push(el);
+        el = el.nextElementSibling;
+      }
+      const anyVisible = next.some(a => !a.classList.contains('search-hidden'));
+      label.classList.toggle('search-hidden', !anyVisible);
+    });
+    noResults.style.display = (q && found === 0) ? 'block' : 'none';
+  });
+
+  // WCAG Contrast
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    return [parseInt(hex.substring(0,2),16), parseInt(hex.substring(2,4),16), parseInt(hex.substring(4,6),16)];
+  }
+
+  function luminance(r, g, b) {
+    const a = [r, g, b].map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+  }
+
+  function contrastRatio(hex1, hex2) {
+    const [r1,g1,b1] = hexToRgb(hex1);
+    const [r2,g2,b2] = hexToRgb(hex2);
+    const l1 = luminance(r1,g1,b1);
+    const l2 = luminance(r2,g2,b2);
+    const lighter = Math.max(l1, l2);
+    const darker = Math.min(l1, l2);
+    return (lighter + 0.05) / (darker + 0.05);
+  }
+
+  document.querySelectorAll('.color-card').forEach(card => {
+    const swatch = card.querySelector('.color-swatch');
+    if (!swatch) return;
+    const bg = swatch.style.background || swatch.style.backgroundColor;
+    const hex = bg.match(/#[A-Fa-f0-9]{6}/);
+    if (!hex) return;
+    const color = hex[0];
+    const ratioW = contrastRatio(color, '#FFFFFF');
+    const ratioB = contrastRatio(color, '#000000');
+    const info = card.querySelector('.color-info');
+    if (!info) return;
+    const badges = document.createElement('div');
+    badges.className = 'contrast-badges';
+    const wPass = ratioW >= 4.5;
+    const bPass = ratioB >= 4.5;
+    badges.innerHTML =
+      '<span class="contrast-badge ' + (wPass ? 'pass' : 'fail') + '">vs Branco ' + ratioW.toFixed(1) + ':1 ' + (wPass ? 'AA' : 'Fail') + '</span>' +
+      '<span class="contrast-badge ' + (bPass ? 'pass' : 'fail') + '">vs Preto ' + ratioB.toFixed(1) + ':1 ' + (bPass ? 'AA' : 'Fail') + '</span>';
+    info.appendChild(badges);
+  });
+
+  // Download palette as CSS
+  function downloadCSS() {
+    const vars = [
+      '--blue-primary: #2B6CB0', '--blue-medium: #3A8FD6', '--blue-light: #5BB8F5',
+      '--blue-lighter: #7ECEF4', '--blue-pale: #A8E0F8',
+      '--cyan-dark: #2E86C1', '--cyan-medium: #3AAFCF', '--cyan-light: #48C9B0',
+      '--dark-primary: #0F172A', '--dark-secondary: #1E293B',
+      '--gray-600: #475569', '--gray-400: #94A3B8', '--gray-200: #E2E8F0', '--gray-100: #F8FAFC'
+    ];
+    const css = ':root {\n  ' + vars.join(';\n  ') + ';\n}';
+    downloadFile('sysled-palette.css', css, 'text/css');
+  }
+
+  function downloadJSON() {
+    const palette = {
+      "blue-primary": "#2B6CB0", "blue-medium": "#3A8FD6", "blue-light": "#5BB8F5",
+      "blue-lighter": "#7ECEF4", "blue-pale": "#A8E0F8",
+      "cyan-dark": "#2E86C1", "cyan-medium": "#3AAFCF", "cyan-light": "#48C9B0",
+      "dark-primary": "#0F172A", "dark-secondary": "#1E293B",
+      "gray-600": "#475569", "gray-400": "#94A3B8", "gray-200": "#E2E8F0", "gray-100": "#F8FAFC"
+    };
+    downloadFile('sysled-palette.json', JSON.stringify(palette, null, 2), 'application/json');
+  }
+
+  function downloadTokens() {
+    const tokens = {
+      colors: {
+        "blue-primary": "#2B6CB0", "blue-medium": "#3A8FD6", "blue-light": "#5BB8F5",
+        "blue-lighter": "#7ECEF4", "blue-pale": "#A8E0F8",
+        "cyan-dark": "#2E86C1", "cyan-medium": "#3AAFCF", "cyan-light": "#48C9B0"
+      },
+      typography: { heading: "Montserrat", body: "Inter" },
+      spacing: { xs: "4px", sm: "8px", md: "16px", lg: "24px", xl: "32px", "2xl": "48px", "3xl": "64px" },
+      radius: { sm: "4px", md: "8px", lg: "12px", xl: "16px", full: "9999px" },
+      shadows: {
+        card: "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06)",
+        hover: "0 8px 40px rgba(0,0,0,0.12)"
+      }
+    };
+    downloadFile('sysled-design-tokens.json', JSON.stringify(tokens, null, 2), 'application/json');
+  }
+
+  function downloadFile(name, content, type) {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name; a.click();
+    URL.revokeObjectURL(url);
+  }
+
 </script>
 
 

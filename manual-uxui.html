@@ -1729,6 +1729,7 @@
   <a href="#sidebars">Sidebars</a>
   <a href="#inputs-avancados">Inputs Avançados</a>
   <a href="#tipografia-aplicada">Tipografia Aplicada</a>
+  <a href="#dark-mode">Dark Mode</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1778,10 +1779,11 @@
         <a href="#sidebars"><span class="toc-num">19</span> Sidebars</a>
         <a href="#inputs-avancados"><span class="toc-num">20</span> Inputs</a>
         <a href="#tipografia-aplicada"><span class="toc-num">21</span> Tipografia</a>
-        <a href="#iconografia"><span class="toc-num">22</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">23</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">24</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">25</span> Design Tokens</a>
+        <a href="#dark-mode"><span class="toc-num">22</span> Dark Mode</a>
+        <a href="#iconografia"><span class="toc-num">23</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">24</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">25</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">26</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -6242,10 +6244,229 @@
     </table>
   </section>
 
+
+  <!-- ==================== DARK MODE E TEMAS ==================== -->
+  <section class="section" id="dark-mode">
+    <div class="section-header">
+      <div class="section-number">22 — Dark Mode e Temas</div>
+      <h2>Dark Mode e Temas</h2>
+    </div>
+
+    <p>O sistema de cores da Sysled suporta troca de tema via variáveis CSS. Cada cor semântica possui mapeamento light e dark, garantindo contraste WCAG AA (4.5:1 texto, 3:1 elementos UI) em ambos os modos.</p>
+
+    <!-- Color Mapping Table -->
+    <h3>Mapeamento de Cores Light / Dark</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid #E2E8F0;">
+        <!-- Light Side -->
+        <div style="background: #FFFFFF; padding: 1.5rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #2B6CB0; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Light Mode</div>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #FFFFFF; border: 1px solid #E2E8F0; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--bg-primary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#FFFFFF</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #F8FAFC; border: 1px solid #E2E8F0; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--bg-secondary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#F8FAFC</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #0F172A; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--text-primary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#0F172A</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #64748B; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--text-secondary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#64748B</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #E2E8F0; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--border</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#E2E8F0</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #2B6CB0; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; font-weight: 600;">--accent</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">#2B6CB0</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Dark Side -->
+        <div style="background: #0F172A; padding: 1.5rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #5BB8F5; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Dark Mode</div>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #0F172A; border: 1px solid #1E293B; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--bg-primary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#0F172A</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #1E293B; border: 1px solid #334155; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--bg-secondary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#1E293B</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #F1F5F9; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--text-primary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#F1F5F9</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #94A3B8; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--text-secondary</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#94A3B8</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #334155; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--border</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#334155</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: #5BB8F5; flex-shrink: 0;"></div>
+              <div><div style="font-family: var(--font-mono); font-size: 0.65rem; color: #F1F5F9; font-weight: 600;">--accent</div><div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">#5BB8F5</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Component Comparison -->
+    <h3 style="margin-top: 2.5rem;">Componentes: Light vs Dark</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; border: 1px solid #E2E8F0;">
+        <!-- Light Components -->
+        <div style="background: #F8FAFC; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #2B6CB0; text-transform: uppercase; letter-spacing: 0.05em;">Light</div>
+          <!-- Card -->
+          <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Painel Solar 400W</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-top: 0.25rem;">Monocristalino - Eficiencia 21.5%</div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <button style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Detalhes</button>
+              <button style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Editar</button>
+            </div>
+          </div>
+          <!-- Input -->
+          <div>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Buscar produto</label>
+            <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Digite o nome ou SKU...</div>
+          </div>
+          <!-- Badge row -->
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #EBF8FF; color: #2B6CB0; white-space: nowrap;">Ativo</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #F0FFF4; color: #38A169; white-space: nowrap;">Estoque OK</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: #FFF5F5; color: #E53E3E; white-space: nowrap;">Urgente</span>
+          </div>
+        </div>
+        <!-- Dark Components -->
+        <div style="background: #0F172A; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #5BB8F5; text-transform: uppercase; letter-spacing: 0.05em;">Dark</div>
+          <!-- Card -->
+          <div style="background: #1E293B; border: 1px solid #334155; border-radius: 12px; padding: 1rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #F1F5F9;">Painel Solar 400W</div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8; margin-top: 0.25rem;">Monocristalino - Eficiencia 21.5%</div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <button style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: none; border-radius: 8px; background: #5BB8F5; color: #0F172A; cursor: pointer;">Detalhes</button>
+              <button style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #334155; border-radius: 8px; background: transparent; color: #94A3B8; cursor: pointer;">Editar</button>
+            </div>
+          </div>
+          <!-- Input -->
+          <div>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #F1F5F9; display: block; margin-bottom: 4px;">Buscar produto</label>
+            <div style="background: #1E293B; border: 1.5px solid #334155; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #64748B;">Digite o nome ou SKU...</div>
+          </div>
+          <!-- Badge row -->
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: rgba(91,184,245,0.15); color: #5BB8F5; white-space: nowrap;">Ativo</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: rgba(72,201,176,0.15); color: #48C9B0; white-space: nowrap;">Estoque OK</span>
+            <span style="padding: 3px 10px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border-radius: 20px; background: rgba(229,62,62,0.15); color: #FC8181; white-space: nowrap;">Urgente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS Variables Code Block -->
+    <h3 style="margin-top: 2.5rem;">Implementacao com CSS Variables</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="background: #0F172A; border-radius: 12px; padding: 1.25rem; overflow-x: auto;">
+        <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.7; color: #E2E8F0;"><span style="color: #64748B;">/* Light theme (default) */</span>
+<span style="color: #5BB8F5;">:root</span> {
+  <span style="color: #48C9B0;">--bg-primary</span>: <span style="color: #ECC94B;">#FFFFFF</span>;
+  <span style="color: #48C9B0;">--bg-secondary</span>: <span style="color: #ECC94B;">#F8FAFC</span>;
+  <span style="color: #48C9B0;">--bg-elevated</span>: <span style="color: #ECC94B;">#FFFFFF</span>;
+  <span style="color: #48C9B0;">--text-primary</span>: <span style="color: #ECC94B;">#0F172A</span>;
+  <span style="color: #48C9B0;">--text-secondary</span>: <span style="color: #ECC94B;">#64748B</span>;
+  <span style="color: #48C9B0;">--border-color</span>: <span style="color: #ECC94B;">#E2E8F0</span>;
+  <span style="color: #48C9B0;">--accent</span>: <span style="color: #ECC94B;">#2B6CB0</span>;
+  <span style="color: #48C9B0;">--accent-hover</span>: <span style="color: #ECC94B;">#2C5282</span>;
+  <span style="color: #48C9B0;">--shadow</span>: <span style="color: #ECC94B;">0 1px 3px rgba(0,0,0,0.1)</span>;
+}
+
+<span style="color: #64748B;">/* Dark theme */</span>
+<span style="color: #5BB8F5;">[data-theme="dark"]</span> {
+  <span style="color: #48C9B0;">--bg-primary</span>: <span style="color: #ECC94B;">#0F172A</span>;
+  <span style="color: #48C9B0;">--bg-secondary</span>: <span style="color: #ECC94B;">#1E293B</span>;
+  <span style="color: #48C9B0;">--bg-elevated</span>: <span style="color: #ECC94B;">#334155</span>;
+  <span style="color: #48C9B0;">--text-primary</span>: <span style="color: #ECC94B;">#F1F5F9</span>;
+  <span style="color: #48C9B0;">--text-secondary</span>: <span style="color: #ECC94B;">#94A3B8</span>;
+  <span style="color: #48C9B0;">--border-color</span>: <span style="color: #ECC94B;">#334155</span>;
+  <span style="color: #48C9B0;">--accent</span>: <span style="color: #ECC94B;">#5BB8F5</span>;
+  <span style="color: #48C9B0;">--accent-hover</span>: <span style="color: #ECC94B;">#3A8FD6</span>;
+  <span style="color: #48C9B0;">--shadow</span>: <span style="color: #ECC94B;">0 1px 3px rgba(0,0,0,0.4)</span>;
+}</pre>
+      </div>
+    </div>
+
+    <!-- Contrast Rules -->
+    <h3 style="margin-top: 2.5rem;">Regras de Contraste</h3>
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <!-- Good contrast -->
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0;">
+          <div style="background: #0F172A; padding: 1rem; text-align: center;">
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #F1F5F9;">Aa</div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8; margin-top: 0.25rem;">#F1F5F9 on #0F172A</div>
+          </div>
+          <div style="background: #FFFFFF; padding: 0.5rem; text-align: center;">
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #48C9B0;">15.3:1</span>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #48C9B0; margin-left: 4px;">AAA</span>
+          </div>
+        </div>
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0;">
+          <div style="background: #1E293B; padding: 1rem; text-align: center;">
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #94A3B8;">Aa</div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B; margin-top: 0.25rem;">#94A3B8 on #1E293B</div>
+          </div>
+          <div style="background: #FFFFFF; padding: 0.5rem; text-align: center;">
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #2B6CB0;">4.6:1</span>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; margin-left: 4px;">AA</span>
+          </div>
+        </div>
+        <!-- Bad contrast -->
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0;">
+          <div style="background: #1E293B; padding: 1rem; text-align: center;">
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #334155;">Aa</div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B; margin-top: 0.25rem;">#334155 on #1E293B</div>
+          </div>
+          <div style="background: #FFFFFF; padding: 0.5rem; text-align: center;">
+            <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #E53E3E;">1.5:1</span>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #E53E3E; margin-left: 4px;">FAIL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spec Table -->
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ativacao</strong></td><td>Usar <code>data-theme="dark"</code> no <code>&lt;html&gt;</code>. Detectar <code>prefers-color-scheme</code> do sistema como padrao.</td></tr>
+        <tr><td><strong>Contraste minimo</strong></td><td>Texto: 4.5:1 (AA). Elementos UI (bordas, icones): 3:1. Texto grande (&ge;18px bold): 3:1.</td></tr>
+        <tr><td><strong>Cores de accent</strong></td><td>Light: <code>#2B6CB0</code>. Dark: <code>#5BB8F5</code> (mais claro para manter contraste em fundo escuro).</td></tr>
+        <tr><td><strong>Sombras</strong></td><td>Light: opacity 0.1. Dark: opacity 0.4 (sombras mais fortes em fundos escuros para manter profundidade).</td></tr>
+        <tr><td><strong>Badges/Tags</strong></td><td>Light: background solido suave (<code>#EBF8FF</code>). Dark: background com <code>rgba()</code> a 15% de opacidade.</td></tr>
+        <tr><td><strong>Imagens/Icones</strong></td><td>Icones SVG com <code>currentColor</code> adaptam automaticamente. Imagens: usar <code>filter: brightness(0.9)</code> no dark mode para evitar brilho excessivo.</td></tr>
+        <tr><td><strong>Transicao</strong></td><td>Aplicar <code>transition: background-color 0.2s, color 0.2s, border-color 0.2s</code> para troca suave entre temas.</td></tr>
+        <tr><td><strong>Nunca fazer</strong></td><td>Nunca usar preto puro (<code>#000000</code>) como fundo. Usar <code>#0F172A</code> (Slate 900). Evitar branco puro (<code>#FFFFFF</code>) como texto — usar <code>#F1F5F9</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">22 — Iconografia</div>
+      <div class="section-number">23 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -6332,7 +6553,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">23 — Acessibilidade</div>
+      <div class="section-number">24 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -6424,7 +6645,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">24 — Responsividade</div>
+      <div class="section-number">25 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -6477,7 +6698,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">25 — Design Tokens</div>
+      <div class="section-number">26 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

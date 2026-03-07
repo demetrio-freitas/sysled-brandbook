@@ -38,6 +38,119 @@
       --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
     }
 
+    /* ===== DARK MODE ===== */
+    [data-theme="dark"] {
+      --white: #0F172A;
+      --dark-text: #E2E8F0;
+      --gray-600: #94A3B8;
+      --gray-400: #CBD5E1;
+      --gray-200: #334155;
+      --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    [data-theme="dark"] .section h2,
+    [data-theme="dark"] .section h3,
+    [data-theme="dark"] .logo-card-info h4,
+    [data-theme="dark"] .color-info h4,
+    [data-theme="dark"] .card-demo h4,
+    [data-theme="dark"] .input-demo label {
+      color: #E2E8F0;
+    }
+
+    [data-theme="dark"] .section h3 {
+      border-bottom-color: #334155;
+    }
+
+    [data-theme="dark"] .spec-table tr:hover td {
+      background: rgba(30,41,59,0.5);
+    }
+
+    [data-theme="dark"] .spec-table th {
+      background: #1E293B;
+    }
+
+    [data-theme="dark"] .do-card .card-header {
+      background: #064E3B;
+      color: #6EE7B7;
+    }
+
+    [data-theme="dark"] .dont-card .card-header {
+      background: #7F1D1D;
+      color: #FCA5A5;
+    }
+
+    [data-theme="dark"] .do-card .card-body,
+    [data-theme="dark"] .dont-card .card-body {
+      background: #1E293B;
+    }
+
+    [data-theme="dark"] .component-demo {
+      background: #1E293B;
+    }
+
+    [data-theme="dark"] .icon-item:hover {
+      background: rgba(91,184,245,0.08);
+    }
+
+    [data-theme="dark"] .slogan-showcase {
+      background: #1E293B;
+    }
+
+    [data-theme="dark"] .logo-card-preview.bg-white {
+      background: #FFFFFF;
+    }
+
+    [data-theme="dark"] .logo-card-preview.bg-gray {
+      background: #F8FAFC;
+    }
+
+    [data-theme="dark"] .input-demo input,
+    [data-theme="dark"] .input-demo select {
+      background: #1E293B;
+      color: #E2E8F0;
+    }
+
+    [data-theme="dark"] .cover-badge {
+      border-color: rgba(91,184,245,0.3);
+    }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      margin: auto 1rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      transition: all 0.18s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .theme-toggle svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     
     body {
@@ -941,6 +1054,12 @@
   <a href="#uso-logo">Regras de Uso</a>
   <a href="#tom-voz">Tom de Voz</a>
   <a href="#dos-donts">Do's and Don'ts</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <span class="icon-moon">Dark Mode</span>
+    <span class="icon-sun">Light Mode</span>
+  </button>
 </nav>
 
 <div class="main">
@@ -1843,10 +1962,26 @@
 </div>
 
 <script>
+  // Dark mode toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('sysled-theme', next);
+  }
+
+  // Apply saved theme on load
+  (function() {
+    const saved = localStorage.getItem('sysled-theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+
   // Smooth scroll for navigation
   document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', (e) => {
-      // Close mobile nav
       document.querySelector('.nav').classList.remove('open');
     });
   });
@@ -1854,7 +1989,7 @@
   // Active nav link on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav a');
-  
+
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
@@ -1863,7 +1998,7 @@
         current = section.getAttribute('id');
       }
     });
-    
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === '#' + current) {

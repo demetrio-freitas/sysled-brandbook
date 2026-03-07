@@ -1681,6 +1681,7 @@
   <a href="#botoes">Botões</a>
   <a href="#formularios">Formulários</a>
   <a href="#cards">Cards</a>
+  <a href="#modais">Modais e Dialogs</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1715,10 +1716,11 @@
         <a href="#botoes"><span class="toc-num">04</span> Botões</a>
         <a href="#formularios"><span class="toc-num">05</span> Formulários</a>
         <a href="#cards"><span class="toc-num">06</span> Cards</a>
-        <a href="#iconografia"><span class="toc-num">07</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">08</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">09</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">10</span> Design Tokens</a>
+        <a href="#modais"><span class="toc-num">07</span> Modais</a>
+        <a href="#iconografia"><span class="toc-num">08</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">09</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">10</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">11</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -2293,10 +2295,355 @@
     </table>
   </section>
 
+
+  <!-- ==================== MODAIS E DIALOGS ==================== -->
+  <section class="section section-dark" id="modais">
+    <div class="section-header">
+      <div class="section-number">07 — Modais e Dialogs</div>
+      <h2>Modais e Dialogs</h2>
+    </div>
+
+    <p>Modais são sobreposições que capturam a atenção do usuário para ações importantes — confirmações, formulários, alertas e visualização de conteúdo. Devem ser usados com parcimônia para não interromper o fluxo.</p>
+
+    <h3>Tipos de Modal</h3>
+
+    <div class="component-toggle" data-target="code-modais">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-modais-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Modal Overlay --&gt;
+&lt;div class="modal-overlay" id="myModal"&gt;
+  &lt;div class="modal-container modal-md"&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h3&gt;Título do Modal&lt;/h3&gt;
+      &lt;button class="modal-close" aria-label="Fechar"&gt;
+        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2"&gt;
+          &lt;line x1="18" y1="6" x2="6" y2="18"/&gt;
+          &lt;line x1="6" y1="6" x2="18" y2="18"/&gt;
+        &lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Body --&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Conteúdo do modal aqui.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn-secondary-sm"&gt;Cancelar&lt;/button&gt;
+      &lt;button class="btn-primary-sm"&gt;Confirmar&lt;/button&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tamanhos: modal-sm | modal-md | modal-lg | modal-full --&gt;
+
+&lt;!-- Dialog de Confirmação --&gt;
+&lt;div class="modal-overlay"&gt;
+  &lt;div class="modal-container modal-sm"&gt;
+    &lt;div class="modal-body" style="text-align:center; padding-top:2rem;"&gt;
+      &lt;div class="modal-icon modal-icon-warning"&gt;!&lt;/div&gt;
+      &lt;h3&gt;Tem certeza?&lt;/h3&gt;
+      &lt;p&gt;Esta ação não pode ser desfeita.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer" style="justify-content:center;"&gt;
+      &lt;button class="btn-secondary-sm"&gt;Cancelar&lt;/button&gt;
+      &lt;button class="btn-danger-sm"&gt;Excluir&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dialog de Alerta / Sucesso --&gt;
+&lt;div class="modal-overlay"&gt;
+  &lt;div class="modal-container modal-sm"&gt;
+    &lt;div class="modal-body" style="text-align:center; padding-top:2rem;"&gt;
+      &lt;div class="modal-icon modal-icon-success"&gt;✓&lt;/div&gt;
+      &lt;h3&gt;Operação concluída&lt;/h3&gt;
+      &lt;p&gt;Os dados foram salvos com sucesso.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer" style="justify-content:center;"&gt;
+      &lt;button class="btn-primary-sm"&gt;OK&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-modais-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Modal Container */
+.modal-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15),
+              0 2px 12px rgba(0,0,0,0.08);
+  width: 100%;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.25s ease;
+}
+
+/* Tamanhos */
+.modal-sm  { max-width: 400px; }
+.modal-md  { max-width: 560px; }
+.modal-lg  { max-width: 720px; }
+.modal-full { max-width: 95vw; max-height: 95vh; }
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.modal-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.modal-close {
+  width: 32px; height: 32px;
+  border: none; background: transparent;
+  border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center;
+  justify-content: center; color: #64748B;
+  transition: all 0.15s;
+}
+.modal-close:hover {
+  background: #F1F5F9; color: #0F172A;
+}
+.modal-close svg { width: 18px; height: 18px; }
+
+/* Body */
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Footer */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+/* Icon para Dialogs */
+.modal-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; font-weight: 700;
+  margin: 0 auto 1rem;
+}
+.modal-icon-warning {
+  background: #FEF3C7; color: #D97706;
+}
+.modal-icon-success {
+  background: #D1FAE5; color: #059669;
+}
+.modal-icon-danger {
+  background: #FEE2E2; color: #DC2626;
+}
+.modal-icon-info {
+  background: #DBEAFE; color: #2B6CB0;
+}
+
+/* Botão Danger */
+.btn-danger-sm {
+  padding: 8px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem; font-weight: 600;
+  border: none; border-radius: 8px;
+  background: #E53E3E; color: #FFFFFF;
+  cursor: pointer; transition: all 0.15s;
+}
+.btn-danger-sm:hover { background: #C53030; }</code></pre>
+    </div>
+
+    <!-- Preview: Modal Padrão -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Modal Padrão (md)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 320px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 480px; overflow: hidden;">
+          <!-- Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #E2E8F0;">
+            <span style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A;">Editar Produto</span>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: #64748B; font-size: 1.1rem; cursor: pointer;">✕</div>
+          </div>
+          <!-- Body -->
+          <div style="padding: 1.5rem;">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Nome do Produto</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: #0F172A; background: #FFFFFF;">LED Painel Solar 200W</div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Categoria</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: #64748B; background: #FFFFFF;">Selecione uma categoria ▾</div>
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Descrição</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: #94A3B8; background: #FFFFFF; min-height: 60px;">Adicione uma descrição...</div>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid #E2E8F0;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cancelar</button>
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Dialog de Confirmação -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Dialog de Confirmação (sm)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 260px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 360px; overflow: hidden;">
+          <div style="padding: 2rem 1.5rem 1rem; text-align: center;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem;">!</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin: 0 0 0.5rem;">Excluir item?</h4>
+            <p style="font-family: var(--font-body); font-size: 0.9rem; color: #64748B; margin: 0;">Esta ação não pode ser desfeita. O item será removido permanentemente.</p>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem 1.5rem;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cancelar</button>
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #E53E3E; color: #FFFFFF; cursor: pointer;">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Dialog de Sucesso -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Dialog de Sucesso (sm)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 240px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 360px; overflow: hidden;">
+          <div style="padding: 2rem 1.5rem 1rem; text-align: center;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem;">✓</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin: 0 0 0.5rem;">Produto cadastrado!</h4>
+            <p style="font-family: var(--font-body); font-size: 0.9rem; color: #64748B; margin: 0;">O item foi adicionado ao estoque com sucesso.</p>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem 1.5rem;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tamanhos -->
+    <h3 style="margin-top: 2.5rem;">Tamanhos de Modal</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Small</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem;">max-width: 400px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Confirmações, alertas</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; text-align: center; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Medium</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem;">max-width: 560px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Formulários, detalhes</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Large</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem;">max-width: 720px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Tabelas, conteúdo rico</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Full</div>
+        <div style="font-family: var(--font-mono, monospace); font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem;">max-width: 95vw</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Editores, dashboards</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Focus Trap</strong></td><td>O foco do teclado deve ficar preso dentro do modal enquanto aberto. Tab e Shift+Tab ciclam entre os elementos focáveis.</td></tr>
+        <tr><td><strong>Fechar com ESC</strong></td><td>Pressionar Escape deve fechar o modal. Clicar no overlay (fundo escuro) também fecha.</td></tr>
+        <tr><td><strong>Animação</strong></td><td>Entrada com <code>fadeIn</code> (overlay) + <code>slideUp</code> (container). Duração: 200-250ms, easing: ease.</td></tr>
+        <tr><td><strong>Scroll do Body</strong></td><td>Adicionar <code>overflow: hidden</code> ao <code>&lt;body&gt;</code> quando modal está aberto para evitar scroll duplo.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Usar <code>role="dialog"</code>, <code>aria-modal="true"</code>, e <code>aria-labelledby</code> apontando para o título.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Em telas &lt; 640px, modais devem expandir para largura total com <code>border-radius</code> apenas no topo (estilo bottom sheet).</td></tr>
+        <tr><td><strong>Ações Destrutivas</strong></td><td>Botões de exclusão/perigo usam cor <code>#E53E3E</code>. Sempre exigir confirmação explícita.</td></tr>
+        <tr><td><strong>Máximo de Profundidade</strong></td><td>Evitar modais sobre modais (máximo 1 nível). Para fluxos complexos, usar stepper dentro do modal.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Overlay Background</td><td><code>rgba(15, 23, 42, 0.6)</code> + <code>backdrop-filter: blur(4px)</code></td></tr>
+        <tr><td>Container Border Radius</td><td><code>16px</code></td></tr>
+        <tr><td>Container Shadow</td><td><code>0 8px 40px rgba(0,0,0,0.15), 0 2px 12px rgba(0,0,0,0.08)</code></td></tr>
+        <tr><td>Header Padding</td><td><code>1.25rem 1.5rem</code></td></tr>
+        <tr><td>Body Padding</td><td><code>1.5rem</code></td></tr>
+        <tr><td>Footer Padding</td><td><code>1rem 1.5rem</code></td></tr>
+        <tr><td>Header Border</td><td><code>1px solid #E2E8F0</code></td></tr>
+        <tr><td>Footer Border</td><td><code>1px solid #E2E8F0</code></td></tr>
+        <tr><td>Close Button</td><td><code>32px × 32px</code>, radius <code>8px</code></td></tr>
+        <tr><td>Title Font</td><td>Montserrat, <code>1.1rem</code>, weight <code>700</code></td></tr>
+        <tr><td>Max Height</td><td><code>85vh</code> (body com overflow-y: auto)</td></tr>
+        <tr><td>Z-Index</td><td><code>1000</code> (--z-modal)</td></tr>
+        <tr><td>Animation</td><td>fadeIn <code>200ms</code> + slideUp <code>250ms</code>, easing: ease</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">07 — Iconografia</div>
+      <div class="section-number">08 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -2383,7 +2730,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">08 — Acessibilidade</div>
+      <div class="section-number">09 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -2475,7 +2822,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">09 — Responsividade</div>
+      <div class="section-number">10 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -2528,7 +2875,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">10 — Design Tokens</div>
+      <div class="section-number">11 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

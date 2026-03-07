@@ -1754,7 +1754,17 @@
   <a href="#search-results">Search Results</a>
   <a href="#progress-indicators">Progress Indicators</a>
   <a href="#responsive-nav">Responsive Nav</a>
-  <a href="#iconografia">Iconografia</a>
+  <a href="#microcopy">Micro-copy</a>
+  <a href="#spacing-tokens">Spacing Tokens</a>
+  <a href="#zindex-scale">Z-Index Scale</a>
+  <a href="#shadow-elevation">Shadow System</a>
+  <a href="#focus-states">Focus States</a>
+  <a href="#responsive-typography" class="nav-link">52. Responsive Typography Scale</a>
+        <a href="#print-styles" class="nav-link">53. Print Styles</a>
+        <a href="#motion-tokens" class="nav-link">54. Motion &amp; Transition Tokens</a>
+        <a href="#form-validation" class="nav-link">55. Form Validation Patterns</a>
+        <a href="#i18n" class="nav-link">56. Internationalization (i18n)</a>
+        <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
   <a href="#design-tokens">Design Tokens</a>
@@ -1828,10 +1838,20 @@
         <a href="#search-results"><span class="toc-num">44</span> Search Results</a>
         <a href="#progress-indicators"><span class="toc-num">45</span> Progress Indicators</a>
         <a href="#responsive-nav"><span class="toc-num">46</span> Responsive Nav</a>
-        <a href="#iconografia"><span class="toc-num">47</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">48</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">49</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">50</span> Design Tokens</a>
+        <a href="#microcopy"><span class="toc-num">47</span> Micro-copy</a>
+        <a href="#spacing-tokens"><span class="toc-num">48</span> Spacing Tokens</a>
+        <a href="#zindex-scale"><span class="toc-num">49</span> Z-Index Scale</a>
+        <a href="#shadow-elevation"><span class="toc-num">50</span> Shadow System</a>
+        <a href="#focus-states"><span class="toc-num">51</span> Focus States</a>
+        <a href="#responsive-typography" class="nav-link">52. Responsive Typography Scale</a>
+        <a href="#print-styles" class="nav-link">53. Print Styles</a>
+        <a href="#motion-tokens" class="nav-link">54. Motion &amp; Transition Tokens</a>
+        <a href="#form-validation" class="nav-link">55. Form Validation Patterns</a>
+        <a href="#i18n" class="nav-link">56. Internationalization (i18n)</a>
+        <a href="#iconografia"><span class="toc-num">52</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">53</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">54</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">55</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -9641,10 +9661,1009 @@
     </table>
   </section>
 
+
+  <!-- ==================== MICRO-COPY ==================== -->
+  <section class="section" id="microcopy">
+    <div class="section-header">
+      <div class="section-number">47 — Micro-copy e Placeholder Guidelines</div>
+      <h2>Micro-copy e Placeholder Guidelines</h2>
+    </div>
+
+    <p>Micro-copy sao os pequenos textos que guiam o usuario: placeholders, labels, helper texts, mensagens de erro e textos de botoes. Devem ser claros, concisos e uteis.</p>
+
+    <div class="component-toggle" data-target="code-microcopy">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        <!-- Do -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #F0FFF4; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="2.5" style="width: 11px; height: 11px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #38A169;">Correto</span>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email corporativo <span style="color: #E53E3E;">*</span></label>
+            <div style="border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">nome@empresa.com</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 4px;">Usado para login e recuperacao de senha.</div>
+          </div>
+          <div>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
+            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #E53E3E; margin-top: 4px;">Insira um valor entre 1 e 9999.</div>
+          </div>
+        </div>
+        <!-- Don't -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; background: #FFF5F5; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2.5" style="width: 11px; height: 11px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #E53E3E;">Evitar</span>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Email</label>
+            <div style="border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Digite seu email aqui...</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 4px; text-decoration: line-through; opacity: 0.6;">Sem helper text</div>
+          </div>
+          <div>
+            <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Quantidade</label>
+            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5;">0</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #E53E3E; margin-top: 4px; text-decoration: line-through; opacity: 0.6;">Erro: campo invalido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-microcopy-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="form-group"&gt;
+  &lt;label class="form-label"&gt;
+    Email corporativo &lt;span class="required"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input type="email" placeholder="nome@empresa.com" /&gt;
+  &lt;span class="helper-text"&gt;Usado para login e recuperacao de senha.&lt;/span&gt;
+  &lt;span class="error-text"&gt;Insira um email valido.&lt;/span&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-microcopy-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.helper-text {
+  font-size: 0.6rem;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+.error-text {
+  font-size: 0.6rem;
+  color: #E53E3E;
+  margin-top: 4px;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Elemento</th><th>Regra</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Labels</strong></td><td>Descritivos: "Email corporativo", nao "Email". Incluir <code>*</code> vermelho para obrigatorios. Montserrat 0.65rem bold.</td></tr>
+        <tr><td><strong>Placeholders</strong></td><td>Exemplo real, nao instrucao: <code>nome@empresa.com</code>, nao "Digite seu email". Cor <code>#94A3B8</code>.</td></tr>
+        <tr><td><strong>Helper text</strong></td><td>Explicar por que a informacao e necessaria ou formato esperado. Inter 0.6rem <code>#94A3B8</code>. Abaixo do input.</td></tr>
+        <tr><td><strong>Errors</strong></td><td>Dizer o que corrigir: "Insira um valor entre 1 e 9999", nao "Campo invalido". Inter 0.6rem <code>#E53E3E</code>.</td></tr>
+        <tr><td><strong>Botoes</strong></td><td>Acao especifica: "Salvar produto", nao "Submeter". "Excluir pedido", nao "OK". Verbos no infinitivo.</td></tr>
+        <tr><td><strong>Tom</strong></td><td>Direto e humano. Sem jargao tecnico. Sem culpar o usuario. Sem "por favor" excessivo.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== SPACING TOKENS ==================== -->
+  <section class="section section-dark" id="spacing-tokens">
+    <div class="section-header">
+      <div class="section-number">48 — Spacing & Layout Tokens Visuais</div>
+      <h2>Spacing & Layout Tokens Visuais</h2>
+    </div>
+
+    <p>Tokens de espacamento aplicados em contexto real. O sistema usa multiplos de 4px para manter ritmo vertical e horizontal consistente em todos os componentes.</p>
+
+    <div class="component-toggle" data-target="code-spacing-tok">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <!-- Card with spacing annotations -->
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; max-width: 400px;">
+        <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 1rem;">Espacamento em um Card</div>
+        <div style="position: relative; border: 2px solid #5BB8F5; border-radius: 12px;">
+          <!-- Top padding indicator -->
+          <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 1px; height: 16px; background: #E53E3E;"></div>
+            <span style="font-family: var(--font-mono); font-size: 0.5rem; color: #E53E3E; background: #FFFFFF; padding: 0 4px;">16px</span>
+          </div>
+          <div style="padding: 16px;">
+            <!-- Title with bottom margin indicator -->
+            <div style="position: relative;">
+              <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A;">Painel Solar 400W</div>
+              <div style="position: absolute; right: -28px; top: 50%; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.45rem; color: #E53E3E; background: #FFF5F5; padding: 1px 3px; border-radius: 2px;">mb-8</span></div>
+            </div>
+            <div style="height: 8px;"></div>
+            <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; line-height: 1.5;">Monocristalino, eficiencia 21.5%</div>
+            <div style="height: 12px;"></div>
+            <div style="display: flex; gap: 8px;">
+              <div style="position: relative;">
+                <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF;">Detalhes</button>
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%);"><span style="font-family: var(--font-mono); font-size: 0.4rem; color: #9F7AEA; background: #F5F3FF; padding: 1px 3px; border-radius: 2px;">py-8 px-16</span></div>
+              </div>
+              <div style="position: relative;">
+                <div style="position: absolute; top: 50%; left: -6px; transform: translateY(-50%);"><span style="font-family: var(--font-mono); font-size: 0.4rem; color: #48C9B0; background: #F0FFF4; padding: 1px 3px; border-radius: 2px; white-space: nowrap;">gap-8</span></div>
+              </div>
+              <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B;">Editar</button>
+            </div>
+          </div>
+        </div>
+        <!-- Token reference -->
+        <div style="margin-top: 1rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 4px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-1: 4px</span></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 8px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-2: 8px</span></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 12px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-3: 12px</span></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-4: 16px</span></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 24px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-6: 24px</span></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 32px; height: 4px; background: #2B6CB0; border-radius: 1px;"></div><span style="font-family: var(--font-mono); font-size: 0.55rem; color: #64748B;">--space-8: 32px</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-spacing-tok-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Spacing tokens usage --&gt;
+&lt;div class="card" style="padding: var(--space-4);"&gt;
+  &lt;h3 style="margin-bottom: var(--space-2);"&gt;Titulo&lt;/h3&gt;
+  &lt;p style="margin-bottom: var(--space-3);"&gt;Descricao&lt;/p&gt;
+  &lt;div style="display: flex; gap: var(--space-2);"&gt;
+    &lt;button style="padding: var(--space-2) var(--space-4);"&gt;Acao&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-spacing-tok-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
+  --space-1: 4px;   /* micro gaps, icon padding */
+  --space-2: 8px;   /* inline gaps, button padding-y */
+  --space-3: 12px;  /* between related elements */
+  --space-4: 16px;  /* card padding, section gaps */
+  --space-5: 20px;  /* between groups */
+  --space-6: 24px;  /* section padding */
+  --space-8: 32px;  /* large sections */
+  --space-10: 40px; /* page margins */
+  --space-12: 48px; /* hero spacing */
+  --space-16: 64px; /* page sections */
+}
+
+/* Usage: sempre usar tokens, nunca valores magicos */</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Token</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>4px</strong></td><td>Micro gaps: entre icone e texto inline, padding de badges, gap de dots.</td></tr>
+        <tr><td><strong>8px</strong></td><td>Gaps padrao: entre botoes, padding vertical de inputs, gap de flex items relacionados.</td></tr>
+        <tr><td><strong>12-16px</strong></td><td>Padding interno de cards, espacamento entre titulo e descricao, gap de grid items.</td></tr>
+        <tr><td><strong>24-32px</strong></td><td>Entre secoes dentro de uma pagina, padding de modais, gaps de grid maiores.</td></tr>
+        <tr><td><strong>40-64px</strong></td><td>Margens de pagina, espacamento entre secoes hero, padding de containers full-width.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== Z-INDEX SCALE ==================== -->
+  <section class="section" id="zindex-scale">
+    <div class="section-header">
+      <div class="section-number">49 — Z-Index Scale e Layering</div>
+      <h2>Z-Index Scale e Layering</h2>
+    </div>
+
+    <p>A hierarquia de z-index define quais elementos ficam acima de outros. Usar valores pre-definidos evita conflitos e garante que modais sempre cubram dropdowns, que cobrem conteudo base.</p>
+
+    <div class="component-toggle" data-target="code-zindex">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="position: relative; height: 260px; max-width: 420px;">
+        <!-- Base layer -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #94A3B8;">z-0 — Base (conteudo)</span></div>
+        <!-- Sticky -->
+        <div style="position: absolute; bottom: 48px; left: 8px; right: 8px; height: 36px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">z-10 — Sticky (header, bulk bar)</span></div>
+        <!-- Dropdown -->
+        <div style="position: absolute; bottom: 92px; left: 16px; right: 16px; height: 36px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #2B6CB0;">z-20 — Dropdown / Popover</span></div>
+        <!-- Modal overlay -->
+        <div style="position: absolute; bottom: 136px; left: 24px; right: 24px; height: 36px; background: rgba(15,23,42,0.15); border: 1px solid #CBD5E0; border-radius: 8px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A;">z-30 — Modal overlay</span></div>
+        <!-- Modal -->
+        <div style="position: absolute; bottom: 180px; left: 32px; right: 32px; height: 36px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; font-weight: 600;">z-40 — Modal / Dialog</span></div>
+        <!-- Toast -->
+        <div style="position: absolute; bottom: 224px; left: 40px; right: 40px; height: 32px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-mono); font-size: 0.6rem; color: #E53E3E; font-weight: 600;">z-50 — Toast / Tooltip</span></div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-zindex-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Z-index usage examples --&gt;
+&lt;header style="z-index: var(--z-sticky);"&gt;...&lt;/header&gt;
+&lt;div class="dropdown" style="z-index: var(--z-dropdown);"&gt;...&lt;/div&gt;
+&lt;div class="modal-overlay" style="z-index: var(--z-modal-overlay);"&gt;...&lt;/div&gt;
+&lt;div class="modal" style="z-index: var(--z-modal);"&gt;...&lt;/div&gt;
+&lt;div class="toast" style="z-index: var(--z-toast);"&gt;...&lt;/div&gt;</div>
+    <div class="code-block" id="code-zindex-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
+  --z-base: 0;
+  --z-sticky: 10;       /* sticky headers, bulk action bars */
+  --z-dropdown: 20;     /* dropdowns, popovers, date pickers */
+  --z-modal-overlay: 30; /* dark overlay behind modals */
+  --z-modal: 40;         /* modals, dialogs, drawers */
+  --z-toast: 50;         /* toasts, tooltips, notifications */
+  --z-max: 9999;         /* command palette, onboarding tour */
+}
+
+/* NUNCA usar valores arbitrarios (z-index: 999999) */
+/* SEMPRE usar tokens para evitar conflitos */</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Camada</th><th>Valor</th><th>Elementos</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Base</strong></td><td>0</td><td>Conteudo da pagina, cards, tabelas.</td></tr>
+        <tr><td><strong>Sticky</strong></td><td>10</td><td>Headers fixos, bulk action bars, sticky columns.</td></tr>
+        <tr><td><strong>Dropdown</strong></td><td>20</td><td>Dropdowns, popovers, date pickers, autocomplete.</td></tr>
+        <tr><td><strong>Modal Overlay</strong></td><td>30</td><td>Overlay escurecido atras de modais.</td></tr>
+        <tr><td><strong>Modal</strong></td><td>40</td><td>Modais, dialogs, drawers, sidepanels.</td></tr>
+        <tr><td><strong>Toast</strong></td><td>50</td><td>Toasts, tooltips, notificacoes flutuantes.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== SHADOW ELEVATION ==================== -->
+  <section class="section section-dark" id="shadow-elevation">
+    <div class="section-header">
+      <div class="section-number">50 — Shadow & Elevation System</div>
+      <h2>Shadow & Elevation System</h2>
+    </div>
+
+    <p>Sombras criam hierarquia visual e profundidade. Cada nivel de elevacao tem uma sombra progressiva, de flat (sem sombra) ate overlay (sombra forte).</p>
+
+    <div class="component-toggle" data-target="code-shadows">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; padding: 1rem;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem 1rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.25rem;">Flat</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8;">none</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 0.5rem;">Inputs, badges</div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.25rem;">Raised</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8;">sm</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 0.5rem;">Cards, headers</div>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.25rem;">Floating</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8;">md</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 0.5rem;">Dropdowns, popovers</div>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 12px; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,0.15);">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 0.25rem;">Overlay</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8;">lg</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 0.5rem;">Modais, dialogs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-shadows-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="card elevation-flat"&gt;...&lt;/div&gt;
+&lt;div class="card elevation-raised"&gt;...&lt;/div&gt;
+&lt;div class="dropdown elevation-floating"&gt;...&lt;/div&gt;
+&lt;div class="modal elevation-overlay"&gt;...&lt;/div&gt;</div>
+    <div class="code-block" id="code-shadows-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
+  --shadow-none: none;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+/* Dark mode: sombras mais fortes */
+[data-theme="dark"] {
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Nivel</th><th>Valor</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flat</strong></td><td><code>none</code> + border</td><td>Inputs, badges, inline elements. Usar border <code>#E2E8F0</code> para definicao.</td></tr>
+        <tr><td><strong>Raised (sm)</strong></td><td><code>0 1px 3px rgba(0,0,0,0.08)</code></td><td>Cards, sticky headers, table headers. Elevacao sutil.</td></tr>
+        <tr><td><strong>Floating (md)</strong></td><td><code>0 4px 12px rgba(0,0,0,0.1)</code></td><td>Dropdowns, popovers, notifications. Destaque do conteudo base.</td></tr>
+        <tr><td><strong>Overlay (lg)</strong></td><td><code>0 12px 40px rgba(0,0,0,0.15)</code></td><td>Modais, drawers, command palette. Foco total no elemento.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== FOCUS STATES ==================== -->
+  <section class="section" id="focus-states">
+    <div class="section-header">
+      <div class="section-number">51 — Focus States e Keyboard Navigation</div>
+      <h2>Focus States e Keyboard Navigation</h2>
+    </div>
+
+    <p>Focus states sao essenciais para acessibilidade por teclado. Todo elemento interativo deve ter um ring de foco visivel e consistente. Usar <code>:focus-visible</code> para evitar ring em cliques de mouse.</p>
+
+    <div class="component-toggle" data-target="code-focus">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+        <!-- Focus Ring Demo -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Focus Ring</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button style="padding: 8px 16px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; box-shadow: 0 0 0 3px rgba(43,108,176,0.4); outline: none;">Botao com foco</button>
+            <div style="border: 1.5px solid #2B6CB0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; box-shadow: 0 0 0 3px rgba(43,108,176,0.15); outline: none;">Input com foco</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <a href="#" style="font-family: var(--font-body); font-size: 0.75rem; color: #2B6CB0; text-decoration: underline; outline: 2px solid #2B6CB0; outline-offset: 2px; border-radius: 2px; padding: 1px 2px;">Link com foco</a>
+            </div>
+          </div>
+        </div>
+        <!-- Tab Order Demo -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Tab Order</div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.55rem; font-weight: 700; color: #FFFFFF;">1</span></div>
+              <span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Skip to content link</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.55rem; font-weight: 700; color: #FFFFFF;">2</span></div>
+              <span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Navegacao principal</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.55rem; font-weight: 700; color: #FFFFFF;">3</span></div>
+              <span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Conteudo principal</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><span style="font-family: var(--font-mono); font-size: 0.55rem; font-weight: 700; color: #FFFFFF;">4</span></div>
+              <span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Acoes / Botoes</span>
+            </div>
+          </div>
+        </div>
+        <!-- Skip to Content -->
+        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.75rem;">Skip to Content</div>
+          <div style="background: #2B6CB0; color: #FFFFFF; padding: 10px 16px; border-radius: 8px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; text-align: center; box-shadow: 0 4px 12px rgba(43,108,176,0.3);">Pular para o conteudo principal</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8; margin-top: 0.75rem; line-height: 1.5;">Aparece apenas quando o usuario pressiona Tab pela primeira vez. Posicionado no topo absoluto da pagina.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-focus-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Skip to content (primeiro elemento focavel) --&gt;
+&lt;a href="#main" class="skip-link"&gt;Pular para o conteudo&lt;/a&gt;
+
+&lt;!-- Elementos interativos com tabindex natural --&gt;
+&lt;button&gt;Acao&lt;/button&gt;     &lt;!-- tabindex=0 implicito --&gt;
+&lt;a href="#"&gt;Link&lt;/a&gt;        &lt;!-- tabindex=0 implicito --&gt;
+&lt;input type="text" /&gt;       &lt;!-- tabindex=0 implicito --&gt;
+
+&lt;!-- Trap focus em modais --&gt;
+&lt;div class="modal" role="dialog" aria-modal="true"&gt;
+  &lt;!-- Focus trapped aqui ate fechar --&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-focus-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Focus ring padrao - so aparece via teclado */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.4);
+}
+
+/* Links: outline em vez de box-shadow */
+a:focus-visible {
+  outline: 2px solid #2B6CB0;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove focus ring em click de mouse */
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Skip to content */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 10px 16px;
+  background: #2B6CB0;
+  color: #FFFFFF;
+  border-radius: 8px;
+}
+.skip-link:focus {
+  top: 16px;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Focus ring</strong></td><td><code>box-shadow: 0 0 0 3px rgba(43,108,176,0.4)</code>. Visivel em todos os backgrounds. Usar <code>:focus-visible</code>.</td></tr>
+        <tr><td><strong>Links</strong></td><td><code>outline: 2px solid #2B6CB0</code> com <code>outline-offset: 2px</code>. Nao usar box-shadow em links inline.</td></tr>
+        <tr><td><strong>Tab order</strong></td><td>Seguir ordem visual: skip-link &rarr; nav &rarr; conteudo &rarr; acoes. Nunca usar <code>tabindex &gt; 0</code>.</td></tr>
+        <tr><td><strong>Focus trap</strong></td><td>Modais devem "prender" o foco dentro deles. ESC para fechar. Retornar foco ao elemento que abriu o modal.</td></tr>
+        <tr><td><strong>Skip link</strong></td><td>Invisivel ate receber foco. Primeiro elemento focavel da pagina. Leva ao <code>#main</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== RESPONSIVE TYPOGRAPHY ==================== -->
+  <section class="section section-dark" id="responsive-typography">
+    <div class="section-header">
+      <div class="section-number">52 — Responsive Typography Scale</div>
+      <h2>Responsive Typography Scale</h2>
+    </div>
+
+    <p>Escala tipografica responsiva que adapta tamanhos de fonte automaticamente com base no viewport. Usa <code>clamp()</code> para transicoes suaves entre breakpoints.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-resp-typo')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-resp-typo-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-resp-typo-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-resp-typo">
+      <div style="background: #1E293B; border-radius: 12px; padding: 2rem; max-width: 600px; margin: auto;">
+        <div style="font-family: var(--font-heading); color: #F8FAFC; margin-bottom: 1.5rem;">
+          <div style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.1;">Display — 2rem</div>
+          <div style="font-size: 0.6rem; color: #94A3B8; font-family: var(--font-mono);">clamp(1.5rem, 1rem + 2vw, 2.5rem)</div>
+        </div>
+        <div style="font-family: var(--font-heading); color: #F8FAFC; margin-bottom: 1.5rem;">
+          <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2;">Heading 1 — 1.5rem</div>
+          <div style="font-size: 0.6rem; color: #94A3B8; font-family: var(--font-mono);">clamp(1.25rem, 0.9rem + 1.5vw, 1.75rem)</div>
+        </div>
+        <div style="font-family: var(--font-heading); color: #F8FAFC; margin-bottom: 1.5rem;">
+          <div style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.3;">Heading 2 — 1.125rem</div>
+          <div style="font-size: 0.6rem; color: #94A3B8; font-family: var(--font-mono);">clamp(1rem, 0.85rem + 0.8vw, 1.25rem)</div>
+        </div>
+        <div style="font-family: var(--font-body); color: #CBD5E1; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.5rem;">Body — 0.875rem — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula nisi eu turpis fringilla.</div>
+          <div style="font-size: 0.6rem; color: #94A3B8; font-family: var(--font-mono);">clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem)</div>
+        </div>
+        <div style="font-family: var(--font-body); color: #64748B;">
+          <div style="font-size: 0.7rem; line-height: 1.5; margin-bottom: 0.5rem;">Caption — 0.7rem — Texto auxiliar e metadados</div>
+          <div style="font-size: 0.6rem; color: #94A3B8; font-family: var(--font-mono);">clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-resp-typo-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
+  --text-display: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --text-h1:      clamp(1.25rem, 0.9rem + 1.5vw, 1.75rem);
+  --text-h2:      clamp(1rem, 0.85rem + 0.8vw, 1.25rem);
+  --text-body:    clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+  --text-caption:  clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+}
+
+&lt;h1 style="font-size: var(--text-display)"&gt;Titulo&lt;/h1&gt;
+&lt;p style="font-size: var(--text-body)"&gt;Corpo do texto&lt;/p&gt;</div>
+    <div class="code-block" id="code-resp-typo-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Responsive Typography Scale */
+:root {
+  --text-display: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --text-h1:      clamp(1.25rem, 0.9rem + 1.5vw, 1.75rem);
+  --text-h2:      clamp(1rem, 0.85rem + 0.8vw, 1.25rem);
+  --text-h3:      clamp(0.9rem, 0.8rem + 0.5vw, 1.1rem);
+  --text-body:    clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+  --text-small:   clamp(0.7rem, 0.65rem + 0.2vw, 0.8rem);
+  --text-caption: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+
+  /* Line-heights responsivos */
+  --leading-tight:  1.1;
+  --leading-snug:   1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+}
+
+/* Headings */
+h1 { font-size: var(--text-display); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-h1); line-height: var(--leading-snug); }
+h3 { font-size: var(--text-h2); line-height: var(--leading-snug); }
+p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Token</th><th>Min</th><th>Preferred</th><th>Max</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>--text-display</strong></td><td>1.5rem</td><td>1rem + 2vw</td><td>2.5rem</td><td>Titulos de pagina, hero text</td></tr>
+        <tr><td><strong>--text-h1</strong></td><td>1.25rem</td><td>0.9rem + 1.5vw</td><td>1.75rem</td><td>Heading principal de secao</td></tr>
+        <tr><td><strong>--text-h2</strong></td><td>1rem</td><td>0.85rem + 0.8vw</td><td>1.25rem</td><td>Sub-headings</td></tr>
+        <tr><td><strong>--text-body</strong></td><td>0.8rem</td><td>0.75rem + 0.3vw</td><td>0.9rem</td><td>Corpo de texto, paragrafos</td></tr>
+        <tr><td><strong>--text-caption</strong></td><td>0.65rem</td><td>0.6rem + 0.2vw</td><td>0.75rem</td><td>Captions, timestamps, metadados</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== PRINT STYLES ==================== -->
+  <section class="section" id="print-styles">
+    <div class="section-header">
+      <div class="section-number">53 — Print Styles</div>
+      <h2>Print Styles</h2>
+    </div>
+
+    <p>Regras de impressao para garantir que relatorios, notas fiscais e documentos exportados fiquem legiveis em papel. Remove elementos interativos e otimiza tipografia para midia impressa.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-print')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-print-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-print-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-print">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem; max-width: 500px; margin: auto; font-family: var(--font-body);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0F172A; padding-bottom: 1rem; margin-bottom: 1rem;">
+          <div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1rem; color: #0F172A;">SYSLED</div>
+            <div style="font-size: 0.6rem; color: #64748B;">Relatorio de Vendas</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.6rem; color: #64748B;">Emitido em</div>
+            <div style="font-size: 0.7rem; color: #0F172A; font-weight: 600;">07/03/2026</div>
+          </div>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.65rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid #CBD5E1;">
+              <th style="text-align: left; padding: 6px 0; color: #64748B; font-weight: 600;">Produto</th>
+              <th style="text-align: right; padding: 6px 0; color: #64748B; font-weight: 600;">Qtd</th>
+              <th style="text-align: right; padding: 6px 0; color: #64748B; font-weight: 600;">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F1F5F9;"><td style="padding: 6px 0; color: #0F172A;">Luminaria LED 24W</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">150</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">R$ 12.750,00</td></tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;"><td style="padding: 6px 0; color: #0F172A;">Painel Slim 18W</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">320</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">R$ 19.200,00</td></tr>
+            <tr><td style="padding: 6px 0; color: #0F172A;">Fita LED 5m RGB</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">85</td><td style="text-align: right; padding: 6px 0; color: #0F172A;">R$ 6.375,00</td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="border-top: 2px solid #0F172A;">
+              <td colspan="2" style="padding: 8px 0; font-weight: 700; color: #0F172A;">Total Geral</td>
+              <td style="text-align: right; padding: 8px 0; font-weight: 700; color: #0F172A;">R$ 38.325,00</td>
+            </tr>
+          </tfoot>
+        </table>
+        <div style="margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dashed #CBD5E1; font-size: 0.55rem; color: #94A3B8; text-align: center;">
+          Pagina 1 de 1 — Gerado automaticamente pelo SYSLED ERP
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-print-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Elementos com class="no-print" sao removidos na impressao --&gt;
+&lt;nav class="no-print"&gt;...&lt;/nav&gt;
+&lt;aside class="sidebar no-print"&gt;...&lt;/aside&gt;
+&lt;button class="no-print"&gt;Exportar&lt;/button&gt;
+
+&lt;!-- Conteudo imprimivel --&gt;
+&lt;main class="print-area"&gt;
+  &lt;header class="print-header"&gt;
+    &lt;h1&gt;SYSLED&lt;/h1&gt;
+    &lt;span class="print-date"&gt;07/03/2026&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;table class="print-table"&gt;...&lt;/table&gt;
+  &lt;footer class="print-footer"&gt;Pagina 1 de 1&lt;/footer&gt;
+&lt;/main&gt;</div>
+    <div class="code-block" id="code-print-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>@media print {
+  /* Reset */
+  * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+
+  /* Ocultar elementos interativos */
+  .no-print, nav, .sidebar, .toast-container,
+  button, .modal, .tooltip { display: none !important; }
+
+  /* Tipografia otimizada para papel */
+  body { font-size: 12pt; line-height: 1.5; font-family: "Georgia", serif; }
+  h1 { font-size: 18pt; }
+  h2 { font-size: 14pt; }
+
+  /* Tabelas */
+  table { border-collapse: collapse; width: 100%; page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  th, td { border: 0.5pt solid #000; padding: 4pt 8pt; }
+
+  /* Page breaks */
+  .page-break { page-break-before: always; }
+  h2, h3 { page-break-after: avoid; }
+
+  /* Links: mostrar URL */
+  a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666 !important; }
+
+  /* Rodape de pagina */
+  @page { margin: 2cm; @bottom-center { content: "SYSLED ERP — Pagina " counter(page); } }
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Regra</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Elementos ocultos</strong></td><td>Nav, sidebar, botoes, modais, tooltips, toasts. Usar class <code>.no-print</code>.</td></tr>
+        <tr><td><strong>Cores</strong></td><td>Preto e branco apenas. Sem gradientes ou sombras.</td></tr>
+        <tr><td><strong>Fonte corpo</strong></td><td>Georgia serif, 12pt, line-height 1.5 para legibilidade.</td></tr>
+        <tr><td><strong>Tabelas</strong></td><td>Bordas finas 0.5pt. <code>page-break-inside: avoid</code> em linhas.</td></tr>
+        <tr><td><strong>Links</strong></td><td>Mostrar URL apos o texto via <code>::after</code>.</td></tr>
+        <tr><td><strong>Margens</strong></td><td>2cm em todos os lados. Rodape com numero de pagina.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== MOTION TOKENS ==================== -->
+  <section class="section section-dark" id="motion-tokens">
+    <div class="section-header">
+      <div class="section-number">54 — Motion & Transition Tokens</div>
+      <h2>Motion & Transition Tokens</h2>
+    </div>
+
+    <p>Tokens de animacao padronizados para transicoes consistentes. Baseados em curvas de easing perceptualmente suaves, com duracoes proporcionais a complexidade do movimento.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-motion-tok')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-motion-tok-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-motion-tok-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-motion-tok">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 550px; margin: auto;">
+        <!-- Instant -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.5rem;">Instant — 100ms</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8; margin-bottom: 0.75rem;">Hover, focus, toggle</div>
+          <div style="height: 32px; position: relative; background: #334155; border-radius: 6px; overflow: hidden;">
+            <div style="width: 32px; height: 32px; background: #3B82F6; border-radius: 6px; animation: slideRight 0.1s ease-out infinite alternate;"></div>
+          </div>
+        </div>
+        <!-- Fast -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.5rem;">Fast — 200ms</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8; margin-bottom: 0.75rem;">Fade, slide, tooltip</div>
+          <div style="height: 32px; position: relative; background: #334155; border-radius: 6px; overflow: hidden;">
+            <div style="width: 32px; height: 32px; background: #10B981; border-radius: 6px; animation: slideRight 0.2s ease-out infinite alternate;"></div>
+          </div>
+        </div>
+        <!-- Normal -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.5rem;">Normal — 300ms</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8; margin-bottom: 0.75rem;">Modal, drawer, expand</div>
+          <div style="height: 32px; position: relative; background: #334155; border-radius: 6px; overflow: hidden;">
+            <div style="width: 32px; height: 32px; background: #F59E0B; border-radius: 6px; animation: slideRight 0.3s ease-in-out infinite alternate;"></div>
+          </div>
+        </div>
+        <!-- Slow -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.5rem;">Slow — 500ms</div>
+          <div style="font-family: var(--font-mono); font-size: 0.55rem; color: #94A3B8; margin-bottom: 0.75rem;">Page transition, loading</div>
+          <div style="height: 32px; position: relative; background: #334155; border-radius: 6px; overflow: hidden;">
+            <div style="width: 32px; height: 32px; background: #EF4444; border-radius: 6px; animation: slideRight 0.5s ease-in-out infinite alternate;"></div>
+          </div>
+        </div>
+      </div>
+      <style>@keyframes slideRight { from { transform: translateX(0); } to { transform: translateX(calc(100% + 80px)); } }</style>
+    </div>
+
+    <div class="code-block" id="code-motion-tok-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>:root {
+  /* Duracoes */
+  --duration-instant: 100ms;
+  --duration-fast:    200ms;
+  --duration-normal:  300ms;
+  --duration-slow:    500ms;
+
+  /* Easings */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+&lt;button style="transition: all var(--duration-fast) var(--ease-out)"&gt;
+  Hover me
+&lt;/button&gt;</div>
+    <div class="code-block" id="code-motion-tok-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Motion Tokens */
+:root {
+  --duration-instant: 100ms;  /* hover, focus, toggle */
+  --duration-fast:    200ms;  /* fade, slide, tooltip */
+  --duration-normal:  300ms;  /* modal, drawer, expand */
+  --duration-slow:    500ms;  /* page transition, loading */
+
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);     /* Saida suave */
+  --ease-in-out:  cubic-bezier(0.45, 0, 0.55, 1);    /* Simetrico */
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce sutil */
+  --ease-bounce:  cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce forte */
+}
+
+/* Composicao padrao */
+.btn     { transition: all var(--duration-instant) var(--ease-out); }
+.modal   { transition: opacity var(--duration-normal) var(--ease-in-out),
+                       transform var(--duration-normal) var(--ease-spring); }
+.tooltip { transition: opacity var(--duration-fast) var(--ease-out); }
+
+/* Respeitar preferencia do usuario */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>--duration-instant</strong></td><td>100ms</td><td>Hover, focus ring, toggle switch, color change</td></tr>
+        <tr><td><strong>--duration-fast</strong></td><td>200ms</td><td>Fade in/out, tooltip, slide pequeno</td></tr>
+        <tr><td><strong>--duration-normal</strong></td><td>300ms</td><td>Modal open/close, accordion, drawer</td></tr>
+        <tr><td><strong>--duration-slow</strong></td><td>500ms</td><td>Page transitions, skeleton loading, onboarding</td></tr>
+        <tr><td><strong>--ease-out</strong></td><td>cubic-bezier(0.16, 1, 0.3, 1)</td><td>Elementos que entram (aparecem)</td></tr>
+        <tr><td><strong>--ease-spring</strong></td><td>cubic-bezier(0.34, 1.56, 0.64, 1)</td><td>Bounce sutil em modais e popovers</td></tr>
+        <tr><td><strong>prefers-reduced-motion</strong></td><td>reduce</td><td>Obrigatorio: desabilitar animacoes para acessibilidade</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== FORM VALIDATION ==================== -->
+  <section class="section" id="form-validation">
+    <div class="section-header">
+      <div class="section-number">55 — Form Validation Patterns</div>
+      <h2>Form Validation Patterns</h2>
+    </div>
+
+    <p>Padroes de validacao de formularios com feedback visual claro e mensagens orientadas a acao. Validacao inline em tempo real com indicadores de sucesso e erro.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-formval')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-formval-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-formval-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-formval">
+      <div style="background: #F8FAFC; border-radius: 12px; padding: 2rem; max-width: 420px; margin: auto;">
+        <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A; margin-bottom: 1.5rem;">Cadastro de Produto</div>
+
+        <!-- Campo valido -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Nome do produto <span style="color: #E53E3E;">*</span></label>
+          <div style="position: relative;">
+            <div style="border: 1.5px solid #10B981; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #F0FDF4; padding-right: 32px;">Luminaria LED 24W Slim</div>
+            <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #10B981; margin-top: 3px;">&#10003; Nome valido</div>
+        </div>
+
+        <!-- Campo com erro -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Preco (R$) <span style="color: #E53E3E;">*</span></label>
+          <div style="position: relative;">
+            <div style="border: 1.5px solid #E53E3E; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFF5F5; padding-right: 32px;">-50</div>
+            <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #E53E3E; margin-top: 3px;">Insira um valor entre R$ 0,01 e R$ 999.999,99</div>
+        </div>
+
+        <!-- Campo com warning -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">SKU</label>
+          <div style="position: relative;">
+            <div style="border: 1.5px solid #F59E0B; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A; background: #FFFBEB; padding-right: 32px;">LED-24W</div>
+            <svg style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #F59E0B; margin-top: 3px;">SKU ja existe. Um sufixo sera adicionado automaticamente.</div>
+        </div>
+
+        <!-- Campo neutro -->
+        <div style="margin-bottom: 1.25rem;">
+          <label style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; display: block; margin-bottom: 4px;">Descricao</label>
+          <div style="border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8; min-height: 48px;">Descreva o produto em ate 500 caracteres...</div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-top: 3px;">0 / 500 caracteres</div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+          <button style="flex: 1; padding: 8px; border-radius: 8px; border: 1.5px solid #CBD5E1; background: white; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; cursor: pointer;">Cancelar</button>
+          <button style="flex: 1; padding: 8px; border-radius: 8px; border: none; background: #94A3B8; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: white; cursor: not-allowed; opacity: 0.6;">Salvar produto</button>
+        </div>
+        <div style="font-family: var(--font-body); font-size: 0.55rem; color: #E53E3E; margin-top: 0.5rem; text-align: center;">Corrija os erros acima para salvar</div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-formval-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="form-group is-valid"&gt;
+  &lt;label&gt;Nome &lt;span class="required"&gt;*&lt;/span&gt;&lt;/label&gt;
+  &lt;div class="input-wrapper"&gt;
+    &lt;input type="text" value="Luminaria LED" /&gt;
+    &lt;svg class="input-icon valid"&gt;...check...&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;span class="feedback success"&gt;Nome valido&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group is-invalid"&gt;
+  &lt;label&gt;Preco &lt;span class="required"&gt;*&lt;/span&gt;&lt;/label&gt;
+  &lt;div class="input-wrapper"&gt;
+    &lt;input type="number" value="-50" /&gt;
+    &lt;svg class="input-icon error"&gt;...x...&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;span class="feedback error"&gt;Valor entre R$ 0,01 e R$ 999.999,99&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group is-warning"&gt;
+  &lt;label&gt;SKU&lt;/label&gt;
+  &lt;div class="input-wrapper"&gt;
+    &lt;input type="text" value="LED-24W" /&gt;
+    &lt;svg class="input-icon warning"&gt;...alert...&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;span class="feedback warning"&gt;SKU ja existe&lt;/span&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-formval-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Form Validation States */
+.form-group .input-wrapper { position: relative; }
+.form-group .input-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 16px; }
+
+/* Valid */
+.form-group.is-valid input { border-color: #10B981; background: #F0FDF4; }
+.form-group.is-valid .input-icon { stroke: #10B981; }
+.form-group.is-valid .feedback { color: #10B981; }
+
+/* Invalid */
+.form-group.is-invalid input { border-color: #E53E3E; background: #FFF5F5; }
+.form-group.is-invalid .input-icon { stroke: #E53E3E; }
+.form-group.is-invalid .feedback { color: #E53E3E; }
+
+/* Warning */
+.form-group.is-warning input { border-color: #F59E0B; background: #FFFBEB; }
+.form-group.is-warning .input-icon { stroke: #F59E0B; }
+.form-group.is-warning .feedback { color: #F59E0B; }
+
+/* Feedback text */
+.feedback { font-size: 0.55rem; margin-top: 3px; display: block; }
+
+/* Submit disabled quando ha erros */
+.btn-submit:disabled { background: #94A3B8; cursor: not-allowed; opacity: 0.6; }
+
+/* Validacao em tempo real */
+input:focus { border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+input:invalid:not(:placeholder-shown) { border-color: #E53E3E; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Estado</th><th>Borda</th><th>Background</th><th>Icone</th><th>Texto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Neutro</strong></td><td><code>#CBD5E1</code></td><td><code>#FFFFFF</code></td><td>Nenhum</td><td><code>#94A3B8</code> — helper text</td></tr>
+        <tr><td><strong>Focus</strong></td><td><code>#3B82F6</code></td><td><code>#FFFFFF</code></td><td>Nenhum</td><td>—</td></tr>
+        <tr><td><strong>Valido</strong></td><td><code>#10B981</code></td><td><code>#F0FDF4</code></td><td>Check verde</td><td><code>#10B981</code> — confirmacao</td></tr>
+        <tr><td><strong>Erro</strong></td><td><code>#E53E3E</code></td><td><code>#FFF5F5</code></td><td>X vermelho</td><td><code>#E53E3E</code> — como corrigir</td></tr>
+        <tr><td><strong>Warning</strong></td><td><code>#F59E0B</code></td><td><code>#FFFBEB</code></td><td>Alert amarelo</td><td><code>#F59E0B</code> — aviso</td></tr>
+        <tr><td><strong>Submit</strong></td><td colspan="4">Desabilitado enquanto houver erros. Mensagem abaixo: "Corrija os erros acima".</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== I18N ==================== -->
+  <section class="section section-dark" id="i18n">
+    <div class="section-header">
+      <div class="section-number">56 — Internationalization (i18n) Ready</div>
+      <h2>Internationalization (i18n) Ready</h2>
+    </div>
+
+    <p>Diretrizes para preparar componentes para internacionalizacao. Garante que layouts, textos e formatos se adaptem a diferentes idiomas e locales sem quebrar o design.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-i18n')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-i18n-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-i18n-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-i18n">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 550px; margin: auto;">
+        <!-- PT-BR -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div style="width: 24px; height: 16px; background: linear-gradient(#009C3B 50%, #FFDF00 50%); border-radius: 2px;"></div>
+            <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #F8FAFC;">pt-BR</div>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Moeda:</strong> R$ 1.234,56</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Data:</strong> 07/03/2026</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Numero:</strong> 1.234.567,89</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1;"><strong style="color: #94A3B8;">Botao:</strong> Salvar produto</div>
+        </div>
+        <!-- EN-US -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div style="width: 24px; height: 16px; background: linear-gradient(#B22234 33%, #FFFFFF 33%, #FFFFFF 66%, #3C3B6E 66%); border-radius: 2px;"></div>
+            <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #F8FAFC;">en-US</div>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Currency:</strong> $1,234.56</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Date:</strong> 03/07/2026</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Number:</strong> 1,234,567.89</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1;"><strong style="color: #94A3B8;">Button:</strong> Save product</div>
+        </div>
+        <!-- ES -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <div style="width: 24px; height: 16px; background: linear-gradient(#AA151B 33%, #F1BF00 33%, #F1BF00 66%, #AA151B 66%); border-radius: 2px;"></div>
+            <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #F8FAFC;">es-ES</div>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Moneda:</strong> 1.234,56 EUR</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Fecha:</strong> 07/03/2026</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1; margin-bottom: 0.5rem;"><strong style="color: #94A3B8;">Numero:</strong> 1.234.567,89</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #CBD5E1;"><strong style="color: #94A3B8;">Boton:</strong> Guardar producto</div>
+        </div>
+        <!-- Expansao de texto -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #F8FAFC; margin-bottom: 1rem;">Expansao de Texto</div>
+          <div style="margin-bottom: 0.5rem;">
+            <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-bottom: 2px;">EN: "Save"</div>
+            <div style="background: #3B82F6; border-radius: 4px; padding: 2px 8px; display: inline-block; font-family: var(--font-heading); font-size: 0.55rem; color: white; font-weight: 600;">Save</div>
+          </div>
+          <div style="margin-bottom: 0.5rem;">
+            <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-bottom: 2px;">DE: "Speichern" (+80%)</div>
+            <div style="background: #3B82F6; border-radius: 4px; padding: 2px 8px; display: inline-block; font-family: var(--font-heading); font-size: 0.55rem; color: white; font-weight: 600;">Speichern</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-bottom: 2px;">JA: "Hozon" (+compacto)</div>
+            <div style="background: #3B82F6; border-radius: 4px; padding: 2px 8px; display: inline-block; font-family: var(--font-heading); font-size: 0.55rem; color: white; font-weight: 600;">&#20445;&#23384;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-i18n-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Usar Intl API para formatacao --&gt;
+&lt;script&gt;
+// Moeda
+new Intl.NumberFormat('pt-BR', {
+  style: 'currency', currency: 'BRL'
+}).format(1234.56); // "R$ 1.234,56"
+
+// Data
+new Intl.DateTimeFormat('pt-BR').format(new Date());
+// "07/03/2026"
+
+// Numero
+new Intl.NumberFormat('pt-BR').format(1234567.89);
+// "1.234.567,89"
+
+// Plural
+new Intl.PluralRules('pt-BR').select(1); // "one"
+new Intl.PluralRules('pt-BR').select(5); // "other"
+&lt;/script&gt;
+
+&lt;!-- Strings: usar chaves, nunca hardcoded --&gt;
+&lt;button&gt;{{ t('product.save') }}&lt;/button&gt;
+&lt;p&gt;{{ t('product.count', { count: 5 }) }}&lt;/p&gt;</div>
+    <div class="code-block" id="code-i18n-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* i18n CSS Guidelines */
+
+/* 1. Expansao de texto: permitir ate 200% de crescimento */
+.btn { min-width: max-content; padding: 8px 16px; white-space: nowrap; }
+.nav-link { overflow: hidden; text-overflow: ellipsis; }
+
+/* 2. RTL Support (futuro) */
+[dir="rtl"] { direction: rtl; }
+[dir="rtl"] .sidebar { right: 0; left: auto; }
+/* Usar propriedades logicas */
+.card {
+  margin-inline-start: 1rem;  /* em vez de margin-left */
+  padding-inline-end: 1rem;   /* em vez de padding-right */
+  border-inline-start: 3px solid #3B82F6; /* em vez de border-left */
+}
+
+/* 3. Font stacks para multiplos scripts */
+:root {
+  --font-body: 'Inter', 'Noto Sans', 'Noto Sans JP', 'Noto Sans AR', sans-serif;
+}
+
+/* 4. Evitar largura fixa em containers de texto */
+.form-label { width: auto; min-width: 100px; }
+.table-header { white-space: nowrap; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Aspecto</th><th>Regra</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Strings</strong></td><td>Nunca hardcoded. Usar chaves de traducao (<code>t('key')</code>). Arquivos JSON por locale.</td></tr>
+        <tr><td><strong>Formatacao</strong></td><td>Sempre usar <code>Intl</code> API nativa: <code>NumberFormat</code>, <code>DateTimeFormat</code>, <code>PluralRules</code>.</td></tr>
+        <tr><td><strong>Expansao</strong></td><td>Projetar layouts para ate 200% de expansao de texto (DE, FI). Usar <code>min-width: max-content</code>.</td></tr>
+        <tr><td><strong>Truncamento</strong></td><td><code>text-overflow: ellipsis</code> em navs e headers estreitos. Tooltip com texto completo.</td></tr>
+        <tr><td><strong>RTL</strong></td><td>Usar propriedades logicas CSS: <code>margin-inline-start</code>, <code>padding-inline-end</code>.</td></tr>
+        <tr><td><strong>Fontes</strong></td><td>Incluir Noto Sans para scripts CJK e Arabic no font stack.</td></tr>
+        <tr><td><strong>Plurais</strong></td><td>Usar <code>Intl.PluralRules</code>. Nao concatenar strings com numeros.</td></tr>
+        <tr><td><strong>Locale default</strong></td><td><code>pt-BR</code>. Fallback: <code>en-US</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">47 — Iconografia</div>
+      <div class="section-number">57 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -9731,7 +10750,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">48 — Acessibilidade</div>
+      <div class="section-number">58 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -9823,7 +10842,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">49 — Responsividade</div>
+      <div class="section-number">59 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -9876,7 +10895,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">50 — Design Tokens</div>
+      <div class="section-number">60 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

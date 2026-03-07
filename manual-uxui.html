@@ -1723,6 +1723,7 @@
   <a href="#breadcrumbs">Breadcrumbs</a>
   <a href="#stepper">Stepper / Wizard</a>
   <a href="#animacoes">Animações</a>
+  <a href="#patterns">Patterns de Layout</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1766,10 +1767,11 @@
         <a href="#breadcrumbs"><span class="toc-num">13</span> Breadcrumbs</a>
         <a href="#stepper"><span class="toc-num">14</span> Stepper</a>
         <a href="#animacoes"><span class="toc-num">15</span> Animações</a>
-        <a href="#iconografia"><span class="toc-num">16</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">17</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">18</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">19</span> Design Tokens</a>
+        <a href="#patterns"><span class="toc-num">16</span> Patterns</a>
+        <a href="#iconografia"><span class="toc-num">17</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">18</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">19</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">20</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -5471,10 +5473,290 @@
     </table>
   </section>
 
+
+  <!-- ==================== PATTERNS DE LAYOUT ==================== -->
+  <section class="section" id="patterns">
+    <div class="section-header">
+      <div class="section-number">16 — Patterns de Layout</div>
+      <h2>Patterns de Layout</h2>
+    </div>
+
+    <p>Patterns são composições recorrentes de componentes que formam páginas completas. Definem a estrutura visual de dashboards, listagens, detalhes e configurações — garantindo consistência entre módulos.</p>
+
+    <h3>Dashboard</h3>
+    <p>Visão geral com métricas, gráficos e ações rápidas. Layout: sidebar fixa + header + grid de cards.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <!-- Mini Dashboard Preview -->
+      <div style="border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; background: #F8FAFC; min-height: 360px; display: flex;">
+        <!-- Sidebar mini -->
+        <div style="width: 56px; background: #0F172A; display: flex; flex-direction: column; align-items: center; padding: 1rem 0; gap: 1.25rem; flex-shrink: 0;">
+          <div style="width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #2B6CB0, #48C9B0); margin-bottom: 0.5rem;"></div>
+          <div style="width: 20px; height: 20px; border-radius: 6px; background: rgba(255,255,255,0.15);"></div>
+          <div style="width: 20px; height: 20px; border-radius: 6px; background: #2B6CB0;"></div>
+          <div style="width: 20px; height: 20px; border-radius: 6px; background: rgba(255,255,255,0.15);"></div>
+          <div style="width: 20px; height: 20px; border-radius: 6px; background: rgba(255,255,255,0.15);"></div>
+          <div style="flex: 1;"></div>
+          <div style="width: 20px; height: 20px; border-radius: 6px; background: rgba(255,255,255,0.15);"></div>
+        </div>
+        <!-- Content -->
+        <div style="flex: 1; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; overflow: hidden;">
+          <!-- Header bar -->
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: #0F172A;">Dashboard</div>
+              <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8;">Visão geral do sistema</div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <div style="padding: 4px 10px; border: 1px solid #E2E8F0; border-radius: 6px; font-family: var(--font-body); font-size: 0.6rem; color: #64748B;">Últimos 30 dias ▾</div>
+              <div style="padding: 4px 10px; border-radius: 6px; background: #2B6CB0; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #FFFFFF;">+ Novo</div>
+            </div>
+          </div>
+          <!-- Metric cards -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Produtos</div>
+              <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-top: 2px;">1.248</div>
+              <div style="font-family: var(--font-body); font-size: 0.5rem; color: #059669; margin-top: 2px;">↑ 12%</div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Pedidos</div>
+              <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-top: 2px;">384</div>
+              <div style="font-family: var(--font-body); font-size: 0.5rem; color: #059669; margin-top: 2px;">↑ 8%</div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Receita</div>
+              <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-top: 2px;">R$ 2.4M</div>
+              <div style="font-family: var(--font-body); font-size: 0.5rem; color: #059669; margin-top: 2px;">↑ 23%</div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Alertas</div>
+              <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #D97706; margin-top: 2px;">7</div>
+              <div style="font-family: var(--font-body); font-size: 0.5rem; color: #DC2626; margin-top: 2px;">↑ 3 novos</div>
+            </div>
+          </div>
+          <!-- Chart + Table area -->
+          <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 0.75rem; flex: 1;">
+            <!-- Chart placeholder -->
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #334155; margin-bottom: 0.5rem;">Vendas por Mês</div>
+              <div style="display: flex; align-items: flex-end; gap: 6px; height: 80px; padding-top: 0.5rem;">
+                <div style="flex: 1; background: #DBEAFE; border-radius: 3px 3px 0 0; height: 45%;"></div>
+                <div style="flex: 1; background: #DBEAFE; border-radius: 3px 3px 0 0; height: 60%;"></div>
+                <div style="flex: 1; background: #DBEAFE; border-radius: 3px 3px 0 0; height: 35%;"></div>
+                <div style="flex: 1; background: #DBEAFE; border-radius: 3px 3px 0 0; height: 75%;"></div>
+                <div style="flex: 1; background: #DBEAFE; border-radius: 3px 3px 0 0; height: 55%;"></div>
+                <div style="flex: 1; background: #2B6CB0; border-radius: 3px 3px 0 0; height: 90%;"></div>
+              </div>
+            </div>
+            <!-- Recent activity -->
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem;">
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #334155; margin-bottom: 0.5rem;">Atividade Recente</div>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 6px; height: 6px; border-radius: 50%; background: #059669; flex-shrink: 0;"></div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #475569; flex: 1;">Pedido #1234 confirmado</div>
+                  <div style="font-family: var(--font-body); font-size: 0.5rem; color: #CBD5E1;">2min</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 6px; height: 6px; border-radius: 50%; background: #D97706; flex-shrink: 0;"></div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #475569; flex: 1;">Estoque baixo: LED 500W</div>
+                  <div style="font-family: var(--font-body); font-size: 0.5rem; color: #CBD5E1;">15min</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 6px; height: 6px; border-radius: 50%; background: #2B6CB0; flex-shrink: 0;"></div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #475569; flex: 1;">Novo produto cadastrado</div>
+                  <div style="font-family: var(--font-body); font-size: 0.5rem; color: #CBD5E1;">1h</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pattern 2: Master-Detail -->
+    <h3 style="margin-top: 2.5rem;">Master-Detail (Lista-Detalhe)</h3>
+    <p>Lista à esquerda, detalhe à direita. Para catálogos, e-mails, mensagens e gestão de pedidos.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; background: #FFFFFF; min-height: 300px; display: flex;">
+        <!-- List panel -->
+        <div style="width: 280px; border-right: 1px solid #E2E8F0; flex-shrink: 0; display: flex; flex-direction: column;">
+          <!-- Search -->
+          <div style="padding: 0.75rem; border-bottom: 1px solid #F1F5F9;">
+            <div style="padding: 6px 10px; border: 1px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8;">🔍 Buscar pedidos...</div>
+          </div>
+          <!-- List items -->
+          <div style="flex: 1; overflow: hidden;">
+            <div style="padding: 0.75rem; border-bottom: 1px solid #F1F5F9; background: #EFF6FF; border-left: 3px solid #2B6CB0;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">#PED-1234</span>
+                <span style="font-size: 0.55rem; padding: 2px 6px; border-radius: 99px; background: #D1FAE5; color: #059669; font-weight: 600;">Confirmado</span>
+              </div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-top: 2px;">João Silva · R$ 2.450,00</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E1; margin-top: 2px;">Há 2 minutos</div>
+            </div>
+            <div style="padding: 0.75rem; border-bottom: 1px solid #F1F5F9;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #334155;">#PED-1233</span>
+                <span style="font-size: 0.55rem; padding: 2px 6px; border-radius: 99px; background: #FEF3C7; color: #D97706; font-weight: 600;">Pendente</span>
+              </div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-top: 2px;">Maria Souza · R$ 890,00</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E1; margin-top: 2px;">Há 15 minutos</div>
+            </div>
+            <div style="padding: 0.75rem; border-bottom: 1px solid #F1F5F9;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #334155;">#PED-1232</span>
+                <span style="font-size: 0.55rem; padding: 2px 6px; border-radius: 99px; background: #DBEAFE; color: #2B6CB0; font-weight: 600;">Enviado</span>
+              </div>
+              <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-top: 2px;">Carlos Lima · R$ 5.120,00</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E1; margin-top: 2px;">Há 1 hora</div>
+            </div>
+          </div>
+        </div>
+        <!-- Detail panel -->
+        <div style="flex: 1; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: #0F172A;">Pedido #PED-1234</div>
+              <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-top: 2px;">07/03/2026 · João Silva</div>
+            </div>
+            <span style="font-size: 0.65rem; padding: 4px 10px; border-radius: 99px; background: #D1FAE5; color: #059669; font-weight: 600;">Confirmado</span>
+          </div>
+          <!-- Detail grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div style="background: #F8FAFC; border-radius: 8px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Total</div>
+              <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #0F172A;">R$ 2.450,00</div>
+            </div>
+            <div style="background: #F8FAFC; border-radius: 8px; padding: 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em;">Itens</div>
+              <div style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: #0F172A;">3 produtos</div>
+            </div>
+          </div>
+          <!-- Items list -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-bottom: 1px solid #F1F5F9;">
+              <div style="font-family: var(--font-body); font-size: 0.7rem; color: #334155;">Painel Solar 200W <span style="color: #94A3B8;">×2</span></div>
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">R$ 979,80</div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem;">
+              <div style="font-family: var(--font-body); font-size: 0.7rem; color: #334155;">Sensor PIR <span style="color: #94A3B8;">×10</span></div>
+              <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">R$ 425,00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pattern 3: Settings -->
+    <h3 style="margin-top: 2.5rem;">Página de Configurações</h3>
+    <p>Tabs laterais ou superiores com formulários agrupados por categoria. Para perfil, preferências e integrações.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; background: #FFFFFF; min-height: 280px; display: flex;">
+        <!-- Settings nav -->
+        <div style="width: 180px; border-right: 1px solid #E2E8F0; padding: 1rem 0; flex-shrink: 0;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; padding: 0 1rem; margin-bottom: 0.75rem;">Configurações</div>
+          <div style="padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.7rem; color: #2B6CB0; background: #EFF6FF; border-right: 2px solid #2B6CB0; font-weight: 600;">Perfil</div>
+          <div style="padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Notificações</div>
+          <div style="padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Segurança</div>
+          <div style="padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Integrações</div>
+          <div style="padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.7rem; color: #64748B;">Faturamento</div>
+        </div>
+        <!-- Settings content -->
+        <div style="flex: 1; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A;">Perfil da Empresa</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; margin-top: 2px;">Informações básicas da conta</div>
+          <div style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 1rem; max-width: 360px;">
+            <div>
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #64748B; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em;">Nome da Empresa</label>
+              <div style="padding: 8px 12px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A;">Sysled Iluminação</div>
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #64748B; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em;">E-mail</label>
+              <div style="padding: 8px 12px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.8rem; color: #0F172A;">contato@sysled.com.br</div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+              <div style="padding: 6px 16px; border-radius: 8px; background: #2B6CB0; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #FFFFFF;">Salvar</div>
+              <div style="padding: 6px 16px; border-radius: 8px; border: 1px solid #E2E8F0; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B;">Cancelar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catálogo de Patterns -->
+    <h3 style="margin-top: 2.5rem;">Catálogo de Patterns</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Dashboard</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Sidebar + header + metric cards + charts + activity feed. Para visão geral de módulos.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Master-Detail</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Lista à esquerda + painel de detalhe à direita. Pedidos, mensagens, catálogo.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Configurações</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Nav lateral + formulários por seção. Perfil, notificações, segurança.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Listagem + Filtros</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Search bar + filtros + tabela/grid de cards com paginação. Produtos, usuários.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Página de Detalhe</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Breadcrumb + header com ações + tabs de conteúdo + sidebar info. Produto, pedido.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Wizard / Onboarding</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Stepper + formulário por etapa + barra de ações. Cadastro, importação, setup.</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Composição</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Hierarquia Visual</strong></td><td>Métricas principais no topo (cards). Conteúdo detalhado no centro. Ações secundárias na sidebar ou footer.</td></tr>
+        <tr><td><strong>Sidebar</strong></td><td>Desktop: fixa, 240-280px expandida ou 56-64px colapsada (ícones). Mobile: drawer com overlay.</td></tr>
+        <tr><td><strong>Header</strong></td><td>Altura: 56-64px. Contém: título da página, breadcrumb, ações primárias (botões). Sticky em scroll.</td></tr>
+        <tr><td><strong>Content Area</strong></td><td>Max-width: <code>1200px</code>. Padding: <code>24-32px</code>. Background: <code>#F8FAFC</code> (contraste com cards brancos).</td></tr>
+        <tr><td><strong>Master-Detail</strong></td><td>Lista: 280-320px fixa. Detalhe: flex. Em mobile: tela cheia alternando entre lista e detalhe (stack).</td></tr>
+        <tr><td><strong>Configurações</strong></td><td>Nav lateral: 180-220px. Conteúdo: max-width 600px para formulários. Agrupar campos relacionados.</td></tr>
+        <tr><td><strong>Empty State</strong></td><td>Toda listagem deve ter empty state com ilustração + mensagem + CTA. Nunca exibir página vazia.</td></tr>
+        <tr><td><strong>Responsivo</strong></td><td>Dashboard: cards empilham em 1-2 colunas. Master-Detail: stack vertical. Settings: nav vira tabs superiores.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações de Estrutura</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Elemento</th><th>Desktop</th><th>Tablet</th><th>Mobile</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sidebar</td><td>240px fixa / 56px colapsada</td><td>56px ícones</td><td>Drawer overlay</td></tr>
+        <tr><td>Header</td><td><code>64px</code> sticky</td><td><code>56px</code> sticky</td><td><code>56px</code> sticky</td></tr>
+        <tr><td>Content Padding</td><td><code>32px</code></td><td><code>24px</code></td><td><code>16px</code></td></tr>
+        <tr><td>Content Max Width</td><td><code>1200px</code></td><td><code>100%</code></td><td><code>100%</code></td></tr>
+        <tr><td>Card Grid</td><td>3-4 colunas</td><td>2 colunas</td><td>1 coluna</td></tr>
+        <tr><td>Master List</td><td>280-320px fixa</td><td>240px</td><td>Tela cheia</td></tr>
+        <tr><td>Settings Nav</td><td>180px lateral</td><td>Tabs superiores</td><td>Tabs superiores</td></tr>
+        <tr><td>Metric Cards</td><td>4 em linha</td><td>2 em linha</td><td>1 por linha (stack)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">16 — Iconografia</div>
+      <div class="section-number">17 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -5561,7 +5843,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">17 — Acessibilidade</div>
+      <div class="section-number">18 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -5653,7 +5935,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">18 — Responsividade</div>
+      <div class="section-number">19 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -5706,7 +5988,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">19 — Design Tokens</div>
+      <div class="section-number">20 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

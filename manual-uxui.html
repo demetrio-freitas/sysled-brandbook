@@ -1734,6 +1734,11 @@
   <a href="#paginacao">Paginacao</a>
   <a href="#alertas-banners">Alertas e Banners</a>
   <a href="#drag-drop">Drag &amp; Drop</a>
+  <a href="#shortcuts">Shortcuts</a>
+  <a href="#onboarding">Onboarding</a>
+  <a href="#filtros-busca">Filtros e Busca</a>
+  <a href="#centro-notificacoes">Centro de Notificacoes</a>
+  <a href="#tabelas-avancadas">Tabelas Avancadas</a>
   <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1788,10 +1793,15 @@
         <a href="#paginacao"><span class="toc-num">24</span> Paginacao</a>
         <a href="#alertas-banners"><span class="toc-num">25</span> Alertas e Banners</a>
         <a href="#drag-drop"><span class="toc-num">26</span> Drag &amp; Drop</a>
-        <a href="#iconografia"><span class="toc-num">27</span> Iconografia</a>
-        <a href="#acessibilidade"><span class="toc-num">28</span> Acessibilidade</a>
-        <a href="#responsividade"><span class="toc-num">29</span> Responsividade</a>
-        <a href="#design-tokens"><span class="toc-num">30</span> Design Tokens</a>
+        <a href="#shortcuts"><span class="toc-num">27</span> Shortcuts</a>
+        <a href="#onboarding"><span class="toc-num">28</span> Onboarding</a>
+        <a href="#filtros-busca"><span class="toc-num">29</span> Filtros e Busca</a>
+        <a href="#centro-notificacoes"><span class="toc-num">30</span> Notificacoes</a>
+        <a href="#tabelas-avancadas"><span class="toc-num">31</span> Tabelas Avancadas</a>
+        <a href="#iconografia"><span class="toc-num">32</span> Iconografia</a>
+        <a href="#acessibilidade"><span class="toc-num">33</span> Acessibilidade</a>
+        <a href="#responsividade"><span class="toc-num">34</span> Responsividade</a>
+        <a href="#design-tokens"><span class="toc-num">35</span> Design Tokens</a>
       </div>
     </div>
   </div>
@@ -6901,10 +6911,756 @@
     </table>
   </section>
 
+
+  <!-- ==================== SHORTCUTS E ATALHOS ==================== -->
+  <section class="section" id="shortcuts">
+    <div class="section-header">
+      <div class="section-number">27 — Shortcuts e Atalhos de Teclado</div>
+      <h2>Shortcuts e Atalhos de Teclado</h2>
+    </div>
+
+    <p>Atalhos de teclado aceleram o fluxo de trabalho de usuarios avancados. Todos os atalhos devem ser descobriveis via modal de ajuda (<kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; background: #F1F5F9; border: 1px solid #CBD5E0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.65rem; color: #0F172A; box-shadow: 0 1px 0 #CBD5E0;">?</kbd>) e documentados.</p>
+
+    <!-- Keyboard Shortcut Modal Preview -->
+    <h3>Modal de Atalhos</h3>
+
+    <div class="component-toggle" data-target="code-shortcuts">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; max-width: 520px;">
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid #F1F5F9;">
+          <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: #0F172A;">Atalhos de Teclado</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px; display: flex; align-items: center; gap: 6px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8;">Buscar atalho...</span>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+        </div>
+        <!-- Category: Navegacao -->
+        <div style="margin-bottom: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Navegacao</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px; background: #F8FAFC;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Busca rapida</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">&#8984;</kbd><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">K</kbd></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Ir para Dashboard</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">G</kbd><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">D</kbd></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px; background: #F8FAFC;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Ir para Produtos</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">G</kbd><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">P</kbd></div>
+            </div>
+          </div>
+        </div>
+        <!-- Category: Acoes -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Acoes</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px; background: #F8FAFC;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Salvar</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">&#8984;</kbd><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">S</kbd></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Novo produto</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">N</kbd></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px; background: #F8FAFC;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Desfazer</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">&#8984;</kbd><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">Z</kbd></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 6px;">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">Abrir ajuda de atalhos</span>
+              <div style="display: flex; gap: 4px;"><kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 5px; font-family: var(--font-mono); font-size: 0.6rem; color: #0F172A; box-shadow: 0 1px 0 #E2E8F0; font-weight: 600;">?</kbd></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-shortcuts-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Kbd Badge --&gt;
+&lt;kbd class="shortcut-key"&gt;&#8984;&lt;/kbd&gt;
+&lt;kbd class="shortcut-key"&gt;K&lt;/kbd&gt;
+
+&lt;!-- Shortcut Row --&gt;
+&lt;div class="shortcut-row"&gt;
+  &lt;span class="shortcut-label"&gt;Busca rapida&lt;/span&gt;
+  &lt;div class="shortcut-keys"&gt;
+    &lt;kbd class="shortcut-key"&gt;&#8984;&lt;/kbd&gt;
+    &lt;kbd class="shortcut-key"&gt;K&lt;/kbd&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-shortcuts-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.shortcut-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: #0F172A;
+  font-weight: 600;
+  box-shadow: 0 1px 0 #E2E8F0;
+}
+
+.shortcut-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+.shortcut-row:nth-child(odd) {
+  background: #F8FAFC;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Descoberta</strong></td><td>Tecla <code>?</code> abre modal de atalhos. Tooltip em hover mostra atalho do botao.</td></tr>
+        <tr><td><strong>Padroes</strong></td><td>Navegacao: <code>G + letra</code>. Acoes: <code>Cmd/Ctrl + letra</code>. Acoes rapidas: letra unica (<code>N</code> = novo).</td></tr>
+        <tr><td><strong>Kbd style</strong></td><td>Background branco, border <code>#E2E8F0</code>, border-radius 5px, box-shadow para efeito 3D sutil, font JetBrains Mono 0.6rem.</td></tr>
+        <tr><td><strong>Acessibilidade</strong></td><td>Nunca substituir atalhos nativos do browser. Atalhos nao podem ser a unica forma de acesso — sempre ter equivalente clicavel.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== ONBOARDING E TOUR GUIADO ==================== -->
+  <section class="section section-dark" id="onboarding">
+    <div class="section-header">
+      <div class="section-number">28 — Onboarding e Tour Guiado</div>
+      <h2>Onboarding e Tour Guiado</h2>
+    </div>
+
+    <p>O onboarding guia novos usuarios pelos recursos principais do sistema. Usa spotlight (destaque) em elementos da interface com tooltips explicativos e progresso visual.</p>
+
+    <h3>Tour Step — Spotlight</h3>
+
+    <div class="component-toggle" data-target="code-onboarding">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <!-- Simulated App Screen with Overlay -->
+      <div style="position: relative; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; height: 320px;">
+        <!-- Fake App Header -->
+        <div style="background: #FFFFFF; border-bottom: 1px solid #E2E8F0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A;">Produtos</div>
+          <div style="display: flex; gap: 8px;">
+            <button style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; cursor: default;">Filtrar</button>
+            <button id="onboarding-target-btn" style="padding: 6px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: default; position: relative; z-index: 3; box-shadow: 0 0 0 4px rgba(43,108,176,0.3);">+ Novo Produto</button>
+          </div>
+        </div>
+        <!-- Overlay -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.6); z-index: 2;"></div>
+        <!-- Fake table rows (dimmed) -->
+        <div style="padding: 12px 20px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="background: #FFFFFF; border-radius: 8px; height: 40px; opacity: 0.3;"></div>
+          <div style="background: #FFFFFF; border-radius: 8px; height: 40px; opacity: 0.3;"></div>
+          <div style="background: #FFFFFF; border-radius: 8px; height: 40px; opacity: 0.3;"></div>
+        </div>
+        <!-- Tour Tooltip -->
+        <div style="position: absolute; top: 52px; right: 20px; z-index: 4; background: #FFFFFF; border-radius: 12px; padding: 16px; width: 260px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+          <!-- Arrow -->
+          <div style="position: absolute; top: -6px; right: 40px; width: 12px; height: 12px; background: #FFFFFF; transform: rotate(45deg); border-left: 1px solid #E2E8F0; border-top: 1px solid #E2E8F0;"></div>
+          <!-- Progress -->
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+            <div style="display: flex; gap: 4px;">
+              <div style="width: 6px; height: 6px; border-radius: 50%; background: #2B6CB0;"></div>
+              <div style="width: 6px; height: 6px; border-radius: 50%; background: #2B6CB0;"></div>
+              <div style="width: 6px; height: 6px; border-radius: 50%; background: #E2E8F0;"></div>
+              <div style="width: 6px; height: 6px; border-radius: 50%; background: #E2E8F0;"></div>
+            </div>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; color: #94A3B8; margin-left: auto;">2 de 4</span>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Cadastre seu primeiro produto</div>
+          <div style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B; line-height: 1.5; margin-top: 4px;">Clique aqui para adicionar produtos ao seu catalogo. Voce pode importar via CSV ou cadastrar manualmente.</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+            <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.65rem; color: #94A3B8; cursor: pointer;">Pular tour</button>
+            <div style="display: flex; gap: 6px;">
+              <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; cursor: pointer;">Anterior</button>
+              <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer;">Proximo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-onboarding-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Overlay --&gt;
+&lt;div class="tour-overlay"&gt;&lt;/div&gt;
+
+&lt;!-- Spotlight no elemento alvo --&gt;
+&lt;div class="tour-spotlight" style="top: 8px; right: 16px;"&gt;
+  &lt;button class="btn btn-primary"&gt;+ Novo Produto&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Tour Tooltip --&gt;
+&lt;div class="tour-tooltip"&gt;
+  &lt;div class="tour-progress"&gt;
+    &lt;span class="dot active"&gt;&lt;/span&gt;
+    &lt;span class="dot active"&gt;&lt;/span&gt;
+    &lt;span class="dot"&gt;&lt;/span&gt;
+    &lt;span class="dot"&gt;&lt;/span&gt;
+    &lt;span class="tour-count"&gt;2 de 4&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h4&gt;Cadastre seu primeiro produto&lt;/h4&gt;
+  &lt;p&gt;Clique aqui para adicionar produtos...&lt;/p&gt;
+  &lt;div class="tour-actions"&gt;
+    &lt;button class="tour-skip"&gt;Pular tour&lt;/button&gt;
+    &lt;button class="btn btn-secondary btn-sm"&gt;Anterior&lt;/button&gt;
+    &lt;button class="btn btn-primary btn-sm"&gt;Proximo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-onboarding-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 999;
+}
+
+.tour-spotlight {
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.3);
+  border-radius: 8px;
+}
+
+.tour-tooltip {
+  position: absolute;
+  z-index: 1002;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  width: 260px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tour-progress .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #E2E8F0;
+}
+.tour-progress .dot.active {
+  background: #2B6CB0;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Spotlight</strong></td><td>Overlay escurecido <code>rgba(15,23,42,0.6)</code>. Elemento alvo elevado com <code>z-index</code> + ring glow <code>box-shadow: 0 0 0 4px rgba(43,108,176,0.3)</code>.</td></tr>
+        <tr><td><strong>Tooltip</strong></td><td>Max 260px. Titulo em Montserrat bold + descricao em Inter. Arrow CSS apontando para o elemento. Sombra forte.</td></tr>
+        <tr><td><strong>Progresso</strong></td><td>Dots (6px) com estado ativo. Contador "N de N" alinhado a direita. Maximo 5-7 steps.</td></tr>
+        <tr><td><strong>Acoes</strong></td><td>"Pular tour" (text button, cinza). "Anterior" (secondary). "Proximo" / "Concluir" (primary). Ultimo step: "Comecar a usar!".</td></tr>
+        <tr><td><strong>Persistencia</strong></td><td>Salvar progresso em <code>localStorage</code>. Nao mostrar novamente apos completar. Oferecer replay em Configuracoes.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== FILTROS E BUSCA AVANCADA ==================== -->
+  <section class="section" id="filtros-busca">
+    <div class="section-header">
+      <div class="section-number">29 — Filtros e Busca Avancada</div>
+      <h2>Filtros e Busca Avancada</h2>
+    </div>
+
+    <p>Filtros permitem refinar resultados. Devem ser visiveis, facilmente removiveis, e mostrar quantos resultados foram encontrados. A busca com sugestoes acelera a descoberta.</p>
+
+    <h3>Barra de Filtros com Chips</h3>
+
+    <div class="component-toggle" data-target="code-filtros">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden;">
+        <!-- Search + Filter Bar -->
+        <div style="padding: 16px 20px; border-bottom: 1px solid #F1F5F9; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <!-- Search -->
+          <div style="flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">Buscar produtos...</span>
+          </div>
+          <!-- Filter Buttons -->
+          <button style="padding: 8px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            Filtros
+            <span style="background: #2B6CB0; color: #FFFFFF; font-size: 0.55rem; padding: 1px 6px; border-radius: 10px; font-weight: 700;">3</span>
+          </button>
+          <button style="padding: 8px 14px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            Ordenar
+          </button>
+        </div>
+        <!-- Active Filter Chips -->
+        <div style="padding: 10px 20px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid #F1F5F9;">
+          <span style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8;">Filtros ativos:</span>
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Categoria: Paineis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Status: Ativo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; white-space: nowrap;">Preco: R$100 - R$500 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; cursor: pointer;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #E53E3E; cursor: pointer;">Limpar todos</button>
+        </div>
+        <!-- Results count -->
+        <div style="padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: var(--font-body); font-size: 0.7rem; color: #64748B;"><strong style="color: #0F172A;">47</strong> resultados encontrados</span>
+          <div style="display: flex; gap: 4px;">
+            <button style="width: 30px; height: 30px; border: 1.5px solid #2B6CB0; border-radius: 6px; background: #EBF8FF; color: #2B6CB0; cursor: pointer; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 14px; height: 14px;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+            <button style="width: 30px; height: 30px; border: 1.5px solid #E2E8F0; border-radius: 6px; background: #FFFFFF; color: #94A3B8; cursor: pointer; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 14px; height: 14px;"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-filtros-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Filter Chip (removivel) --&gt;
+&lt;span class="filter-chip"&gt;
+  Categoria: Paineis
+  &lt;button class="chip-remove" aria-label="Remover filtro"&gt;
+    &lt;svg&gt;...x icon...&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- Filter Button com badge de contagem --&gt;
+&lt;button class="btn-filter"&gt;
+  &lt;svg&gt;...filter icon...&lt;/svg&gt;
+  Filtros
+  &lt;span class="filter-count"&gt;3&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Limpar todos --&gt;
+&lt;button class="btn-clear-filters"&gt;Limpar todos&lt;/button&gt;</div>
+    <div class="code-block" id="code-filtros-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #EBF8FF;
+  border: 1px solid #BEE3F8;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #2B6CB0;
+  white-space: nowrap;
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+}
+
+.filter-count {
+  background: #2B6CB0;
+  color: #FFFFFF;
+  font-size: 0.55rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.btn-clear-filters {
+  background: none;
+  border: none;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #E53E3E;
+  cursor: pointer;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Filter Chips</strong></td><td>Background <code>#EBF8FF</code>, border <code>#BEE3F8</code>, pill shape. Icone X para remover. <code>white-space: nowrap</code>.</td></tr>
+        <tr><td><strong>Contagem</strong></td><td>Badge circular no botao Filtros mostrando quantidade ativa. Badge no resultado: "47 resultados encontrados".</td></tr>
+        <tr><td><strong>Limpar</strong></td><td>Botao "Limpar todos" em vermelho (<code>#E53E3E</code>), text-only. Aparece so quando ha filtros ativos.</td></tr>
+        <tr><td><strong>Busca</strong></td><td>Input com icone lupa. Placeholder "Buscar...". Sugestoes em dropdown apos 2 caracteres. Highlight do match em bold.</td></tr>
+        <tr><td><strong>View Toggle</strong></td><td>Grid / Lista — botoes icone com estado ativo (borda azul, bg <code>#EBF8FF</code>).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== CENTRO DE NOTIFICACOES ==================== -->
+  <section class="section section-dark" id="centro-notificacoes">
+    <div class="section-header">
+      <div class="section-number">30 — Centro de Notificacoes</div>
+      <h2>Centro de Notificacoes</h2>
+    </div>
+
+    <p>O centro de notificacoes agrega todas as mensagens do sistema em um painel acessivel pelo icone de sino. Notificacoes nao lidas sao destacadas visualmente.</p>
+
+    <h3>Notification Bell + Dropdown</h3>
+
+    <div class="component-toggle" data-target="code-notif-center">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="display: flex; justify-content: flex-end; padding-right: 1rem;">
+        <div style="position: relative;">
+          <!-- Bell Icon -->
+          <div style="position: relative; width: 40px; height: 40px; border-radius: 10px; background: #FFFFFF; border: 1.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <!-- Badge -->
+            <div style="position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; background: #E53E3E; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF;"><span style="font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #FFFFFF;">4</span></div>
+          </div>
+          <!-- Dropdown Panel -->
+          <div style="position: absolute; top: 48px; right: 0; width: 340px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); z-index: 10; overflow: hidden;">
+            <!-- Header -->
+            <div style="padding: 14px 16px; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A;">Notificacoes</div>
+              <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #2B6CB0; cursor: pointer;">Marcar todas como lidas</button>
+            </div>
+            <!-- Notification Items -->
+            <div style="max-height: 300px; overflow-y: auto;">
+              <!-- Unread -->
+              <div style="padding: 12px 16px; border-left: 3px solid #2B6CB0; background: #F8FAFC; display: flex; gap: 10px; cursor: pointer;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #EBF8FF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Estoque atualizado</div>
+                  <div style="font-family: var(--font-body); font-size: 0.65rem; color: #64748B; line-height: 1.4; margin-top: 2px;">Painel Solar 400W recebeu 50 unidades no deposito central.</div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-top: 4px;">2 min atras</div>
+                </div>
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #2B6CB0; flex-shrink: 0; margin-top: 4px;"></div>
+              </div>
+              <!-- Unread -->
+              <div style="padding: 12px 16px; border-left: 3px solid #2B6CB0; background: #F8FAFC; display: flex; gap: 10px; cursor: pointer; border-top: 1px solid #F1F5F9;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #FFF5F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#E53E3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A;">Alerta de estoque baixo</div>
+                  <div style="font-family: var(--font-body); font-size: 0.65rem; color: #64748B; line-height: 1.4; margin-top: 2px;">Sensor IP65 esta com apenas 3 unidades em estoque.</div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-top: 4px;">15 min atras</div>
+                </div>
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: #2B6CB0; flex-shrink: 0; margin-top: 4px;"></div>
+              </div>
+              <!-- Read -->
+              <div style="padding: 12px 16px; display: flex; gap: 10px; cursor: pointer; border-top: 1px solid #F1F5F9;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #F0FFF4; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#38A169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B;">Pedido #1845 enviado</div>
+                  <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; line-height: 1.4; margin-top: 2px;">Transportadora coletou o pedido com sucesso.</div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 4px;">1 hora atras</div>
+                </div>
+              </div>
+              <!-- Read -->
+              <div style="padding: 12px 16px; display: flex; gap: 10px; cursor: pointer; border-top: 1px solid #F1F5F9;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B;">Novo usuario adicionado</div>
+                  <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; line-height: 1.4; margin-top: 2px;">Maria Silva foi convidada como Operadora.</div>
+                  <div style="font-family: var(--font-body); font-size: 0.55rem; color: #CBD5E0; margin-top: 4px;">3 horas atras</div>
+                </div>
+              </div>
+            </div>
+            <!-- Footer -->
+            <div style="padding: 10px 16px; border-top: 1px solid #F1F5F9; text-align: center;">
+              <button style="padding: 0; border: none; background: none; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #2B6CB0; cursor: pointer;">Ver todas as notificacoes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-notif-center-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Bell com badge --&gt;
+&lt;button class="notif-bell" aria-label="Notificacoes"&gt;
+  &lt;svg&gt;...bell icon...&lt;/svg&gt;
+  &lt;span class="notif-badge"&gt;4&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Dropdown --&gt;
+&lt;div class="notif-dropdown"&gt;
+  &lt;div class="notif-header"&gt;
+    &lt;h3&gt;Notificacoes&lt;/h3&gt;
+    &lt;button class="mark-read"&gt;Marcar todas como lidas&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="notif-list"&gt;
+    &lt;!-- Nao lida --&gt;
+    &lt;div class="notif-item unread"&gt;
+      &lt;div class="notif-icon notif-icon--info"&gt;&lt;svg/&gt;&lt;/div&gt;
+      &lt;div class="notif-content"&gt;
+        &lt;div class="notif-title"&gt;Estoque atualizado&lt;/div&gt;
+        &lt;p class="notif-desc"&gt;Painel Solar 400W recebeu 50 un.&lt;/p&gt;
+        &lt;span class="notif-time"&gt;2 min atras&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="notif-dot"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="notif-footer"&gt;
+    &lt;a href="/notificacoes"&gt;Ver todas&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-notif-center-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.notif-bell {
+  position: relative;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: #FFF;
+  border: 1.5px solid #E2E8F0;
+}
+
+.notif-badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 18px; height: 18px;
+  background: #E53E3E;
+  border-radius: 50%;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #FFF;
+  border: 2px solid #FFF;
+}
+
+.notif-item.unread {
+  border-left: 3px solid #2B6CB0;
+  background: #F8FAFC;
+}
+
+.notif-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #2B6CB0;
+}
+
+.notif-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notif-icon--info { background: #EBF8FF; }
+.notif-icon--error { background: #FFF5F5; }
+.notif-icon--success { background: #F0FFF4; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Badge</strong></td><td>Circulo vermelho (<code>#E53E3E</code>) com borda branca 2px. Max "9+". Desaparece quando nao ha novas.</td></tr>
+        <tr><td><strong>Nao lida</strong></td><td>Background <code>#F8FAFC</code>, border-left 3px azul, titulo bold, dot azul 8px a direita.</td></tr>
+        <tr><td><strong>Lida</strong></td><td>Background branco, sem border-left, titulo cinza (<code>#64748B</code>), sem dot.</td></tr>
+        <tr><td><strong>Icones</strong></td><td>Por tipo: info (azul), warning (amarelo), error (vermelho), success (verde). Icones SVG outline em fundo colorido suave 32x32.</td></tr>
+        <tr><td><strong>Timestamp</strong></td><td>Relativo: "2 min atras", "1 hora atras". Apos 24h: "Ontem 14:30". Apos 7 dias: data completa.</td></tr>
+        <tr><td><strong>Agrupamento</strong></td><td>Agrupar por "Hoje", "Ontem", "Esta semana" com divisor + label cinza. Max 20 itens no dropdown, link "Ver todas" no footer.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== TABELAS AVANCADAS ==================== -->
+  <section class="section" id="tabelas-avancadas">
+    <div class="section-header">
+      <div class="section-number">31 — Tabelas Avancadas</div>
+      <h2>Tabelas Avancadas — Selecao e Bulk Actions</h2>
+    </div>
+
+    <p>Tabelas avancadas permitem selecionar multiplos itens e executar acoes em lote (bulk actions). A barra de acoes aparece quando ha selecao ativa.</p>
+
+    <h3>Tabela com Selecao e Bulk Actions</h3>
+
+    <div class="component-toggle" data-target="code-tabelas-adv">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="component-demo" style="margin-top: 0;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden;">
+        <!-- Bulk Action Bar -->
+        <div style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #2B6CB0;">3 itens selecionados</span>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1.5px solid #BEE3F8; border-radius: 6px; background: #FFFFFF; color: #2B6CB0; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar CSV
+            </button>
+            <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1.5px solid #BEE3F8; border-radius: 6px; background: #FFFFFF; color: #2B6CB0; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Editar preco
+            </button>
+            <button style="padding: 6px 12px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1.5px solid #FED7D7; border-radius: 6px; background: #FFF5F5; color: #E53E3E; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Excluir
+            </button>
+          </div>
+        </div>
+        <!-- Table -->
+        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.72rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <th style="padding: 10px 16px; text-align: left; width: 40px;"><div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"/></svg></div></th>
+              <th style="padding: 10px 8px; text-align: left; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;">Produto</th>
+              <th style="padding: 10px 8px; text-align: left; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;">SKU</th>
+              <th style="padding: 10px 8px; text-align: right; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;">Preco</th>
+              <th style="padding: 10px 8px; text-align: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;">Estoque</th>
+              <th style="padding: 10px 16px; text-align: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Selected Row -->
+            <tr style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8;">
+              <td style="padding: 10px 16px;"><div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"/></svg></div></td>
+              <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">Painel Solar 400W</td>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-001</td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 1.299</td>
+              <td style="padding: 10px 8px; text-align: center; color: #0F172A;">142</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+            </tr>
+            <!-- Selected Row -->
+            <tr style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8;">
+              <td style="padding: 10px 16px;"><div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"/></svg></div></td>
+              <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">Luminaria LED 150W</td>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-002</td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 489</td>
+              <td style="padding: 10px 8px; text-align: center; color: #0F172A;">87</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+            </tr>
+            <!-- Normal Row -->
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 10px 16px;"><div style="width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #E2E8F0; background: #FFFFFF;"></div></td>
+              <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">Sensor IP65</td>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-003</td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 189</td>
+              <td style="padding: 10px 8px; text-align: center; color: #E53E3E; font-weight: 600;">3</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #FFF5F5; color: #E53E3E; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;" title="Estoque Baixo">Baixo</span></td>
+            </tr>
+            <!-- Selected Row -->
+            <tr style="background: #EBF8FF; border-bottom: 1px solid #BEE3F8;">
+              <td style="padding: 10px 16px;"><div style="width: 18px; height: 18px; border-radius: 4px; background: #2B6CB0; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"/></svg></div></td>
+              <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">Inversor Solar 5kW</td>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-004</td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 3.450</td>
+              <td style="padding: 10px 8px; text-align: center; color: #0F172A;">24</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+            </tr>
+            <!-- Normal Row -->
+            <tr>
+              <td style="padding: 10px 16px;"><div style="width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #E2E8F0; background: #FFFFFF;"></div></td>
+              <td style="padding: 10px 8px; font-weight: 600; color: #0F172A;">LED Strip 5m RGB</td>
+              <td style="padding: 10px 8px; font-family: var(--font-mono); font-size: 0.65rem; color: #64748B;">SKU-005</td>
+              <td style="padding: 10px 8px; text-align: right; font-weight: 600; color: #0F172A;">R$ 79</td>
+              <td style="padding: 10px 8px; text-align: center; color: #0F172A;">215</td>
+              <td style="padding: 10px 16px; text-align: center;"><span style="padding: 2px 8px; border-radius: 20px; background: #F0FFF4; color: #38A169; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">Ativo</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-tabelas-adv-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Bulk Action Bar (aparece quando ha selecao) --&gt;
+&lt;div class="bulk-bar"&gt;
+  &lt;div class="bulk-info"&gt;
+    &lt;div class="checkbox indeterminate"&gt;&lt;/div&gt;
+    &lt;span&gt;3 itens selecionados&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bulk-actions"&gt;
+    &lt;button class="btn-bulk"&gt;Exportar CSV&lt;/button&gt;
+    &lt;button class="btn-bulk"&gt;Editar preco&lt;/button&gt;
+    &lt;button class="btn-bulk btn-bulk--danger"&gt;Excluir&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Checkbox states --&gt;
+&lt;div class="checkbox"&gt;&lt;/div&gt;               &lt;!-- unchecked --&gt;
+&lt;div class="checkbox checked"&gt;&lt;/div&gt;        &lt;!-- checked (checkmark) --&gt;
+&lt;div class="checkbox indeterminate"&gt;&lt;/div&gt;  &lt;!-- parcial (dash) --&gt;
+
+&lt;!-- Selected Row --&gt;
+&lt;tr class="row-selected"&gt;...&lt;/tr&gt;</div>
+    <div class="code-block" id="code-tabelas-adv-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.bulk-bar {
+  background: #EBF8FF;
+  border-bottom: 1px solid #BEE3F8;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-bulk {
+  padding: 6px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  border: 1.5px solid #BEE3F8;
+  border-radius: 6px;
+  background: #FFFFFF;
+  color: #2B6CB0;
+  cursor: pointer;
+}
+
+.btn-bulk--danger {
+  border-color: #FED7D7;
+  background: #FFF5F5;
+  color: #E53E3E;
+}
+
+.row-selected {
+  background: #EBF8FF;
+  border-bottom: 1px solid #BEE3F8;
+}
+
+.checkbox {
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid #E2E8F0;
+  background: #FFF;
+}
+.checkbox.checked {
+  background: #2B6CB0;
+  border-color: #2B6CB0;
+  /* checkmark via SVG */
+}
+.checkbox.indeterminate {
+  background: #2B6CB0;
+  border-color: #2B6CB0;
+  /* dash via SVG */
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Diretriz</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Checkbox</strong></td><td>18x18px, border-radius 4px. Checked: bg <code>#2B6CB0</code> + checkmark branco. Indeterminate (parcial): bg azul + dash branco.</td></tr>
+        <tr><td><strong>Linha selecionada</strong></td><td>Background <code>#EBF8FF</code>, border-bottom <code>#BEE3F8</code>. Transicao suave 150ms.</td></tr>
+        <tr><td><strong>Bulk Bar</strong></td><td>Aparece no topo da tabela quando 1+ itens selecionados. Sticky para ficar visivel ao scrollar. Background <code>#EBF8FF</code>.</td></tr>
+        <tr><td><strong>Acoes em lote</strong></td><td>Exportar CSV, Editar (preco, categoria, status), Excluir (vermelho, com confirmacao modal). Max 4 acoes visiveis.</td></tr>
+        <tr><td><strong>Selecao</strong></td><td>Click no checkbox da linha seleciona/deseleciona. Checkbox do header: seleciona todos da pagina. Shift+Click para selecao em range.</td></tr>
+        <tr><td><strong>Feedback</strong></td><td>Contador "N itens selecionados" atualiza em tempo real. Apos acao em lote: toast de confirmacao + deselecionar.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">27 — Iconografia</div>
+      <div class="section-number">32 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -6991,7 +7747,7 @@
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">28 — Acessibilidade</div>
+      <div class="section-number">33 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -7083,7 +7839,7 @@
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">29 — Responsividade</div>
+      <div class="section-number">34 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -7136,7 +7892,7 @@
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">30 — Design Tokens</div>
+      <div class="section-number">35 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

@@ -1764,6 +1764,16 @@
         <a href="#motion-tokens" class="nav-link">54. Motion &amp; Transition Tokens</a>
         <a href="#form-validation" class="nav-link">55. Form Validation Patterns</a>
         <a href="#i18n" class="nav-link">56. Internationalization (i18n)</a>
+        <a href="#contextual-help" class="nav-link">57. Contextual Help</a>
+        <a href="#data-export" class="nav-link">58. Data Export Patterns</a>
+        <a href="#bulk-actions" class="nav-link">59. Bulk Actions &amp; Multi-select</a>
+        <a href="#permission-indicators" class="nav-link">60. Permission &amp; Role Indicators</a>
+        <a href="#copy-clipboard" class="nav-link">61. Copy to Clipboard Patterns</a>
+        <a href="#responsive-images" class="nav-link">62. Responsive Images &amp; Media</a>
+        <a href="#changelog" class="nav-link">63. Changelog &amp; Version History</a>
+        <a href="#settings-ui" class="nav-link">64. Settings &amp; Preferences UI</a>
+        <a href="#dashboard-widgets" class="nav-link">65. Dashboard Widgets &amp; KPI Cards</a>
+        <a href="#error-pages" class="nav-link">66. Error Pages (404, 500)</a>
         <a href="#iconografia">Iconografia</a>
   <a href="#acessibilidade">Acessibilidade</a>
   <a href="#responsividade">Responsividade</a>
@@ -1848,6 +1858,16 @@
         <a href="#motion-tokens" class="nav-link">54. Motion &amp; Transition Tokens</a>
         <a href="#form-validation" class="nav-link">55. Form Validation Patterns</a>
         <a href="#i18n" class="nav-link">56. Internationalization (i18n)</a>
+        <a href="#contextual-help" class="nav-link">57. Contextual Help</a>
+        <a href="#data-export" class="nav-link">58. Data Export Patterns</a>
+        <a href="#bulk-actions" class="nav-link">59. Bulk Actions &amp; Multi-select</a>
+        <a href="#permission-indicators" class="nav-link">60. Permission &amp; Role Indicators</a>
+        <a href="#copy-clipboard" class="nav-link">61. Copy to Clipboard Patterns</a>
+        <a href="#responsive-images" class="nav-link">62. Responsive Images &amp; Media</a>
+        <a href="#changelog" class="nav-link">63. Changelog &amp; Version History</a>
+        <a href="#settings-ui" class="nav-link">64. Settings &amp; Preferences UI</a>
+        <a href="#dashboard-widgets" class="nav-link">65. Dashboard Widgets &amp; KPI Cards</a>
+        <a href="#error-pages" class="nav-link">66. Error Pages (404, 500)</a>
         <a href="#iconografia"><span class="toc-num">52</span> Iconografia</a>
         <a href="#acessibilidade"><span class="toc-num">53</span> Acessibilidade</a>
         <a href="#responsividade"><span class="toc-num">54</span> Responsividade</a>
@@ -10660,10 +10680,1286 @@ new Intl.PluralRules('pt-BR').select(5); // "other"
     </table>
   </section>
 
+  <!-- ==================== CONTEXTUAL HELP ==================== -->
+  <section class="section" id="contextual-help">
+    <div class="section-header">
+      <div class="section-number">57 — Contextual Help & Inline Documentation</div>
+      <h2>Contextual Help & Inline Documentation</h2>
+    </div>
+
+    <p>Padroes de ajuda contextual que orientam o usuario sem tirá-lo do fluxo. Icones de ajuda com popovers, banners informativos e links para documentacao detalhada.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-ctx-help')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-ctx-help-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-ctx-help-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-ctx-help">
+      <div style="background: #F8FAFC; border-radius: 12px; padding: 2rem; max-width: 480px; margin: auto;">
+        <!-- Help icon com popover -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <label style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #0F172A;">Margem de lucro</label>
+            <div style="position: relative; display: inline-block;">
+              <div style="width: 16px; height: 16px; border-radius: 50%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; cursor: help;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #0F172A; color: #F8FAFC; padding: 10px 14px; border-radius: 8px; font-family: var(--font-body); font-size: 0.6rem; line-height: 1.5; width: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10;">
+                <div style="font-weight: 600; margin-bottom: 4px;">Como funciona?</div>
+                Margem calculada sobre o preco de venda. Ex: custo R$80, venda R$100 = margem 20%.
+                <a href="#" style="color: #60A5FA; display: block; margin-top: 6px; font-size: 0.55rem;">Ver documentacao completa →</a>
+                <div style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background: #0F172A;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 8px 12px; font-family: var(--font-body); font-size: 0.75rem; color: #0F172A;">20%</div>
+        </div>
+
+        <!-- Info banner -->
+        <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #1E40AF; margin-bottom: 2px;">Novo: Calculo automatico de ICMS</div>
+            <div style="font-family: var(--font-body); font-size: 0.6rem; color: #3B82F6; line-height: 1.5;">O sistema agora calcula ICMS automaticamente com base no estado de destino. <a href="#" style="color: #1E40AF; text-decoration: underline;">Saiba mais</a></div>
+          </div>
+          <button style="background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Inline doc link -->
+        <div style="background: #F1F5F9; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A;">Guia: Cadastro de produtos</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #64748B;">Aprenda a cadastrar produtos com fotos, variantes e estoque.</div>
+            </div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-ctx-help-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Help icon com popover --&gt;
+&lt;label&gt;
+  Margem de lucro
+  &lt;button class="help-trigger" aria-label="Ajuda"&gt;
+    &lt;svg class="icon-help"&gt;...?...&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/label&gt;
+&lt;div class="help-popover" role="tooltip"&gt;
+  &lt;strong&gt;Como funciona?&lt;/strong&gt;
+  &lt;p&gt;Margem calculada sobre preco de venda.&lt;/p&gt;
+  &lt;a href="/docs/margem"&gt;Ver documentacao →&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- Info banner dismissible --&gt;
+&lt;div class="info-banner" role="status"&gt;
+  &lt;svg class="icon-info"&gt;...&lt;/svg&gt;
+  &lt;div class="banner-content"&gt;
+    &lt;strong&gt;Novo: Calculo automatico de ICMS&lt;/strong&gt;
+    &lt;p&gt;O sistema agora calcula ICMS automaticamente.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button class="banner-close" aria-label="Fechar"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-ctx-help-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Help trigger */
+.help-trigger {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #E2E8F0; border: none; cursor: help;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.help-trigger .icon-help { width: 10px; stroke: #64748B; }
+
+/* Help popover */
+.help-popover {
+  position: absolute; bottom: calc(100% + 8px);
+  background: #0F172A; color: #F8FAFC;
+  padding: 10px 14px; border-radius: 8px;
+  font-size: 0.6rem; width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.help-popover a { color: #60A5FA; }
+
+/* Info banner */
+.info-banner {
+  background: #EFF6FF; border: 1px solid #BFDBFE;
+  border-radius: 8px; padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.info-banner strong { color: #1E40AF; font-size: 0.65rem; }
+.info-banner p { color: #3B82F6; font-size: 0.6rem; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Componente</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Help icon (?)</strong></td><td>16px, circulo <code>#E2E8F0</code>, icone <code>#64748B</code>. Popover no hover/click.</td></tr>
+        <tr><td><strong>Popover</strong></td><td>Background <code>#0F172A</code>, texto <code>#F8FAFC</code>, border-radius 8px, seta 10px. Max-width 200px.</td></tr>
+        <tr><td><strong>Info banner</strong></td><td>Background <code>#EFF6FF</code>, borda <code>#BFDBFE</code>. Dismissible com X. Icone info azul.</td></tr>
+        <tr><td><strong>Doc link card</strong></td><td>Background <code>#F1F5F9</code>, icone livro, titulo + descricao. Link externo com icone.</td></tr>
+        <tr><td><strong>Acessibilidade</strong></td><td><code>role="tooltip"</code> no popover. <code>aria-label="Ajuda"</code> no trigger. <code>role="status"</code> no banner.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== DATA EXPORT ==================== -->
+  <section class="section section-dark" id="data-export">
+    <div class="section-header">
+      <div class="section-number">58 — Data Export Patterns</div>
+      <h2>Data Export Patterns</h2>
+    </div>
+
+    <p>Padroes para exportacao de dados em diferentes formatos. Modal de configuracao com opcoes de formato, colunas, filtros e preview antes de exportar.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-export')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-export-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-export-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-export">
+      <div style="background: #0F172A; border-radius: 12px; padding: 2rem; max-width: 420px; margin: auto;">
+        <!-- Modal header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #F8FAFC;">Exportar dados</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+
+        <!-- Formato -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Formato</div>
+          <div style="display: flex; gap: 0.5rem;">
+            <div style="flex: 1; background: #1E3A5F; border: 1.5px solid #3B82F6; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 4px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #3B82F6;">CSV</div>
+            </div>
+            <div style="flex: 1; background: #1E293B; border: 1.5px solid #334155; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 4px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">Excel</div>
+            </div>
+            <div style="flex: 1; background: #1E293B; border: 1.5px solid #334155; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 4px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">PDF</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colunas -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Colunas</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span style="background: #1E3A5F; border: 1px solid #3B82F6; color: #60A5FA; padding: 4px 10px; border-radius: 20px; font-family: var(--font-body); font-size: 0.55rem; white-space: nowrap;">&#10003; Nome</span>
+            <span style="background: #1E3A5F; border: 1px solid #3B82F6; color: #60A5FA; padding: 4px 10px; border-radius: 20px; font-family: var(--font-body); font-size: 0.55rem; white-space: nowrap;">&#10003; SKU</span>
+            <span style="background: #1E3A5F; border: 1px solid #3B82F6; color: #60A5FA; padding: 4px 10px; border-radius: 20px; font-family: var(--font-body); font-size: 0.55rem; white-space: nowrap;">&#10003; Preco</span>
+            <span style="background: #1E293B; border: 1px solid #334155; color: #64748B; padding: 4px 10px; border-radius: 20px; font-family: var(--font-body); font-size: 0.55rem; white-space: nowrap;">Estoque</span>
+            <span style="background: #1E293B; border: 1px solid #334155; color: #64748B; padding: 4px 10px; border-radius: 20px; font-family: var(--font-body); font-size: 0.55rem; white-space: nowrap;">Categoria</span>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div style="background: #1E293B; border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Registros: <strong style="color: #F8FAFC;">1.247</strong></div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #94A3B8;">Tamanho estimado: <strong style="color: #F8FAFC;">~340 KB</strong></div>
+        </div>
+
+        <!-- Botoes -->
+        <div style="display: flex; gap: 0.75rem;">
+          <button style="flex: 1; padding: 10px; border-radius: 8px; border: 1.5px solid #334155; background: transparent; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #94A3B8; cursor: pointer;">Cancelar</button>
+          <button style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: #3B82F6; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar CSV
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-export-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="export-modal"&gt;
+  &lt;h3&gt;Exportar dados&lt;/h3&gt;
+
+  &lt;div class="format-selector"&gt;
+    &lt;button class="format-btn active" data-format="csv"&gt;CSV&lt;/button&gt;
+    &lt;button class="format-btn" data-format="xlsx"&gt;Excel&lt;/button&gt;
+    &lt;button class="format-btn" data-format="pdf"&gt;PDF&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="column-picker"&gt;
+    &lt;label&gt;&lt;input type="checkbox" checked /&gt; Nome&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" checked /&gt; SKU&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" checked /&gt; Preco&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" /&gt; Estoque&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;div class="export-info"&gt;
+    &lt;span&gt;1.247 registros&lt;/span&gt;
+    &lt;span&gt;~340 KB&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="export-actions"&gt;
+    &lt;button class="btn-secondary"&gt;Cancelar&lt;/button&gt;
+    &lt;button class="btn-primary"&gt;Exportar CSV&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-export-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Export Modal */
+.export-modal { max-width: 420px; padding: 2rem; }
+
+/* Format selector */
+.format-selector { display: flex; gap: 0.5rem; }
+.format-btn {
+  flex: 1; padding: 10px; text-align: center;
+  background: #1E293B; border: 1.5px solid #334155;
+  border-radius: 8px; color: #64748B; cursor: pointer;
+}
+.format-btn.active {
+  background: #1E3A5F; border-color: #3B82F6; color: #3B82F6;
+}
+
+/* Column pills */
+.column-picker { display: flex; flex-wrap: wrap; gap: 6px; }
+.column-picker label {
+  padding: 4px 10px; border-radius: 20px;
+  font-size: 0.55rem; cursor: pointer;
+  border: 1px solid #334155; color: #64748B;
+}
+.column-picker label:has(input:checked) {
+  background: #1E3A5F; border-color: #3B82F6; color: #60A5FA;
+}
+
+/* Export info bar */
+.export-info {
+  background: #1E293B; border-radius: 8px; padding: 10px 12px;
+  display: flex; justify-content: space-between;
+  font-size: 0.6rem; color: #94A3B8;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Elemento</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formatos</strong></td><td>CSV, Excel (.xlsx), PDF. Card selecionavel com borda azul quando ativo.</td></tr>
+        <tr><td><strong>Colunas</strong></td><td>Pills com checkbox. Selecionadas: <code>#1E3A5F</code> + borda <code>#3B82F6</code>.</td></tr>
+        <tr><td><strong>Info bar</strong></td><td>Quantidade de registros e tamanho estimado. Background <code>#1E293B</code>.</td></tr>
+        <tr><td><strong>Limite</strong></td><td>Ate 10.000 registros por exportacao. Acima: agendar e enviar por email.</td></tr>
+        <tr><td><strong>Feedback</strong></td><td>Progress bar durante geracao. Toast de sucesso com link para download.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== BULK ACTIONS ==================== -->
+  <section class="section" id="bulk-actions">
+    <div class="section-header">
+      <div class="section-number">59 — Bulk Actions & Multi-select</div>
+      <h2>Bulk Actions & Multi-select</h2>
+    </div>
+
+    <p>Selecao multipla em tabelas e listas com barra de acoes flutuante. Permite executar operacoes em massa como excluir, mover, alterar status ou exportar itens selecionados.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-bulk')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-bulk-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-bulk-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-bulk">
+      <div style="background: #F8FAFC; border-radius: 12px; padding: 0; max-width: 520px; margin: auto; overflow: hidden;">
+        <!-- Floating action bar -->
+        <div style="background: #0F172A; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 16px; height: 16px; background: #3B82F6; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+            <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #F8FAFC;">3 selecionados</span>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <button style="padding: 5px 12px; border-radius: 6px; border: 1px solid #334155; background: transparent; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #94A3B8; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Ativar
+            </button>
+            <button style="padding: 5px 12px; border-radius: 6px; border: 1px solid #334155; background: transparent; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #94A3B8; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exportar
+            </button>
+            <button style="padding: 5px 12px; border-radius: 6px; border: 1px solid #7F1D1D; background: rgba(239,68,68,0.1); font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #EF4444; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+              Excluir
+            </button>
+          </div>
+        </div>
+
+        <!-- Table rows -->
+        <div style="padding: 0;">
+          <div style="display: flex; align-items: center; padding: 10px 16px; background: #EFF6FF; border-bottom: 1px solid #E2E8F0;">
+            <div style="width: 16px; height: 16px; background: #3B82F6; border-radius: 3px; margin-right: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="flex: 1; font-family: var(--font-body); font-size: 0.7rem; color: #0F172A; font-weight: 500;">Luminaria LED 24W Slim</div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">R$ 85,00</span>
+          </div>
+          <div style="display: flex; align-items: center; padding: 10px 16px; background: #EFF6FF; border-bottom: 1px solid #E2E8F0;">
+            <div style="width: 16px; height: 16px; background: #3B82F6; border-radius: 3px; margin-right: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="flex: 1; font-family: var(--font-body); font-size: 0.7rem; color: #0F172A; font-weight: 500;">Painel Slim 18W Quadrado</div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">R$ 60,00</span>
+          </div>
+          <div style="display: flex; align-items: center; padding: 10px 16px; background: white; border-bottom: 1px solid #E2E8F0;">
+            <div style="width: 16px; height: 16px; border: 1.5px solid #CBD5E1; border-radius: 3px; margin-right: 12px;"></div>
+            <div style="flex: 1; font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Fita LED 5m RGB</div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">R$ 75,00</span>
+          </div>
+          <div style="display: flex; align-items: center; padding: 10px 16px; background: #EFF6FF;">
+            <div style="width: 16px; height: 16px; background: #3B82F6; border-radius: 3px; margin-right: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="flex: 1; font-family: var(--font-body); font-size: 0.7rem; color: #0F172A; font-weight: 500;">Refletor LED 100W IP65</div>
+            <span style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;">R$ 189,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-bulk-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Floating action bar (aparece quando ha selecao) --&gt;
+&lt;div class="bulk-bar" role="toolbar" aria-label="Acoes em massa"&gt;
+  &lt;div class="bulk-count"&gt;
+    &lt;input type="checkbox" indeterminate /&gt;
+    &lt;span&gt;3 selecionados&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bulk-actions"&gt;
+    &lt;button class="bulk-btn"&gt;Ativar&lt;/button&gt;
+    &lt;button class="bulk-btn"&gt;Exportar&lt;/button&gt;
+    &lt;button class="bulk-btn danger"&gt;Excluir&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Table row com checkbox --&gt;
+&lt;tr class="selected"&gt;
+  &lt;td&gt;&lt;input type="checkbox" checked /&gt;&lt;/td&gt;
+  &lt;td&gt;Luminaria LED 24W&lt;/td&gt;
+  &lt;td&gt;R$ 85,00&lt;/td&gt;
+&lt;/tr&gt;</div>
+    <div class="code-block" id="code-bulk-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Bulk action bar */
+.bulk-bar {
+  background: #0F172A; padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 20;
+}
+.bulk-count { font-size: 0.7rem; color: #F8FAFC; font-weight: 600; }
+.bulk-actions { display: flex; gap: 6px; }
+.bulk-btn {
+  padding: 5px 12px; border-radius: 6px;
+  border: 1px solid #334155; background: transparent;
+  font-size: 0.6rem; color: #94A3B8; cursor: pointer;
+}
+.bulk-btn.danger {
+  border-color: #7F1D1D; background: rgba(239,68,68,0.1); color: #EF4444;
+}
+
+/* Selected row */
+tr.selected { background: #EFF6FF; }
+tr.selected td { font-weight: 500; }
+
+/* Checkbox */
+input[type="checkbox"] { accent-color: #3B82F6; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Elemento</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Checkbox</strong></td><td>16px, border-radius 3px. Checked: <code>#3B82F6</code>. Indeterminate: dash icon.</td></tr>
+        <tr><td><strong>Row selecionada</strong></td><td>Background <code>#EFF6FF</code>. Font-weight 500.</td></tr>
+        <tr><td><strong>Bulk bar</strong></td><td>Sticky top, background <code>#0F172A</code>. Aparece com animacao slide-down.</td></tr>
+        <tr><td><strong>Acoes</strong></td><td>Botoes com icone + texto. Destructive: vermelho com fundo rgba. Requer confirmacao.</td></tr>
+        <tr><td><strong>Select all</strong></td><td>Header checkbox: seleciona pagina atual. Link "Selecionar todos os 1.247" para full.</td></tr>
+        <tr><td><strong>Keyboard</strong></td><td>Shift+Click para range. Ctrl+A para selecionar todos. Esc para limpar selecao.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== PERMISSION INDICATORS ==================== -->
+  <section class="section section-dark" id="permission-indicators">
+    <div class="section-header">
+      <div class="section-number">60 — Permission & Role Indicators</div>
+      <h2>Permission & Role Indicators</h2>
+    </div>
+
+    <p>Indicadores visuais de nivel de acesso e permissoes. Badges de role, estados disabled por falta de permissao, e tooltips explicativos para acoes restritas.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-perms')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-perms-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-perms-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-perms">
+      <div style="max-width: 480px; margin: auto; display: grid; gap: 1rem;">
+        <!-- Role badges -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #F8FAFC; margin-bottom: 1rem;">Badges de Role</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="background: linear-gradient(135deg, #7C3AED, #6D28D9); color: white; padding: 4px 12px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; white-space: nowrap;">Admin</span>
+            <span style="background: #1E3A5F; color: #60A5FA; padding: 4px 12px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1px solid #3B82F6; white-space: nowrap;">Gerente</span>
+            <span style="background: #1A2E1A; color: #4ADE80; padding: 4px 12px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1px solid #22C55E; white-space: nowrap;">Vendedor</span>
+            <span style="background: #2D2418; color: #FBBF24; padding: 4px 12px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1px solid #F59E0B; white-space: nowrap;">Financeiro</span>
+            <span style="background: #334155; color: #94A3B8; padding: 4px 12px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; border: 1px solid #475569; white-space: nowrap;">Visualizador</span>
+          </div>
+        </div>
+
+        <!-- Acoes com permissao -->
+        <div style="background: #F8FAFC; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #0F172A; margin-bottom: 1rem;">Acoes por permissao</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: white; border: 1px solid #E2E8F0; border-radius: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.7rem; color: #0F172A;">Editar produto</span>
+              </div>
+              <span style="background: #F0FDF4; color: #16A34A; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Permitido</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 8px; opacity: 0.6;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8;">Excluir produto</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <span style="background: #FFF5F5; color: #E53E3E; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Admin</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 8px; opacity: 0.6;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.7rem; color: #94A3B8;">Alterar precos</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <span style="background: #FFF5F5; color: #E53E3E; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">Requer Gerente</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-perms-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Role badge --&gt;
+&lt;span class="role-badge role-admin"&gt;Admin&lt;/span&gt;
+&lt;span class="role-badge role-manager"&gt;Gerente&lt;/span&gt;
+&lt;span class="role-badge role-seller"&gt;Vendedor&lt;/span&gt;
+
+&lt;!-- Acao restrita --&gt;
+&lt;button class="action-btn" disabled
+  title="Voce precisa de permissao Admin para excluir"&gt;
+  &lt;svg class="icon-lock"&gt;...&lt;/svg&gt;
+  Excluir produto
+  &lt;span class="perm-badge"&gt;Requer Admin&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Acao permitida --&gt;
+&lt;button class="action-btn"&gt;
+  &lt;svg class="icon-edit"&gt;...&lt;/svg&gt;
+  Editar produto
+  &lt;span class="perm-badge allowed"&gt;Permitido&lt;/span&gt;
+&lt;/button&gt;</div>
+    <div class="code-block" id="code-perms-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Role badges */
+.role-badge {
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 0.6rem; font-weight: 600; white-space: nowrap;
+}
+.role-admin  { background: linear-gradient(135deg, #7C3AED, #6D28D9); color: #fff; }
+.role-manager { background: #1E3A5F; color: #60A5FA; border: 1px solid #3B82F6; }
+.role-seller  { background: #1A2E1A; color: #4ADE80; border: 1px solid #22C55E; }
+.role-finance { background: #2D2418; color: #FBBF24; border: 1px solid #F59E0B; }
+.role-viewer  { background: #334155; color: #94A3B8; border: 1px solid #475569; }
+
+/* Restricted action */
+.action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.action-btn:disabled .icon { stroke: #94A3B8; }
+
+/* Permission badge */
+.perm-badge { font-size: 0.5rem; padding: 2px 8px; border-radius: 4px; }
+.perm-badge.allowed { background: #F0FDF4; color: #16A34A; }
+.perm-badge.denied  { background: #FFF5F5; color: #E53E3E; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Elemento</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Admin</strong></td><td>Gradient purple <code>#7C3AED → #6D28D9</code>. Unico badge com gradient (destaque maximo).</td></tr>
+        <tr><td><strong>Gerente</strong></td><td>Azul <code>#60A5FA</code> com borda. Background <code>#1E3A5F</code>.</td></tr>
+        <tr><td><strong>Vendedor</strong></td><td>Verde <code>#4ADE80</code> com borda. Background <code>#1A2E1A</code>.</td></tr>
+        <tr><td><strong>Acao bloqueada</strong></td><td>Opacity 0.6, cursor not-allowed. Icone cadeado + badge "Requer [Role]".</td></tr>
+        <tr><td><strong>Tooltip</strong></td><td>Ao hover em acao bloqueada: "Voce precisa de permissao [Role] para [acao]".</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== COPY CLIPBOARD ==================== -->
+  <section class="section" id="copy-clipboard">
+    <div class="section-header">
+      <div class="section-number">61 — Copy to Clipboard Patterns</div>
+      <h2>Copy to Clipboard Patterns</h2>
+    </div>
+
+    <p>Botoes e interacoes de copiar com feedback visual instantaneo. Icone muda para check apos copiar, com toast opcional de confirmacao.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-copy')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-copy-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-copy-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-copy">
+      <div style="max-width: 420px; margin: auto; display: grid; gap: 1rem;">
+        <!-- Inline copy -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #94A3B8; margin-bottom: 0.75rem;">Codigo do pedido</div>
+          <div style="display: flex; align-items: center; gap: 8px; background: #0F172A; border-radius: 8px; padding: 10px 14px;">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #F8FAFC; flex: 1;">PED-2026-00847</span>
+            <button style="background: #334155; border: none; border-radius: 6px; padding: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Copiar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Copy com feedback (estado copiado) -->
+        <div style="background: #1E293B; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #94A3B8; margin-bottom: 0.75rem;">Chave API (copiado!)</div>
+          <div style="display: flex; align-items: center; gap: 8px; background: #0F172A; border: 1.5px solid #10B981; border-radius: 8px; padding: 10px 14px;">
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: #F8FAFC; flex: 1;">sk_live_••••••••••••3f7a</span>
+            <button style="background: #064E3B; border: none; border-radius: 6px; padding: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #10B981; margin-top: 6px;">Copiado para a area de transferencia!</div>
+        </div>
+
+        <!-- Botao copy com texto -->
+        <div style="background: #F8FAFC; border-radius: 10px; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A; margin-bottom: 0.75rem;">Link de compartilhamento</div>
+          <div style="display: flex; gap: 8px;">
+            <div style="flex: 1; border: 1.5px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; font-family: var(--font-mono); font-size: 0.6rem; color: #64748B; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">https://app.sysled.com/share/inv-8a3f...</div>
+            <button style="background: #0F172A; border: none; border-radius: 8px; padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: white;">Copiar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-copy-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Inline copy field --&gt;
+&lt;div class="copy-field"&gt;
+  &lt;span class="copy-value"&gt;PED-2026-00847&lt;/span&gt;
+  &lt;button class="copy-btn" onclick="copyToClipboard(this, 'PED-2026-00847')"&gt;
+    &lt;svg class="icon-copy"&gt;...&lt;/svg&gt;
+    &lt;svg class="icon-check" hidden&gt;...&lt;/svg&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+async function copyToClipboard(btn, text) {
+  await navigator.clipboard.writeText(text);
+  btn.classList.add('copied');
+  btn.querySelector('.icon-copy').hidden = true;
+  btn.querySelector('.icon-check').hidden = false;
+  setTimeout(() =&gt; {
+    btn.classList.remove('copied');
+    btn.querySelector('.icon-copy').hidden = false;
+    btn.querySelector('.icon-check').hidden = true;
+  }, 2000);
+}
+&lt;/script&gt;</div>
+    <div class="code-block" id="code-copy-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Copy field */
+.copy-field {
+  display: flex; align-items: center; gap: 8px;
+  background: #0F172A; border-radius: 8px; padding: 10px 14px;
+}
+.copy-value { font-family: monospace; color: #F8FAFC; flex: 1; }
+
+/* Copy button */
+.copy-btn {
+  background: #334155; border: none; border-radius: 6px;
+  padding: 6px; cursor: pointer; transition: all 150ms ease;
+}
+.copy-btn:hover { background: #475569; }
+.copy-btn .icon-copy { stroke: #94A3B8; }
+
+/* Copied state */
+.copy-btn.copied { background: #064E3B; }
+.copy-btn.copied .icon-check { stroke: #10B981; }
+.copy-field:has(.copy-btn.copied) { border: 1.5px solid #10B981; }
+
+/* Feedback text */
+.copy-feedback {
+  font-size: 0.55rem; color: #10B981; margin-top: 6px;
+  animation: fadeIn 200ms ease;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Estado</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Default</strong></td><td>Icone clipboard, background <code>#334155</code>, stroke <code>#94A3B8</code>.</td></tr>
+        <tr><td><strong>Hover</strong></td><td>Background <code>#475569</code>. Transition 150ms.</td></tr>
+        <tr><td><strong>Copiado</strong></td><td>Icone check, background <code>#064E3B</code>, stroke <code>#10B981</code>. Borda verde no container.</td></tr>
+        <tr><td><strong>Feedback</strong></td><td>Texto "Copiado!" em <code>#10B981</code> abaixo do campo. Fade in 200ms. Some apos 2s.</td></tr>
+        <tr><td><strong>Dados sensiveis</strong></td><td>Mascarar com <code>••••</code>. Botao "Revelar" antes de copiar. Copiar envia valor real.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== RESPONSIVE IMAGES ==================== -->
+  <section class="section section-dark" id="responsive-images">
+    <div class="section-header">
+      <div class="section-number">62 — Responsive Images & Media</div>
+      <h2>Responsive Images & Media</h2>
+    </div>
+
+    <p>Padroes para imagens e midias responsivas. Aspect ratios consistentes, lazy loading, placeholders, e tratamento de falha no carregamento.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-resp-img')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-resp-img-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-resp-img-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-resp-img">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 520px; margin: auto;">
+        <!-- Loaded image -->
+        <div>
+          <div style="aspect-ratio: 1/1; background: linear-gradient(135deg, #1E293B, #334155); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); display: flex; align-items: center; justify-content: center;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">1:1 — Produto</div>
+        </div>
+        <!-- 16:9 -->
+        <div>
+          <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, #064E3B, #10B981); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">16:9 — Banner</div>
+        </div>
+        <!-- 4:3 -->
+        <div>
+          <div style="aspect-ratio: 4/3; background: linear-gradient(135deg, #7C2D12, #F59E0B); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">4:3 — Galeria</div>
+        </div>
+        <!-- Skeleton loading -->
+        <div>
+          <div style="aspect-ratio: 1/1; background: #1E293B; border-radius: 10px; position: relative; overflow: hidden;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%); animation: shimmer 1.5s infinite;"></div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">Skeleton</div>
+        </div>
+        <!-- Error fallback -->
+        <div>
+          <div style="aspect-ratio: 1/1; background: #1E293B; border: 1.5px dashed #334155; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+            <span style="font-family: var(--font-body); font-size: 0.5rem; color: #475569;">Sem imagem</span>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">Fallback</div>
+        </div>
+        <!-- Lazy blur -->
+        <div>
+          <div style="aspect-ratio: 1/1; background: linear-gradient(135deg, #3B82F6, #8B5CF6); border-radius: 10px; filter: blur(10px); transform: scale(1.05);"></div>
+          <div style="font-family: var(--font-heading); font-size: 0.55rem; color: #94A3B8; text-align: center; margin-top: 6px;">Blur placeholder</div>
+        </div>
+      </div>
+      <style>@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }</style>
+    </div>
+
+    <div class="code-block" id="code-resp-img-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Imagem responsiva com lazy loading --&gt;
+&lt;img
+  src="produto-thumb.webp"
+  srcset="produto-400.webp 400w, produto-800.webp 800w"
+  sizes="(max-width: 768px) 100vw, 33vw"
+  loading="lazy"
+  decoding="async"
+  alt="Luminaria LED 24W Slim"
+  class="img-product"
+/&gt;
+
+&lt;!-- Fallback para erro --&gt;
+&lt;div class="img-fallback"&gt;
+  &lt;svg class="icon-broken"&gt;...&lt;/svg&gt;
+  &lt;span&gt;Sem imagem&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Blur-up placeholder --&gt;
+&lt;div class="img-wrapper"&gt;
+  &lt;img class="img-blur" src="data:image/webp;base64,..." /&gt;
+  &lt;img class="img-full" loading="lazy" src="produto-800.webp" /&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-resp-img-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Aspect ratios padrao */
+.img-product  { aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
+.img-banner   { aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.img-gallery  { aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+.img-avatar   { aspect-ratio: 1/1; object-fit: cover; border-radius: 50%; }
+
+/* Fallback */
+.img-fallback {
+  aspect-ratio: 1/1; background: #1E293B;
+  border: 1.5px dashed #334155; border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+}
+.img-fallback span { font-size: 0.5rem; color: #475569; }
+
+/* Blur-up placeholder */
+.img-wrapper { position: relative; overflow: hidden; border-radius: 10px; }
+.img-blur { filter: blur(10px); transform: scale(1.05); }
+.img-full { position: absolute; inset: 0; opacity: 0; transition: opacity 300ms; }
+.img-full.loaded { opacity: 1; }
+
+/* Skeleton */
+.img-skeleton {
+  background: #1E293B; position: relative; overflow: hidden;
+}
+.img-skeleton::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: shimmer 1.5s infinite;
+}</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Contexto</th><th>Aspect Ratio</th><th>Formato</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Produto (thumb)</strong></td><td>1:1</td><td>WebP, 400x400 / 800x800</td></tr>
+        <tr><td><strong>Banner</strong></td><td>16:9</td><td>WebP, 1200x675 / 2400x1350</td></tr>
+        <tr><td><strong>Galeria</strong></td><td>4:3</td><td>WebP, 600x450 / 1200x900</td></tr>
+        <tr><td><strong>Avatar</strong></td><td>1:1 (circle)</td><td>WebP, 128x128 / 256x256</td></tr>
+        <tr><td><strong>Loading</strong></td><td>Skeleton shimmer ou blur-up placeholder</td><td>Base64 thumbnail (< 1KB)</td></tr>
+        <tr><td><strong>Erro</strong></td><td>Fallback: icone + texto "Sem imagem"</td><td>SVG inline</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== CHANGELOG ==================== -->
+  <section class="section" id="changelog">
+    <div class="section-header">
+      <div class="section-number">63 — Changelog & Version History</div>
+      <h2>Changelog & Version History</h2>
+    </div>
+
+    <p>Timeline de versoes e atualizacoes do sistema. Badges de status, diff visual de mudancas, e release notes com categorias de alteracao.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-changelog')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-changelog-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-changelog-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-changelog">
+      <div style="background: #F8FAFC; border-radius: 12px; padding: 2rem; max-width: 480px; margin: auto;">
+        <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #0F172A; margin-bottom: 1.5rem;">Novidades</div>
+
+        <!-- Version entry -->
+        <div style="position: relative; padding-left: 24px; margin-bottom: 1.5rem;">
+          <div style="position: absolute; left: 0; top: 6px; width: 10px; height: 10px; background: #3B82F6; border-radius: 50;"></div>
+          <div style="position: absolute; left: 4px; top: 20px; bottom: -20px; width: 2px; background: #E2E8F0;"></div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #0F172A;">v2.4.0</span>
+            <span style="background: #DBEAFE; color: #1D4ED8; padding: 2px 8px; border-radius: 4px; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 600; white-space: nowrap;">Atual</span>
+            <span style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">07 Mar 2026</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #F0FDF4; color: #16A34A; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">NEW</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #334155;">Dashboard de KPIs com graficos interativos</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #F0FDF4; color: #16A34A; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">NEW</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #334155;">Exportacao em PDF com logo da empresa</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #EFF6FF; color: #2563EB; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">UPD</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #334155;">Filtros de busca agora persistem entre sessoes</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #FFF5F5; color: #DC2626; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">FIX</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #334155;">Corrigido calculo de ICMS para SP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Older version -->
+        <div style="position: relative; padding-left: 24px;">
+          <div style="position: absolute; left: 0; top: 6px; width: 10px; height: 10px; background: #CBD5E1; border-radius: 50%;"></div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #64748B;">v2.3.2</span>
+            <span style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">28 Fev 2026</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #FFF5F5; color: #DC2626; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">FIX</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #64748B;">Hotfix: timeout na importacao de NF-e</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="background: #FEF3C7; color: #D97706; padding: 1px 6px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.5rem; white-space: nowrap;">DEP</span>
+              <span style="font-family: var(--font-body); font-size: 0.65rem; color: #64748B; text-decoration: line-through;">API v1 de produtos (usar v2)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-changelog-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="changelog"&gt;
+  &lt;article class="changelog-entry current"&gt;
+    &lt;div class="changelog-dot"&gt;&lt;/div&gt;
+    &lt;div class="changelog-line"&gt;&lt;/div&gt;
+    &lt;header&gt;
+      &lt;span class="version"&gt;v2.4.0&lt;/span&gt;
+      &lt;span class="badge current"&gt;Atual&lt;/span&gt;
+      &lt;time&gt;07 Mar 2026&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;span class="tag new"&gt;NEW&lt;/span&gt; Dashboard de KPIs&lt;/li&gt;
+      &lt;li&gt;&lt;span class="tag upd"&gt;UPD&lt;/span&gt; Filtros persistentes&lt;/li&gt;
+      &lt;li&gt;&lt;span class="tag fix"&gt;FIX&lt;/span&gt; Calculo ICMS&lt;/li&gt;
+      &lt;li&gt;&lt;span class="tag dep"&gt;DEP&lt;/span&gt; API v1 deprecated&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-changelog-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Changelog */
+.changelog-entry { position: relative; padding-left: 24px; margin-bottom: 1.5rem; }
+.changelog-dot {
+  position: absolute; left: 0; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.changelog-entry.current .changelog-dot { background: #3B82F6; }
+.changelog-entry:not(.current) .changelog-dot { background: #CBD5E1; }
+.changelog-line {
+  position: absolute; left: 4px; top: 20px; bottom: -20px;
+  width: 2px; background: #E2E8F0;
+}
+
+/* Tags */
+.tag { padding: 1px 6px; border-radius: 3px; font-size: 0.5rem; font-family: monospace; }
+.tag.new { background: #F0FDF4; color: #16A34A; }
+.tag.upd { background: #EFF6FF; color: #2563EB; }
+.tag.fix { background: #FFF5F5; color: #DC2626; }
+.tag.dep { background: #FEF3C7; color: #D97706; }
+
+/* Current badge */
+.badge.current { background: #DBEAFE; color: #1D4ED8; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Tag</th><th>Cor</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>NEW</strong></td><td>Verde <code>#16A34A</code> / <code>#F0FDF4</code></td><td>Funcionalidade totalmente nova</td></tr>
+        <tr><td><strong>UPD</strong></td><td>Azul <code>#2563EB</code> / <code>#EFF6FF</code></td><td>Melhoria em funcionalidade existente</td></tr>
+        <tr><td><strong>FIX</strong></td><td>Vermelho <code>#DC2626</code> / <code>#FFF5F5</code></td><td>Correcao de bug</td></tr>
+        <tr><td><strong>DEP</strong></td><td>Amarelo <code>#D97706</code> / <code>#FEF3C7</code></td><td>Funcionalidade descontinuada. Texto com line-through.</td></tr>
+        <tr><td><strong>Timeline</strong></td><td colspan="2">Dot azul para versao atual, cinza para anteriores. Linha vertical <code>#E2E8F0</code>.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== SETTINGS UI ==================== -->
+  <section class="section section-dark" id="settings-ui">
+    <div class="section-header">
+      <div class="section-number">64 — Settings & Preferences UI</div>
+      <h2>Settings & Preferences UI</h2>
+    </div>
+
+    <p>Layout padrao para paginas de configuracao. Secoes agrupadas com toggle switches, selects e opcoes de salvamento automatico vs manual.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-settings')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-settings-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-settings-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-settings">
+      <div style="background: #F8FAFC; border-radius: 12px; overflow: hidden; max-width: 520px; margin: auto; display: flex;">
+        <!-- Sidebar nav -->
+        <div style="width: 140px; background: white; border-right: 1px solid #E2E8F0; padding: 1rem 0; flex-shrink: 0;">
+          <div style="padding: 6px 16px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #3B82F6; background: #EFF6FF; border-right: 2px solid #3B82F6;">Geral</div>
+          <div style="padding: 6px 16px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">Notificacoes</div>
+          <div style="padding: 6px 16px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">Seguranca</div>
+          <div style="padding: 6px 16px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">Integracao</div>
+          <div style="padding: 6px 16px; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B;">Aparencia</div>
+        </div>
+        <!-- Content -->
+        <div style="flex: 1; padding: 1.25rem;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: #0F172A; margin-bottom: 0.25rem;">Geral</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-bottom: 1.25rem;">Configuracoes basicas da conta e do sistema.</div>
+
+          <!-- Toggle item -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #F1F5F9;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A;">Salvar automaticamente</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">Salvar alteracoes em rascunho a cada 30 segundos.</div>
+            </div>
+            <div style="width: 36px; height: 20px; background: #3B82F6; border-radius: 10px; position: relative; cursor: pointer;">
+              <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; right: 2px; top: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.1);"></div>
+            </div>
+          </div>
+
+          <!-- Toggle item off -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #F1F5F9;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A;">Modo compacto</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">Reduzir espacamento em tabelas e listas.</div>
+            </div>
+            <div style="width: 36px; height: 20px; background: #CBD5E1; border-radius: 10px; position: relative; cursor: pointer;">
+              <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; left: 2px; top: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.1);"></div>
+            </div>
+          </div>
+
+          <!-- Select -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: #0F172A;">Idioma</div>
+              <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">Idioma da interface do sistema.</div>
+            </div>
+            <div style="border: 1.5px solid #E2E8F0; border-radius: 6px; padding: 4px 10px; font-family: var(--font-body); font-size: 0.6rem; color: #0F172A; background: white; display: flex; align-items: center; gap: 6px;">
+              Portugues (BR)
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-settings-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="settings-layout"&gt;
+  &lt;nav class="settings-nav"&gt;
+    &lt;a class="settings-link active"&gt;Geral&lt;/a&gt;
+    &lt;a class="settings-link"&gt;Notificacoes&lt;/a&gt;
+    &lt;a class="settings-link"&gt;Seguranca&lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;main class="settings-content"&gt;
+    &lt;h2&gt;Geral&lt;/h2&gt;
+    &lt;p class="settings-desc"&gt;Configuracoes basicas.&lt;/p&gt;
+
+    &lt;div class="setting-item"&gt;
+      &lt;div class="setting-info"&gt;
+        &lt;strong&gt;Salvar automaticamente&lt;/strong&gt;
+        &lt;span&gt;Salvar rascunho a cada 30s&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;label class="toggle-switch"&gt;
+        &lt;input type="checkbox" checked /&gt;
+        &lt;span class="toggle-slider"&gt;&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-settings-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Settings layout */
+.settings-layout { display: flex; min-height: 400px; }
+.settings-nav { width: 180px; border-right: 1px solid #E2E8F0; padding: 1rem 0; }
+.settings-link {
+  display: block; padding: 8px 16px;
+  font-size: 0.65rem; font-weight: 600; color: #64748B;
+}
+.settings-link.active {
+  color: #3B82F6; background: #EFF6FF;
+  border-right: 2px solid #3B82F6;
+}
+.settings-content { flex: 1; padding: 1.5rem; }
+
+/* Setting item */
+.setting-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid #F1F5F9;
+}
+.setting-info strong { font-size: 0.65rem; display: block; color: #0F172A; }
+.setting-info span { font-size: 0.55rem; color: #94A3B8; }
+
+/* Toggle switch */
+.toggle-switch input { display: none; }
+.toggle-slider {
+  width: 36px; height: 20px; background: #CBD5E1;
+  border-radius: 10px; position: relative; cursor: pointer;
+  transition: background 200ms;
+}
+.toggle-slider::after {
+  content: ""; width: 16px; height: 16px; background: white;
+  border-radius: 50%; position: absolute; left: 2px; top: 2px;
+  transition: transform 200ms;
+}
+input:checked + .toggle-slider { background: #3B82F6; }
+input:checked + .toggle-slider::after { transform: translateX(16px); }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Elemento</th><th>Especificacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Layout</strong></td><td>Sidebar 180px + conteudo fluido. Em mobile: nav vira tabs horizontais.</td></tr>
+        <tr><td><strong>Nav ativa</strong></td><td>Background <code>#EFF6FF</code>, texto <code>#3B82F6</code>, border-right 2px <code>#3B82F6</code>.</td></tr>
+        <tr><td><strong>Toggle ON</strong></td><td>Background <code>#3B82F6</code>, thumb branco a direita. Transition 200ms.</td></tr>
+        <tr><td><strong>Toggle OFF</strong></td><td>Background <code>#CBD5E1</code>, thumb branco a esquerda.</td></tr>
+        <tr><td><strong>Auto-save</strong></td><td>Mostrar "Salvo" em <code>#10B981</code> apos alteracao. Sem botao salvar.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== DASHBOARD WIDGETS ==================== -->
+  <section class="section" id="dashboard-widgets">
+    <div class="section-header">
+      <div class="section-number">65 — Dashboard Widgets & KPI Cards</div>
+      <h2>Dashboard Widgets & KPI Cards</h2>
+    </div>
+
+    <p>Cards de metricas para dashboards com valores, tendencias, sparklines e comparacao com periodo anterior. Projetados para visualizacao rapida de KPIs.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-kpi')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-kpi-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-kpi-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-kpi">
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 520px; margin: auto;">
+        <!-- KPI Card - Up -->
+        <div style="background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Receita Mensal</div>
+            <div style="width: 28px; height: 28px; background: #F0FDF4; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">R$ 284.750</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="background: #F0FDF4; color: #16A34A; padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">+12,4%</span>
+            <span style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">vs mes anterior</span>
+          </div>
+          <!-- Mini sparkline -->
+          <svg style="margin-top: 0.75rem; width: 100%; height: 32px;" viewBox="0 0 200 32">
+            <polyline points="0,28 30,24 60,26 90,18 120,20 150,12 180,8 200,4" fill="none" stroke="#16A34A" stroke-width="2"/>
+            <polyline points="0,28 30,24 60,26 90,18 120,20 150,12 180,8 200,4 200,32 0,32" fill="url(#greenGrad)" opacity="0.15"/>
+            <defs><linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#16A34A"/><stop offset="100%" stop-color="#16A34A" stop-opacity="0"/></linearGradient></defs>
+          </svg>
+        </div>
+
+        <!-- KPI Card - Down -->
+        <div style="background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Ticket Medio</div>
+            <div style="width: 28px; height: 28px; background: #FFF5F5; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">R$ 347</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="background: #FFF5F5; color: #DC2626; padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">-3,2%</span>
+            <span style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">vs mes anterior</span>
+          </div>
+          <svg style="margin-top: 0.75rem; width: 100%; height: 32px;" viewBox="0 0 200 32">
+            <polyline points="0,4 30,8 60,6 90,14 120,12 150,20 180,24 200,28" fill="none" stroke="#DC2626" stroke-width="2"/>
+            <polyline points="0,4 30,8 60,6 90,14 120,12 150,20 180,24 200,28 200,32 0,32" fill="url(#redGrad)" opacity="0.15"/>
+            <defs><linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DC2626"/><stop offset="100%" stop-color="#DC2626" stop-opacity="0"/></linearGradient></defs>
+          </svg>
+        </div>
+
+        <!-- KPI Card - Neutral -->
+        <div style="background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Pedidos Hoje</div>
+            <div style="width: 28px; height: 28px; background: #F1F5F9; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">48</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="background: #F1F5F9; color: #64748B; padding: 2px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.55rem; font-weight: 600; white-space: nowrap;">0%</span>
+            <span style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8;">mesmo que ontem</span>
+          </div>
+        </div>
+
+        <!-- KPI Card - Goal progress -->
+        <div style="background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Meta Mensal</div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700; color: #3B82F6;">72%</div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem;">R$ 216k <span style="font-size: 0.7rem; color: #94A3B8; font-weight: 500;">/ R$ 300k</span></div>
+          <div style="height: 6px; background: #E2E8F0; border-radius: 3px; overflow: hidden; margin-top: 0.5rem;">
+            <div style="width: 72%; height: 100%; background: linear-gradient(90deg, #3B82F6, #60A5FA); border-radius: 3px;"></div>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 0.55rem; color: #94A3B8; margin-top: 6px;">Faltam R$ 84.000 em 24 dias</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-kpi-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="kpi-grid"&gt;
+  &lt;div class="kpi-card"&gt;
+    &lt;div class="kpi-header"&gt;
+      &lt;span class="kpi-label"&gt;Receita Mensal&lt;/span&gt;
+      &lt;div class="kpi-icon up"&gt;&lt;svg&gt;...arrow-up...&lt;/svg&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="kpi-value"&gt;R$ 284.750&lt;/div&gt;
+    &lt;div class="kpi-trend"&gt;
+      &lt;span class="trend-badge up"&gt;+12,4%&lt;/span&gt;
+      &lt;span class="trend-label"&gt;vs mes anterior&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;svg class="kpi-sparkline"&gt;...&lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-kpi-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* KPI Grid */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+
+/* KPI Card */
+.kpi-card {
+  background: white; border: 1px solid #E2E8F0;
+  border-radius: 12px; padding: 1.25rem;
+}
+.kpi-label {
+  font-size: 0.6rem; font-weight: 600; color: #64748B;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.kpi-value { font-size: 1.5rem; font-weight: 800; color: #0F172A; }
+
+/* Trend badges */
+.trend-badge { padding: 2px 6px; border-radius: 4px; font-size: 0.55rem; font-weight: 600; }
+.trend-badge.up   { background: #F0FDF4; color: #16A34A; }
+.trend-badge.down { background: #FFF5F5; color: #DC2626; }
+.trend-badge.flat { background: #F1F5F9; color: #64748B; }
+
+/* Icon container */
+.kpi-icon { width: 28px; height: 28px; border-radius: 6px; }
+.kpi-icon.up   { background: #F0FDF4; }
+.kpi-icon.down { background: #FFF5F5; }
+
+/* Progress bar (goal) */
+.kpi-progress { height: 6px; background: #E2E8F0; border-radius: 3px; overflow: hidden; }
+.kpi-progress-bar { height: 100%; background: linear-gradient(90deg, #3B82F6, #60A5FA); border-radius: 3px; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Variacao</th><th>Cor</th><th>Icone</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Positivo (up)</strong></td><td>Verde <code>#16A34A</code>. Badge <code>#F0FDF4</code>.</td><td>Arrow up. Sparkline ascendente verde.</td></tr>
+        <tr><td><strong>Negativo (down)</strong></td><td>Vermelho <code>#DC2626</code>. Badge <code>#FFF5F5</code>.</td><td>Arrow down. Sparkline descendente vermelha.</td></tr>
+        <tr><td><strong>Neutro (flat)</strong></td><td>Cinza <code>#64748B</code>. Badge <code>#F1F5F9</code>.</td><td>Activity icon. Sem sparkline.</td></tr>
+        <tr><td><strong>Meta (goal)</strong></td><td>Azul <code>#3B82F6</code>. Progress bar.</td><td>Percentual no header. Texto "Faltam X em Y dias".</td></tr>
+        <tr><td><strong>Sparkline</strong></td><td colspan="2">SVG polyline com fill gradient 15% opacity. 32px height.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- ==================== ERROR PAGES ==================== -->
+  <section class="section section-dark" id="error-pages">
+    <div class="section-header">
+      <div class="section-number">66 — Error Pages (404, 500, Maintenance)</div>
+      <h2>Error Pages (404, 500, Maintenance)</h2>
+    </div>
+
+    <p>Paginas de erro estilizadas com ilustracoes, mensagens amigaveis e acoes claras de recuperacao. Manter a identidade visual mesmo em situacoes de falha.</p>
+
+    <div class="component-toggle" style="margin-top: 2rem;">
+      <button class="toggle-btn active" onclick="showPreview(this, 'preview-errpages')">Preview</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-errpages-html')">HTML</button>
+      <button class="toggle-btn" onclick="showCode(this, 'code-errpages-css')">CSS</button>
+    </div>
+
+    <div class="component-demo" id="preview-errpages">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 520px; margin: auto;">
+        <!-- 404 -->
+        <div style="background: #0F172A; border-radius: 12px; padding: 2rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 900; color: #1E293B; line-height: 1; margin-bottom: 0.5rem;">404</div>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.75rem;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.25rem;">Pagina nao encontrada</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-bottom: 1rem; line-height: 1.5;">O link pode estar quebrado ou a pagina foi removida.</div>
+          <button style="padding: 8px 20px; border-radius: 8px; border: none; background: #3B82F6; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; color: white; cursor: pointer;">Voltar ao inicio</button>
+        </div>
+
+        <!-- 500 -->
+        <div style="background: #0F172A; border-radius: 12px; padding: 2rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 900; color: #1E293B; line-height: 1; margin-bottom: 0.5rem;">500</div>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.75rem;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.25rem;">Erro interno</div>
+          <div style="font-family: var(--font-body); font-size: 0.6rem; color: #64748B; margin-bottom: 1rem; line-height: 1.5;">Algo deu errado do nosso lado. Ja fomos notificados.</div>
+          <div style="display: flex; gap: 8px; justify-content: center;">
+            <button style="padding: 8px 16px; border-radius: 8px; border: 1.5px solid #334155; background: transparent; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: #94A3B8; cursor: pointer;">Tentar novamente</button>
+            <button style="padding: 8px 16px; border-radius: 8px; border: none; background: #3B82F6; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; color: white; cursor: pointer;">Suporte</button>
+          </div>
+        </div>
+
+        <!-- Maintenance (full width) -->
+        <div style="grid-column: 1 / -1; background: linear-gradient(135deg, #0F172A, #1E293B); border-radius: 12px; padding: 2rem; text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.75rem;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.25rem;">Manutencao programada</div>
+          <div style="font-family: var(--font-body); font-size: 0.65rem; color: #94A3B8; margin-bottom: 1rem; line-height: 1.5;">Estamos atualizando o sistema. Previsao de retorno: <strong style="color: #F59E0B;">14:30h</strong></div>
+          <div style="display: inline-flex; gap: 0.75rem; background: #1E293B; border-radius: 8px; padding: 10px 20px;">
+            <div style="text-align: center;"><div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #F8FAFC;">00</div><div style="font-family: var(--font-body); font-size: 0.5rem; color: #64748B;">horas</div></div>
+            <div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #334155;">:</div>
+            <div style="text-align: center;"><div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #F8FAFC;">42</div><div style="font-family: var(--font-body); font-size: 0.5rem; color: #64748B;">min</div></div>
+            <div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #334155;">:</div>
+            <div style="text-align: center;"><div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #F8FAFC;">15</div><div style="font-family: var(--font-body); font-size: 0.5rem; color: #64748B;">seg</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block" id="code-errpages-html" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- 404 Page --&gt;
+&lt;div class="error-page"&gt;
+  &lt;div class="error-code"&gt;404&lt;/div&gt;
+  &lt;svg class="error-icon"&gt;...search-minus...&lt;/svg&gt;
+  &lt;h1&gt;Pagina nao encontrada&lt;/h1&gt;
+  &lt;p&gt;O link pode estar quebrado ou a pagina foi removida.&lt;/p&gt;
+  &lt;a href="/" class="btn-primary"&gt;Voltar ao inicio&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- 500 Page --&gt;
+&lt;div class="error-page"&gt;
+  &lt;div class="error-code"&gt;500&lt;/div&gt;
+  &lt;svg class="error-icon"&gt;...alert-triangle...&lt;/svg&gt;
+  &lt;h1&gt;Erro interno&lt;/h1&gt;
+  &lt;p&gt;Algo deu errado. Ja fomos notificados.&lt;/p&gt;
+  &lt;div class="error-actions"&gt;
+    &lt;button onclick="location.reload()"&gt;Tentar novamente&lt;/button&gt;
+    &lt;a href="/suporte"&gt;Suporte&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Maintenance --&gt;
+&lt;div class="error-page maintenance"&gt;
+  &lt;svg class="error-icon"&gt;...settings...&lt;/svg&gt;
+  &lt;h1&gt;Manutencao programada&lt;/h1&gt;
+  &lt;p&gt;Retorno previsto: &lt;strong&gt;14:30h&lt;/strong&gt;&lt;/p&gt;
+  &lt;div class="countdown"&gt;00:42:15&lt;/div&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-errpages-css" style="display:none;"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>/* Error pages */
+.error-page {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  background: #0F172A; padding: 2rem;
+}
+.error-code {
+  font-size: 6rem; font-weight: 900; color: #1E293B; line-height: 1;
+}
+.error-icon { width: 64px; stroke: #334155; margin: 1rem 0; }
+.error-page h1 { font-size: 1.25rem; color: #F8FAFC; margin-bottom: 0.5rem; }
+.error-page p { font-size: 0.75rem; color: #64748B; max-width: 400px; }
+
+/* Actions */
+.error-actions { display: flex; gap: 8px; margin-top: 1.5rem; }
+
+/* Countdown (maintenance) */
+.countdown {
+  display: inline-flex; gap: 1rem; background: #1E293B;
+  border-radius: 8px; padding: 12px 24px; margin-top: 1.5rem;
+}
+.countdown .unit { font-size: 1.5rem; font-weight: 800; color: #F8FAFC; }
+.countdown .label { font-size: 0.5rem; color: #64748B; }
+
+/* Maintenance accent */
+.error-page.maintenance .error-icon { stroke: #F59E0B; }</div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead><tr><th>Pagina</th><th>Icone</th><th>Acoes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>404</strong></td><td>Search com minus (<code>#334155</code>)</td><td>"Voltar ao inicio" (botao primario)</td></tr>
+        <tr><td><strong>500</strong></td><td>Alert triangle (<code>#334155</code>)</td><td>"Tentar novamente" + "Suporte"</td></tr>
+        <tr><td><strong>403</strong></td><td>Lock (<code>#334155</code>)</td><td>"Solicitar acesso" + "Voltar"</td></tr>
+        <tr><td><strong>Maintenance</strong></td><td>Settings gear (<code>#F59E0B</code>)</td><td>Countdown timer. Previsao de retorno em destaque.</td></tr>
+        <tr><td><strong>Codigo</strong></td><td colspan="2">Font-size 6rem, color <code>#1E293B</code> (quase invisivel, decorativo).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ==================== ICONOGRAFIA ==================== -->
   <section class="section" id="iconografia">
     <div class="section-header">
-      <div class="section-number">57 — Iconografia</div>
+      <div class="section-number">67 — Iconografia</div>
       <h2>Iconografia</h2>
     </div>
     
@@ -10750,7 +12046,7 @@ new Intl.PluralRules('pt-BR').select(5); // "other"
   <!-- ==================== ACESSIBILIDADE ==================== -->
   <section class="section section-dark" id="acessibilidade">
     <div class="section-header">
-      <div class="section-number">58 — Acessibilidade</div>
+      <div class="section-number">68 — Acessibilidade</div>
       <h2>Acessibilidade</h2>
     </div>
     
@@ -10842,7 +12138,7 @@ new Intl.PluralRules('pt-BR').select(5); // "other"
   <!-- ==================== RESPONSIVIDADE ==================== -->
   <section class="section" id="responsividade">
     <div class="section-header">
-      <div class="section-number">59 — Responsividade</div>
+      <div class="section-number">69 — Responsividade</div>
       <h2>Responsividade</h2>
     </div>
     
@@ -10895,7 +12191,7 @@ new Intl.PluralRules('pt-BR').select(5); // "other"
   <!-- ==================== DESIGN TOKENS ==================== -->
   <section class="section section-dark" id="design-tokens">
     <div class="section-header">
-      <div class="section-number">60 — Design Tokens</div>
+      <div class="section-number">70 — Design Tokens</div>
       <h2>Design Tokens</h2>
     </div>
 

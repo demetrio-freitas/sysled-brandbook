@@ -278,8 +278,8 @@
     <h1>UX/UI — Fundamentos</h1>
     <p class="cover-subtitle">Princípios de design, grid, espaçamento, botões, formulários, cards, modais, notificações, tabelas e tabs.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">13</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">01–10, 85–87</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">14</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">01–10, 85–88</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Base</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -2088,7 +2088,8 @@ function replayAnim(el, animStr) {
 
 <!-- ==================== SEÇÃO 85 — GRID SYSTEM & LAYOUT COLUMNS ==================== -->
 <div class="section reveal" id="grid-system">
-  <h2>85. Grid System & Layout Columns</h2>
+  <div class="section-number">85 — Grid System & Layout Columns</div>
+  <h2>Grid System & Layout Columns</h2>
   <p>Sistema de grid responsivo de 12 colunas com gutters, breakpoints e containers — a base estrutural para layouts industriais consistentes em qualquer viewport.</p>
 
   <!-- 12-Column Grid Visual -->
@@ -2396,7 +2397,8 @@ function replayAnim(el, animStr) {
 
 <!-- ==================== SEÇÃO 86 — MOTION & ANIMATION TOKENS ==================== -->
 <div class="section reveal" id="motion-tokens">
-  <h2>86. Motion & Animation Tokens</h2>
+  <div class="section-number">86 — Motion & Animation Tokens</div>
+  <h2>Motion & Animation Tokens</h2>
   <p>Curvas de easing, durações padronizadas e tipos de transição — garantindo movimento consistente, fluido e com propósito em toda a plataforma SYSLED.</p>
 
   <!-- Duration Scale -->
@@ -2657,7 +2659,8 @@ function replayAnim(el, animStr) {
 
 <!-- ==================== SEÇÃO 87 — ACCESSIBILITY (a11y) GUIDELINES ==================== -->
 <div class="section reveal" id="accessibility">
-  <h2>87. Accessibility (a11y) Guidelines</h2>
+  <div class="section-number">87 — Accessibility (a11y) Guidelines</div>
+  <h2>Accessibility (a11y) Guidelines</h2>
   <p>Diretrizes de acessibilidade WCAG 2.1 AA aplicadas ao contexto industrial SYSLED — contraste, navegação por teclado, screen readers, focus management e aria-labels.</p>
 
   <!-- WCAG Compliance Badge -->
@@ -2907,6 +2910,246 @@ function replayAnim(el, animStr) {
         <li>tabindex positivo (usar 0 ou -1)</li>
         <li>Texto em imagens (usar HTML real)</li>
         <li>Auto-play de mídia sem controle</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 88 — INTERNATIONALIZATION (i18n) PATTERNS ==================== -->
+<div class="section reveal" id="internationalization">
+  <div class="section-number">88 — Internationalization (i18n) Patterns</div>
+  <h2>Internationalization (i18n) Patterns</h2>
+  <p>Padrões para suportar múltiplos idiomas e regiões na plataforma SYSLED — RTL, pluralização, formatação de datas/números/moedas, truncamento e adaptação de layouts.</p>
+
+  <!-- Locale Comparison -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Formatação por Locale</div>
+
+    <div style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200);">
+      <!-- Header -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0; border-bottom: 2px solid var(--gray-200);">
+        <div style="padding: 10px 16px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Formato</div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <span style="font-size: 0.7rem;">🇧🇷</span> pt-BR
+          </div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <span style="font-size: 0.7rem;">🇺🇸</span> en-US
+          </div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <span style="font-size: 0.7rem;">🇩🇪</span> de-DE
+          </div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <span style="font-size: 0.7rem;">🇸🇦</span> ar-SA
+          </div>
+        </div>
+      </div>
+      <!-- Número -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Número</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">1.234.567,89</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">1,234,567.89</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">1.234.567,89</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono); direction: rtl;">١٬٢٣٤٬٥٦٧٫٨٩</div>
+      </div>
+      <!-- Moeda -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Moeda</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">R$ 1.234,56</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">$1,234.56</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">1.234,56 €</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono); direction: rtl;">١٬٢٣٤٫٥٦ ر.س</div>
+      </div>
+      <!-- Data -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Data</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">08/03/2026</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">03/08/2026</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">08.03.2026</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono); direction: rtl;">٠٨/٠٣/٢٠٢٦</div>
+      </div>
+      <!-- Hora -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Hora</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">14:30</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">2:30 PM</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">14:30</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono); direction: rtl;">٢:٣٠ م</div>
+      </div>
+      <!-- Unidade -->
+      <div style="display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 0;">
+        <div style="padding: 10px 16px; font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Temperatura</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">23,5 °C</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">74.3 °F</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono);">23,5 °C</div>
+        <div style="padding: 10px 8px; font-size: 0.68rem; color: var(--gray-600); text-align: center; font-family: var(--font-mono); direction: rtl;">٢٣٫٥ °م</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RTL Layout -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">LTR vs RTL — Espelhamento de Layout</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <!-- LTR -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--primary);">LTR (Left-to-Right)</span>
+        </div>
+        <!-- Simulated card LTR -->
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--primary); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+          </div>
+          <div style="flex: 1; text-align: left;">
+            <div style="font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">Alerta de produção</div>
+            <div style="font-size: 0.55rem; color: var(--gray-400);">Linha 3 — OEE abaixo de 80%</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- RTL -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem; direction: rtl;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" style="transform: scaleX(-1);"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: #FF6600;">RTL (Right-to-Left)</span>
+        </div>
+        <!-- Simulated card RTL -->
+        <div style="background: var(--gray-50); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; direction: rtl;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: #FF6600; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+          </div>
+          <div style="flex: 1; text-align: right;">
+            <div style="font-size: 0.68rem; font-weight: 600; color: var(--dark-text);">تنبيه الإنتاج</div>
+            <div style="font-size: 0.55rem; color: var(--gray-400);">الخط ٣ — كفاءة أقل من ٨٠٪</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" style="transform: scaleX(-1);"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text Expansion -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Expansão de Texto por Idioma</div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <!-- EN (base) -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400); width: 36px;">EN</span>
+        <div style="flex: 1; position: relative; height: 28px;">
+          <div style="position: absolute; left: 0; top: 0; height: 100%; width: 45%; background: var(--primary); border-radius: 6px; display: flex; align-items: center; padding: 0 10px;">
+            <span style="font-size: 0.6rem; font-weight: 600; color: white;">Save Changes</span>
+          </div>
+        </div>
+        <span style="font-size: 0.55rem; color: var(--gray-400); width: 40px; text-align: right;">100%</span>
+      </div>
+      <!-- PT -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400); width: 36px;">PT</span>
+        <div style="flex: 1; position: relative; height: 28px;">
+          <div style="position: absolute; left: 0; top: 0; height: 100%; width: 60%; background: #10B981; border-radius: 6px; display: flex; align-items: center; padding: 0 10px;">
+            <span style="font-size: 0.6rem; font-weight: 600; color: white;">Salvar Alterações</span>
+          </div>
+        </div>
+        <span style="font-size: 0.55rem; color: var(--gray-400); width: 40px; text-align: right;">+30%</span>
+      </div>
+      <!-- DE -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400); width: 36px;">DE</span>
+        <div style="flex: 1; position: relative; height: 28px;">
+          <div style="position: absolute; left: 0; top: 0; height: 100%; width: 75%; background: #F59E0B; border-radius: 6px; display: flex; align-items: center; padding: 0 10px;">
+            <span style="font-size: 0.6rem; font-weight: 600; color: white;">Änderungen speichern</span>
+          </div>
+        </div>
+        <span style="font-size: 0.55rem; color: var(--gray-400); width: 40px; text-align: right;">+65%</span>
+      </div>
+      <!-- FR -->
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400); width: 36px;">FR</span>
+        <div style="flex: 1; position: relative; height: 28px;">
+          <div style="position: absolute; left: 0; top: 0; height: 100%; width: 80%; background: #EF4444; border-radius: 6px; display: flex; align-items: center; padding: 0 10px;">
+            <span style="font-size: 0.6rem; font-weight: 600; color: white;">Enregistrer les modifications</span>
+          </div>
+        </div>
+        <span style="font-size: 0.55rem; color: var(--gray-400); width: 40px; text-align: right;">+80%</span>
+      </div>
+    </div>
+
+    <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px; padding: 10px 14px; margin-top: 1rem; display: flex; align-items: center; gap: 8px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span style="font-size: 0.62rem; color: #92400E;">Regra: sempre projetar botões e labels com <strong>+50% de espaço</strong> disponível para expansão de texto.</span>
+    </div>
+  </div>
+
+  <!-- Pluralization -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Pluralização — ICU Message Format</div>
+
+    <div style="background: #1A1A2E; border-radius: 10px; padding: 1.25rem; overflow-x: auto;">
+      <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.62rem; line-height: 1.8; color: #E2E8F0;"><span style="color: #7C8BA1;">// ICU Message Format</span>
+{<span style="color: #FF6600;">count</span>, <span style="color: #8B9DC3;">plural</span>,
+  <span style="color: #10B981;">=0</span>    {Nenhum equipamento encontrado}
+  <span style="color: #10B981;">one</span>   {{count} equipamento encontrado}
+  <span style="color: #10B981;">other</span> {{count} equipamentos encontrados}
+}
+
+<span style="color: #7C8BA1;">// Resultado:</span>
+<span style="color: #F59E0B;">0</span> → <span style="color: #10B981;">"Nenhum equipamento encontrado"</span>
+<span style="color: #F59E0B;">1</span> → <span style="color: #10B981;">"1 equipamento encontrado"</span>
+<span style="color: #F59E0B;">5</span> → <span style="color: #10B981;">"5 equipamentos encontrados"</span>
+
+<span style="color: #7C8BA1;">// Data relativa</span>
+{<span style="color: #FF6600;">time</span>, <span style="color: #8B9DC3;">relative</span>}
+→ <span style="color: #10B981;">"há 2 minutos"</span> | <span style="color: #10B981;">"2 minutes ago"</span> | <span style="color: #10B981;">"vor 2 Minuten"</span></pre>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Aspecto</th><th>Regra</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Número</td><td>Usar <code>Intl.NumberFormat(locale)</code></td><td>Separadores variam por região</td></tr>
+      <tr><td>Moeda</td><td>Símbolo + posição via <code>Intl.NumberFormat</code></td><td>R$ antes, € depois (DE)</td></tr>
+      <tr><td>Data</td><td><code>Intl.DateTimeFormat(locale)</code></td><td>DD/MM (BR) vs MM/DD (US)</td></tr>
+      <tr><td>Hora</td><td>24h (BR, DE) vs 12h AM/PM (US)</td><td>Configurável por preferência</td></tr>
+      <tr><td>Pluralização</td><td>ICU Message Format</td><td>Regras variam: árabe tem 6 formas</td></tr>
+      <tr><td>Text Expansion</td><td>Reservar <code>+50%</code> de espaço</td><td>DE e FR expandem significativamente</td></tr>
+      <tr><td>RTL</td><td><code>dir="rtl"</code> + CSS logical props</td><td>margin-inline-start ao invés de margin-left</td></tr>
+      <tr><td>Ícones</td><td>Espelhar setas e chevrons em RTL</td><td>Não espelhar: relógio, check, play</td></tr>
+      <tr><td>Unidades</td><td>°C (métrico) / °F (imperial)</td><td>Configurável por tenant</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar Intl APIs nativas do JS</li>
+        <li>CSS logical properties (inline-start/end)</li>
+        <li>Projetar com +50% de espaço para texto</li>
+        <li>Externalizar todas as strings em arquivos i18n</li>
+        <li>Testar UI com pseudo-locale (XXXXXX)</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Concatenar strings ("Olá " + nome)</li>
+        <li>Hardcodar formatos de data/número</li>
+        <li>Assumir que texto cabe em width fixo</li>
+        <li>Usar margin-left/right (usar inline)</li>
+        <li>Ignorar pluralização (!=1 não basta)</li>
       </ul>
     </div>
   </div>

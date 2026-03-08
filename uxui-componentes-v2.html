@@ -278,8 +278,8 @@
     <h1>UX/UI — Componentes</h1>
     <p class="cover-subtitle">Loading states, tooltips, breadcrumbs, stepper, animações, patterns de layout, empty states, inputs avançados, dark mode, data visualization e mais.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">21</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">11–30, 77</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">25</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">11–30, 77, 89–92</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Intermediário</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -3836,6 +3836,1071 @@
         <div class="card-body">Esconder a navegação principal sem um hamburger/toggle visível. O usuário deve sempre saber como navegar.</div>
       </div>
     </div>
+</div>
+
+<!-- ==================== SEÇÃO 89 — FILE UPLOAD & ATTACHMENT ==================== -->
+<div class="section reveal" id="file-upload">
+  <div class="section-number">89 — File Upload & Attachment</div>
+  <h2>File Upload & Attachment</h2>
+  <p>Componentes de upload de arquivos para contextos industriais — drag & drop, progress bar, preview, validação de tipo/tamanho e galeria de anexos em ordens de manutenção e inspeções.</p>
+
+  <!-- Drag & Drop Zone -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Drag & Drop Zone — Estados</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+      <!-- Default -->
+      <div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--gray-400); text-align: center; margin-bottom: 6px;">Default</div>
+        <div style="background: var(--white); border: 2px dashed var(--gray-300); border-radius: 12px; padding: 2rem 1rem; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text);">Arraste arquivos aqui</div>
+          <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px;">ou <span style="color: var(--primary); font-weight: 600; cursor: pointer;">clique para selecionar</span></div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 8px;">PNG, JPG, PDF, XLSX — Máx. 10MB</div>
+        </div>
+      </div>
+
+      <!-- Hover/Drag over -->
+      <div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--primary); text-align: center; margin-bottom: 6px;">Drag Over</div>
+        <div style="background: rgba(0,102,204,0.04); border: 2px dashed var(--primary); border-radius: 12px; padding: 2rem 1rem; text-align: center; box-shadow: 0 0 0 4px rgba(0,102,204,0.08);">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--primary);">Solte para enviar</div>
+          <div style="font-size: 0.6rem; color: var(--primary); margin-top: 4px; opacity: 0.7;">2 arquivos detectados</div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: #EF4444; text-align: center; margin-bottom: 6px;">Erro de Validação</div>
+        <div style="background: rgba(239,68,68,0.03); border: 2px dashed #EF4444; border-radius: 12px; padding: 2rem 1rem; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: #EF4444;">Arquivo não permitido</div>
+          <div style="font-size: 0.6rem; color: #EF4444; margin-top: 4px; opacity: 0.7;">.exe não é aceito. Use PNG, JPG, PDF.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Progress -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Lista de Uploads — Progress</div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <!-- File: completed -->
+      <div style="background: var(--white); border-radius: 10px; padding: 12px 16px; border: 1px solid var(--gray-200); display: flex; align-items: center; gap: 12px;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 0.7rem; font-weight: 600; color: var(--dark-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">relatorio-inspecao-CNC04.pdf</span>
+            <span style="font-size: 0.55rem; color: var(--gray-400); flex-shrink: 0; margin-left: 8px;">2.4 MB</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span style="font-size: 0.55rem; color: #10B981; font-weight: 600;">Upload concluído</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 4px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-50); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-50); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- File: uploading -->
+      <div style="background: var(--white); border-radius: 10px; padding: 12px 16px; border: 1px solid rgba(0,102,204,0.3); display: flex; align-items: center; gap: 12px;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">foto-desgaste-rolamento.jpg</span>
+            <span style="font-size: 0.55rem; color: var(--primary); font-weight: 600; flex-shrink: 0; margin-left: 8px;">67%</span>
+          </div>
+          <div style="height: 4px; background: var(--gray-200); border-radius: 2px; margin-top: 6px; overflow: hidden;">
+            <div style="width: 67%; height: 100%; background: var(--primary); border-radius: 2px; animation: pulse 1.5s ease-in-out infinite;"></div>
+          </div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 3px;">1.8 MB de 2.7 MB — ~3s restantes</div>
+        </div>
+        <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-50); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+
+      <!-- File: error -->
+      <div style="background: rgba(239,68,68,0.02); border-radius: 10px; padding: 12px 16px; border: 1px solid rgba(239,68,68,0.3); display: flex; align-items: center; gap: 12px;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 0.7rem; font-weight: 600; color: #EF4444;">planilha-producao.xlsx</div>
+          <div style="font-size: 0.55rem; color: #EF4444; margin-top: 3px;">Tamanho excede o limite de 10MB (12.3 MB)</div>
+        </div>
+        <div style="display: flex; gap: 4px;">
+          <div style="padding: 4px 10px; background: rgba(239,68,68,0.1); border-radius: 6px; font-size: 0.55rem; font-weight: 600; color: #EF4444; cursor: pointer;">Tentar novamente</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-50); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attachment Gallery -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Galeria de Anexos — Ordem de Manutenção</div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+      <!-- Image thumb -->
+      <div style="background: var(--white); border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); cursor: pointer; position: relative;">
+        <div style="height: 80px; background: linear-gradient(135deg, #1A1A2E 0%, #2D2D44 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div style="padding: 8px;">
+          <div style="font-size: 0.58rem; font-weight: 600; color: var(--dark-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">foto-antes.jpg</div>
+          <div style="font-size: 0.48rem; color: var(--gray-400);">1.2 MB</div>
+        </div>
+        <div style="position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; border-radius: 4px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
+      </div>
+
+      <!-- Image thumb 2 -->
+      <div style="background: var(--white); border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); cursor: pointer;">
+        <div style="height: 80px; background: linear-gradient(135deg, #374151 0%, #4B5563 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div style="padding: 8px;">
+          <div style="font-size: 0.58rem; font-weight: 600; color: var(--dark-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">foto-depois.jpg</div>
+          <div style="font-size: 0.48rem; color: var(--gray-400);">980 KB</div>
+        </div>
+      </div>
+
+      <!-- PDF thumb -->
+      <div style="background: var(--white); border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); cursor: pointer;">
+        <div style="height: 80px; background: rgba(239,68,68,0.08); display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="1.5" style="display: block; margin: 0 auto;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span style="font-size: 0.5rem; font-weight: 700; color: #EF4444; margin-top: 2px; display: block;">PDF</span>
+          </div>
+        </div>
+        <div style="padding: 8px;">
+          <div style="font-size: 0.58rem; font-weight: 600; color: var(--dark-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">laudo-tecnico.pdf</div>
+          <div style="font-size: 0.48rem; color: var(--gray-400);">3.1 MB</div>
+        </div>
+      </div>
+
+      <!-- Add more -->
+      <div style="background: var(--white); border-radius: 10px; overflow: hidden; border: 2px dashed var(--gray-300); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 118px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span style="font-size: 0.55rem; color: var(--gray-400); margin-top: 4px; font-weight: 500;">Adicionar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Drop Zone</td><td>Border <code>2px dashed</code>, radius <code>12px</code>, padding <code>2rem</code></td><td>Active = primary dashed + shadow ring</td></tr>
+      <tr><td>Icon Upload</td><td><code>40×40px</code>, radius <code>10px</code></td><td>Background gray-100 (default) / primary/10% (active)</td></tr>
+      <tr><td>File Row</td><td>Padding <code>12px 16px</code>, radius <code>10px</code></td><td>Icon <code>36×36</code> + info + actions</td></tr>
+      <tr><td>Progress Bar</td><td><code>4px</code> height, radius <code>2px</code></td><td>Primary color + pulse animation</td></tr>
+      <tr><td>Thumbnail Grid</td><td><code>4 colunas</code>, gap <code>10px</code></td><td>Image height <code>80px</code>, object-fit cover</td></tr>
+      <tr><td>File Size Limit</td><td><code>10MB</code> por arquivo (configurável)</td><td>Validar antes do upload</td></tr>
+      <tr><td>Tipos Aceitos</td><td><code>PNG, JPG, PDF, XLSX, CSV, DWG</code></td><td>Configurável por contexto</td></tr>
+      <tr><td>Action Buttons</td><td><code>28×28px</code>, radius <code>6px</code></td><td>Preview, delete, retry</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Validar tipo e tamanho antes do upload</li>
+        <li>Mostrar progresso com % e tempo restante</li>
+        <li>Permitir cancelar upload em andamento</li>
+        <li>Preview inline para imagens e PDFs</li>
+        <li>Feedback visual claro no drag over</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Upload sem indicação de progresso</li>
+        <li>Aceitar qualquer tipo de arquivo silenciosamente</li>
+        <li>Deletar arquivo sem confirmação</li>
+        <li>Drop zone menor que 200px de altura</li>
+        <li>Bloquear UI durante upload (usar async)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 90 · BREADCRUMBS & PAGE HEADER ==================== -->
+<div class="section reveal" id="breadcrumbs-page-header">
+  <div class="section-number">90 — Breadcrumbs & Page Header</div>
+  <h2>Breadcrumbs & Page Header</h2>
+  <p>Breadcrumbs fornecem contexto de navegação hierárquica e o Page Header combina título, ações e breadcrumbs em um bloco coeso no topo de cada tela.</p>
+
+  <!-- Breadcrumb Variants -->
+  <h3>Variantes de Breadcrumb</h3>
+  <div style="display:flex;flex-direction:column;gap:1.25rem;margin:1.5rem 0;">
+
+    <!-- Simple Text -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:0.75rem;">Text — Default</div>
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;">
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">Manutenção</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">Ordens de Serviço</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--text-primary);font-weight:600;">OS-2024-0847</span>
+      </nav>
+    </div>
+
+    <!-- With Badges -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:0.75rem;">Com Badges</div>
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;">
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:0.35rem;" onclick="return false">Equipamentos <span style="background:var(--primary-light);color:var(--primary);font-size:0.65rem;padding:1px 6px;border-radius:100px;font-weight:600;">324</span></a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--text-primary);font-weight:600;display:flex;align-items:center;gap:0.35rem;">Bombas Centrífugas <span style="background:#dcfce7;color:#16a34a;font-size:0.65rem;padding:1px 6px;border-radius:100px;font-weight:600;">Ativo</span></span>
+      </nav>
+    </div>
+
+    <!-- Collapsed / Truncated -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:0.75rem;">Truncated (Deep Hierarchy)</div>
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;">
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="background:var(--gray-100);border:1px solid var(--border);border-radius:6px;padding:2px 8px;color:var(--text-tertiary);font-size:0.8rem;cursor:pointer;">•••</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">Setor B</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;" onclick="return false">Linha 03</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--text-primary);font-weight:600;">Motor #M-0291</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Page Header Variants -->
+  <h3>Page Header</h3>
+  <div style="display:flex;flex-direction:column;gap:1.25rem;margin:1.5rem 0;">
+
+    <!-- Standard Page Header -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:1rem;">Standard</div>
+      <!-- Breadcrumb inside header -->
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;margin-bottom:0.75rem;">
+        <a href="#" style="color:var(--text-tertiary);text-decoration:none;" onclick="return false">Manutenção</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--text-secondary);">Ordens de Serviço</span>
+      </nav>
+      <!-- Title row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <h3 style="margin:0;font-size:1.35rem;font-weight:700;color:var(--text-primary);">Ordens de Serviço</h3>
+          <span style="background:var(--primary-light);color:var(--primary);font-size:0.7rem;padding:2px 10px;border-radius:100px;font-weight:600;">148 registros</span>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-size:0.8rem;font-weight:500;cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar
+          </button>
+          <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 14px;border:none;border-radius:8px;background:var(--primary);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nova OS
+          </button>
+        </div>
+      </div>
+      <!-- Description -->
+      <p style="margin:0.5rem 0 0;font-size:0.8rem;color:var(--text-tertiary);max-width:540px;">Gerencie ordens de serviço de manutenção preventiva e corretiva de equipamentos industriais.</p>
+    </div>
+
+    <!-- Detail Page Header (Entity) -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:1rem;">Detail / Entity</div>
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;margin-bottom:0.75rem;">
+        <a href="#" style="color:var(--text-tertiary);text-decoration:none;" onclick="return false">Manutenção</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" style="color:var(--text-tertiary);text-decoration:none;" onclick="return false">Ordens de Serviço</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="color:var(--text-secondary);">OS-2024-0847</span>
+      </nav>
+      <!-- Back + Title + Status -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--bg-card);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <h3 style="margin:0;font-size:1.25rem;font-weight:700;color:var(--text-primary);">OS-2024-0847</h3>
+              <span style="background:#fef9c3;color:#a16207;font-size:0.65rem;padding:2px 8px;border-radius:100px;font-weight:600;">Em Andamento</span>
+            </div>
+            <p style="margin:0.2rem 0 0;font-size:0.8rem;color:var(--text-tertiary);">Troca de rolamento — Bomba Centrífuga BC-12</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-size:0.8rem;font-weight:500;cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Editar
+          </button>
+          <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-size:0.8rem;font-weight:500;cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- Meta row -->
+      <div style="display:flex;gap:1.5rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:0.35rem;font-size:0.78rem;color:var(--text-tertiary);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Carlos Silva
+        </div>
+        <div style="display:flex;align-items:center;gap:0.35rem;font-size:0.78rem;color:var(--text-tertiary);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          12 Mar 2024
+        </div>
+        <div style="display:flex;align-items:center;gap:0.35rem;font-size:0.78rem;color:var(--text-tertiary);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Prazo: 15 Mar 2024
+        </div>
+        <div style="display:flex;align-items:center;gap:0.35rem;font-size:0.78rem;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;"></span>
+          <span style="color:#a16207;font-weight:500;">Prioridade Alta</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anatomy -->
+  <h3>Anatomia do Page Header</h3>
+  <div style="background:var(--gray-100);border-radius:12px;padding:2rem;margin:1.5rem 0;position:relative;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;">
+      <!-- Annotation: Breadcrumb -->
+      <div style="position:absolute;top:-10px;left:20px;background:var(--primary);color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;font-weight:600;">① Breadcrumb</div>
+      <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;margin-bottom:0.75rem;color:var(--text-tertiary);">
+        Home → Módulo → Página
+      </nav>
+      <div style="display:flex;align-items:center;justify-content:space-between;position:relative;">
+        <div style="display:flex;align-items:center;gap:0.75rem;position:relative;">
+          <!-- Annotation: Back -->
+          <div style="position:absolute;top:-22px;left:0;background:#8b5cf6;color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;font-weight:600;">② Back</div>
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div style="position:relative;">
+            <!-- Annotation: Title + Meta -->
+            <div style="position:absolute;top:-22px;left:0;background:#059669;color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;font-weight:600;">③ Title + Badge</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <span style="font-weight:700;font-size:1.1rem;color:var(--text-primary);">Título da Página</span>
+              <span style="background:var(--gray-100);font-size:0.65rem;padding:2px 8px;border-radius:100px;color:var(--text-tertiary);">Status</span>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-tertiary);">Subtítulo descritivo</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;position:relative;">
+          <!-- Annotation: Actions -->
+          <div style="position:absolute;top:-22px;right:0;background:#dc2626;color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;font-weight:600;">④ Actions</div>
+          <div style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-size:0.75rem;color:var(--text-secondary);">Secundário</div>
+          <div style="padding:6px 12px;background:var(--primary);border-radius:8px;font-size:0.75rem;color:#fff;font-weight:600;">Primário</div>
+        </div>
+      </div>
+      <!-- Annotation: Meta bar -->
+      <div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border);display:flex;gap:1.5rem;position:relative;">
+        <div style="position:absolute;top:-10px;left:0;background:#0891b2;color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;font-weight:600;">⑤ Meta Bar</div>
+        <span style="font-size:0.75rem;color:var(--text-tertiary);">👤 Responsável</span>
+        <span style="font-size:0.75rem;color:var(--text-tertiary);">📅 Data</span>
+        <span style="font-size:0.75rem;color:var(--text-tertiary);">⏱ Prazo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Behavior -->
+  <h3>Comportamento Responsivo</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <!-- Desktop -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:0.75rem;">Desktop ≥ 768px</div>
+      <div style="background:var(--gray-100);border-radius:8px;padding:1rem;">
+        <div style="font-size:0.6rem;color:var(--text-tertiary);margin-bottom:0.5rem;">Home / Módulo / Página</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <div style="width:8px;height:14px;background:var(--text-tertiary);border-radius:2px;"></div>
+            <div style="width:100px;height:14px;background:var(--text-primary);border-radius:3px;"></div>
+            <div style="width:40px;height:12px;background:var(--primary-light);border-radius:100px;"></div>
+          </div>
+          <div style="display:flex;gap:0.35rem;">
+            <div style="width:50px;height:22px;background:var(--border);border-radius:4px;"></div>
+            <div style="width:50px;height:22px;background:var(--primary);border-radius:4px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:0.75rem;">Mobile &lt; 768px</div>
+      <div style="background:var(--gray-100);border-radius:8px;padding:1rem;">
+        <div style="font-size:0.6rem;color:var(--text-tertiary);margin-bottom:0.5rem;">Home / ... / Página</div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <div style="width:8px;height:14px;background:var(--text-tertiary);border-radius:2px;"></div>
+          <div style="width:100px;height:14px;background:var(--text-primary);border-radius:3px;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.35rem;margin-bottom:0.5rem;">
+          <div style="width:40px;height:12px;background:var(--primary-light);border-radius:100px;"></div>
+        </div>
+        <div style="display:flex;gap:0.35rem;">
+          <div style="flex:1;height:22px;background:var(--border);border-radius:4px;"></div>
+          <div style="flex:1;height:22px;background:var(--primary);border-radius:4px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <h3>Specs</h3>
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Separador</td><td>Chevron-right · 14 × 14 · stroke 1.5 · color text-tertiary</td></tr>
+      <tr><td>Link font</td><td>Inter 0.85rem / 400 · color text-secondary · hover: underline</td></tr>
+      <tr><td>Current item</td><td>Inter 0.85rem / 600 · color text-primary · sem link</td></tr>
+      <tr><td>Home icon</td><td>Lucide Home · 16 × 16 · stroke 1.5</td></tr>
+      <tr><td>Collapse trigger</td><td>••• pill · bg gray-100 · border · border-radius 6px · padding 2px 8px</td></tr>
+      <tr><td>Header padding</td><td>24px (desktop) · 16px (mobile)</td></tr>
+      <tr><td>Title font</td><td>Montserrat 1.25–1.35rem / 700</td></tr>
+      <tr><td>Meta bar</td><td>border-top 1px · padding-top 1rem · gap 1.5rem · font 0.78rem / 400</td></tr>
+      <tr><td>Max depth visible</td><td>4 níveis (Home + 2 intermediários + current) — colapsar se &gt; 4</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div class="dos-donts">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Sempre incluir Home como primeiro nível do breadcrumb</li>
+        <li>Colapsar níveis intermediários em hierarquias profundas (&gt; 4)</li>
+        <li>Alinhar ações primárias à direita no Page Header</li>
+        <li>Usar meta bar para informações contextuais da entidade</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Não usar breadcrumbs em páginas de primeiro nível (Dashboard)</li>
+        <li>Não tornar o item atual clicável — ele é a página corrente</li>
+        <li>Não exceder 3 botões de ação no Page Header</li>
+        <li>Não omitir o botão de voltar em páginas de detalhe</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 91 · TOOLTIP & POPOVER ==================== -->
+<div class="section reveal" id="tooltip-popover">
+  <div class="section-number">91 — Tooltip & Popover</div>
+  <h2>Tooltip & Popover</h2>
+  <p>Tooltips fornecem informações contextuais breves ao hover/focus sobre ícones de status e ações. Popovers são overlays ricos para detalhes de equipamentos, confirmações e cards de técnicos.</p>
+
+  <!-- Tooltip Variants -->
+  <h3>Tooltip — Variantes</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.5rem 0;">
+
+    <!-- Top -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Top</div>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+        <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500;">Editar OS</div>
+        <div style="width:8px;height:8px;background:#1e293b;transform:rotate(45deg);margin-top:-4px;"></div>
+      </div>
+      <div style="width:36px;height:36px;border-radius:8px;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;background:var(--bg-card);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Bottom</div>
+      <div style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--bg-card);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+        <div style="width:8px;height:8px;background:#1e293b;transform:rotate(45deg);margin-bottom:-4px;"></div>
+        <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500;">Exportar relatório</div>
+      </div>
+    </div>
+
+    <!-- Left -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Left</div>
+      <div style="display:flex;align-items:center;gap:0;">
+        <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500;">Filtrar OS</div>
+        <div style="width:8px;height:8px;background:#1e293b;transform:rotate(45deg);margin-left:-4px;"></div>
+        <div style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--bg-card);margin-left:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Right</div>
+      <div style="display:flex;align-items:center;gap:0;">
+        <div style="width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--bg-card);margin-right:4px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div style="width:8px;height:8px;background:#1e293b;transform:rotate(45deg);margin-right:-4px;"></div>
+        <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;white-space:nowrap;font-weight:500;">Buscar equip.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltip Styles -->
+  <h3>Tooltip — Estilos</h3>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;">
+
+    <!-- Default Dark -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Default (Dark)</div>
+      <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;font-weight:500;">Vibração: 2.3 mm/s</div>
+    </div>
+
+    <!-- Light -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Light</div>
+      <div style="background:#fff;color:#334155;font-size:0.72rem;padding:6px 12px;border-radius:6px;font-weight:500;border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,0.08);">Temp.: 78°C — Normal</div>
+    </div>
+
+    <!-- With Shortcut -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Com Atalho</div>
+      <div style="background:#1e293b;color:#fff;font-size:0.72rem;padding:6px 12px;border-radius:6px;font-weight:500;display:flex;align-items:center;gap:0.75rem;">
+        Salvar
+        <span style="display:flex;gap:3px;">
+          <kbd style="background:rgba(255,255,255,0.15);padding:1px 5px;border-radius:3px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;">⌘</kbd>
+          <kbd style="background:rgba(255,255,255,0.15);padding:1px 5px;border-radius:3px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;">S</kbd>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popover Variants -->
+  <h3>Popover — Variantes</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0;">
+
+    <!-- Simple Popover -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Informativo</div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem;width:100%;max-width:260px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Manutenção Preventiva</span>
+        </div>
+        <p style="margin:0;font-size:0.75rem;color:var(--text-secondary);line-height:1.5;">A manutenção preventiva reduz em até 40% os custos operacionais e aumenta a vida útil do equipamento.</p>
+        <a href="#" style="display:inline-block;margin-top:0.5rem;font-size:0.72rem;color:var(--primary);text-decoration:none;font-weight:500;" onclick="return false">Saiba mais →</a>
+      </div>
+    </div>
+
+    <!-- Action Popover (Menu) -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Action Menu</div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;width:100%;max-width:220px;box-shadow:0 4px 16px rgba(0,0,0,0.1);overflow:hidden;">
+        <div style="padding:6px;">
+          <div style="display:flex;align-items:center;gap:0.5rem;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.8rem;color:var(--text-primary);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Editar OS
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.8rem;color:var(--text-primary);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Duplicar como nova OS
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.8rem;color:var(--text-primary);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar Relatório PDF
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding:6px;">
+          <div style="display:flex;align-items:center;gap:0.5rem;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:0.8rem;color:#dc2626;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Cancelar OS
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Card Popover -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">User Card</div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem;width:100%;max-width:260px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;">CS</div>
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">Carlos Silva</div>
+            <div style="font-size:0.72rem;color:var(--text-tertiary);">Técnico de Manutenção</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;padding-top:0.75rem;border-top:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-secondary);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Setor B — Linha 03
+          </div>
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--text-secondary);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            carlos.silva@sysled.com
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;margin-top:0.75rem;">
+          <button style="flex:1;padding:6px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);font-size:0.72rem;color:var(--text-primary);cursor:pointer;font-weight:500;">Ver perfil</button>
+          <button style="flex:1;padding:6px;border:none;border-radius:6px;background:var(--primary);font-size:0.72rem;color:#fff;cursor:pointer;font-weight:600;">Mensagem</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Popover -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Confirmation</div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem;width:100%;max-width:260px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+        <div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.75rem;">
+          <div style="width:28px;height:28px;border-radius:50%;background:#fef2f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Encerrar OS-0847?</div>
+            <p style="margin:0.25rem 0 0;font-size:0.72rem;color:var(--text-secondary);line-height:1.4;">Isso marcará a ordem como concluída e notificará o solicitante. Peças utilizadas serão debitadas do estoque.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;justify-content:flex-end;">
+          <button style="padding:6px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);font-size:0.72rem;color:var(--text-primary);cursor:pointer;font-weight:500;">Cancelar</button>
+          <button style="padding:6px 14px;border:none;border-radius:6px;background:#dc2626;font-size:0.72rem;color:#fff;cursor:pointer;font-weight:600;">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timing & Behavior -->
+  <h3>Timing & Comportamento</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <h4 style="margin:0 0 0.75rem;font-size:0.85rem;color:var(--text-primary);">Tooltip</h4>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Trigger</span>
+          <span style="color:var(--text-primary);font-weight:500;">Hover / Focus</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Delay in</span>
+          <code style="font-size:0.72rem;background:var(--gray-100);padding:1px 6px;border-radius:4px;">200ms</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Delay out</span>
+          <code style="font-size:0.72rem;background:var(--gray-100);padding:1px 6px;border-radius:4px;">0ms</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Animation</span>
+          <code style="font-size:0.72rem;background:var(--gray-100);padding:1px 6px;border-radius:4px;">fade 150ms ease</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Interativo</span>
+          <span style="color:var(--text-primary);font-weight:500;">Não</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <h4 style="margin:0 0 0.75rem;font-size:0.85rem;color:var(--text-primary);">Popover</h4>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Trigger</span>
+          <span style="color:var(--text-primary);font-weight:500;">Click</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Delay in</span>
+          <code style="font-size:0.72rem;background:var(--gray-100);padding:1px 6px;border-radius:4px;">0ms</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Dismiss</span>
+          <span style="color:var(--text-primary);font-weight:500;">Click fora / Esc</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Animation</span>
+          <code style="font-size:0.72rem;background:var(--gray-100);padding:1px 6px;border-radius:4px;">scale 200ms ease-out</code>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;">
+          <span style="color:var(--text-secondary);">Interativo</span>
+          <span style="color:var(--text-primary);font-weight:500;">Sim</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <h3>Specs</h3>
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Tooltip</th><th>Popover</th></tr></thead>
+    <tbody>
+      <tr><td>Background</td><td>#1e293b (dark) ou #fff (light)</td><td>var(--bg-card)</td></tr>
+      <tr><td>Border radius</td><td>6px</td><td>12px</td></tr>
+      <tr><td>Padding</td><td>6px 12px</td><td>16px</td></tr>
+      <tr><td>Font size</td><td>0.72rem / 500</td><td>0.8rem / 400 (body)</td></tr>
+      <tr><td>Max width</td><td>240px</td><td>320px</td></tr>
+      <tr><td>Shadow</td><td>Nenhuma</td><td>0 4px 16px rgba(0,0,0,0.1)</td></tr>
+      <tr><td>Z-index</td><td>1070</td><td>1060</td></tr>
+      <tr><td>Arrow size</td><td>8 × 8px rotated 45°</td><td>Opcional, 10 × 10px</td></tr>
+      <tr><td>Offset do trigger</td><td>8px</td><td>8px</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div class="dos-donts">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Usar tooltip para labels curtos de icon buttons (max 1 linha)</li>
+        <li>Incluir atalhos de teclado no tooltip quando aplicável</li>
+        <li>Fechar popover ao pressionar Esc ou clicar fora</li>
+        <li>Manter popover visível enquanto o cursor estiver dentro dele</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Não colocar conteúdo interativo dentro de tooltips</li>
+        <li>Não usar tooltip para informações essenciais — não são acessíveis em touch</li>
+        <li>Não abrir mais de um popover simultaneamente</li>
+        <li>Não usar tooltip em elementos já descritivos (texto visível)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 92 · STEPPER & MULTI-STEP WIZARD ==================== -->
+<div class="section reveal" id="stepper-wizard">
+  <div class="section-number">92 — Stepper & Multi-Step Wizard</div>
+  <h2>Stepper & Multi-Step Wizard</h2>
+  <p>Steppers indicam progresso em fluxos multi-etapa. Wizards guiam o usuário por processos complexos divididos em passos sequenciais com validação progressiva.</p>
+
+  <!-- Horizontal Stepper -->
+  <h3>Stepper Horizontal</h3>
+  <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1.5rem;margin:1.5rem 0;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;">
+      <!-- Step 1 - Completed -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;min-width:100px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-size:0.72rem;font-weight:600;color:#16a34a;">Dados Gerais</span>
+      </div>
+      <!-- Connector completed -->
+      <div style="flex:1;max-width:80px;height:2px;background:#16a34a;margin-bottom:1.5rem;"></div>
+      <!-- Step 2 - Completed -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;min-width:100px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-size:0.72rem;font-weight:600;color:#16a34a;">Equipamento</span>
+      </div>
+      <!-- Connector active -->
+      <div style="flex:1;max-width:80px;height:2px;background:linear-gradient(to right,#16a34a,var(--primary));margin-bottom:1.5rem;"></div>
+      <!-- Step 3 - Active -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;min-width:100px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--primary-light);">
+          <span style="color:#fff;font-weight:700;font-size:0.85rem;">3</span>
+        </div>
+        <span style="font-size:0.72rem;font-weight:600;color:var(--primary);">Peças & Materiais</span>
+      </div>
+      <!-- Connector pending -->
+      <div style="flex:1;max-width:80px;height:2px;background:var(--border);margin-bottom:1.5rem;"></div>
+      <!-- Step 4 - Pending -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;min-width:100px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;">
+          <span style="color:var(--text-tertiary);font-weight:600;font-size:0.85rem;">4</span>
+        </div>
+        <span style="font-size:0.72rem;font-weight:500;color:var(--text-tertiary);">Revisão</span>
+      </div>
+      <!-- Connector pending -->
+      <div style="flex:1;max-width:80px;height:2px;background:var(--border);margin-bottom:1.5rem;"></div>
+      <!-- Step 5 - Pending -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;min-width:100px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;">
+          <span style="color:var(--text-tertiary);font-weight:600;font-size:0.85rem;">5</span>
+        </div>
+        <span style="font-size:0.72rem;font-weight:500;color:var(--text-tertiary);">Confirmação</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical Stepper -->
+  <h3>Stepper Vertical</h3>
+  <div style="background:var(--gray-100);border-radius:12px;padding:2rem 1.5rem;margin:1.5rem 0;">
+    <div style="display:flex;flex-direction:column;gap:0;max-width:400px;margin:0 auto;">
+      <!-- Step 1 - Completed -->
+      <div style="display:flex;gap:1rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div style="width:2px;height:40px;background:#16a34a;"></div>
+        </div>
+        <div style="padding-top:4px;">
+          <div style="font-size:0.82rem;font-weight:600;color:#16a34a;">Identificação do Equipamento</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);margin-top:2px;">TAG, modelo, fabricante e localização</div>
+        </div>
+      </div>
+      <!-- Step 2 - Active -->
+      <div style="display:flex;gap:1rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 4px var(--primary-light);">
+            <span style="color:#fff;font-weight:700;font-size:0.8rem;">2</span>
+          </div>
+          <div style="width:2px;height:40px;background:var(--border);"></div>
+        </div>
+        <div style="padding-top:4px;">
+          <div style="font-size:0.82rem;font-weight:600;color:var(--primary);">Diagnóstico</div>
+          <div style="font-size:0.72rem;color:var(--text-secondary);margin-top:2px;">Descreva o problema identificado</div>
+        </div>
+      </div>
+      <!-- Step 3 - Pending -->
+      <div style="display:flex;gap:1rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:var(--text-tertiary);font-weight:600;font-size:0.8rem;">3</span>
+          </div>
+          <div style="width:2px;height:40px;background:var(--border);"></div>
+        </div>
+        <div style="padding-top:4px;">
+          <div style="font-size:0.82rem;font-weight:500;color:var(--text-tertiary);">Plano de Ação</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);margin-top:2px;">Definir atividades e responsáveis</div>
+        </div>
+      </div>
+      <!-- Step 4 - Pending -->
+      <div style="display:flex;gap:1rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:var(--text-tertiary);font-weight:600;font-size:0.8rem;">4</span>
+          </div>
+        </div>
+        <div style="padding-top:4px;">
+          <div style="font-size:0.82rem;font-weight:500;color:var(--text-tertiary);">Conclusão</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);margin-top:2px;">Revisar e confirmar abertura da OS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wizard Full Example -->
+  <h3>Wizard — Exemplo Completo</h3>
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+    <!-- Wizard Header with progress -->
+    <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <h4 style="margin:0;font-size:1rem;font-weight:700;color:var(--text-primary);">Nova Ordem de Serviço</h4>
+        <p style="margin:0.2rem 0 0;font-size:0.75rem;color:var(--text-tertiary);">Etapa 3 de 5 — Peças & Materiais</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--primary);">60%</span>
+        <div style="width:120px;height:6px;background:var(--gray-100);border-radius:100px;overflow:hidden;">
+          <div style="width:60%;height:100%;background:var(--primary);border-radius:100px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini stepper bar -->
+    <div style="display:flex;padding:0 1.5rem;background:var(--gray-100);">
+      <div style="flex:1;padding:10px 0;text-align:center;font-size:0.68rem;font-weight:600;color:#16a34a;border-bottom:2px solid #16a34a;">Dados</div>
+      <div style="flex:1;padding:10px 0;text-align:center;font-size:0.68rem;font-weight:600;color:#16a34a;border-bottom:2px solid #16a34a;">Equipamento</div>
+      <div style="flex:1;padding:10px 0;text-align:center;font-size:0.68rem;font-weight:600;color:var(--primary);border-bottom:2px solid var(--primary);background:var(--bg-card);">Peças</div>
+      <div style="flex:1;padding:10px 0;text-align:center;font-size:0.68rem;font-weight:500;color:var(--text-tertiary);border-bottom:2px solid transparent;">Revisão</div>
+      <div style="flex:1;padding:10px 0;text-align:center;font-size:0.68rem;font-weight:500;color:var(--text-tertiary);border-bottom:2px solid transparent;">Confirmar</div>
+    </div>
+
+    <!-- Wizard Body -->
+    <div style="padding:1.5rem;">
+      <h4 style="margin:0 0 0.25rem;font-size:0.9rem;font-weight:600;color:var(--text-primary);">Peças & Materiais Necessários</h4>
+      <p style="margin:0 0 1.25rem;font-size:0.75rem;color:var(--text-tertiary);">Adicione as peças e materiais que serão utilizados nesta manutenção.</p>
+
+      <!-- Table preview -->
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem;">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:0;background:var(--gray-100);padding:8px 12px;font-size:0.7rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">
+          <span>Item</span><span>Qtd</span><span>Estoque</span><span></span>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:0;padding:10px 12px;font-size:0.8rem;border-bottom:1px solid var(--border);align-items:center;">
+          <span style="color:var(--text-primary);font-weight:500;">Rolamento 6205-2RS</span>
+          <span style="color:var(--text-secondary);">2 un</span>
+          <span style="color:#16a34a;font-size:0.72rem;font-weight:500;">Disponível</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:0;padding:10px 12px;font-size:0.8rem;border-bottom:1px solid var(--border);align-items:center;">
+          <span style="color:var(--text-primary);font-weight:500;">Graxa Mobil EP2</span>
+          <span style="color:var(--text-secondary);">1 kg</span>
+          <span style="color:#16a34a;font-size:0.72rem;font-weight:500;">Disponível</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:0;padding:10px 12px;font-size:0.8rem;align-items:center;">
+          <span style="color:var(--text-primary);font-weight:500;">Retentor 35×52×7</span>
+          <span style="color:var(--text-secondary);">1 un</span>
+          <span style="color:#f59e0b;font-size:0.72rem;font-weight:500;">Baixo estoque</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+      </div>
+
+      <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 14px;border:1px dashed var(--border);border-radius:8px;background:transparent;color:var(--text-secondary);font-size:0.78rem;cursor:pointer;font-weight:500;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar peça
+      </button>
+    </div>
+
+    <!-- Wizard Footer -->
+    <div style="padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--gray-100);">
+      <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-primary);font-size:0.8rem;font-weight:500;cursor:pointer;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Voltar
+      </button>
+      <div style="display:flex;gap:0.5rem;">
+        <button style="padding:8px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-secondary);font-size:0.8rem;font-weight:500;cursor:pointer;">Salvar rascunho</button>
+        <button style="display:flex;align-items:center;gap:0.4rem;padding:8px 20px;border:none;border-radius:8px;background:var(--primary);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;">
+          Próximo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step States -->
+  <h3>Estados do Step</h3>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin:1.5rem 0;">
+    <!-- Completed -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Completed</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span style="font-size:0.68rem;font-weight:600;color:#16a34a;">Concluído</span>
+    </div>
+    <!-- Active -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Active</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--primary-light);">
+        <span style="color:#fff;font-weight:700;font-size:0.9rem;">3</span>
+      </div>
+      <span style="font-size:0.68rem;font-weight:600;color:var(--primary);">Atual</span>
+    </div>
+    <!-- Pending -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Pending</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;">
+        <span style="color:var(--text-tertiary);font-weight:600;font-size:0.9rem;">4</span>
+      </div>
+      <span style="font-size:0.68rem;font-weight:500;color:var(--text-tertiary);">Pendente</span>
+    </div>
+    <!-- Error -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Error</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:#fef2f2;border:2px solid #dc2626;display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+      <span style="font-size:0.68rem;font-weight:600;color:#dc2626;">Erro</span>
+    </div>
+    <!-- Disabled -->
+    <div style="background:var(--gray-100);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <div style="font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);">Disabled</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--gray-100);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;opacity:0.5;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <span style="font-size:0.68rem;font-weight:500;color:var(--text-tertiary);opacity:0.5;">Bloqueado</span>
+    </div>
+  </div>
+
+  <!-- Compact / Mini Stepper -->
+  <h3>Stepper Compacto (Mobile)</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+    <!-- Dots -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:1rem;">Dot Indicator</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#16a34a;"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:#16a34a;"></div>
+        <div style="width:20px;height:8px;border-radius:100px;background:var(--primary);"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--border);"></div>
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--border);"></div>
+      </div>
+      <div style="text-align:center;font-size:0.72rem;color:var(--text-secondary);margin-top:0.75rem;">Etapa 3 de 5</div>
+    </div>
+    <!-- Progress Bar -->
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-secondary);margin-bottom:1rem;">Progress Bar</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
+        <span style="font-size:0.78rem;font-weight:600;color:var(--text-primary);">Peças & Materiais</span>
+        <span style="font-size:0.72rem;font-weight:600;color:var(--primary);">3/5</span>
+      </div>
+      <div style="width:100%;height:6px;background:var(--gray-100);border-radius:100px;overflow:hidden;">
+        <div style="width:60%;height:100%;background:var(--primary);border-radius:100px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <h3>Specs</h3>
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Step circle</td><td>36 × 36px (default) · 32px (vertical) · border-radius 50%</td></tr>
+      <tr><td>Active ring</td><td>box-shadow 0 0 0 4px var(--primary-light)</td></tr>
+      <tr><td>Completed bg</td><td>#16a34a · check icon stroke 2.5 · color #fff</td></tr>
+      <tr><td>Connector</td><td>height 2px · completed: #16a34a · pending: var(--border)</td></tr>
+      <tr><td>Label font</td><td>Inter 0.72rem / 600 (active/completed) · 500 (pending)</td></tr>
+      <tr><td>Wizard header</td><td>padding 20px 24px · border-bottom 1px</td></tr>
+      <tr><td>Wizard footer</td><td>bg gray-100 · padding 16px 24px · sticky bottom</td></tr>
+      <tr><td>Progress bar</td><td>height 6px · border-radius 100px · bg primary</td></tr>
+      <tr><td>Max steps recomendado</td><td>3–7 steps · colapsar se &gt; 5 em mobile</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div class="dos-donts">
+    <div class="do">
+      <h4>Do</h4>
+      <ul>
+        <li>Validar cada etapa antes de permitir avançar</li>
+        <li>Permitir navegação livre entre etapas já concluídas</li>
+        <li>Oferecer "Salvar rascunho" em wizards longos</li>
+        <li>Usar dot indicator ou progress bar em mobile</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>Don't</h4>
+      <ul>
+        <li>Não exceder 7 etapas — divida em sub-fluxos</li>
+        <li>Não permitir pular etapas obrigatórias</li>
+        <li>Não perder dados preenchidos ao navegar entre etapas</li>
+        <li>Não esconder o progresso — sempre indicar a etapa atual</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== CLOSING HTML ==================== -->

@@ -278,8 +278,8 @@
     <h1>UX/UI — Referência & Sistema</h1>
     <p class="cover-subtitle">Contextual help, data export, bulk actions, permissions, clipboard, changelog, dashboard widgets, error pages, file upload, pricing, status page, iconografia, acessibilidade, responsividade e design tokens.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">19</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">56–74</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">24</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">56–76, 81–82, 84</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Referência</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -2905,6 +2905,1508 @@ kbd {
   <span style="color: #3A8FD6;">--transition-base</span>: <span style="color: #48C9B0;">0.18s ease</span>;
 }</pre>
     </div>
+</div>
+
+<!-- ==================== 75 — BADGES, TAGS & CHIPS ==================== -->
+<div class="section reveal" id="badges-tags-chips">
+    <div class="section-number">75 — Badges, Tags & Chips</div>
+    <h2>Badges, Tags & Chips</h2>
+    <p>Componentes compactos para comunicar status, categorias, contagens e filtros ativos. Essenciais para dashboards industriais, listas de pedidos e monitoramento de equipamentos na plataforma SYSLED.</p>
+
+    <h3>Status Badges</h3>
+    <p>Indicadores visuais para representar o estado atual de um item. Usam cores semanticas com dot animado para estados ativos.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 1.5rem 0;">
+      <!-- Online/Ativo -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #065F46;">
+        <span style="width: 7px; height: 7px; background: #10B981; border-radius: 50%; animation: pulse-green 2s infinite;"></span>
+        Online
+      </span>
+      <!-- Offline -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--gray-600);">
+        <span style="width: 7px; height: 7px; background: #94A3B8; border-radius: 50%;"></span>
+        Offline
+      </span>
+      <!-- Em Producao -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #1E40AF;">
+        <span style="width: 7px; height: 7px; background: #3B82F6; border-radius: 50%; animation: pulse-blue 2s infinite;"></span>
+        Em Produção
+      </span>
+      <!-- Manutencao -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #92400E;">
+        <span style="width: 7px; height: 7px; background: #F59E0B; border-radius: 50%;"></span>
+        Manutenção
+      </span>
+      <!-- Erro/Critico -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #991B1B;">
+        <span style="width: 7px; height: 7px; background: #EF4444; border-radius: 50%; animation: pulse-red 2s infinite;"></span>
+        Erro Crítico
+      </span>
+      <!-- Pausado -->
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #F5F3FF; border: 1px solid #DDD6FE; border-radius: 100px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: #5B21B6;">
+        <span style="width: 7px; height: 7px; background: #8B5CF6; border-radius: 50%;"></span>
+        Pausado
+      </span>
+    </div>
+    <style>
+      @keyframes pulse-green { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { box-shadow: 0 0 0 4px rgba(16,185,129,0); } }
+      @keyframes pulse-blue { 0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); } 50% { box-shadow: 0 0 0 4px rgba(59,130,246,0); } }
+      @keyframes pulse-red { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 4px rgba(239,68,68,0); } }
+    </style>
+
+    <h3>Notification Badges (Contadores)</h3>
+    <p>Indicam quantidade de itens pendentes. Usados em icones de navegacao, tabs e botoes.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin: 1.5rem 0;">
+      <!-- Icon with badge -->
+      <div style="position: relative; display: inline-flex;">
+        <div style="width: 40px; height: 40px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <span style="position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; background: #EF4444; color: #fff; border-radius: 100px; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--white); font-family: var(--font-heading);">3</span>
+      </div>
+      <div style="position: relative; display: inline-flex;">
+        <div style="width: 40px; height: 40px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span style="position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; background: #2B6CB0; color: #fff; border-radius: 100px; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--white); font-family: var(--font-heading);">12</span>
+      </div>
+      <div style="position: relative; display: inline-flex;">
+        <div style="width: 40px; height: 40px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span style="position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; background: #F59E0B; color: #fff; border-radius: 100px; font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--white); font-family: var(--font-heading);">99+</span>
+      </div>
+      <!-- Dot only (no number) -->
+      <div style="position: relative; display: inline-flex;">
+        <div style="width: 40px; height: 40px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <span style="position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; background: #EF4444; border-radius: 50%; border: 2px solid var(--white);"></span>
+      </div>
+    </div>
+
+    <h3>Tags & Labels</h3>
+    <p>Para categorizar itens em listas, tabelas e cards. Suportam icone e acao de remover.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0;">
+      <!-- Simple tags -->
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #EFF6FF; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #1E40AF; font-family: var(--font-body);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        Estoque
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #ECFDF5; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #065F46; font-family: var(--font-body);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Aprovado
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #FFFBEB; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #92400E; font-family: var(--font-body);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Pendente
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #FEF2F2; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #991B1B; font-family: var(--font-body);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Rejeitado
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #F5F3FF; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #5B21B6; font-family: var(--font-body);">Lote #2847</span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #FFF1F2; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #9F1239; font-family: var(--font-body);">Urgente</span>
+      <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: #F0FDFA; border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: #134E4A; font-family: var(--font-body);">Setor A</span>
+    </div>
+
+    <h3>Chips com Acao (Removiveis)</h3>
+    <p>Usados em filtros ativos, seletores multi-valor e campos de busca. O usuario pode remover clicando no X.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0;">
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px 5px 12px; background: #0F172A; border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: #E2E8F0; font-family: var(--font-body);">
+        Linha de Producao A
+        <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: rgba(255,255,255,0.15); border-radius: 50%; cursor: pointer; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px 5px 12px; background: #2B6CB0; border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: #fff; font-family: var(--font-body);">
+        Turno: Manhã
+        <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px 5px 12px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: var(--dark-text); font-family: var(--font-body);">
+        Status: Ativo
+        <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: rgba(0,0,0,0.08); border-radius: 50%; cursor: pointer; transition: background 0.15s;" onmouseover="this.style.background='rgba(0,0,0,0.15)'" onmouseout="this.style.background='rgba(0,0,0,0.08)'">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px 5px 12px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: #065F46; font-family: var(--font-body);">
+        Qualidade: OK
+        <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: rgba(6,95,70,0.12); border-radius: 50%; cursor: pointer; transition: background 0.15s;" onmouseover="this.style.background='rgba(6,95,70,0.25)'" onmouseout="this.style.background='rgba(6,95,70,0.12)'">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>
+      </span>
+    </div>
+
+    <h3>Badges em Contexto — Exemplo Tabela</h3>
+    <p>Como badges e tags aparecem dentro de componentes reais da plataforma.</p>
+    <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; margin: 1.5rem 0;">
+      <!-- Table header -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; padding: 10px 16px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200); font-size: 0.7rem; font-weight: 700; color: var(--gray-600); font-family: var(--font-heading); letter-spacing: 0.05em; text-transform: uppercase;">
+        <span>Equipamento</span><span>Status</span><span>Prioridade</span><span>Setor</span>
+      </div>
+      <!-- Row 1 -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; padding: 12px 16px; border-bottom: 1px solid var(--gray-200); align-items: center; font-size: 0.8rem; color: var(--dark-text);">
+        <span style="font-weight: 600;">CNC Torno #04</span>
+        <span><span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: #ECFDF5; border-radius: 100px; font-size: 0.68rem; font-weight: 600; color: #065F46;"><span style="width: 6px; height: 6px; background: #10B981; border-radius: 50;"></span>Online</span></span>
+        <span><span style="padding: 3px 8px; background: #EFF6FF; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #1E40AF;">Normal</span></span>
+        <span><span style="padding: 3px 8px; background: #F0FDFA; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #134E4A;">Setor A</span></span>
+      </div>
+      <!-- Row 2 -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; padding: 12px 16px; border-bottom: 1px solid var(--gray-200); align-items: center; font-size: 0.8rem; color: var(--dark-text);">
+        <span style="font-weight: 600;">Prensa Hidr. #12</span>
+        <span><span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: #FEF2F2; border-radius: 100px; font-size: 0.68rem; font-weight: 600; color: #991B1B;"><span style="width: 6px; height: 6px; background: #EF4444; border-radius: 50%;"></span>Erro</span></span>
+        <span><span style="padding: 3px 8px; background: #FEF2F2; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #991B1B;">Critica</span></span>
+        <span><span style="padding: 3px 8px; background: #F5F3FF; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #5B21B6;">Setor B</span></span>
+      </div>
+      <!-- Row 3 -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; padding: 12px 16px; align-items: center; font-size: 0.8rem; color: var(--dark-text);">
+        <span style="font-weight: 600;">Extrusora #07</span>
+        <span><span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: #FFFBEB; border-radius: 100px; font-size: 0.68rem; font-weight: 600; color: #92400E;"><span style="width: 6px; height: 6px; background: #F59E0B; border-radius: 50%;"></span>Manutenção</span></span>
+        <span><span style="padding: 3px 8px; background: #FFFBEB; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #92400E;">Alta</span></span>
+        <span><span style="padding: 3px 8px; background: #F0FDFA; border-radius: 4px; font-size: 0.65rem; font-weight: 600; color: #134E4A;">Setor A</span></span>
+      </div>
+    </div>
+
+    <h3>Variantes de Tamanho</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 1.5rem 0;">
+      <!-- XS -->
+      <div style="text-align: center;">
+        <span style="display: inline-flex; align-items: center; padding: 2px 6px; background: #EFF6FF; border-radius: 4px; font-size: 0.6rem; font-weight: 600; color: #1E40AF;">XS Badge</span>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px; font-family: var(--font-mono);">xs</div>
+      </div>
+      <!-- SM -->
+      <div style="text-align: center;">
+        <span style="display: inline-flex; align-items: center; padding: 3px 8px; background: #EFF6FF; border-radius: 5px; font-size: 0.68rem; font-weight: 600; color: #1E40AF;">SM Badge</span>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px; font-family: var(--font-mono);">sm</div>
+      </div>
+      <!-- MD -->
+      <div style="text-align: center;">
+        <span style="display: inline-flex; align-items: center; padding: 5px 12px; background: #EFF6FF; border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: #1E40AF;">MD Badge</span>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px; font-family: var(--font-mono);">md (padrão)</div>
+      </div>
+      <!-- LG -->
+      <div style="text-align: center;">
+        <span style="display: inline-flex; align-items: center; padding: 7px 16px; background: #EFF6FF; border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: #1E40AF;">LG Badge</span>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px; font-family: var(--font-mono);">lg</div>
+      </div>
+    </div>
+
+    <h3>Especificacoes</h3>
+    <table class="spec-table">
+      <thead><tr><th>Propriedade</th><th>Status Badge</th><th>Tag/Label</th><th>Chip (Removivel)</th><th>Contador</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Border-radius</strong></td><td>100px (pill)</td><td>4-6px (rounded)</td><td>100px (pill)</td><td>100px (pill)</td></tr>
+        <tr><td><strong>Padding</strong></td><td>5px 12px</td><td>4px 10px</td><td>5px 12px (left) 8px (right)</td><td>0 4px</td></tr>
+        <tr><td><strong>Font size</strong></td><td>0.75rem</td><td>0.7rem</td><td>0.72rem</td><td>0.6rem</td></tr>
+        <tr><td><strong>Font weight</strong></td><td>600</td><td>600</td><td>500</td><td>700</td></tr>
+        <tr><td><strong>Dot size</strong></td><td>7px (com animacao)</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>Min-width (contador)</strong></td><td>—</td><td>—</td><td>—</td><td>18px</td></tr>
+        <tr><td><strong>Close button</strong></td><td>Nao</td><td>Opcional</td><td>Sim (18px circle)</td><td>Nao</td></tr>
+        <tr><td><strong>Max chars</strong></td><td>~20</td><td>~25</td><td>~30 (truncar com ...)</td><td>"99+" se >99</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Paleta de Cores Semanticas</h3>
+    <table class="spec-table">
+      <thead><tr><th>Significado</th><th>Background</th><th>Border</th><th>Text</th><th>Dot</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sucesso / Online</strong></td><td>#ECFDF5</td><td>#A7F3D0</td><td>#065F46</td><td>#10B981</td></tr>
+        <tr><td><strong>Info / Em Producao</strong></td><td>#EFF6FF</td><td>#BFDBFE</td><td>#1E40AF</td><td>#3B82F6</td></tr>
+        <tr><td><strong>Warning / Manutencao</strong></td><td>#FFFBEB</td><td>#FDE68A</td><td>#92400E</td><td>#F59E0B</td></tr>
+        <tr><td><strong>Erro / Critico</strong></td><td>#FEF2F2</td><td>#FECACA</td><td>#991B1B</td><td>#EF4444</td></tr>
+        <tr><td><strong>Neutro / Offline</strong></td><td>var(--gray-100)</td><td>var(--gray-200)</td><td>var(--gray-600)</td><td>#94A3B8</td></tr>
+        <tr><td><strong>Purple / Pausado</strong></td><td>#F5F3FF</td><td>#DDD6FE</td><td>#5B21B6</td><td>#8B5CF6</td></tr>
+        <tr><td><strong>Pink / Urgente</strong></td><td>#FFF1F2</td><td>#FECDD3</td><td>#9F1239</td><td>#F43F5E</td></tr>
+        <tr><td><strong>Teal / Setor</strong></td><td>#F0FDFA</td><td>#99F6E4</td><td>#134E4A</td><td>#14B8A6</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Do's & Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Usar cores semanticas consistentes — verde sempre = sucesso, vermelho sempre = erro.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Usar mais de 3 badges/tags em uma unica celula de tabela — fica visualmente poluido.</div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Animar o dot de status apenas para estados ativos (Online, Em Producao, Erro Critico).</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Misturar badges pill (arredondados) com badges quadrados no mesmo contexto.</div>
+      </div>
+    </div>
+</div>
+
+<!-- ==================== 76 — AVATAR & USER PRESENCE ==================== -->
+<div class="section reveal" id="avatar-user-presence">
+    <div class="section-number">76 — Avatar & User Presence</div>
+    <h2>Avatar & User Presence</h2>
+    <p>Sistema de representacao visual de usuarios na plataforma. Inclui avatares individuais, grupos empilhados, indicadores de presenca online/offline e user cards compactos.</p>
+
+    <h3>Avatar Individual — Tamanhos</h3>
+    <p>Avatares usam imagem, iniciais como fallback, ou icone generico. Sempre circulares.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: end; margin: 1.5rem 0;">
+      <!-- XS 24px -->
+      <div style="text-align: center;">
+        <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.45rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">xs</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">24px</div>
+      </div>
+      <!-- SM 32px -->
+      <div style="text-align: center;">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.55rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">sm</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">32px</div>
+      </div>
+      <!-- MD 40px -->
+      <div style="text-align: center;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">md</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">40px</div>
+      </div>
+      <!-- LG 48px -->
+      <div style="text-align: center;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">lg</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">48px</div>
+      </div>
+      <!-- XL 64px -->
+      <div style="text-align: center;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">xl</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">64px</div>
+      </div>
+      <!-- 2XL 80px -->
+      <div style="text-align: center;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0 auto;">DF</div>
+        <div style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-400); margin-top: 6px;">2xl</div>
+        <div style="font-family: var(--font-mono); font-size: 0.5rem; color: #94A3B8;">80px</div>
+      </div>
+    </div>
+
+    <h3>Fallback — Variantes de Cor</h3>
+    <p>Quando nao ha foto, usar iniciais do nome com cores geradas a partir do hash do user ID. Paleta fixa de 8 cores:</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 1.5rem 0;">
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #3A8FD6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">AB</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #059669, #34D399); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">CD</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #D97706, #FBBF24); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">EF</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DC2626, #F87171); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">GH</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #A78BFA); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">IJ</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #DB2777, #F472B6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">KL</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #0891B2, #22D3EE); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">MN</div>
+      <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #475569, #94A3B8); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: #fff;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+    </div>
+
+    <h3>Indicador de Presenca (Online Status)</h3>
+    <p>Dot posicionado no canto inferior-direito do avatar. Usa borda branca para separar do fundo.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin: 1.5rem 0;">
+      <!-- Online -->
+      <div style="text-align: center;">
+        <div style="position: relative; display: inline-block;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #fff;">DF</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 14px; height: 14px; background: #10B981; border-radius: 50%; border: 2.5px solid var(--white);"></span>
+        </div>
+        <div style="font-size: 0.65rem; color: #10B981; font-weight: 600; margin-top: 6px;">Online</div>
+      </div>
+      <!-- Away -->
+      <div style="text-align: center;">
+        <div style="position: relative; display: inline-block;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #D97706, #FBBF24); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #fff;">RS</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 14px; height: 14px; background: #F59E0B; border-radius: 50%; border: 2.5px solid var(--white);"></span>
+        </div>
+        <div style="font-size: 0.65rem; color: #F59E0B; font-weight: 600; margin-top: 6px;">Ausente</div>
+      </div>
+      <!-- Busy -->
+      <div style="text-align: center;">
+        <div style="position: relative; display: inline-block;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #DC2626, #F87171); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #fff;">MC</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 14px; height: 14px; background: #EF4444; border-radius: 50%; border: 2.5px solid var(--white);"></span>
+        </div>
+        <div style="font-size: 0.65rem; color: #EF4444; font-weight: 600; margin-top: 6px;">Ocupado</div>
+      </div>
+      <!-- Offline -->
+      <div style="text-align: center;">
+        <div style="position: relative; display: inline-block;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #475569, #94A3B8); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: #fff;">JL</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 14px; height: 14px; background: #94A3B8; border-radius: 50%; border: 2.5px solid var(--white);"></span>
+        </div>
+        <div style="font-size: 0.65rem; color: #94A3B8; font-weight: 600; margin-top: 6px;">Offline</div>
+      </div>
+    </div>
+
+    <h3>Avatar Group (Stack)</h3>
+    <p>Avatares empilhados com sobreposicao de -8px. Usado para mostrar membros de equipe, responsaveis por tarefa, etc.</p>
+    <div style="margin: 1.5rem 0;">
+      <!-- Stack example -->
+      <div style="display: flex; margin-bottom: 1.5rem;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #3A8FD6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #fff; border: 2.5px solid var(--white); position: relative; z-index: 5;">DF</div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #059669, #34D399); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #fff; border: 2.5px solid var(--white); margin-left: -10px; position: relative; z-index: 4;">RS</div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #D97706, #FBBF24); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #fff; border: 2.5px solid var(--white); margin-left: -10px; position: relative; z-index: 3;">MC</div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #A78BFA); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700; color: #fff; border: 2.5px solid var(--white); margin-left: -10px; position: relative; z-index: 2;">JL</div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--gray-100); border: 2.5px solid var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: var(--gray-600); margin-left: -10px; position: relative; z-index: 1;">+5</div>
+      </div>
+      <!-- Smaller stack -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="display: flex;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #3A8FD6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.45rem; font-weight: 700; color: #fff; border: 2px solid var(--white); z-index: 3;">DF</div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #059669, #34D399); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.45rem; font-weight: 700; color: #fff; border: 2px solid var(--white); margin-left: -8px; z-index: 2;">RS</div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--gray-100); border: 2px solid var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.45rem; font-weight: 700; color: var(--gray-600); margin-left: -8px; z-index: 1;">+3</div>
+        </div>
+        <span style="font-size: 0.75rem; color: var(--gray-600);">5 membros nesta equipe</span>
+      </div>
+    </div>
+
+    <h3>User Card — Mini Profile</h3>
+    <p>Card compacto para hover/popover com informacoes basicas do usuario. Usado em mentions, assignees e comentarios.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+      <!-- Card 1 -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; box-shadow: var(--shadow-card);">
+        <div style="position: relative; flex-shrink: 0;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #fff;">DF</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #10B981; border-radius: 50%; border: 2px solid var(--white);"></span>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: var(--dark-text);">Demetrio Freitas</div>
+          <div style="font-size: 0.72rem; color: var(--gray-400); margin-top: 1px;">Gerente de Producao</div>
+          <div style="display: flex; gap: 6px; margin-top: 8px;">
+            <span style="padding: 2px 8px; background: #EFF6FF; border-radius: 4px; font-size: 0.6rem; font-weight: 600; color: #1E40AF;">Admin</span>
+            <span style="padding: 2px 8px; background: #ECFDF5; border-radius: 4px; font-size: 0.6rem; font-weight: 600; color: #065F46;">Online</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; box-shadow: var(--shadow-card);">
+        <div style="position: relative; flex-shrink: 0;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #D97706, #FBBF24); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: #fff;">RS</div>
+          <span style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #F59E0B; border-radius: 50%; border: 2px solid var(--white);"></span>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: var(--dark-text);">Rafael Silva</div>
+          <div style="font-size: 0.72rem; color: var(--gray-400); margin-top: 1px;">Tecnico de Manutencao</div>
+          <div style="display: flex; gap: 6px; margin-top: 8px;">
+            <span style="padding: 2px 8px; background: #F5F3FF; border-radius: 4px; font-size: 0.6rem; font-weight: 600; color: #5B21B6;">Tecnico</span>
+            <span style="padding: 2px 8px; background: #FFFBEB; border-radius: 4px; font-size: 0.6rem; font-weight: 600; color: #92400E;">Ausente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Avatar em Contexto — Comentario</h3>
+    <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 16px; margin: 1.5rem 0; box-shadow: var(--shadow-card);">
+      <div style="display: flex; gap: 12px;">
+        <div style="flex-shrink: 0;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #fff;">DF</div>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--dark-text);">Demetrio Freitas</span>
+            <span style="font-size: 0.65rem; color: var(--gray-400);">há 15 min</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--gray-600); line-height: 1.6; margin: 0;">Verificar pressao da prensa hidraulica #12 — sensor reportou variacao acima do threshold. <span style="color: #2B6CB0; font-weight: 600;">@rafael.silva</span> pode checar no proximo turno?</p>
+          <div style="display: flex; gap: 12px; margin-top: 10px;">
+            <span style="font-size: 0.7rem; color: var(--gray-400); cursor: pointer; font-weight: 500;">Responder</span>
+            <span style="font-size: 0.7rem; color: var(--gray-400); cursor: pointer; font-weight: 500;">Reagir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Especificacoes</h3>
+    <table class="spec-table">
+      <thead><tr><th>Propriedade</th><th>XS (24)</th><th>SM (32)</th><th>MD (40)</th><th>LG (48)</th><th>XL (64)</th><th>2XL (80)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Diametro</strong></td><td>24px</td><td>32px</td><td>40px</td><td>48px</td><td>64px</td><td>80px</td></tr>
+        <tr><td><strong>Font size (iniciais)</strong></td><td>0.45rem</td><td>0.55rem</td><td>0.7rem</td><td>0.85rem</td><td>1.1rem</td><td>1.4rem</td></tr>
+        <tr><td><strong>Presence dot</strong></td><td>8px</td><td>10px</td><td>12px</td><td>14px</td><td>16px</td><td>18px</td></tr>
+        <tr><td><strong>Border (dot)</strong></td><td>1.5px</td><td>2px</td><td>2px</td><td>2.5px</td><td>3px</td><td>3px</td></tr>
+        <tr><td><strong>Stack offset</strong></td><td>-6px</td><td>-8px</td><td>-10px</td><td>-12px</td><td>-14px</td><td>-16px</td></tr>
+        <tr><td><strong>Border (stack)</strong></td><td>1.5px</td><td>2px</td><td>2.5px</td><td>2.5px</td><td>3px</td><td>3px</td></tr>
+        <tr><td><strong>Uso tipico</strong></td><td>Inline text</td><td>Tabelas</td><td>Cards, lists</td><td>Profiles</td><td>Headers</td><td>Profile page</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cores de Presenca</h3>
+    <table class="spec-table">
+      <thead><tr><th>Status</th><th>Cor</th><th>Hex</th><th>Significado</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Online</strong></td><td><span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #10B981; vertical-align: middle;"></span></td><td>#10B981</td><td>Usuario ativo na plataforma</td></tr>
+        <tr><td><strong>Ausente</strong></td><td><span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #F59E0B; vertical-align: middle;"></span></td><td>#F59E0B</td><td>Inativo ha mais de 5 min</td></tr>
+        <tr><td><strong>Ocupado</strong></td><td><span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #EF4444; vertical-align: middle;"></span></td><td>#EF4444</td><td>Nao perturbe / em reuniao</td></tr>
+        <tr><td><strong>Offline</strong></td><td><span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #94A3B8; vertical-align: middle;"></span></td><td>#94A3B8</td><td>Desconectado</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Regras de Fallback</h3>
+    <table class="spec-table">
+      <thead><tr><th>Prioridade</th><th>Fonte</th><th>Exemplo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1a</strong></td><td>Foto do perfil (URL)</td><td>Imagem redonda com object-fit: cover</td></tr>
+        <tr><td><strong>2a</strong></td><td>Iniciais (nome + sobrenome)</td><td>"DF" para Demetrio Freitas</td></tr>
+        <tr><td><strong>3a</strong></td><td>Icone generico (user)</td><td>SVG user icon em fundo cinza</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Do's & Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Usar gradient consistente por usuario — a mesma cor deve aparecer sempre para o mesmo usuario (hash do ID).</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Exibir mais de 5 avatares no stack visivel. Apos 4-5, usar counter "+N".</div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Sempre incluir borda branca no dot de presenca para garantir contraste contra qualquer fundo de avatar.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Usar avatares quadrados. A marca SYSLED define avatares sempre circulares.</div>
+      </div>
+    </div>
+</div>
+
+<!-- ==================== SEÇÃO 81 — THEMING & WHITE-LABEL SYSTEM ==================== -->
+<div class="section reveal" id="theming-white-label">
+  <h2>81. Theming & White-Label System</h2>
+  <p>Arquitetura de tokens semânticos e temas dinâmicos para suportar múltiplas marcas (white-label) no ecossistema SYSLED — de clientes OEM a unidades regionais com identidade visual própria.</p>
+
+  <!-- Token Architecture -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Arquitetura de Tokens — 3 Camadas</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+      <!-- Layer 1: Primitivos -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 2px solid var(--gray-200); position: relative;">
+        <div style="position: absolute; top: -10px; left: 16px; background: var(--gray-500); color: white; font-size: 0.55rem; font-weight: 700; padding: 2px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Camada 1</div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text); margin-top: 0.5rem;">Primitivos</div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-bottom: 1rem;">Valores brutos, sem contexto</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: #0066CC;"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-600);">--blue-600: #0066CC</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: #FF6600;"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-600);">--orange-500: #FF6600</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: #1A1A2E;"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-600);">--gray-900: #1A1A2E</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; border: 1px solid var(--gray-200);"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-600);">--radius-md: 10px</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 2: Semânticos -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 2px solid var(--primary); position: relative;">
+        <div style="position: absolute; top: -10px; left: 16px; background: var(--primary); color: white; font-size: 0.55rem; font-weight: 700; padding: 2px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Camada 2</div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text); margin-top: 0.5rem;">Semânticos</div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-bottom: 1rem;">Significado + contexto</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--primary);"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--primary); font-weight: 600;">--color-brand-primary</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--accent);"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--primary); font-weight: 600;">--color-brand-accent</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: #1A1A2E;"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--primary); font-weight: 600;">--color-bg-primary</code>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; border: 1px solid var(--gray-200);"></div>
+            <code style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--primary); font-weight: 600;">--radius-component</code>
+          </div>
+        </div>
+        <div style="margin-top: 0.75rem; display: flex; align-items: center; gap: 4px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <span style="font-size: 0.55rem; color: var(--primary); font-weight: 600;">Componentes referenciam ESTA camada</span>
+        </div>
+      </div>
+
+      <!-- Layer 3: Componente -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 2px solid var(--gray-200); position: relative;">
+        <div style="position: absolute; top: -10px; left: 16px; background: var(--gray-500); color: white; font-size: 0.55rem; font-weight: 700; padding: 2px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Camada 3</div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text); margin-top: 0.5rem;">Componente</div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-bottom: 1rem;">Tokens específicos por componente</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <code style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--gray-600);">--btn-bg: var(--color-brand-primary)</code>
+          <code style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--gray-600);">--btn-radius: var(--radius-component)</code>
+          <code style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--gray-600);">--card-border: var(--color-border)</code>
+          <code style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--gray-600);">--nav-bg: var(--color-bg-surface)</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Switcher Preview -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Temas — Preview Comparativo</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+      <!-- Theme: SYSLED Default -->
+      <div style="border-radius: 12px; overflow: hidden; border: 2px solid #0066CC; box-shadow: 0 4px 16px rgba(0,102,204,0.15);">
+        <div style="background: linear-gradient(135deg, #0066CC, #004499); padding: 1rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; color: white; letter-spacing: 0.05em;">SYSLED</div>
+          <div style="font-size: 0.55rem; color: rgba(255,255,255,0.7); margin-top: 2px;">Tema Padrão</div>
+        </div>
+        <div style="background: white; padding: 1rem;">
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #0066CC;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #FF6600;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #1A1A2E;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #F0F4F8; border: 1px solid #E2E8F0;"></div>
+          </div>
+          <div style="background: #0066CC; color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.65rem; font-weight: 600; text-align: center; margin-bottom: 6px;">Botão Primário</div>
+          <div style="background: #F0F4F8; padding: 8px; border-radius: 8px; border: 1px solid #E2E8F0;">
+            <div style="height: 6px; width: 80%; background: #0066CC; border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 6px; width: 60%; background: #CBD5E1; border-radius: 3px; margin-top: 4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme: OEM Client A -->
+      <div style="border-radius: 12px; overflow: hidden; border: 2px solid #8B5CF6; box-shadow: 0 4px 16px rgba(139,92,246,0.15);">
+        <div style="background: linear-gradient(135deg, #8B5CF6, #6D28D9); padding: 1rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; color: white; letter-spacing: 0.05em;">INDTECH PRO</div>
+          <div style="font-size: 0.55rem; color: rgba(255,255,255,0.7); margin-top: 2px;">Cliente OEM A</div>
+        </div>
+        <div style="background: white; padding: 1rem;">
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #8B5CF6;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #F59E0B;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #1E1B4B;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #F5F3FF; border: 1px solid #E9E5FC;"></div>
+          </div>
+          <div style="background: #8B5CF6; color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.65rem; font-weight: 600; text-align: center; margin-bottom: 6px;">Botão Primário</div>
+          <div style="background: #F5F3FF; padding: 8px; border-radius: 8px; border: 1px solid #E9E5FC;">
+            <div style="height: 6px; width: 80%; background: #8B5CF6; border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 6px; width: 60%; background: #D4D0E8; border-radius: 3px; margin-top: 4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme: OEM Client B -->
+      <div style="border-radius: 12px; overflow: hidden; border: 2px solid #059669; box-shadow: 0 4px 16px rgba(5,150,105,0.15);">
+        <div style="background: linear-gradient(135deg, #059669, #047857); padding: 1rem; text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; color: white; letter-spacing: 0.05em;">AGRO SMART</div>
+          <div style="font-size: 0.55rem; color: rgba(255,255,255,0.7); margin-top: 2px;">Cliente OEM B</div>
+        </div>
+        <div style="background: white; padding: 1rem;">
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #059669;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #D97706;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #1B2E1B;"></div>
+            <div style="width: 24px; height: 24px; border-radius: 6px; background: #F0FDF4; border: 1px solid #D1FAE5;"></div>
+          </div>
+          <div style="background: #059669; color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.65rem; font-weight: 600; text-align: center; margin-bottom: 6px;">Botão Primário</div>
+          <div style="background: #F0FDF4; padding: 8px; border-radius: 8px; border: 1px solid #D1FAE5;">
+            <div style="height: 6px; width: 80%; background: #059669; border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 6px; width: 60%; background: #A7F3D0; border-radius: 3px; margin-top: 4px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Config JSON -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Arquivo de Configuração do Tema</div>
+
+    <div style="background: #1A1A2E; border-radius: 10px; padding: 1.25rem; overflow-x: auto;">
+      <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.68rem; line-height: 1.8; color: #E2E8F0;"><span style="color: #7C8BA1;">// theme.config.json</span>
+{
+  <span style="color: #FF6600;">"name"</span>: <span style="color: #10B981;">"sysled-default"</span>,
+  <span style="color: #FF6600;">"displayName"</span>: <span style="color: #10B981;">"SYSLED Industrial"</span>,
+  <span style="color: #FF6600;">"colors"</span>: {
+    <span style="color: #FF6600;">"brand-primary"</span>: <span style="color: #10B981;">"#0066CC"</span>,
+    <span style="color: #FF6600;">"brand-accent"</span>: <span style="color: #10B981;">"#FF6600"</span>,
+    <span style="color: #FF6600;">"bg-primary"</span>: <span style="color: #10B981;">"#FFFFFF"</span>,
+    <span style="color: #FF6600;">"bg-surface"</span>: <span style="color: #10B981;">"#F0F4F8"</span>,
+    <span style="color: #FF6600;">"bg-elevated"</span>: <span style="color: #10B981;">"#FFFFFF"</span>,
+    <span style="color: #FF6600;">"text-primary"</span>: <span style="color: #10B981;">"#1A1A2E"</span>,
+    <span style="color: #FF6600;">"text-secondary"</span>: <span style="color: #10B981;">"#64748B"</span>,
+    <span style="color: #FF6600;">"border"</span>: <span style="color: #10B981;">"#E2E8F0"</span>,
+    <span style="color: #FF6600;">"success"</span>: <span style="color: #10B981;">"#10B981"</span>,
+    <span style="color: #FF6600;">"warning"</span>: <span style="color: #10B981;">"#F59E0B"</span>,
+    <span style="color: #FF6600;">"error"</span>: <span style="color: #10B981;">"#EF4444"</span>
+  },
+  <span style="color: #FF6600;">"typography"</span>: {
+    <span style="color: #FF6600;">"heading"</span>: <span style="color: #10B981;">"Montserrat"</span>,
+    <span style="color: #FF6600;">"body"</span>: <span style="color: #10B981;">"Inter"</span>,
+    <span style="color: #FF6600;">"mono"</span>: <span style="color: #10B981;">"JetBrains Mono"</span>
+  },
+  <span style="color: #FF6600;">"radius"</span>: {
+    <span style="color: #FF6600;">"sm"</span>: <span style="color: #10B981;">"6px"</span>,
+    <span style="color: #FF6600;">"md"</span>: <span style="color: #10B981;">"10px"</span>,
+    <span style="color: #FF6600;">"lg"</span>: <span style="color: #10B981;">"16px"</span>,
+    <span style="color: #FF6600;">"full"</span>: <span style="color: #10B981;">"100px"</span>
+  },
+  <span style="color: #FF6600;">"logo"</span>: {
+    <span style="color: #FF6600;">"light"</span>: <span style="color: #10B981;">"/assets/logo-light.svg"</span>,
+    <span style="color: #FF6600;">"dark"</span>: <span style="color: #10B981;">"/assets/logo-dark.svg"</span>,
+    <span style="color: #FF6600;">"icon"</span>: <span style="color: #10B981;">"/assets/logo-icon.svg"</span>
+  }
+}</pre>
+    </div>
+  </div>
+
+  <!-- Dark Mode Token Mapping -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Mapeamento Light ↔ Dark</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+      <!-- Light -->
+      <div style="background: #FFFFFF; border-radius: 12px; padding: 1.25rem; border: 1px solid #E2E8F0;">
+        <div style="text-align: center; font-size: 0.7rem; font-weight: 700; color: #1A1A2E; margin-bottom: 1rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          Light Mode
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: #F8FAFC; border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #64748B;">bg-primary</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #FFFFFF; border: 1px solid #E2E8F0;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #94A3B8;">#FFFFFF</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: #F8FAFC; border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #64748B;">bg-surface</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #F0F4F8;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #94A3B8;">#F0F4F8</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: #F8FAFC; border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #64748B;">text-primary</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #1A1A2E;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #94A3B8;">#1A1A2E</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: #F8FAFC; border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #64748B;">border</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #E2E8F0;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #94A3B8;">#E2E8F0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark -->
+      <div style="background: #1A1A2E; border-radius: 12px; padding: 1.25rem; border: 1px solid #2D2D44;">
+        <div style="text-align: center; font-size: 0.7rem; font-weight: 700; color: #E2E8F0; margin-bottom: 1rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B9DC3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Dark Mode
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #8B9DC3;">bg-primary</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #1A1A2E;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #64748B;">#1A1A2E</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #8B9DC3;">bg-surface</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #2D2D44;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #64748B;">#2D2D44</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #8B9DC3;">text-primary</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #E2E8F0;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #64748B;">#E2E8F0</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+            <span style="font-size: 0.6rem; color: #8B9DC3;">border</span>
+            <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 16px; height: 16px; border-radius: 3px; background: #2D2D44;"></div><span style="font-size: 0.58rem; font-family: var(--font-mono); color: #64748B;">#2D2D44</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- White-Label Checklist -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Checklist White-Label</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">Visual</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Logo (light, dark, icon, favicon)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Paleta de cores (primary, accent, semantic)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Tipografia (heading + body)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Border radius (sm, md, lg)</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">Funcional</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Domínio customizado</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">E-mail templates com branding</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">Login page personalizada</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 18px; height: 18px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--dark-text);">PDF reports com marca do cliente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Token</th><th>Tipo</th><th>Descrição</th></tr></thead>
+    <tbody>
+      <tr><td><code>--color-brand-primary</code></td><td>Semântico</td><td>Cor principal da marca — botões, links, foco</td></tr>
+      <tr><td><code>--color-brand-accent</code></td><td>Semântico</td><td>Cor de destaque — badges, CTAs secundários</td></tr>
+      <tr><td><code>--color-bg-primary</code></td><td>Semântico</td><td>Fundo principal da aplicação</td></tr>
+      <tr><td><code>--color-bg-surface</code></td><td>Semântico</td><td>Fundo de cards e painéis elevados</td></tr>
+      <tr><td><code>--color-bg-elevated</code></td><td>Semântico</td><td>Fundo de modais, dropdowns, popovers</td></tr>
+      <tr><td><code>--color-text-primary</code></td><td>Semântico</td><td>Texto principal — headings, body</td></tr>
+      <tr><td><code>--color-text-secondary</code></td><td>Semântico</td><td>Texto secundário — labels, captions</td></tr>
+      <tr><td><code>--color-border</code></td><td>Semântico</td><td>Bordas de inputs, cards, dividers</td></tr>
+      <tr><td><code>--radius-component</code></td><td>Estrutural</td><td>Radius padrão de componentes (botões, inputs)</td></tr>
+      <tr><td><code>--font-heading</code></td><td>Tipografia</td><td>Família da fonte para headings</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar tokens semânticos nos componentes</li>
+        <li>Testar contraste WCAG em cada tema</li>
+        <li>Gerar CSS custom properties em runtime</li>
+        <li>Manter cores semânticas fixas (success, error)</li>
+        <li>Validar logo em light E dark mode</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Hardcodar hex nos componentes</li>
+        <li>Permitir primary = vermelho (conflita com error)</li>
+        <li>Esquecer de remapear hover/active states</li>
+        <li>Usar nomes de cor nos tokens (--blue → --primary)</li>
+        <li>Ignorar modo escuro no white-label</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 82 — NOTIFICATION PREFERENCES UI ==================== -->
+<div class="section reveal" id="notification-preferences">
+  <h2>82. Notification Preferences UI</h2>
+  <p>Interface de configuração de notificações — canais (push, e-mail, SMS, in-app), frequência, agrupamento por categoria e controle granular por tipo de evento industrial.</p>
+
+  <!-- Notification Preferences Panel -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Painel de Preferências</div>
+
+    <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+      <!-- Header -->
+      <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: var(--dark-text);">Notificações</div>
+          <div style="font-size: 0.7rem; color: var(--gray-400); margin-top: 2px;">Gerencie como e quando você recebe alertas</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.65rem; color: var(--gray-400);">Pausar tudo</span>
+          <div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; cursor: pointer;">
+            <div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Channel toggles header -->
+      <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 0.75rem 1.5rem; background: var(--gray-50); border-bottom: 1px solid var(--gray-100);">
+        <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Categoria</div>
+        <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 2px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Push
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          E-mail
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+          SMS
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 2px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+          In-App
+        </div>
+      </div>
+
+      <!-- Category: Alertas Críticos -->
+      <div style="border-bottom: 1px solid var(--gray-100);">
+        <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 1rem 1.5rem; align-items: center;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Alertas Críticos</div>
+                <div style="font-size: 0.6rem; color: var(--gray-400);">Falhas, paradas de emergência, segurança</div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+        </div>
+        <div style="padding: 0 1.5rem 0.75rem 4.75rem;">
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; background: rgba(239,68,68,0.08); border-radius: 100px; font-size: 0.58rem; font-weight: 600; color: #EF4444;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Obrigatório — não pode desativar
+          </span>
+        </div>
+      </div>
+
+      <!-- Category: Produção -->
+      <div style="border-bottom: 1px solid var(--gray-100);">
+        <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 1rem 1.5rem; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Produção</div>
+              <div style="font-size: 0.6rem; color: var(--gray-400);">OEE, metas, setup, troca de turno</div>
+            </div>
+          </div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Category: Manutenção -->
+      <div style="border-bottom: 1px solid var(--gray-100);">
+        <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 1rem 1.5rem; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(245,158,11,0.1); display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Manutenção</div>
+              <div style="font-size: 0.6rem; color: var(--gray-400);">Preventiva, corretiva, peças, ordens</div>
+            </div>
+          </div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Category: Qualidade -->
+      <div style="border-bottom: 1px solid var(--gray-100);">
+        <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 1rem 1.5rem; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Qualidade</div>
+              <div style="font-size: 0.6rem; color: var(--gray-400);">Inspeções, não-conformidades, auditorias</div>
+            </div>
+          </div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Category: Sistema -->
+      <div>
+        <div style="display: grid; grid-template-columns: 1.8fr repeat(4, 70px); gap: 0; padding: 1rem 1.5rem; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(100,116,139,0.1); display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Sistema</div>
+              <div style="font-size: 0.6rem; color: var(--gray-400);">Updates, backup, sessão, segurança</div>
+            </div>
+          </div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--gray-300); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+          <div style="text-align: center;"><div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; margin: 0 auto;"><div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frequency & Schedule -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Frequência & Horário Silencioso</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <!-- Digest Frequency -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text); margin-bottom: 1rem;">Digest por E-mail</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(0,102,204,0.05); border: 2px solid var(--primary); border-radius: 8px; cursor: pointer;">
+            <div style="width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center;">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text);">Tempo real</div>
+              <div style="font-size: 0.58rem; color: var(--gray-400);">Cada evento gera um e-mail</div>
+            </div>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer;">
+            <div style="width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray-300);"></div>
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text);">Digest diário</div>
+              <div style="font-size: 0.58rem; color: var(--gray-400);">Resumo às 08:00 da manhã</div>
+            </div>
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer;">
+            <div style="width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray-300);"></div>
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text);">Digest semanal</div>
+              <div style="font-size: 0.58rem; color: var(--gray-400);">Resumo toda segunda às 08:00</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Quiet Hours -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Horário Silencioso</div>
+          <div style="width: 36px; height: 20px; border-radius: 100px; background: var(--primary); position: relative; cursor: pointer;">
+            <div style="width: 16px; height: 16px; border-radius: 50%; background: white; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+          </div>
+        </div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-bottom: 1rem;">Notificações push e SMS pausadas neste período. Alertas críticos continuam ativos.</div>
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="flex: 1;">
+            <div style="font-size: 0.6rem; color: var(--gray-400); margin-bottom: 4px; font-weight: 600;">Início</div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
+              <span style="font-size: 0.75rem; font-weight: 600; color: var(--dark-text);">22:00</span>
+            </div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <div style="font-size: 0.6rem; color: var(--gray-400); margin-bottom: 4px; font-weight: 600;">Fim</div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
+              <span style="font-size: 0.75rem; font-weight: 600; color: var(--dark-text);">07:00</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-bottom: 6px; font-weight: 600;">Dias ativos</div>
+        <div style="display: flex; gap: 4px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: var(--gray-400);">D</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: white;">S</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: white;">T</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: white;">Q</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: white;">Q</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: white;">S</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 600; color: var(--gray-400);">S</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Preview Cards -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Preview — Tipos de Notificação</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <!-- Push notification -->
+      <div style="background: #1A1A2E; border-radius: 16px; padding: 1.25rem; position: relative;">
+        <div style="position: absolute; top: -8px; right: 16px; background: var(--gray-500); color: white; font-size: 0.5rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-transform: uppercase;">Push</div>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #0066CC, #004499); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <span style="font-size: 0.7rem; font-weight: 800; color: white;">S</span>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 0.65rem; font-weight: 700; color: #E2E8F0;">SYSLED</span>
+              <span style="font-size: 0.55rem; color: #64748B;">agora</span>
+            </div>
+            <div style="font-size: 0.7rem; font-weight: 600; color: #E2E8F0; margin-top: 2px;">Alerta de Parada</div>
+            <div style="font-size: 0.62rem; color: #8B9DC3; margin-top: 1px;">CNC Torno #04 — parada não programada detectada. OEE caiu para 45%.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-app notification -->
+      <div style="background: var(--white); border-radius: 16px; padding: 1.25rem; border: 1px solid var(--gray-200); position: relative;">
+        <div style="position: absolute; top: -8px; right: 16px; background: var(--primary); color: white; font-size: 0.5rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-transform: uppercase;">In-App</div>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(245,158,11,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">Manutenção preventiva</span>
+              <span style="font-size: 0.55rem; color: var(--gray-400);">5 min</span>
+            </div>
+            <div style="font-size: 0.62rem; color: var(--gray-500); margin-top: 2px;">Ordem #MP-2847 criada para Prensa PH-200. Prazo: 15/03/2026.</div>
+            <div style="display: flex; gap: 6px; margin-top: 8px;">
+              <div style="padding: 4px 10px; background: var(--primary); color: white; border-radius: 6px; font-size: 0.6rem; font-weight: 600;">Ver ordem</div>
+              <div style="padding: 4px 10px; background: var(--gray-100); color: var(--gray-500); border-radius: 6px; font-size: 0.6rem; font-weight: 500;">Dispensar</div>
+            </div>
+          </div>
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 4px;"></div>
+        </div>
+      </div>
+
+      <!-- Email digest -->
+      <div style="background: var(--white); border-radius: 16px; padding: 1.25rem; border: 1px solid var(--gray-200); position: relative;">
+        <div style="position: absolute; top: -8px; right: 16px; background: #10B981; color: white; font-size: 0.5rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-transform: uppercase;">E-mail Digest</div>
+        <div style="text-align: center; padding: 0.5rem 0;">
+          <div style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 800; color: var(--primary); letter-spacing: 0.05em;">SYSLED</div>
+          <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 2px;">Resumo diário — 08 Mar 2026</div>
+          <div style="width: 40px; height: 2px; background: var(--primary); margin: 8px auto; border-radius: 1px;"></div>
+          <div style="text-align: left; font-size: 0.6rem; color: var(--gray-500); line-height: 1.6;">
+            <div style="display: flex; align-items: center; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--gray-100);">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #EF4444; flex-shrink: 0;"></span>
+              2 alertas críticos
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--gray-100);">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #F59E0B; flex-shrink: 0;"></span>
+              5 ordens de manutenção
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 4px 0;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981; flex-shrink: 0;"></span>
+              OEE médio: 87.3%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMS -->
+      <div style="background: #F0FDF4; border-radius: 16px; padding: 1.25rem; border: 1px solid #D1FAE5; position: relative;">
+        <div style="position: absolute; top: -8px; right: 16px; background: #059669; color: white; font-size: 0.5rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-transform: uppercase;">SMS</div>
+        <div style="background: white; border-radius: 12px; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); max-width: 85%;">
+          <div style="font-size: 0.65rem; color: var(--dark-text); line-height: 1.5;">
+            <strong>[SYSLED]</strong> ALERTA: Prensa PH-200 parada emergencial. Sensor temp. 142°C (limite: 120°C). Verifique imediatamente.
+          </div>
+        </div>
+        <div style="font-size: 0.5rem; color: #6B7280; margin-top: 6px; text-align: right;">08:42 AM</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Componente</th><th>Spec</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Toggle Switch</td><td><code>36×20px</code>, thumb <code>16px</code>, radius <code>100px</code></td><td>ON = primary, OFF = gray-300</td></tr>
+      <tr><td>Category Row</td><td>Padding <code>16px 24px</code>, icon <code>28×28</code></td><td>Ícone contextual com cor da categoria</td></tr>
+      <tr><td>Radio Button</td><td><code>18px</code>, dot <code>10px</code>, border <code>2px</code></td><td>Selected = primary fill + border</td></tr>
+      <tr><td>Day Selector</td><td><code>28×28px</code>, radius <code>6px</code></td><td>Active = primary bg + white text</td></tr>
+      <tr><td>Time Input</td><td>Height <code>40px</code>, radius <code>8px</code></td><td>Clock icon + valor em bold</td></tr>
+      <tr><td>Push Preview</td><td>Dark bg <code>#1A1A2E</code>, radius <code>16px</code></td><td>App icon <code>32×32</code>, radius <code>8px</code></td></tr>
+      <tr><td>In-App Toast</td><td>White bg, unread dot <code>8px</code> primary</td><td>Action buttons dentro do card</td></tr>
+      <tr><td>Obrigatório Badge</td><td>Error color, shield icon <code>10px</code></td><td>Impede desativar a categoria</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Agrupar notificações por categoria funcional</li>
+        <li>Marcar canais obrigatórios (segurança/crítico)</li>
+        <li>Oferecer horário silencioso configurável</li>
+        <li>Preview visual de cada canal no settings</li>
+        <li>Permitir digest como alternativa ao tempo real</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Toggle global sem explicar o que pausa</li>
+        <li>Desativar alertas críticos de segurança</li>
+        <li>Listar eventos individuais (agrupar por tipo)</li>
+        <li>Enviar SMS para eventos não-urgentes</li>
+        <li>Ignorar fuso horário do usuário</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 84 — DESIGN SYSTEM GOVERNANCE & CHANGELOG ==================== -->
+<div class="section reveal" id="ds-governance">
+  <h2>84. Design System Governance & Changelog</h2>
+  <p>Processos, papéis e documentação para manter o Design System SYSLED vivo, consistente e evolutivo — do pedido de novo componente ao versionamento semântico e changelog público.</p>
+
+  <!-- Governance Model -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Modelo de Governança — RACI</div>
+
+    <div style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200);">
+      <!-- Header -->
+      <div style="display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0; border-bottom: 2px solid var(--gray-200);">
+        <div style="padding: 10px 16px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Atividade</div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">DS Team</div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">Dev Squad</div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">UX Lead</div>
+        <div style="padding: 10px 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">Product</div>
+      </div>
+      <!-- Row 1 -->
+      <div style="display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.7rem; color: var(--dark-text); font-weight: 500;">Criar novo componente</div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: white; font-size: 0.65rem; font-weight: 800; line-height: 24px;">R</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.65rem; font-weight: 800; line-height: 24px;">C</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.65rem; font-weight: 800; line-height: 24px;">A</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--gray-100); color: var(--gray-400); font-size: 0.65rem; font-weight: 800; line-height: 24px;">I</span></div>
+      </div>
+      <!-- Row 2 -->
+      <div style="display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.7rem; color: var(--dark-text); font-weight: 500;">Modificar token existente</div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: white; font-size: 0.65rem; font-weight: 800; line-height: 24px;">R</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--gray-100); color: var(--gray-400); font-size: 0.65rem; font-weight: 800; line-height: 24px;">I</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.65rem; font-weight: 800; line-height: 24px;">A</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.65rem; font-weight: 800; line-height: 24px;">C</span></div>
+      </div>
+      <!-- Row 3 -->
+      <div style="display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 16px; font-size: 0.7rem; color: var(--dark-text); font-weight: 500;">Deprecar componente</div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: white; font-size: 0.65rem; font-weight: 800; line-height: 24px;">R</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.65rem; font-weight: 800; line-height: 24px;">C</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.65rem; font-weight: 800; line-height: 24px;">A</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.65rem; font-weight: 800; line-height: 24px;">C</span></div>
+      </div>
+      <!-- Row 4 -->
+      <div style="display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0;">
+        <div style="padding: 10px 16px; font-size: 0.7rem; color: var(--dark-text); font-weight: 500;">Publicar release</div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--primary); color: white; font-size: 0.65rem; font-weight: 800; line-height: 24px;">R</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--gray-100); color: var(--gray-400); font-size: 0.65rem; font-weight: 800; line-height: 24px;">I</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.65rem; font-weight: 800; line-height: 24px;">A</span></div>
+        <div style="padding: 10px 8px; text-align: center;"><span style="display: inline-block; width: 24px; height: 24px; border-radius: 6px; background: var(--gray-100); color: var(--gray-400); font-size: 0.65rem; font-weight: 800; line-height: 24px;">I</span></div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="display: flex; gap: 1.5rem; margin-top: 1rem; justify-content: center; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 20px; height: 20px; border-radius: 4px; background: var(--primary); color: white; font-size: 0.55rem; font-weight: 800; line-height: 20px; text-align: center;">R</span>
+        <span style="font-size: 0.6rem; color: var(--gray-500);">Responsável</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 20px; height: 20px; border-radius: 4px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.55rem; font-weight: 800; line-height: 20px; text-align: center;">A</span>
+        <span style="font-size: 0.6rem; color: var(--gray-500);">Aprova</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 20px; height: 20px; border-radius: 4px; background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.55rem; font-weight: 800; line-height: 20px; text-align: center;">C</span>
+        <span style="font-size: 0.6rem; color: var(--gray-500);">Consultado</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span style="display: inline-block; width: 20px; height: 20px; border-radius: 4px; background: var(--gray-100); color: var(--gray-400); font-size: 0.55rem; font-weight: 800; line-height: 20px; text-align: center;">I</span>
+        <span style="font-size: 0.6rem; color: var(--gray-500);">Informado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Component Lifecycle -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Ciclo de Vida do Componente</div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;">
+      <!-- Draft -->
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 12px; background: var(--gray-200); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--gray-500); margin-top: 6px;">Draft</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400);">Proposta</div>
+      </div>
+      <svg width="24" height="16" viewBox="0 0 24 16" style="margin: 0 4px; margin-bottom: 20px;"><line x1="0" y1="8" x2="20" y2="8" stroke="var(--gray-300)" stroke-width="2"/><polyline points="16,4 20,8 16,12" fill="none" stroke="var(--gray-300)" stroke-width="2"/></svg>
+
+      <!-- Alpha -->
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(245,158,11,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div style="font-size: 0.65rem; font-weight: 700; color: #F59E0B; margin-top: 6px;">Alpha</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400);">Experimental</div>
+      </div>
+      <svg width="24" height="16" viewBox="0 0 24 16" style="margin: 0 4px; margin-bottom: 20px;"><line x1="0" y1="8" x2="20" y2="8" stroke="var(--gray-300)" stroke-width="2"/><polyline points="16,4 20,8 16,12" fill="none" stroke="var(--gray-300)" stroke-width="2"/></svg>
+
+      <!-- Beta -->
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); margin-top: 6px;">Beta</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400);">Em validação</div>
+      </div>
+      <svg width="24" height="16" viewBox="0 0 24 16" style="margin: 0 4px; margin-bottom: 20px;"><line x1="0" y1="8" x2="20" y2="8" stroke="var(--gray-300)" stroke-width="2"/><polyline points="16,4 20,8 16,12" fill="none" stroke="var(--gray-300)" stroke-width="2"/></svg>
+
+      <!-- Stable -->
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(16,185,129,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 0 3px rgba(16,185,129,0.2);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div style="font-size: 0.65rem; font-weight: 700; color: #10B981; margin-top: 6px;">Stable</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400);">Produção</div>
+      </div>
+      <svg width="24" height="16" viewBox="0 0 24 16" style="margin: 0 4px; margin-bottom: 20px;"><line x1="0" y1="8" x2="20" y2="8" stroke="var(--gray-300)" stroke-width="2"/><polyline points="16,4 20,8 16,12" fill="none" stroke="var(--gray-300)" stroke-width="2"/></svg>
+
+      <!-- Deprecated -->
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; border-radius: 12px; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div style="font-size: 0.65rem; font-weight: 700; color: #EF4444; margin-top: 6px;">Deprecated</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400);">Migração</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Semantic Versioning -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Versionamento Semântico</div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 1.5rem;">
+      <div style="background: #EF4444; color: white; padding: 10px 20px; border-radius: 10px 0 0 10px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">3</div>
+        <div style="font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Major</div>
+      </div>
+      <div style="font-size: 1.5rem; font-weight: 300; color: var(--gray-400);">.</div>
+      <div style="background: #F59E0B; color: white; padding: 10px 20px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">2</div>
+        <div style="font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Minor</div>
+      </div>
+      <div style="font-size: 1.5rem; font-weight: 300; color: var(--gray-400);">.</div>
+      <div style="background: #10B981; color: white; padding: 10px 20px; border-radius: 0 10px 10px 0; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">1</div>
+        <div style="font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Patch</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border-left: 4px solid #EF4444;">
+        <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">Major (Breaking)</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.65rem; color: var(--gray-500); line-height: 1.8;">
+          <li>Remoção de componente</li>
+          <li>Mudança de API (props)</li>
+          <li>Renomear tokens</li>
+          <li>Quebra de layout</li>
+        </ul>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border-left: 4px solid #F59E0B;">
+        <div style="font-size: 0.7rem; font-weight: 700; color: #F59E0B; margin-bottom: 0.5rem;">Minor (Feature)</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.65rem; color: var(--gray-500); line-height: 1.8;">
+          <li>Novo componente</li>
+          <li>Nova variante/prop</li>
+          <li>Novo token</li>
+          <li>Nova seção no brandbook</li>
+        </ul>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border-left: 4px solid #10B981;">
+        <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">Patch (Fix)</div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.65rem; color: var(--gray-500); line-height: 1.8;">
+          <li>Bug fix visual</li>
+          <li>Ajuste de spacing</li>
+          <li>Correção de typo</li>
+          <li>Fix de acessibilidade</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Changelog Preview -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Changelog — Exemplo</div>
+
+    <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden;">
+      <!-- v3.2.1 -->
+      <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800; color: var(--dark-text);">v3.2.1</span>
+          <span style="padding: 2px 8px; border-radius: 100px; font-size: 0.5rem; font-weight: 700; background: rgba(16,185,129,0.1); color: #10B981; text-transform: uppercase;">Patch</span>
+          <span style="font-size: 0.6rem; color: var(--gray-400);">08 Mar 2026</span>
+          <span style="padding: 2px 8px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(0,102,204,0.08); color: var(--primary);">Latest</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 1rem;">
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(16,185,129,0.1); color: #10B981; flex-shrink: 0; margin-top: 2px;">FIX</span>
+            <span style="font-size: 0.68rem; color: var(--dark-text);">Corrigido contraste insuficiente no badge <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">warning</code> em dark mode</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(16,185,129,0.1); color: #10B981; flex-shrink: 0; margin-top: 2px;">FIX</span>
+            <span style="font-size: 0.68rem; color: var(--dark-text);">Ajustado spacing do Toggle Switch de <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">3px</code> para <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">2px</code></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- v3.2.0 -->
+      <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-100);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800; color: var(--dark-text);">v3.2.0</span>
+          <span style="padding: 2px 8px; border-radius: 100px; font-size: 0.5rem; font-weight: 700; background: rgba(245,158,11,0.1); color: #F59E0B; text-transform: uppercase;">Minor</span>
+          <span style="font-size: 0.6rem; color: var(--gray-400);">05 Mar 2026</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 1rem;">
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(0,102,204,0.1); color: var(--primary); flex-shrink: 0; margin-top: 2px;">NEW</span>
+            <span style="font-size: 0.68rem; color: var(--dark-text);">Adicionado componente <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">KanbanBoard</code> com drag & drop</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(0,102,204,0.1); color: var(--primary); flex-shrink: 0; margin-top: 2px;">NEW</span>
+            <span style="font-size: 0.68rem; color: var(--dark-text);">Adicionado seção de Notification Preferences UI ao brandbook</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(245,158,11,0.1); color: #F59E0B; flex-shrink: 0; margin-top: 2px;">ENH</span>
+            <span style="font-size: 0.68rem; color: var(--dark-text);">Avatar agora suporta indicador de presença em 4 estados</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- v3.1.0 -->
+      <div style="padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <span style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800; color: var(--gray-400);">v3.1.0</span>
+          <span style="padding: 2px 8px; border-radius: 100px; font-size: 0.5rem; font-weight: 700; background: rgba(245,158,11,0.1); color: #F59E0B; text-transform: uppercase;">Minor</span>
+          <span style="font-size: 0.6rem; color: var(--gray-400);">28 Fev 2026</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 1rem;">
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(0,102,204,0.1); color: var(--primary); flex-shrink: 0; margin-top: 2px;">NEW</span>
+            <span style="font-size: 0.68rem; color: var(--gray-400);">Adicionado suporte a Theming & White-Label</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px;">
+            <span style="padding: 1px 6px; border-radius: 4px; font-size: 0.5rem; font-weight: 700; background: rgba(239,68,68,0.1); color: #EF4444; flex-shrink: 0; margin-top: 2px;">DEP</span>
+            <span style="font-size: 0.68rem; color: var(--gray-400);">Deprecado <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">LegacyTable</code> — usar <code style="font-family: var(--font-mono); font-size: 0.6rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">DataTableV2</code></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contribution Request Flow -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Fluxo de Contribuição — RFC</div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+          <span style="font-size: 0.85rem; font-weight: 800; color: var(--primary);">1</span>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">RFC</div>
+        <div style="font-size: 0.58rem; color: var(--gray-400); line-height: 1.5;">Abrir issue descrevendo necessidade, use cases e proposta visual</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+          <span style="font-size: 0.85rem; font-weight: 800; color: var(--primary);">2</span>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Design Review</div>
+        <div style="font-size: 0.58rem; color: var(--gray-400); line-height: 1.5;">UX Lead revisa proposta, sugere ajustes, valida com DS Team</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(0,102,204,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+          <span style="font-size: 0.85rem; font-weight: 800; color: var(--primary);">3</span>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Implementação</div>
+        <div style="font-size: 0.58rem; color: var(--gray-400); line-height: 1.5;">Dev implementa com tokens, testes, storybook e documentação</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;">
+          <span style="font-size: 0.85rem; font-weight: 800; color: #10B981;">4</span>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Release</div>
+        <div style="font-size: 0.58rem; color: var(--gray-400); line-height: 1.5;">Merge, bump de versão, changelog atualizado, notificação aos squads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Item</th><th>Regra</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Versão Format</td><td><code>MAJOR.MINOR.PATCH</code></td><td>Semver estrito</td></tr>
+      <tr><td>Changelog Badge</td><td><code>NEW</code> azul, <code>ENH</code> amarelo, <code>FIX</code> verde, <code>DEP</code> vermelho</td><td>Tags de 4px radius</td></tr>
+      <tr><td>Deprecation Notice</td><td>Mínimo <code>2 releases</code> antes de remoção</td><td>Com migration guide</td></tr>
+      <tr><td>RFC Issue</td><td>Template obrigatório: Problema, Proposta, Use Cases</td><td>Label <code>ds-rfc</code></td></tr>
+      <tr><td>Review Cycle</td><td>Máx <code>5 dias úteis</code> para feedback</td><td>Escalation se expirar</td></tr>
+      <tr><td>Status Badge</td><td>Draft, Alpha, Beta, Stable, Deprecated</td><td>Na doc do componente</td></tr>
+      <tr><td>Breaking Change</td><td>Requer <code>migration guide</code> + codemod quando possível</td><td>Notificação via e-mail</td></tr>
+      <tr><td>Release Notes</td><td>Publicadas no changelog + Slack <code>#ds-updates</code></td><td>Link para diff no Git</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Documentar cada componente com status badge</li>
+        <li>Seguir semver estrito para releases</li>
+        <li>Deprecar antes de remover (2 releases min.)</li>
+        <li>Manter changelog público e acessível</li>
+        <li>Nomear ownership claro (RACI) por entrega</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Publicar componente sem revisão de UX</li>
+        <li>Fazer breaking change em patch release</li>
+        <li>Remover componente sem migration guide</li>
+        <li>Ter dois componentes que fazem a mesma coisa</li>
+        <li>Ignorar feedback de squads consumidores</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== CLOSING HTML ==================== -->

@@ -278,8 +278,8 @@
     <h1>UX/UI — Patterns Avançados</h1>
     <p class="cover-subtitle">Command palette, accordion, timeline, ratings, multi-step forms, pickers, toast, skeleton, error handling, progress, responsive nav, tokens e mais.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">25</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">31–55</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">29</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">31–55, 78–80, 83</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Avançado</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -2897,7 +2897,1259 @@ p  { font-size: var(--text-body); line-height: var(--leading-normal); }</div>
     </table>
 </div>
 
-<!-- ==================== FORM VALIDATION ==================== -->
+<!-- ==================== 78 — RICH TEXT EDITOR (WYSIWYG) ==================== -->
+<div class="section reveal" id="rich-text-editor">
+    <div class="section-number">78 — Rich Text Editor (WYSIWYG)</div>
+    <h2>Rich Text Editor</h2>
+    <p>Componente de edição de texto rico para notas internas, descrições de ordens de produção, laudos de qualidade e comunicação entre equipes na plataforma SYSLED.</p>
+
+    <h3>Preview — Editor Completo</h3>
+    <div style="border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: var(--shadow-card);">
+      <!-- Toolbar -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding: 8px 12px; background: var(--gray-100); border-bottom: 1px solid var(--gray-200);">
+        <!-- Text style group -->
+        <div style="display: flex; gap: 1px; padding-right: 8px; border-right: 1px solid var(--gray-200); margin-right: 8px;">
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-heading); font-weight: 800; font-size: 0.8rem; color: var(--dark-text); transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">B</div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-heading); font-weight: 500; font-size: 0.8rem; color: var(--dark-text); font-style: italic; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">I</div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-heading); font-weight: 500; font-size: 0.8rem; color: var(--dark-text); text-decoration: underline; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">U</div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-heading); font-weight: 500; font-size: 0.8rem; color: var(--dark-text); text-decoration: line-through; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">S</div>
+        </div>
+        <!-- Heading group -->
+        <div style="display: flex; gap: 1px; padding-right: 8px; border-right: 1px solid var(--gray-200); margin-right: 8px;">
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: rgba(43,108,176,0.12); transition: background 0.12s;">
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: 0.65rem; color: #2B6CB0;">H1</span>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.6rem; color: var(--gray-600);">H2</span>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 0.55rem; color: var(--gray-600);">H3</span>
+          </div>
+        </div>
+        <!-- List group -->
+        <div style="display: flex; gap: 1px; padding-right: 8px; border-right: 1px solid var(--gray-200); margin-right: 8px;">
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+        </div>
+        <!-- Insert group -->
+        <div style="display: flex; gap: 1px; padding-right: 8px; border-right: 1px solid var(--gray-200); margin-right: 8px;">
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+        </div>
+        <!-- Extra -->
+        <div style="display: flex; gap: 1px;">
+          <div style="width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.12s;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3" y2="6"/></svg>
+          </div>
+          <div style="padding: 4px 10px; border-radius: 6px; display: flex; align-items: center; gap: 4px; cursor: pointer; transition: background 0.12s; margin-left: auto;" onmouseover="this.style.background='var(--gray-200)'" onmouseout="this.style.background='transparent'">
+            <span style="font-size: 0.65rem; color: var(--gray-400); font-family: var(--font-body);">Markdown</span>
+          </div>
+        </div>
+      </div>
+      <!-- Editor content area -->
+      <div style="padding: 20px 24px; min-height: 220px; background: var(--white);">
+        <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: var(--dark-text); margin-bottom: 12px;">Laudo de Inspeção — Prensa #12</div>
+        <p style="font-size: 0.88rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px;">Inspeção realizada em <strong>08/03/2026</strong> no turno da manhã. Equipamento apresentou <span style="background: #FEF2F2; color: #991B1B; padding: 1px 6px; border-radius: 4px; font-weight: 600;">vibração anormal</span> no cilindro principal.</p>
+        <p style="font-size: 0.88rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 12px;">Ações recomendadas:</p>
+        <div style="padding-left: 1.2rem; margin-bottom: 12px;">
+          <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+            <div style="width: 18px; height: 18px; border: 2px solid #10B981; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 0.85rem; color: var(--gray-600); text-decoration: line-through; opacity: 0.6;">Substituir rolamento do cilindro</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+            <div style="width: 18px; height: 18px; border: 2px solid var(--gray-200); border-radius: 4px; flex-shrink: 0; margin-top: 2px;"></div>
+            <span style="font-size: 0.85rem; color: var(--gray-600);">Calibrar sensor de pressão</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+            <div style="width: 18px; height: 18px; border: 2px solid var(--gray-200); border-radius: 4px; flex-shrink: 0; margin-top: 2px;"></div>
+            <span style="font-size: 0.85rem; color: var(--gray-600);">Agendar revisão completa com <span style="color: #2B6CB0; font-weight: 600;">@rafael.silva</span></span>
+          </div>
+        </div>
+        <!-- Blockquote -->
+        <div style="border-left: 3px solid #2B6CB0; padding: 10px 16px; background: rgba(43,108,176,0.04); border-radius: 0 8px 8px 0; margin-bottom: 12px;">
+          <p style="font-size: 0.82rem; color: var(--gray-600); font-style: italic; margin: 0; line-height: 1.6;">"Equipamento liberado para operação com restrição de carga máxima em 80% até conclusão da manutenção."</p>
+        </div>
+        <!-- Code block -->
+        <div style="background: #0F172A; border-radius: 8px; padding: 12px 16px; margin-bottom: 4px;">
+          <pre style="font-family: var(--font-mono); font-size: 0.72rem; color: #E2E8F0; margin: 0; line-height: 1.6;"><span style="color: #475569;">// Sensor ID: PSR-012-A</span>
+<span style="color: #3A8FD6;">pressao_atual</span>: <span style="color: #48C9B0;">142.7</span> bar
+<span style="color: #3A8FD6;">pressao_limite</span>: <span style="color: #F87171;">180.0</span> bar
+<span style="color: #3A8FD6;">status</span>: <span style="color: #FBBF24;">"warning"</span></pre>
+        </div>
+      </div>
+      <!-- Footer bar -->
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: var(--gray-100); border-top: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 0.65rem; color: var(--gray-400);">348 palavras</span>
+          <span style="font-size: 0.65rem; color: var(--gray-400);">•</span>
+          <span style="font-size: 0.65rem; color: var(--gray-400);">Salvo automaticamente</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <span style="padding: 4px 10px; background: var(--gray-200); border-radius: 6px; font-size: 0.65rem; color: var(--gray-600); font-weight: 500; cursor: pointer;">Descartar</span>
+          <span style="padding: 4px 10px; background: #2B6CB0; border-radius: 6px; font-size: 0.65rem; color: #fff; font-weight: 600; cursor: pointer;">Salvar</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Preview — Slash Commands</h3>
+    <p>Digitando <code style="background: var(--gray-100); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem;">/</code> no editor, abre um menu contextual de comandos rápidos.</p>
+    <div style="max-width: 280px; margin: 1.5rem 0; border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-hover);">
+      <div style="padding: 8px; border-bottom: 1px solid var(--gray-200);">
+        <div style="padding: 6px 10px; background: var(--gray-100); border-radius: 6px; font-size: 0.72rem; color: var(--gray-400); font-family: var(--font-body);">Filtrar comandos...</div>
+      </div>
+      <div style="padding: 4px;">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: rgba(43,108,176,0.08); border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #EFF6FF; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: 0.65rem; color: #2B6CB0;">H1</span>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Heading 1</div><div style="font-size: 0.62rem; color: var(--gray-400);">Título principal</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #F5F3FF; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Lista</div><div style="font-size: 0.62rem; color: var(--gray-400);">Lista com marcadores</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #ECFDF5; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Checklist</div><div style="font-size: 0.62rem; color: var(--gray-400);">Lista de tarefas</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #FEF2F2; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Bloco de Código</div><div style="font-size: 0.62rem; color: var(--gray-400);">Dados técnicos, sensores</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #FFFBEB; display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Imagem</div><div style="font-size: 0.62rem; color: var(--gray-400);">Upload ou URL</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #EFF6FF; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.7rem; color: #2B6CB0;">@</span>
+          </div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Mencionar</div><div style="font-size: 0.62rem; color: var(--gray-400);">Notificar um colega</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Preview — Mention Autocomplete</h3>
+    <p>Ao digitar <code style="background: var(--gray-100); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem;">@</code>, abre lista de usuarios filtrada em tempo real.</p>
+    <div style="max-width: 260px; margin: 1.5rem 0; border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-hover);">
+      <div style="padding: 4px;">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: rgba(43,108,176,0.08); border-radius: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #DC2626, #F87171); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #fff;">RS</div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Rafael Silva</div><div style="font-size: 0.6rem; color: var(--gray-400);">Técnico Manutenção</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #059669, #34D399); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #fff;">RA</div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Renata Almeida</div><div style="font-size: 0.6rem; color: var(--gray-400);">Qualidade</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #A78BFA); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #fff;">RM</div>
+          <div><div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Roberto Moura</div><div style="font-size: 0.6rem; color: var(--gray-400);">Supervisor Produção</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Toolbar — Agrupamento de Ações</h3>
+    <table class="spec-table">
+      <thead><tr><th>Grupo</th><th>Ações</th><th>Shortcut</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formatação</strong></td><td>Bold, Italic, Underline, Strikethrough</td><td>⌘B, ⌘I, ⌘U, ⌘⇧X</td></tr>
+        <tr><td><strong>Headings</strong></td><td>H1, H2, H3</td><td>⌘⌥1, ⌘⌥2, ⌘⌥3</td></tr>
+        <tr><td><strong>Listas</strong></td><td>Bullet list, Numbered list, Checklist</td><td>⌘⇧8, ⌘⇧7, ⌘⇧9</td></tr>
+        <tr><td><strong>Inserir</strong></td><td>Link, Imagem, Código, Divisor</td><td>⌘K, —, ⌘⇧C, —</td></tr>
+        <tr><td><strong>Blocos</strong></td><td>Blockquote, Callout, Tabela</td><td>⌘⇧B, —, —</td></tr>
+        <tr><td><strong>Social</strong></td><td>Mention (@), Emoji</td><td>@, :</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Especificações do Editor</h3>
+    <table class="spec-table">
+      <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Toolbar height</strong></td><td>46px</td></tr>
+        <tr><td><strong>Toolbar button size</strong></td><td>30 × 30px, border-radius 6px</td></tr>
+        <tr><td><strong>Content padding</strong></td><td>20px 24px</td></tr>
+        <tr><td><strong>Min height (content)</strong></td><td>160px (expandível)</td></tr>
+        <tr><td><strong>Font body</strong></td><td>Inter, 0.88rem, line-height 1.7</td></tr>
+        <tr><td><strong>Font heading</strong></td><td>Montserrat, weight conforme nivel</td></tr>
+        <tr><td><strong>Font code</strong></td><td>JetBrains Mono, 0.72rem, bg #0F172A</td></tr>
+        <tr><td><strong>Blockquote</strong></td><td>border-left 3px #2B6CB0, bg rgba(blue, 0.04)</td></tr>
+        <tr><td><strong>Mention style</strong></td><td>color #2B6CB0, font-weight 600</td></tr>
+        <tr><td><strong>Highlight (warn)</strong></td><td>bg #FEF2F2, color #991B1B, radius 4px</td></tr>
+        <tr><td><strong>Autosave</strong></td><td>A cada 30s ou ao perder foco</td></tr>
+        <tr><td><strong>Footer bar</strong></td><td>Word count + save status + actions</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Do's & Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Autosave a cada 30s com indicador visual "Salvo automaticamente". Nunca perder conteúdo do usuario.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Exibir todas as opções da toolbar de uma vez em mobile. Usar menu overflow (...) para ações menos comuns.</div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Suportar Markdown nativo — quem digitar **texto** deve ver negrito automaticamente.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Permitir HTML arbitrário no editor. Sanitizar input para prevenir XSS.</div>
+      </div>
+    </div>
+</div>
+
+<!-- ==================== 79 — MAP & GEOLOCATION UI ==================== -->
+<div class="section reveal" id="map-geolocation">
+    <div class="section-number">79 — Map & Geolocation UI</div>
+    <h2>Map & Geolocation UI</h2>
+    <p>Patterns de interface para mapas, rastreamento logístico, localização de máquinas e gestão de rotas na plataforma SYSLED. Essencial para monitoramento de frotas, entregas e ativos distribuídos.</p>
+
+    <h3>Preview — Mapa com Pins de Equipamentos</h3>
+    <div style="border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: var(--shadow-card);">
+      <!-- Map area -->
+      <div style="position: relative; background: linear-gradient(135deg, #1a2332 0%, #1E293B 40%, #243447 100%); height: 340px; overflow: hidden;">
+        <!-- Grid lines (map texture) -->
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(43,108,176,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43,108,176,0.06) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <!-- Roads -->
+        <div style="position: absolute; top: 120px; left: 0; right: 0; height: 3px; background: rgba(71,85,105,0.5); transform: rotate(-8deg);"></div>
+        <div style="position: absolute; top: 60px; left: 180px; width: 3px; height: 280px; background: rgba(71,85,105,0.5); transform: rotate(5deg);"></div>
+        <div style="position: absolute; top: 200px; left: 0; right: 0; height: 2px; background: rgba(71,85,105,0.3); transform: rotate(3deg);"></div>
+
+        <!-- Pin 1: Online (green) -->
+        <div style="position: absolute; top: 60px; left: 25%; transform: translateX(-50%);">
+          <div style="position: relative;">
+            <div style="width: 36px; height: 36px; background: #10B981; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(16,185,129,0.4);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="transform: rotate(45deg);"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div style="position: absolute; top: 44px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: #0F172A; padding: 4px 10px; border-radius: 6px; font-size: 0.62rem; color: #E2E8F0; font-weight: 600; font-family: var(--font-body); border: 1px solid #334155;">
+              <span style="color: #10B981;">●</span> CNC Torno #04
+            </div>
+          </div>
+        </div>
+
+        <!-- Pin 2: Warning (yellow) -->
+        <div style="position: absolute; top: 140px; left: 55%; transform: translateX(-50%);">
+          <div style="position: relative;">
+            <div style="width: 36px; height: 36px; background: #F59E0B; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(245,158,11,0.4);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="transform: rotate(45deg);"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div style="position: absolute; top: 44px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: #0F172A; padding: 4px 10px; border-radius: 6px; font-size: 0.62rem; color: #E2E8F0; font-weight: 600; font-family: var(--font-body); border: 1px solid #334155;">
+              <span style="color: #F59E0B;">●</span> Caminhão #07
+            </div>
+          </div>
+        </div>
+
+        <!-- Pin 3: Error (red) -->
+        <div style="position: absolute; top: 80px; left: 78%; transform: translateX(-50%);">
+          <div style="position: relative;">
+            <div style="width: 36px; height: 36px; background: #EF4444; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(239,68,68,0.4); animation: pulse-pin 2s infinite;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="transform: rotate(45deg);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div style="position: absolute; top: 44px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: #0F172A; padding: 4px 10px; border-radius: 6px; font-size: 0.62rem; color: #E2E8F0; font-weight: 600; font-family: var(--font-body); border: 1px solid #334155;">
+              <span style="color: #EF4444;">●</span> Prensa #12 — ALERTA
+            </div>
+          </div>
+        </div>
+
+        <!-- Cluster -->
+        <div style="position: absolute; top: 220px; left: 38%; transform: translateX(-50%);">
+          <div style="width: 44px; height: 44px; background: rgba(43,108,176,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800; color: #fff; box-shadow: 0 0 0 6px rgba(43,108,176,0.25), 0 4px 12px rgba(0,0,0,0.3); cursor: pointer;">
+            8
+          </div>
+          <div style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.58rem; color: #64748B; font-family: var(--font-body);">8 ativos nesta area</div>
+        </div>
+
+        <!-- Map controls -->
+        <div style="position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 2px;">
+          <div style="width: 32px; height: 32px; background: rgba(15,23,42,0.9); border: 1px solid #334155; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #E2E8F0; font-size: 1.1rem; font-weight: 300;">+</div>
+          <div style="width: 32px; height: 32px; background: rgba(15,23,42,0.9); border: 1px solid #334155; border-radius: 0 0 8px 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #E2E8F0; font-size: 1.1rem; font-weight: 300;">−</div>
+        </div>
+
+        <!-- Legend -->
+        <div style="position: absolute; bottom: 12px; left: 12px; background: rgba(15,23,42,0.9); border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-size: 0.58rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-heading);">Legenda</div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.62rem; color: #E2E8F0;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span> Online</div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.62rem; color: #E2E8F0;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #F59E0B;"></span> Em Trânsito</div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.62rem; color: #E2E8F0;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444;"></span> Alerta</div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.62rem; color: #E2E8F0;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #94A3B8;"></span> Offline</div>
+        </div>
+      </div>
+      <style>@keyframes pulse-pin { 0%, 100% { box-shadow: 0 4px 12px rgba(239,68,68,0.4); } 50% { box-shadow: 0 4px 12px rgba(239,68,68,0.4), 0 0 0 8px rgba(239,68,68,0.15); } }</style>
+
+      <!-- Info bar -->
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: var(--white); border-top: 1px solid var(--gray-200);">
+        <div style="display: flex; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: var(--gray-600);"><span style="font-weight: 700; color: #10B981;">12</span> Online</div>
+          <div style="display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: var(--gray-600);"><span style="font-weight: 700; color: #F59E0B;">3</span> Trânsito</div>
+          <div style="display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: var(--gray-600);"><span style="font-weight: 700; color: #EF4444;">1</span> Alerta</div>
+          <div style="display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: var(--gray-600);"><span style="font-weight: 700; color: #94A3B8;">4</span> Offline</div>
+        </div>
+        <span style="font-size: 0.65rem; color: var(--gray-400);">Atualizado há 30s</span>
+      </div>
+    </div>
+
+    <h3>Preview — Location Card (Popup do Pin)</h3>
+    <p>Card que aparece ao clicar em um pin no mapa. Mostra detalhes do ativo/veículo.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+      <!-- Card Equipamento -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-card);">
+        <div style="padding: 4px 14px; background: #ECFDF5; display: flex; align-items: center; gap: 6px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981;"></span>
+          <span style="font-size: 0.62rem; font-weight: 600; color: #065F46;">ONLINE — Operando</span>
+        </div>
+        <div style="padding: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #2B6CB0, #48C9B0); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: var(--dark-text);">CNC Torno #04</div>
+              <div style="font-size: 0.65rem; color: var(--gray-400);">Setor A — Galpão 2</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+            <div style="background: var(--gray-100); border-radius: 8px; padding: 8px 10px;">
+              <div style="font-size: 0.58rem; color: var(--gray-400); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">OEE</div>
+              <div style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: #10B981;">92.4%</div>
+            </div>
+            <div style="background: var(--gray-100); border-radius: 8px; padding: 8px 10px;">
+              <div style="font-size: 0.58rem; color: var(--gray-400); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Uptime</div>
+              <div style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: #2B6CB0;">18h 42m</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <span style="flex: 1; text-align: center; padding: 6px; background: #2B6CB0; border-radius: 6px; font-size: 0.68rem; color: #fff; font-weight: 600; cursor: pointer;">Ver Detalhes</span>
+            <span style="padding: 6px 10px; background: var(--gray-100); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-600)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Card Veiculo -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-card);">
+        <div style="padding: 4px 14px; background: #FFFBEB; display: flex; align-items: center; gap: 6px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #F59E0B;"></span>
+          <span style="font-size: 0.62rem; font-weight: 600; color: #92400E;">EM TRÂNSITO — ETA 14:30</span>
+        </div>
+        <div style="padding: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #D97706, #FBBF24); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: var(--dark-text);">Caminhão #07</div>
+              <div style="font-size: 0.65rem; color: var(--gray-400);">Placa ABC-1234 — Motorista: João</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+            <div style="background: var(--gray-100); border-radius: 8px; padding: 8px 10px;">
+              <div style="font-size: 0.58rem; color: var(--gray-400); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Velocidade</div>
+              <div style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: var(--dark-text);">67 km/h</div>
+            </div>
+            <div style="background: var(--gray-100); border-radius: 8px; padding: 8px 10px;">
+              <div style="font-size: 0.58rem; color: var(--gray-400); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Destino</div>
+              <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Fábrica SP</div>
+            </div>
+          </div>
+          <!-- Progress bar -->
+          <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--gray-400); margin-bottom: 4px;">
+              <span>Origem: Depósito RJ</span><span>72%</span>
+            </div>
+            <div style="height: 4px; background: var(--gray-200); border-radius: 100px; overflow: hidden;">
+              <div style="width: 72%; height: 100%; background: linear-gradient(90deg, #F59E0B, #FBBF24); border-radius: 100px;"></div>
+            </div>
+          </div>
+          <span style="display: block; text-align: center; padding: 6px; background: #2B6CB0; border-radius: 6px; font-size: 0.68rem; color: #fff; font-weight: 600; cursor: pointer;">Rastrear Rota</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Preview — Geocoding Search Input</h3>
+    <p>Campo de busca com autocomplete de endereços. Integra com APIs de geocoding (Google, Mapbox, etc).</p>
+    <div style="max-width: 400px; margin: 1.5rem 0;">
+      <div style="border: 2px solid #2B6CB0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(43,108,176,0.15);">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--white);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span style="font-size: 0.85rem; color: var(--dark-text); font-weight: 500;">Rua das Indústrias, 1</span>
+          <span style="font-size: 0.85rem; color: var(--gray-400); animation: blink-cursor 1s infinite;">|</span>
+        </div>
+        <style>@keyframes blink-cursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }</style>
+        <div style="border-top: 1px solid var(--gray-200);">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: rgba(43,108,176,0.04);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><div style="font-size: 0.8rem; font-weight: 600; color: var(--dark-text);">Rua das Indústrias, 1200</div><div style="font-size: 0.62rem; color: var(--gray-400);">Distrito Industrial — Campinas, SP</div></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><div style="font-size: 0.8rem; font-weight: 500; color: var(--dark-text);">Rua das Indústrias, 145</div><div style="font-size: 0.62rem; color: var(--gray-400);">Zona Industrial — Jundiaí, SP</div></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><div style="font-size: 0.8rem; font-weight: 500; color: var(--dark-text);">Rua das Indústrias, 87</div><div style="font-size: 0.62rem; color: var(--gray-400);">Polo Industrial — Sorocaba, SP</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Especificações dos Pins</h3>
+    <table class="spec-table">
+      <thead><tr><th>Tipo</th><th>Cor</th><th>Tamanho</th><th>Animação</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Online/Ativo</strong></td><td>#10B981 (green)</td><td>36px pin</td><td>Nenhuma</td><td>Equipamento operando normalmente</td></tr>
+        <tr><td><strong>Em Trânsito</strong></td><td>#F59E0B (yellow)</td><td>36px pin</td><td>Nenhuma</td><td>Veículo em movimento</td></tr>
+        <tr><td><strong>Alerta/Erro</strong></td><td>#EF4444 (red)</td><td>36px pin</td><td>pulse-pin 2s infinite</td><td>Equipamento com falha</td></tr>
+        <tr><td><strong>Offline</strong></td><td>#94A3B8 (gray)</td><td>36px pin</td><td>Nenhuma</td><td>Sem comunicação</td></tr>
+        <tr><td><strong>Cluster</strong></td><td>#2B6CB0 (blue)</td><td>44px circle</td><td>Ring shadow 6px</td><td>Agrupamento de múltiplos ativos</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Componentes do Mapa</h3>
+    <table class="spec-table">
+      <thead><tr><th>Componente</th><th>Posição</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Zoom Controls</strong></td><td>Top-right</td><td>Botões +/− empilhados, 32×32px, bg semi-transparente</td></tr>
+        <tr><td><strong>Legenda</strong></td><td>Bottom-left</td><td>Card com dots coloridos + labels, bg semi-transparente</td></tr>
+        <tr><td><strong>Info Bar</strong></td><td>Below map</td><td>Contadores por status + timestamp de atualização</td></tr>
+        <tr><td><strong>Pin Tooltip</strong></td><td>Below pin</td><td>Label com nome do ativo, bg #0F172A, font 0.62rem</td></tr>
+        <tr><td><strong>Location Card</strong></td><td>Popup on click</td><td>Card completo com KPIs, ações, barra de progresso</td></tr>
+        <tr><td><strong>Search Input</strong></td><td>Top/sidebar</td><td>Autocomplete com geocoding, border-focus #2B6CB0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Do's & Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Clusterizar pins quando zoom < nível de rua. Mostrar contador no cluster para indicar quantidade de ativos.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Mostrar centenas de pins individuais ao mesmo tempo — causa lentidão e poluição visual.</div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Animar apenas pins de alerta/erro para chamar atenção. Status normais devem ser estáticos.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Usar cores que não seguem a paleta semântica. Verde = ok, amarelo = trânsito/warning, vermelho = erro.</div>
+      </div>
+    </div>
+</div>
+
+<!-- ==================== SEÇÃO 80 — DATA TABLE VIRTUALIZATION & PERFORMANCE ==================== -->
+<div class="section reveal" id="data-table-virtualization">
+  <h2>80. Data Table Virtualization & Performance</h2>
+  <p>Estratégias e padrões visuais para tabelas de dados massivos — virtualização de linhas, lazy loading, indicadores de carregamento parcial e otimizações de renderização para listas industriais com milhares de registros.</p>
+
+  <!-- Preview: Tabela virtualizada -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Tabela Virtualizada — 12.847 registros</div>
+
+    <!-- Toolbar da tabela -->
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px; padding: 8px 12px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span style="font-size: 0.75rem; color: var(--gray-400);">Buscar em 12.847 registros...</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px; padding: 7px 12px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <span style="font-size: 0.75rem; color: var(--gray-600); font-weight: 500;">Filtros</span>
+        <span style="background: var(--primary); color: white; font-size: 0.6rem; padding: 1px 6px; border-radius: 100px; font-weight: 600;">3</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 6px; padding: 7px 12px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        <span style="font-size: 0.75rem; color: var(--gray-600); font-weight: 500;">Exportar</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 4px; padding: 7px 12px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span style="font-size: 0.75rem; color: var(--gray-600); font-weight: 500;">Colunas</span>
+      </div>
+    </div>
+
+    <!-- Header da tabela -->
+    <div style="background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 2px solid var(--gray-200);">
+        <div style="padding: 10px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border: 2px solid var(--gray-300); border-radius: 4px;"></div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); display: flex; align-items: center; gap: 4px;">
+          ID
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Equipamento</div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Localização</div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">Status</div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">OEE</div>
+        <div style="padding: 10px 8px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500); text-align: center;">Ações</div>
+      </div>
+
+      <!-- Linha 1 -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 1px solid var(--gray-100); transition: background 0.15s;">
+        <div style="padding: 10px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border: 2px solid var(--primary); border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-400); font-family: var(--font-mono);">#0001</div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">CNC Torno Horizontal T-400</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 2px;">Série: SL-2024-T400-0187</div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-500);">Galpão A — Linha 3</div>
+        <div style="padding: 10px 8px;">
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 100px; font-size: 0.65rem; font-weight: 600; background: rgba(16,185,129,0.1); color: #10B981;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981;"></span>
+            Online
+          </span>
+        </div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #10B981;">94.2%</div>
+          <div style="width: 100%; height: 3px; background: var(--gray-200); border-radius: 2px; margin-top: 4px; overflow: hidden;">
+            <div style="width: 94.2%; height: 100%; background: #10B981; border-radius: 2px;"></div>
+          </div>
+        </div>
+        <div style="padding: 10px 8px; display: flex; align-items: center; justify-content: center; gap: 4px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha 2 -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border: 2px solid var(--gray-300); border-radius: 4px;"></div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-400); font-family: var(--font-mono);">#0002</div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Prensa Hidráulica PH-200</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 2px;">Série: SL-2024-PH200-0043</div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-500);">Galpão B — Linha 1</div>
+        <div style="padding: 10px 8px;">
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 100px; font-size: 0.65rem; font-weight: 600; background: rgba(245,158,11,0.1); color: #F59E0B;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #F59E0B;"></span>
+            Manutenção
+          </span>
+        </div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #F59E0B;">67.8%</div>
+          <div style="width: 100%; height: 3px; background: var(--gray-200); border-radius: 2px; margin-top: 4px; overflow: hidden;">
+            <div style="width: 67.8%; height: 100%; background: #F59E0B; border-radius: 2px;"></div>
+          </div>
+        </div>
+        <div style="padding: 10px 8px; display: flex; align-items: center; justify-content: center; gap: 4px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha 3 -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 1px solid var(--gray-100);">
+        <div style="padding: 10px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border: 2px solid var(--gray-300); border-radius: 4px;"></div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-400); font-family: var(--font-mono);">#0003</div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 600; color: var(--dark-text);">Robô Soldador RS-600</div>
+          <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 2px;">Série: SL-2023-RS600-0112</div>
+        </div>
+        <div style="padding: 10px 8px; font-size: 0.75rem; color: var(--gray-500);">Galpão A — Célula 7</div>
+        <div style="padding: 10px 8px;">
+          <span style="display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 100px; font-size: 0.65rem; font-weight: 600; background: rgba(16,185,129,0.1); color: #10B981;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981;"></span>
+            Online
+          </span>
+        </div>
+        <div style="padding: 10px 8px;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #10B981;">88.5%</div>
+          <div style="width: 100%; height: 3px; background: var(--gray-200); border-radius: 2px; margin-top: 4px; overflow: hidden;">
+            <div style="width: 88.5%; height: 100%; background: #10B981; border-radius: 2px;"></div>
+          </div>
+        </div>
+        <div style="padding: 10px 8px; display: flex; align-items: center; justify-content: center; gap: 4px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skeleton rows (loading) -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 1px solid var(--gray-100); opacity: 0.5;">
+        <div style="padding: 12px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 36px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;">
+          <div style="width: 70%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="width: 45%; height: 10px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite; margin-top: 6px;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 60%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 50px; height: 20px; border-radius: 100px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 40px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 60px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+      </div>
+
+      <!-- Skeleton row 2 -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; border-bottom: 1px solid var(--gray-100); opacity: 0.35;">
+        <div style="padding: 12px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 36px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;">
+          <div style="width: 55%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="width: 35%; height: 10px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite; margin-top: 6px;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 50%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 50px; height: 20px; border-radius: 100px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 40px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 60px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+      </div>
+
+      <!-- Skeleton row 3 (fading out) -->
+      <div style="display: grid; grid-template-columns: 40px 60px 1.5fr 1fr 100px 100px 80px; gap: 0; opacity: 0.2;">
+        <div style="padding: 12px 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 16px; height: 16px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 36px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;">
+          <div style="width: 65%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="width: 40%; height: 10px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite; margin-top: 6px;"></div>
+        </div>
+        <div style="padding: 12px 8px;"><div style="width: 55%; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 50px; height: 20px; border-radius: 100px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 40px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+        <div style="padding: 12px 8px;"><div style="width: 60px; height: 12px; border-radius: 4px; background: var(--gray-200); animation: pulse 1.5s ease-in-out infinite;"></div></div>
+      </div>
+    </div>
+
+    <!-- Footer: paginação + info -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 0.7rem; color: var(--gray-500);">1 selecionado</span>
+        <span style="font-size: 0.7rem; color: var(--gray-300);">|</span>
+        <span style="font-size: 0.7rem; color: var(--gray-500);">Mostrando 1–50 de 12.847</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span style="font-size: 0.7rem; color: var(--gray-400); margin-right: 8px;">Linhas por página:</span>
+        <div style="display: flex; align-items: center; gap: 4px; padding: 4px 10px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 6px; font-size: 0.7rem; font-weight: 600; color: var(--dark-text);">
+          50
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div style="display: flex; gap: 2px; margin-left: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; opacity: 0.4;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 700;">1</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--gray-600);">2</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--gray-600);">3</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--gray-400);">...</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 500; color: var(--gray-600);">257</div>
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--white); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Virtualization Concept Diagram -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Conceito de Virtualização — Viewport Rendering</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+      <!-- Sem virtualização -->
+      <div>
+        <div style="text-align: center; font-size: 0.7rem; font-weight: 600; color: #EF4444; margin-bottom: 0.75rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Sem Virtualização
+        </div>
+        <div style="background: var(--white); border-radius: 10px; border: 2px solid rgba(239,68,68,0.3); padding: 1rem; position: relative;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.2;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.2;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.3;"></div>
+            <div style="border: 2px dashed rgba(239,68,68,0.4); border-radius: 6px; padding: 4px;">
+              <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.8;"></div>
+              <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.8; margin-top: 4px;"></div>
+              <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.8; margin-top: 4px;"></div>
+            </div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.2;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.15;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.1;"></div>
+            <div style="height: 8px; background: #EF4444; border-radius: 3px; opacity: 0.1;"></div>
+          </div>
+          <div style="position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-size: 0.55rem; color: #EF4444; font-weight: 700; writing-mode: vertical-lr; background: rgba(239,68,68,0.1); padding: 4px 3px; border-radius: 4px;">12.847 DOM nodes</div>
+        </div>
+        <div style="text-align: center; margin-top: 0.5rem; font-size: 0.6rem; color: var(--gray-400);">Renderiza TODOS os itens no DOM</div>
+      </div>
+
+      <!-- Com virtualização -->
+      <div>
+        <div style="text-align: center; font-size: 0.7rem; font-weight: 600; color: #10B981; margin-bottom: 0.75rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Com Virtualização
+        </div>
+        <div style="background: var(--white); border-radius: 10px; border: 2px solid rgba(16,185,129,0.3); padding: 1rem; position: relative;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="border: 2px dashed rgba(16,185,129,0.5); border-radius: 6px; padding: 4px;">
+              <div style="height: 8px; background: #10B981; border-radius: 3px; opacity: 0.9;"></div>
+              <div style="height: 8px; background: #10B981; border-radius: 3px; opacity: 0.9; margin-top: 4px;"></div>
+              <div style="height: 8px; background: #10B981; border-radius: 3px; opacity: 0.9; margin-top: 4px;"></div>
+            </div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+            <div style="height: 8px; background: var(--gray-200); border-radius: 3px; opacity: 0.3;"></div>
+          </div>
+          <div style="position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-size: 0.55rem; color: #10B981; font-weight: 700; writing-mode: vertical-lr; background: rgba(16,185,129,0.1); padding: 4px 3px; border-radius: 4px;">~50 DOM nodes</div>
+        </div>
+        <div style="text-align: center; margin-top: 0.5rem; font-size: 0.6rem; color: var(--gray-400);">Renderiza apenas o viewport visível</div>
+      </div>
+    </div>
+
+    <!-- Performance metrics -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 1.5rem;">
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; text-align: center;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: #10B981; font-family: var(--font-heading);">< 16ms</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px;">Frame Budget</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400);">60fps target</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; text-align: center;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading);">50</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px;">Linhas Visíveis</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400);">padrão viewport</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; text-align: center;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading);">10</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px;">Overscan Buffer</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400);">linhas extras pré-render</div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; text-align: center;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: #10B981; font-family: var(--font-heading);">97%</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 4px;">Redução DOM</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400);">12.847 → ~60 nodes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column Resize & Reorder -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Redimensionar & Reordenar Colunas</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <!-- Column resize -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--dark-text); margin-bottom: 0.75rem;">Column Resize</div>
+        <div style="display: flex; align-items: stretch; height: 80px;">
+          <div style="flex: 1.5; background: var(--gray-100); border-radius: 6px 0 0 6px; padding: 8px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.6rem; font-weight: 700; color: var(--gray-500); text-transform: uppercase;">Equipamento</div>
+            <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">min: 180px</div>
+          </div>
+          <div style="width: 3px; background: var(--primary); cursor: col-resize; position: relative;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 24px; background: var(--primary); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="8" y1="6" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="18"/></svg>
+            </div>
+          </div>
+          <div style="flex: 1; background: var(--gray-50); border-radius: 0 6px 6px 0; padding: 8px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 0.6rem; font-weight: 700; color: var(--gray-500); text-transform: uppercase;">Localização</div>
+            <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">min: 120px</div>
+          </div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 0.5rem; text-align: center;">Drag handle com cursor <code style="font-family: var(--font-mono); font-size: 0.58rem; background: var(--gray-100); padding: 1px 4px; border-radius: 3px;">col-resize</code></div>
+      </div>
+
+      <!-- Column reorder -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.7rem; font-weight: 600; color: var(--dark-text); margin-bottom: 0.75rem;">Column Reorder (Drag & Drop)</div>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <div style="padding: 6px 10px; background: var(--gray-100); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: var(--gray-500);">ID</div>
+          <div style="padding: 6px 10px; background: rgba(0,102,204,0.1); border: 2px dashed var(--primary); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: var(--primary); transform: rotate(-2deg); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" style="vertical-align: middle; margin-right: 2px;"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+            Status
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div style="padding: 6px 10px; background: var(--gray-100); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: var(--gray-500);">Equip.</div>
+          <div style="padding: 6px 10px; background: rgba(0,102,204,0.05); border: 2px dashed rgba(0,102,204,0.3); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: var(--gray-400);">Drop zone</div>
+          <div style="padding: 6px 10px; background: var(--gray-100); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: var(--gray-500);">OEE</div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); margin-top: 0.75rem; text-align: center;">Feedback visual com ghost + drop indicator</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Row Height</td><td><code>48px</code> (compact) / <code>56px</code> (default) / <code>72px</code> (comfortable)</td><td>Consistente para cálculo de offset</td></tr>
+      <tr><td>Overscan</td><td><code>10</code> linhas acima e abaixo</td><td>Evita flicker durante scroll rápido</td></tr>
+      <tr><td>Batch Size</td><td><code>50</code> linhas por fetch</td><td>Balanceia rede × memória</td></tr>
+      <tr><td>Debounce Scroll</td><td><code>16ms</code> (requestAnimationFrame)</td><td>Garante 60fps</td></tr>
+      <tr><td>Min Column Width</td><td><code>80px</code></td><td>Evita colunas ilegíveis</td></tr>
+      <tr><td>Resize Handle</td><td><code>4px</code> visível / <code>12px</code> hit area</td><td>Acessibilidade do drag</td></tr>
+      <tr><td>Sort Indicator</td><td>Chevron <code>10×10</code> ao lado do header</td><td>Azul primário quando ativo</td></tr>
+      <tr><td>Selection</td><td>Checkbox <code>16×16</code> + row highlight</td><td>Background <code>primary/5%</code></td></tr>
+      <tr><td>Skeleton Pulse</td><td><code>1.5s ease-in-out infinite</code></td><td>Opacity fade de 0.2 → 0.5</td></tr>
+      <tr><td>Pagination</td><td>Page buttons <code>28×28</code>, border-radius <code>6px</code></td><td>Max 7 visíveis com ellipsis</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Loading States -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Loading States para Tabelas</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+      <!-- Initial Load -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.75rem;">Initial Load</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; animation-delay: 0.1s;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; animation-delay: 0.2s;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; animation-delay: 0.3s;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; animation-delay: 0.4s;"></div>
+        </div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 0.5rem;">Full skeleton até primeiro fetch</div>
+      </div>
+
+      <!-- Scroll Loading -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.75rem;">Scroll Loading</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 2px; background: var(--primary); border-radius: 2px; margin: 2px 0;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="height: 10px; background: var(--gray-200); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; opacity: 0.6;"></div>
+        </div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 0.5rem;">Skeleton parcial no final da lista</div>
+      </div>
+
+      <!-- Inline Refresh -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.75rem;">Inline Refresh</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 10px; background: rgba(0,102,204,0.15); border-radius: 4px; border: 1px solid rgba(0,102,204,0.3);">
+            <div style="height: 100%; width: 60%; background: rgba(0,102,204,0.2); border-radius: 4px; animation: pulse 1s ease-in-out infinite;"></div>
+          </div>
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+          <div style="height: 10px; background: #10B981; border-radius: 4px; opacity: 0.3;"></div>
+        </div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 0.5rem;">Highlight na linha sendo atualizada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Virtualizar quando > 500 linhas</li>
+        <li>Manter row height fixa para offset</li>
+        <li>Usar overscan de 10 linhas mínimo</li>
+        <li>Skeleton fade-out progressivo (opacidade)</li>
+        <li>Debounce scroll com rAF, nunca setTimeout</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Renderizar 10k+ nodes no DOM</li>
+        <li>Usar scroll infinito sem indicador de total</li>
+        <li>Row heights dinâmicas sem medição prévia</li>
+        <li>Spinner centralizado para loading parcial</li>
+        <li>Remover colunas sem permitir restaurar</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 83 — KANBAN BOARD & WORKFLOW UI ==================== -->
+<div class="section reveal" id="kanban-workflow">
+  <h2>83. Kanban Board & Workflow UI</h2>
+  <p>Quadros kanban para gestão visual de fluxos industriais — ordens de manutenção, etapas de produção, controle de qualidade e rastreamento de tarefas com drag & drop entre colunas.</p>
+
+  <!-- Kanban Board Preview -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0; overflow-x: auto;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <span>Kanban — Ordens de Manutenção</span>
+      <div style="display: flex; gap: 6px;">
+        <div style="padding: 4px 10px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; font-size: 0.6rem; font-weight: 500; color: var(--gray-500); cursor: pointer;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 2px;"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Filtrar
+        </div>
+        <div style="padding: 4px 10px; background: var(--primary); border-radius: 6px; font-size: 0.6rem; font-weight: 600; color: white; cursor: pointer;">+ Nova Ordem</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 260px); gap: 1rem; min-width: 1100px;">
+
+      <!-- Column: Backlog -->
+      <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden;">
+        <div style="padding: 12px 16px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 3px; background: #94A3B8;"></div>
+            <span style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Backlog</span>
+            <span style="background: var(--gray-100); color: var(--gray-500); font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 100px;">4</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <div style="padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+          <!-- Card 1 -->
+          <div style="background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 8px; padding: 10px 12px; cursor: grab;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2851</span>
+              <span style="padding: 2px 6px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(239,68,68,0.1); color: #EF4444;">Urgente</span>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px;">Troca de rolamento — Torno CNC #04</div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span style="font-size: 0.55rem; color: var(--gray-400);">10 Mar</span>
+              </div>
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #0066CC, #3399FF); display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 0.5rem; font-weight: 700; color: white;">RF</span>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div style="background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 8px; padding: 10px 12px; cursor: grab;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2849</span>
+              <span style="padding: 2px 6px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(245,158,11,0.1); color: #F59E0B;">Média</span>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px;">Calibração sensor temperatura — Prensa PH-200</div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span style="font-size: 0.55rem; color: var(--gray-400);">12 Mar</span>
+              </div>
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #10B981, #34D399); display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 0.5rem; font-weight: 700; color: white;">JS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column: Em Andamento -->
+      <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden;">
+        <div style="padding: 12px 16px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 3px; background: #0066CC;"></div>
+            <span style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Em Andamento</span>
+            <span style="background: rgba(0,102,204,0.1); color: var(--primary); font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 100px;">2</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <div style="padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+          <!-- Card being dragged (ghost state) -->
+          <div style="background: rgba(0,102,204,0.05); border: 2px dashed var(--primary); border-radius: 8px; padding: 10px 12px; transform: rotate(-1deg); box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--primary);">OM-2845</span>
+              <span style="padding: 2px 6px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(239,68,68,0.1); color: #EF4444;">Urgente</span>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--primary); margin-bottom: 6px;">Substituição bomba hidráulica — Injetora #02</div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden;">
+                <div style="width: 60%; height: 100%; background: var(--primary); border-radius: 2px;"></div>
+              </div>
+              <span style="font-size: 0.5rem; color: var(--primary); font-weight: 600;">60%</span>
+            </div>
+          </div>
+          <!-- Card normal -->
+          <div style="background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 8px; padding: 10px 12px; cursor: grab;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2843</span>
+              <span style="padding: 2px 6px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(16,185,129,0.1); color: #10B981;">Baixa</span>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px;">Lubrificação guias lineares — Centro Usinagem</div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden;">
+                <div style="width: 30%; height: 100%; background: #10B981; border-radius: 2px;"></div>
+              </div>
+              <span style="font-size: 0.5rem; color: var(--gray-400); font-weight: 600;">30%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column: Aguardando Peça -->
+      <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden;">
+        <div style="padding: 12px 16px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 3px; background: #F59E0B;"></div>
+            <span style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Aguardando Peça</span>
+            <span style="background: rgba(245,158,11,0.1); color: #F59E0B; font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 100px;">1</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <div style="padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 8px; padding: 10px 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2840</span>
+              <span style="padding: 2px 6px; border-radius: 100px; font-size: 0.5rem; font-weight: 600; background: rgba(245,158,11,0.1); color: #F59E0B;">Média</span>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); margin-bottom: 6px;">Troca correia dentada — Esteira E-03</div>
+            <div style="display: flex; align-items: center; gap: 6px; padding: 5px 8px; background: rgba(245,158,11,0.06); border-radius: 6px; border: 1px solid rgba(245,158,11,0.15);">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span style="font-size: 0.5rem; color: #F59E0B; font-weight: 600;">Peça em trânsito — ETA: 11 Mar</span>
+            </div>
+          </div>
+          <!-- Drop zone placeholder -->
+          <div style="border: 2px dashed var(--gray-200); border-radius: 8px; padding: 16px; text-align: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-300)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 4px; display: block;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span style="font-size: 0.55rem; color: var(--gray-300);">Arraste um card aqui</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column: Concluído -->
+      <div style="background: var(--white); border-radius: 12px; border: 1px solid var(--gray-200); overflow: hidden;">
+        <div style="padding: 12px 16px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 10px; height: 10px; border-radius: 3px; background: #10B981;"></div>
+            <span style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Concluído</span>
+            <span style="background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 100px;">3</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <div style="padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.15); border-radius: 8px; padding: 10px 12px; opacity: 0.7;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2838</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); text-decoration: line-through; opacity: 0.6;">Revisão preventiva — Compressor AR-01</div>
+            <div style="font-size: 0.5rem; color: #10B981; margin-top: 4px; font-weight: 600;">Concluído em 07 Mar — 2h 15min</div>
+          </div>
+          <div style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.15); border-radius: 8px; padding: 10px 12px; opacity: 0.5;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <span style="font-size: 0.58rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2835</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div style="font-size: 0.72rem; font-weight: 600; color: var(--dark-text); text-decoration: line-through; opacity: 0.6;">Alinhamento laser — Fresa CNC #07</div>
+            <div style="font-size: 0.5rem; color: #10B981; margin-top: 4px; font-weight: 600;">Concluído em 06 Mar — 45min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workflow Stages Diagram -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Workflow Linear — Fluxo de Aprovação</div>
+
+    <div style="display: flex; align-items: center; gap: 0; justify-content: center; flex-wrap: wrap;">
+      <!-- Step 1 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #10B981; display: flex; align-items: center; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-size: 0.6rem; font-weight: 700; color: #10B981;">Solicitação</span>
+        <span style="font-size: 0.5rem; color: var(--gray-400);">Técnico</span>
+      </div>
+      <div style="width: 40px; height: 2px; background: #10B981; margin-bottom: 24px;"></div>
+
+      <!-- Step 2 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #10B981; display: flex; align-items: center; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-size: 0.6rem; font-weight: 700; color: #10B981;">Aprovação</span>
+        <span style="font-size: 0.5rem; color: var(--gray-400);">Supervisor</span>
+      </div>
+      <div style="width: 40px; height: 2px; background: #10B981; margin-bottom: 24px;"></div>
+
+      <!-- Step 3 (active) -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 4px rgba(0,102,204,0.2); animation: pulse 2s ease-in-out infinite;">
+          <span style="font-size: 0.8rem; font-weight: 800; color: white;">3</span>
+        </div>
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--primary);">Execução</span>
+        <span style="font-size: 0.5rem; color: var(--gray-400);">Equipe Manutenção</span>
+      </div>
+      <div style="width: 40px; height: 2px; background: var(--gray-300); margin-bottom: 24px;"></div>
+
+      <!-- Step 4 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--gray-200); display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 0.8rem; font-weight: 800; color: var(--gray-400);">4</span>
+        </div>
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400);">Validação</span>
+        <span style="font-size: 0.5rem; color: var(--gray-400);">Qualidade</span>
+      </div>
+      <div style="width: 40px; height: 2px; background: var(--gray-300); margin-bottom: 24px;"></div>
+
+      <!-- Step 5 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--gray-200); display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 0.8rem; font-weight: 800; color: var(--gray-400);">5</span>
+        </div>
+        <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-400);">Encerramento</span>
+        <span style="font-size: 0.5rem; color: var(--gray-400);">Gestor</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Anatomy -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Anatomia do Card Kanban</div>
+
+    <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: start;">
+      <!-- Card with annotations -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 14px; position: relative;">
+        <div style="position: absolute; top: -6px; left: 0; right: 0; height: 4px; background: #EF4444; border-radius: 4px 4px 0 0;"></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 0.6rem; font-family: var(--font-mono); color: var(--gray-400);">OM-2851</span>
+          <span style="padding: 2px 8px; border-radius: 100px; font-size: 0.52rem; font-weight: 700; background: rgba(239,68,68,0.1); color: #EF4444;">Urgente</span>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 600; color: var(--dark-text); margin-bottom: 8px; line-height: 1.4;">Troca de rolamento — Torno CNC #04</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap;">
+          <span style="padding: 2px 6px; background: var(--gray-100); border-radius: 4px; font-size: 0.5rem; color: var(--gray-500);">Mecânica</span>
+          <span style="padding: 2px 6px; background: var(--gray-100); border-radius: 4px; font-size: 0.5rem; color: var(--gray-500);">Galpão A</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+          <div style="flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden;">
+            <div style="width: 60%; height: 100%; background: var(--primary); border-radius: 2px;"></div>
+          </div>
+          <span style="font-size: 0.5rem; color: var(--gray-500); font-weight: 600;">60%</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--gray-100);">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+            <span style="font-size: 0.55rem; color: var(--gray-400);">10 Mar</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span style="font-size: 0.55rem; color: var(--gray-400);">3</span>
+          </div>
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #0066CC, #3399FF); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.48rem; font-weight: 700; color: white;">RF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Annotations -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #EF4444; flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">Priority stripe</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — barra de 4px no topo, cor = prioridade</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">ID + Badge</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — código mono + nível de urgência</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">Título</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — máx. 2 linhas, font-weight 600</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">Tags</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — labels de categoria, localização</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">Progress bar</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — 4px height, cor semântica</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0;"></div>
+          <div><span style="font-size: 0.65rem; font-weight: 700; color: var(--dark-text);">Footer</span><span style="font-size: 0.6rem; color: var(--gray-400);"> — data, comentários, assignee avatar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Column Width</td><td><code>260px</code> (min) / <code>320px</code> (max)</td><td>Scroll horizontal quando > 4 colunas</td></tr>
+      <tr><td>Card Padding</td><td><code>12px 14px</code></td><td>Compact para maximizar cards visíveis</td></tr>
+      <tr><td>Card Border Radius</td><td><code>8px</code></td><td>Menor que section cards (16px)</td></tr>
+      <tr><td>Priority Stripe</td><td><code>4px</code> height, full width no topo</td><td>Vermelho, laranja, verde, cinza</td></tr>
+      <tr><td>Drag Ghost</td><td><code>rotate(-1deg)</code>, <code>box-shadow: 0 8px 24px</code></td><td>Border dashed primary durante drag</td></tr>
+      <tr><td>Drop Zone</td><td>Border <code>2px dashed gray-200</code>, icon <code>+</code></td><td>Aparece ao arrastar sobre coluna</td></tr>
+      <tr><td>Column Counter</td><td>Pill <code>padding: 1px 7px</code>, radius <code>100px</code></td><td>Cor semântica por status</td></tr>
+      <tr><td>Assignee Avatar</td><td><code>22px</code>, gradient bg, font <code>0.5rem</code></td><td>Iniciais em branco, bold 700</td></tr>
+      <tr><td>Progress Bar</td><td><code>4px</code> height, radius <code>2px</code></td><td>Cor = primary (andamento) ou green</td></tr>
+      <tr><td>Workflow Step</td><td>Circle <code>44px</code>, connector <code>40×2px</code></td><td>Active = primary + pulse shadow</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Limitar WIP (Work in Progress) por coluna</li>
+        <li>Priority stripe visível mesmo em scroll rápido</li>
+        <li>Ghost feedback durante drag com rotação sutil</li>
+        <li>Coluna "Aguardando" para bloqueios externos</li>
+        <li>Contador por coluna para visão rápida</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Mais de 6 colunas visíveis sem scroll</li>
+        <li>Cards sem ID visível (dificulta referência)</li>
+        <li>Arrastar entre colunas não adjacentes sem alerta</li>
+        <li>Ocultar cards concluídos imediatamente</li>
+        <li>Workflow steps sem indicação do responsável</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== CLOSING HTML ==================== -->
 

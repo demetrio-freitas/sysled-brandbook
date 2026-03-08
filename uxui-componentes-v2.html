@@ -278,8 +278,8 @@
     <h1>UX/UI — Componentes</h1>
     <p class="cover-subtitle">Loading states, tooltips, breadcrumbs, stepper, animações, patterns de layout, empty states, inputs avançados, dark mode, data visualization e mais.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">20</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">11–30</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">21</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">11–30, 77</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Intermediário</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -3549,7 +3549,294 @@
     </table>
 </div>
 
-<!-- ==================== SECTION 31: COMMAND PALETTE ==================== -->
+<!-- ==================== 77 — MEGA MENU & NAVIGATION COMPLEXA ==================== -->
+<div class="section reveal" id="mega-menu">
+    <div class="section-number">77 — Mega Menu & Navegação Complexa</div>
+    <h2>Mega Menu & Navegação Complexa</h2>
+    <p>Patterns de navegação para plataformas com muitos módulos como a SYSLED. Inclui mega menu multi-coluna, sidebar com sub-níveis, mobile drawer e navigation rail.</p>
+
+    <h3>Preview — Mega Menu Multi-Coluna</h3>
+    <p>Para header principal da plataforma. Abre em hover/click com colunas agrupadas por categoria.</p>
+    <div style="background: #0F172A; border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: var(--shadow-card);">
+      <!-- Top nav bar -->
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #1E293B;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 240 160" width="18" height="12"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: 0.75rem; color: #fff; letter-spacing: 0.08em;">SYSLED</span>
+          </div>
+          <div style="display: flex; gap: 4px;">
+            <span style="padding: 6px 12px; font-size: 0.72rem; color: #fff; font-weight: 600; background: rgba(43,108,176,0.3); border-radius: 6px; font-family: var(--font-body); cursor: pointer;">Módulos ▾</span>
+            <span style="padding: 6px 12px; font-size: 0.72rem; color: #94A3B8; font-weight: 500; font-family: var(--font-body); cursor: pointer;">Dashboard</span>
+            <span style="padding: 6px 12px; font-size: 0.72rem; color: #94A3B8; font-weight: 500; font-family: var(--font-body); cursor: pointer;">Relatórios</span>
+            <span style="padding: 6px 12px; font-size: 0.72rem; color: #94A3B8; font-weight: 500; font-family: var(--font-body); cursor: pointer;">Configurações</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="padding: 5px 14px; background: #1E293B; border-radius: 8px; font-size: 0.65rem; color: #64748B; font-family: var(--font-mono); display: flex; align-items: center; gap: 6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Buscar... ⌘K
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #2B6CB0, #48C9B0); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 0.5rem; font-weight: 700; color: #fff;">DF</div>
+        </div>
+      </div>
+      <!-- Mega menu dropdown -->
+      <div style="background: #1E293B; border-bottom: 2px solid #2B6CB0; padding: 20px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <!-- Col 1: Producao -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #64748B; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;">Produção</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A8FD6" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Ordens de Produção</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A8FD6" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Monitoramento</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A8FD6" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Máquinas</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Col 2: Estoque -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #64748B; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;">Estoque</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#48C9B0" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Inventário</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#48C9B0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Notas Fiscais</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#48C9B0" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Logística</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Col 3: Qualidade -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #64748B; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;">Qualidade</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Inspeções</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Indicadores</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Laudos</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Col 4: RH & Admin -->
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; font-weight: 700; color: #64748B; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;">RH & Admin</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Colaboradores</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Turnos & Escalas</div></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 8px; cursor: pointer;" onmouseover="this.style.background='rgba(43,108,176,0.15)'" onmouseout="this.style.background='transparent'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06"/></svg>
+              <div><div style="font-size: 0.75rem; color: #E2E8F0; font-weight: 500;">Permissões</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Preview — Sidebar com Sub-Níveis</h3>
+    <p>Navegação lateral colapsável com ícones, sub-menus e indicador de seção ativa.</p>
+    <div style="display: grid; grid-template-columns: 220px 1fr; gap: 0; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); min-height: 380px;">
+      <!-- Sidebar -->
+      <div style="background: #0F172A; padding: 16px 0;">
+        <!-- Logo -->
+        <div style="display: flex; align-items: center; gap: 8px; padding: 0 16px 16px; border-bottom: 1px solid #1E293B; margin-bottom: 8px;">
+          <svg viewBox="0 0 240 160" width="16" height="11"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 0.7rem; color: #fff; letter-spacing: 0.08em;">SYSLED</span>
+        </div>
+        <!-- Nav items -->
+        <div style="display: flex; flex-direction: column; gap: 1px; padding: 0 8px;">
+          <!-- Active item -->
+          <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: rgba(43,108,176,0.2); border-radius: 8px; cursor: pointer; border-left: 3px solid #2B6CB0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BB8F5" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span style="font-size: 0.75rem; color: #E2E8F0; font-weight: 600;">Dashboard</span>
+          </div>
+          <!-- Parent with sub -->
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                <span style="font-size: 0.75rem; color: #94A3B8; font-weight: 500;">Produção</span>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <!-- Submenu expanded -->
+            <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 1px; margin-top: 2px;">
+              <div style="padding: 6px 12px; border-radius: 6px; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+                <span style="font-size: 0.7rem; color: #64748B; font-weight: 500;">Ordens</span>
+              </div>
+              <div style="padding: 6px 12px; border-radius: 6px; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+                <span style="font-size: 0.7rem; color: #64748B; font-weight: 500;">Monitoramento</span>
+              </div>
+              <div style="padding: 6px 12px; border-radius: 6px; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
+                <span style="font-size: 0.7rem; color: #64748B; font-weight: 500;">Máquinas</span>
+              </div>
+            </div>
+          </div>
+          <!-- Collapsed parent -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <span style="font-size: 0.75rem; color: #94A3B8; font-weight: 500;">Estoque</span>
+            </div>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span style="font-size: 0.75rem; color: #94A3B8; font-weight: 500;">Qualidade</span>
+            </div>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <!-- Separator -->
+          <div style="height: 1px; background: #1E293B; margin: 8px 12px;"></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06"/></svg>
+            <span style="font-size: 0.75rem; color: #94A3B8; font-weight: 500;">Configurações</span>
+          </div>
+        </div>
+      </div>
+      <!-- Main content area -->
+      <div style="background: var(--gray-100); padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--dark-text);">Dashboard</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <div style="background: var(--white); border-radius: 10px; padding: 14px; box-shadow: var(--shadow-card);">
+            <div style="font-size: 0.65rem; color: var(--gray-400); font-weight: 500;">OEE Geral</div>
+            <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #10B981; margin-top: 4px;">87.3%</div>
+          </div>
+          <div style="background: var(--white); border-radius: 10px; padding: 14px; box-shadow: var(--shadow-card);">
+            <div style="font-size: 0.65rem; color: var(--gray-400); font-weight: 500;">Ordens Hoje</div>
+            <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #2B6CB0; margin-top: 4px;">24</div>
+          </div>
+          <div style="background: var(--white); border-radius: 10px; padding: 14px; box-shadow: var(--shadow-card);">
+            <div style="font-size: 0.65rem; color: var(--gray-400); font-weight: 500;">Alertas</div>
+            <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #EF4444; margin-top: 4px;">3</div>
+          </div>
+        </div>
+        <div style="background: var(--white); border-radius: 10px; padding: 14px; box-shadow: var(--shadow-card); flex: 1;">
+          <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; margin-bottom: 8px;">Gráfico de Produção</div>
+          <div style="display: flex; align-items: end; gap: 6px; height: 80px;">
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 60%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 80%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 45%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 90%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 70%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #48C9B0, #34D399); border-radius: 4px 4px 0 0; height: 95%;"></div>
+            <div style="flex: 1; background: linear-gradient(0deg, #2B6CB0, #3A8FD6); border-radius: 4px 4px 0 0; height: 55%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Preview — Mobile Drawer</h3>
+    <p>Em telas mobile (<768px), a sidebar vira um drawer deslizante com overlay escuro.</p>
+    <div style="max-width: 320px; margin: 1.5rem auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); position: relative; height: 400px; background: #F1F5F9;">
+      <!-- Overlay -->
+      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 1;"></div>
+      <!-- Drawer -->
+      <div style="position: absolute; top: 0; left: 0; width: 260px; height: 100%; background: #0F172A; z-index: 2; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 240 160" width="16" height="11"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: 0.7rem; color: #fff; letter-spacing: 0.08em;">SYSLED</span>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 8px; background: #1E293B; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: rgba(43,108,176,0.2); border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BB8F5" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span style="font-size: 0.78rem; color: #E2E8F0; font-weight: 600;">Dashboard</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            <span style="font-size: 0.78rem; color: #94A3B8; font-weight: 500;">Produção</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span style="font-size: 0.78rem; color: #94A3B8; font-weight: 500;">Estoque</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="font-size: 0.78rem; color: #94A3B8; font-weight: 500;">Qualidade</span>
+          </div>
+          <div style="height: 1px; background: #1E293B; margin: 6px 0;"></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82"/></svg>
+            <span style="font-size: 0.78rem; color: #94A3B8; font-weight: 500;">Configurações</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Especificações de Navegação</h3>
+    <table class="spec-table">
+      <thead><tr><th>Componente</th><th>Largura</th><th>Breakpoint</th><th>Animação</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mega Menu</strong></td><td>100% da viewport (max-width container)</td><td>≥1024px</td><td>opacity + translateY, 0.2s ease</td></tr>
+        <tr><td><strong>Sidebar expandida</strong></td><td>240px</td><td>≥768px</td><td>width 0.25s cubic-bezier(0.4,0,0.2,1)</td></tr>
+        <tr><td><strong>Sidebar colapsada</strong></td><td>64px (só ícones)</td><td>≥768px</td><td>width 0.25s</td></tr>
+        <tr><td><strong>Mobile Drawer</strong></td><td>280px</td><td>&lt;768px</td><td>translateX 0.3s ease-out + overlay fade</td></tr>
+        <tr><td><strong>Navigation Rail</strong></td><td>64px</td><td>Tablet (768-1023px)</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Hierarquia de Navegação</h3>
+    <table class="spec-table">
+      <thead><tr><th>Nível</th><th>Elemento</th><th>Estilo</th><th>Exemplo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>Categoria (label)</td><td>Uppercase, 0.6rem, #64748B, letter-spacing 0.12em</td><td>PRODUÇÃO, ESTOQUE</td></tr>
+        <tr><td><strong>2</strong></td><td>Item principal</td><td>0.75rem, #94A3B8 (inativo) / #E2E8F0 (ativo), icon 16px</td><td>Dashboard, Ordens</td></tr>
+        <tr><td><strong>3</strong></td><td>Sub-item</td><td>0.7rem, #64748B, indent 28px, sem ícone</td><td>Máquinas, Monitoramento</td></tr>
+        <tr><td><strong>Ativo</strong></td><td>Item selecionado</td><td>bg rgba(blue, 0.2), border-left 3px #2B6CB0, cor #E2E8F0</td><td>—</td></tr>
+        <tr><td><strong>Hover</strong></td><td>Qualquer item</td><td>bg rgba(blue, 0.15), transition 0.15s</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Do's & Don'ts</h3>
+    <div class="do-dont-grid">
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Agrupar itens por categoria com labels descritivos. Máximo 4-5 colunas no mega menu.</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Ter mais de 2 níveis de profundidade na sidebar. Se precisar de mais, use mega menu ou breadcrumbs.</div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">DO</div>
+        <div class="card-body">Manter a sidebar colapsável com tooltips nos ícones quando minimizada (64px).</div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">DON'T</div>
+        <div class="card-body">Esconder a navegação principal sem um hamburger/toggle visível. O usuário deve sempre saber como navegar.</div>
+      </div>
+    </div>
+</div>
 
 <!-- ==================== CLOSING HTML ==================== -->
 

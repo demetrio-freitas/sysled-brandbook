@@ -100,6 +100,17 @@
       border-bottom: 1px solid var(--gray-200); }
     .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
 
+    /* Icon Grid */
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.25rem 0.75rem;
+      border: 1px solid var(--gray-200); border-radius: var(--radius-md); transition: all 0.2s;
+      background: var(--white); box-shadow: var(--shadow-card); cursor: default; }
+    .icon-item:hover { border-color: var(--blue-light); background: rgba(91,184,245,0.04);
+      transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .icon-item svg { width: 22px; height: 22px; color: var(--blue-primary); }
+    .icon-item span { font-size: 0.65rem; color: var(--gray-400); text-align: center; font-weight: 500; }
+    [data-theme="dark"] .icon-item:hover { background: rgba(91,184,245,0.08); }
+
     /* Spec Table */
     .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
       border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }

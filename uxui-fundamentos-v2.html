@@ -278,8 +278,8 @@
     <h1>UX/UI — Fundamentos</h1>
     <p class="cover-subtitle">Princípios de design, grid, espaçamento, botões, formulários, cards, modais, notificações, tabelas e tabs.</p>
     <div class="cover-stats">
-      <div class="cover-stat"><div class="cover-stat-num">10</div><div class="cover-stat-label">Seções</div></div>
-      <div class="cover-stat"><div class="cover-stat-num">01–10</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">13</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">01–10, 85–87</div><div class="cover-stat-label">Capítulos</div></div>
       <div class="cover-stat"><div class="cover-stat-num">Base</div><div class="cover-stat-label">Nível</div></div>
     </div>
     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
@@ -2085,6 +2085,832 @@ function replayAnim(el, animStr) {
 </script>
 
 <!-- ==================== LOADING E SKELETON STATES ==================== -->
+
+<!-- ==================== SEÇÃO 85 — GRID SYSTEM & LAYOUT COLUMNS ==================== -->
+<div class="section reveal" id="grid-system">
+  <h2>85. Grid System & Layout Columns</h2>
+  <p>Sistema de grid responsivo de 12 colunas com gutters, breakpoints e containers — a base estrutural para layouts industriais consistentes em qualquer viewport.</p>
+
+  <!-- 12-Column Grid Visual -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Grid 12 Colunas — Visualização</div>
+
+    <!-- 12 columns -->
+    <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; margin-bottom: 1.5rem;">
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">1</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">2</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">3</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">4</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">5</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">6</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">7</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">8</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">9</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">10</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">11</div>
+      <div style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.25); border-radius: 6px; padding: 12px 0; text-align: center; font-size: 0.55rem; font-weight: 700; color: var(--primary);">12</div>
+    </div>
+
+    <!-- Layout examples -->
+    <div style="font-size: 0.6rem; font-weight: 600; color: var(--gray-500); margin-bottom: 6px;">Combinações comuns</div>
+
+    <!-- 12 -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 8px;">
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white;">12</div>
+    </div>
+    <!-- 6+6 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.9;">6</div>
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.9;">6</div>
+    </div>
+    <!-- 4+4+4 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.8;">4</div>
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.8;">4</div>
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.8;">4</div>
+    </div>
+    <!-- 3+9 (sidebar + content) -->
+    <div style="display: grid; grid-template-columns: 3fr 9fr; gap: 8px; margin-bottom: 8px;">
+      <div style="background: #FF6600; border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white;">3 (sidebar)</div>
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.7;">9 (content)</div>
+    </div>
+    <!-- 3+6+3 -->
+    <div style="display: grid; grid-template-columns: 3fr 6fr 3fr; gap: 8px;">
+      <div style="background: #FF6600; border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.8;">3</div>
+      <div style="background: var(--primary); border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.7;">6</div>
+      <div style="background: #FF6600; border-radius: 6px; padding: 8px; text-align: center; font-size: 0.55rem; font-weight: 700; color: white; opacity: 0.8;">3</div>
+    </div>
+  </div>
+
+  <!-- Breakpoints -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Breakpoints & Container Widths</div>
+
+    <div style="display: flex; flex-direction: column; gap: 0; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200);">
+      <!-- XS -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">XS</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">&lt; 576px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 20%; height: 100%; background: #EF4444; border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">100%</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">16px</div>
+      </div>
+      <!-- SM -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">SM</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">≥ 576px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 35%; height: 100%; background: #F59E0B; border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">540px</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">16px</div>
+      </div>
+      <!-- MD -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">MD</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">≥ 768px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 55%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">720px</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">24px</div>
+      </div>
+      <!-- LG -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">LG</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">≥ 992px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 75%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">960px</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">24px</div>
+      </div>
+      <!-- XL -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; border-bottom: 1px solid var(--gray-100); align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">XL</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">≥ 1200px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 90%; height: 100%; background: #10B981; border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">1140px</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">32px</div>
+      </div>
+      <!-- XXL -->
+      <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 10px 16px; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="22" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">XXL</span>
+        </div>
+        <div style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--gray-500);">≥ 1400px</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 100%; height: 100%; background: #10B981; border-radius: 4px;"></div>
+        </div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">1320px</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); text-align: center;">32px</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 90px 100px 1fr 80px 80px; gap: 0; padding: 8px 16px; margin-top: 4px;">
+      <div style="font-size: 0.5rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase;">Device</div>
+      <div style="font-size: 0.5rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase;">Breakpoint</div>
+      <div style="font-size: 0.5rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase;">Range</div>
+      <div style="font-size: 0.5rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase; text-align: center;">Container</div>
+      <div style="font-size: 0.5rem; font-weight: 700; color: var(--gray-400); text-transform: uppercase; text-align: center;">Gutter</div>
+    </div>
+  </div>
+
+  <!-- Industrial Layout Examples -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Layouts Industriais — Exemplos</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <!-- Dashboard layout -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">Dashboard Industrial</div>
+        <div style="display: flex; gap: 6px;">
+          <!-- Sidebar 3col -->
+          <div style="width: 25%; background: #1A1A2E; border-radius: 6px; padding: 8px;">
+            <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--primary); margin-bottom: 6px;"></div>
+            <div style="height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-bottom: 4px;"></div>
+            <div style="height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-bottom: 4px;"></div>
+            <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 4px;"></div>
+            <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+          </div>
+          <!-- Content 9col -->
+          <div style="flex: 1;">
+            <!-- Top bar -->
+            <div style="height: 16px; background: var(--gray-100); border-radius: 4px; margin-bottom: 6px;"></div>
+            <!-- KPI cards 4+4+4 -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 6px;">
+              <div style="height: 24px; background: rgba(0,102,204,0.1); border-radius: 4px;"></div>
+              <div style="height: 24px; background: rgba(16,185,129,0.1); border-radius: 4px;"></div>
+              <div style="height: 24px; background: rgba(245,158,11,0.1); border-radius: 4px;"></div>
+            </div>
+            <!-- Chart 8 + Table 4 -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 4px;">
+              <div style="height: 40px; background: var(--gray-100); border-radius: 4px;"></div>
+              <div style="height: 40px; background: var(--gray-100); border-radius: 4px;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 6px; text-align: center;">Sidebar 3col + Content 9col (KPIs 4+4+4, Chart 8 + Table 4)</div>
+      </div>
+
+      <!-- Form layout -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="font-size: 0.65rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">Formulário de Cadastro</div>
+        <div style="max-width: 85%; margin: 0 auto;">
+          <!-- Full width -->
+          <div style="height: 12px; background: var(--gray-100); border-radius: 4px; margin-bottom: 6px;"></div>
+          <!-- 6+6 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px;">
+            <div style="height: 12px; background: var(--gray-100); border-radius: 4px;"></div>
+            <div style="height: 12px; background: var(--gray-100); border-radius: 4px;"></div>
+          </div>
+          <!-- 4+4+4 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 6px;">
+            <div style="height: 12px; background: var(--gray-100); border-radius: 4px;"></div>
+            <div style="height: 12px; background: var(--gray-100); border-radius: 4px;"></div>
+            <div style="height: 12px; background: var(--gray-100); border-radius: 4px;"></div>
+          </div>
+          <!-- Full width textarea -->
+          <div style="height: 28px; background: var(--gray-100); border-radius: 4px; margin-bottom: 6px;"></div>
+          <!-- Buttons right -->
+          <div style="display: flex; justify-content: flex-end; gap: 4px;">
+            <div style="width: 40px; height: 12px; background: var(--gray-200); border-radius: 4px;"></div>
+            <div style="width: 50px; height: 12px; background: var(--primary); border-radius: 4px;"></div>
+          </div>
+        </div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 6px; text-align: center;">Container 8col centralizado, inputs 12/6+6/4+4+4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spacing & Gutter Anatomy -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">Anatomia — Margin, Gutter, Column</div>
+
+    <div style="background: var(--white); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--gray-200); position: relative;">
+      <div style="display: flex; align-items: stretch; height: 80px;">
+        <!-- Left margin -->
+        <div style="width: 32px; background: rgba(239,68,68,0.1); border: 1px dashed #EF4444; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 0.45rem; font-weight: 700; color: #EF4444; writing-mode: vertical-lr; transform: rotate(180deg);">MARGIN</span>
+        </div>
+        <!-- Grid content -->
+        <div style="flex: 1; display: flex; gap: 0;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,102,204,0.08); border-radius: 4px; margin: 0 4px;">
+            <span style="font-size: 0.5rem; font-weight: 700; color: var(--primary);">COL</span>
+          </div>
+          <div style="width: 8px; background: rgba(245,158,11,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.35rem; font-weight: 700; color: #F59E0B; writing-mode: vertical-lr; transform: rotate(180deg);">G</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,102,204,0.08); border-radius: 4px; margin: 0 4px;">
+            <span style="font-size: 0.5rem; font-weight: 700; color: var(--primary);">COL</span>
+          </div>
+          <div style="width: 8px; background: rgba(245,158,11,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.35rem; font-weight: 700; color: #F59E0B; writing-mode: vertical-lr; transform: rotate(180deg);">G</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,102,204,0.08); border-radius: 4px; margin: 0 4px;">
+            <span style="font-size: 0.5rem; font-weight: 700; color: var(--primary);">COL</span>
+          </div>
+        </div>
+        <!-- Right margin -->
+        <div style="width: 32px; background: rgba(239,68,68,0.1); border: 1px dashed #EF4444; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 0.45rem; font-weight: 700; color: #EF4444; writing-mode: vertical-lr; transform: rotate(180deg);">MARGIN</span>
+        </div>
+      </div>
+      <!-- Legend -->
+      <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem;">
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 12px; height: 12px; border-radius: 3px; background: rgba(239,68,68,0.15); border: 1px dashed #EF4444;"></div>
+          <span style="font-size: 0.55rem; color: var(--gray-500);">Margin (padding externo)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 12px; height: 12px; border-radius: 3px; background: rgba(0,102,204,0.1);"></div>
+          <span style="font-size: 0.55rem; color: var(--gray-500);">Column (área de conteúdo)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 12px; height: 12px; border-radius: 3px; background: rgba(245,158,11,0.2);"></div>
+          <span style="font-size: 0.55rem; color: var(--gray-500);">Gutter (gap entre colunas)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Propriedade</th><th>Valor</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Colunas</td><td><code>12</code></td><td>Divisível por 2, 3, 4, 6</td></tr>
+      <tr><td>Gutter XS–SM</td><td><code>16px</code></td><td>Mobile compact</td></tr>
+      <tr><td>Gutter MD–LG</td><td><code>24px</code></td><td>Tablet e desktop</td></tr>
+      <tr><td>Gutter XL–XXL</td><td><code>32px</code></td><td>Widescreen</td></tr>
+      <tr><td>Container Max</td><td><code>1320px</code></td><td>XXL breakpoint</td></tr>
+      <tr><td>Margin XS</td><td><code>16px</code></td><td>Padding horizontal do body</td></tr>
+      <tr><td>Margin LG+</td><td><code>auto</code> (centered)</td><td>Container centralizado</td></tr>
+      <tr><td>Sidebar Width</td><td><code>3 colunas</code> (268px em LG)</td><td>Collapsa para icon-only em MD</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar frações do grid (3, 4, 6, 8, 12)</li>
+        <li>Alinhar elementos às linhas do grid</li>
+        <li>Testar layout em todos os breakpoints</li>
+        <li>Colapsar colunas em stack no mobile</li>
+        <li>Manter gutters consistentes por breakpoint</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar valores fixos de px para largura</li>
+        <li>Misturar gutters de diferentes breakpoints</li>
+        <li>Colunas de 5 ou 7 (não divide por 12)</li>
+        <li>Ignorar margins em mobile</li>
+        <li>Nesting de grids > 2 níveis</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 86 — MOTION & ANIMATION TOKENS ==================== -->
+<div class="section reveal" id="motion-tokens">
+  <h2>86. Motion & Animation Tokens</h2>
+  <p>Curvas de easing, durações padronizadas e tipos de transição — garantindo movimento consistente, fluido e com propósito em toda a plataforma SYSLED.</p>
+
+  <!-- Duration Scale -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Escala de Duração</div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- instant -->
+      <div style="display: grid; grid-template-columns: 120px 80px 1fr 100px; gap: 12px; align-items: center;">
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Instant</div>
+          <div style="font-size: 0.55rem; color: var(--gray-400);">Hover, focus ring</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; color: var(--primary);">100ms</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 10%; height: 100%; background: var(--primary); border-radius: 4px; animation: pulse 2s ease-in-out infinite;"></div>
+        </div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);">--duration-instant</code>
+      </div>
+      <!-- fast -->
+      <div style="display: grid; grid-template-columns: 120px 80px 1fr 100px; gap: 12px; align-items: center;">
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Fast</div>
+          <div style="font-size: 0.55rem; color: var(--gray-400);">Toggle, tooltip</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; color: var(--primary);">150ms</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 18%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+        </div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);">--duration-fast</code>
+      </div>
+      <!-- normal -->
+      <div style="display: grid; grid-template-columns: 120px 80px 1fr 100px; gap: 12px; align-items: center;">
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Normal</div>
+          <div style="font-size: 0.55rem; color: var(--gray-400);">Dropdown, accordion</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; color: var(--primary);">200ms</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 30%; height: 100%; background: #10B981; border-radius: 4px;"></div>
+        </div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);">--duration-normal</code>
+      </div>
+      <!-- slow -->
+      <div style="display: grid; grid-template-columns: 120px 80px 1fr 100px; gap: 12px; align-items: center;">
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">Slow</div>
+          <div style="font-size: 0.55rem; color: var(--gray-400);">Modal, page transition</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; color: var(--primary);">300ms</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 45%; height: 100%; background: #F59E0B; border-radius: 4px;"></div>
+        </div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);">--duration-slow</code>
+      </div>
+      <!-- xslow -->
+      <div style="display: grid; grid-template-columns: 120px 80px 1fr 100px; gap: 12px; align-items: center;">
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--dark-text);">X-Slow</div>
+          <div style="font-size: 0.55rem; color: var(--gray-400);">Drawer, complex enter</div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; color: var(--primary);">500ms</div>
+        <div style="height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden;">
+          <div style="width: 70%; height: 100%; background: #FF6600; border-radius: 4px;"></div>
+        </div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);">--duration-xslow</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Easing Curves -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Curvas de Easing</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+      <!-- ease-out (enter) -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 80px; height: 80px; margin: 0 auto 1rem; position: relative; background: var(--gray-50); border-radius: 8px; overflow: hidden;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <line x1="10" y1="70" x2="70" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <line x1="10" y1="10" x2="10" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <path d="M 10 70 C 10 30, 50 10, 70 10" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="position: absolute; bottom: 4px; right: 6px; font-size: 0.4rem; color: var(--gray-400);">t</div>
+          <div style="position: absolute; top: 4px; left: 4px; font-size: 0.4rem; color: var(--gray-400);">v</div>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Ease Out</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">Elemento entrando</div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: var(--primary); display: block; margin-top: 6px; background: var(--gray-50); padding: 4px; border-radius: 4px;">cubic-bezier(0, 0, 0.2, 1)</code>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Inicia rápido, desacelera no final</div>
+      </div>
+
+      <!-- ease-in (exit) -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 80px; height: 80px; margin: 0 auto 1rem; position: relative; background: var(--gray-50); border-radius: 8px; overflow: hidden;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <line x1="10" y1="70" x2="70" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <line x1="10" y1="10" x2="10" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <path d="M 10 70 C 30 70, 70 50, 70 10" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="position: absolute; bottom: 4px; right: 6px; font-size: 0.4rem; color: var(--gray-400);">t</div>
+          <div style="position: absolute; top: 4px; left: 4px; font-size: 0.4rem; color: var(--gray-400);">v</div>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Ease In</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">Elemento saindo</div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: #EF4444; display: block; margin-top: 6px; background: var(--gray-50); padding: 4px; border-radius: 4px;">cubic-bezier(0.4, 0, 1, 1)</code>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Inicia lento, acelera na saída</div>
+      </div>
+
+      <!-- ease-in-out (morph) -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 80px; height: 80px; margin: 0 auto 1rem; position: relative; background: var(--gray-50); border-radius: 8px; overflow: hidden;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <line x1="10" y1="70" x2="70" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <line x1="10" y1="10" x2="10" y2="70" stroke="var(--gray-200)" stroke-width="1"/>
+            <path d="M 10 70 C 20 70, 30 10, 70 10" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div style="position: absolute; bottom: 4px; right: 6px; font-size: 0.4rem; color: var(--gray-400);">t</div>
+          <div style="position: absolute; top: 4px; left: 4px; font-size: 0.4rem; color: var(--gray-400);">v</div>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Ease In-Out</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">Transformação / morph</div>
+        <code style="font-family: var(--font-mono); font-size: 0.55rem; color: #10B981; display: block; margin-top: 6px; background: var(--gray-50); padding: 4px; border-radius: 4px;">cubic-bezier(0.4, 0, 0.2, 1)</code>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Suave início e fim, rápido no meio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transition Types -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Tipos de Transição</div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+      <!-- Fade -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 48px; height: 48px; margin: 0 auto 0.75rem; border-radius: 8px; background: var(--primary); opacity: 0.3; animation: pulse 2s ease-in-out infinite;"></div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Fade</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">opacity: 0 → 1</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Toast, tooltip, overlay</div>
+      </div>
+      <!-- Scale -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 48px; height: 48px; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #10B981; border: 3px solid rgba(16,185,129,0.3);"></div>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Scale</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">scale: 0.95 → 1</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Modal, popover, menu</div>
+      </div>
+      <!-- Slide -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 48px; height: 48px; margin: 0 auto 0.75rem; position: relative; overflow: hidden; border-radius: 8px; background: var(--gray-50);">
+          <div style="width: 24px; height: 48px; background: #F59E0B; border-radius: 4px; position: absolute; left: 50%; top: 0; transform: translateX(-50%);"></div>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Slide</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">translateY: 8px → 0</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Drawer, dropdown, sheet</div>
+      </div>
+      <!-- Collapse -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 48px; height: 48px; margin: 0 auto 0.75rem; display: flex; flex-direction: column; gap: 3px; justify-content: center;">
+          <div style="height: 8px; background: #FF6600; border-radius: 3px;"></div>
+          <div style="height: 4px; background: rgba(255,102,0,0.4); border-radius: 2px;"></div>
+          <div style="height: 2px; background: rgba(255,102,0,0.2); border-radius: 2px;"></div>
+        </div>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Collapse</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 2px;">height: auto → 0</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 4px;">Accordion, expand/collapse</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reduce Motion -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">prefers-reduced-motion</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+      <!-- Normal motion -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Motion: Normal</span>
+        </div>
+        <div style="background: #1A1A2E; border-radius: 8px; padding: 12px; overflow: hidden;">
+          <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.58rem; line-height: 1.6; color: #E2E8F0;"><span style="color: #7C8BA1;">/* Todas as animações ativas */</span>
+<span style="color: #FF6600;">.modal</span> {
+  <span style="color: #8B9DC3;">transition</span>: <span style="color: #10B981;">opacity 200ms ease-out,
+    transform 200ms ease-out</span>;
+}
+<span style="color: #FF6600;">.toast</span> {
+  <span style="color: #8B9DC3;">animation</span>: <span style="color: #10B981;">slideUp 300ms ease-out</span>;
+}</pre>
+        </div>
+      </div>
+
+      <!-- Reduced motion -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span style="font-size: 0.7rem; font-weight: 700; color: var(--dark-text);">Motion: Reduced</span>
+        </div>
+        <div style="background: #1A1A2E; border-radius: 8px; padding: 12px; overflow: hidden;">
+          <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.58rem; line-height: 1.6; color: #E2E8F0;"><span style="color: #7C8BA1;">/* Apenas fade, sem transform */</span>
+<span style="color: #F59E0B;">@media</span> (<span style="color: #8B9DC3;">prefers-reduced-motion</span>) {
+  <span style="color: #FF6600;">*</span> {
+    <span style="color: #8B9DC3;">animation-duration</span>: <span style="color: #10B981;">0.01ms</span>;
+    <span style="color: #8B9DC3;">transition-duration</span>: <span style="color: #10B981;">0.01ms</span>;
+  }
+  <span style="color: #FF6600;">.modal</span> {
+    <span style="color: #8B9DC3;">transition</span>: <span style="color: #10B981;">opacity 100ms</span>;
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td><code>--duration-instant</code></td><td><code>100ms</code></td><td>Hover, focus, color change</td></tr>
+      <tr><td><code>--duration-fast</code></td><td><code>150ms</code></td><td>Toggle, switch, tooltip show</td></tr>
+      <tr><td><code>--duration-normal</code></td><td><code>200ms</code></td><td>Dropdown, accordion, fade</td></tr>
+      <tr><td><code>--duration-slow</code></td><td><code>300ms</code></td><td>Modal, page, complex enter</td></tr>
+      <tr><td><code>--duration-xslow</code></td><td><code>500ms</code></td><td>Drawer, full-screen transition</td></tr>
+      <tr><td><code>--ease-enter</code></td><td><code>cubic-bezier(0, 0, 0.2, 1)</code></td><td>Elemento entrando no viewport</td></tr>
+      <tr><td><code>--ease-exit</code></td><td><code>cubic-bezier(0.4, 0, 1, 1)</code></td><td>Elemento saindo do viewport</td></tr>
+      <tr><td><code>--ease-morph</code></td><td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td><td>Transformação no local</td></tr>
+      <tr><td><code>--ease-spring</code></td><td><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code></td><td>Bounce sutil (feedback)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar ease-out para enter, ease-in para exit</li>
+        <li>Respeitar prefers-reduced-motion</li>
+        <li>Manter durações ≤ 500ms (exceto loading)</li>
+        <li>Animar transform e opacity (GPU-accelerated)</li>
+        <li>Usar tokens, nunca valores hardcoded</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Animar width, height, top, left (layout thrash)</li>
+        <li>Animações > 1s para micro-interactions</li>
+        <li>Bounce excessivo em contexto industrial</li>
+        <li>linear ease para UI (só para progress bars)</li>
+        <li>Ignorar acessibilidade de motion</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEÇÃO 87 — ACCESSIBILITY (a11y) GUIDELINES ==================== -->
+<div class="section reveal" id="accessibility">
+  <h2>87. Accessibility (a11y) Guidelines</h2>
+  <p>Diretrizes de acessibilidade WCAG 2.1 AA aplicadas ao contexto industrial SYSLED — contraste, navegação por teclado, screen readers, focus management e aria-labels.</p>
+
+  <!-- WCAG Compliance Badge -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Nível de Conformidade — WCAG 2.1</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+      <!-- Level A -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #10B981; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+          <span style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; color: white;">A</span>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Nível A</div>
+        <div style="font-size: 0.6rem; color: #10B981; font-weight: 600; margin-top: 2px;">Obrigatório</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 6px; line-height: 1.5;">Alternativas textuais, navegação por teclado, sem armadilhas de foco</div>
+      </div>
+      <!-- Level AA -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.5rem; border: 2px solid var(--primary); text-align: center; box-shadow: 0 4px 16px rgba(0,102,204,0.1);">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem; box-shadow: 0 0 0 4px rgba(0,102,204,0.2);">
+          <span style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: white;">AA</span>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Nível AA</div>
+        <div style="font-size: 0.6rem; color: var(--primary); font-weight: 600; margin-top: 2px;">Target SYSLED</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 6px; line-height: 1.5;">Contraste 4.5:1, resize 200%, focus visível, labels associados</div>
+      </div>
+      <!-- Level AAA -->
+      <div style="background: var(--white); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--gray-200); text-align: center; opacity: 0.6;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--gray-300); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem;">
+          <span style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; color: white;">AAA</span>
+        </div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--dark-text);">Nível AAA</div>
+        <div style="font-size: 0.6rem; color: var(--gray-400); font-weight: 600; margin-top: 2px;">Aspiracional</div>
+        <div style="font-size: 0.55rem; color: var(--gray-400); margin-top: 6px; line-height: 1.5;">Contraste 7:1, sem limites de tempo, linguagem simplificada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Contrast -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Contraste de Cores — Exemplos</div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+      <!-- Pass: dark on white -->
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200);">
+        <div style="background: #FFFFFF; padding: 1rem; text-align: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #1A1A2E;">Aa</span>
+        </div>
+        <div style="background: var(--white); padding: 8px; text-align: center; border-top: 1px solid var(--gray-100);">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span style="font-size: 0.6rem; font-weight: 700; color: #10B981;">PASS</span>
+          </div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">15.4:1</div>
+        </div>
+      </div>
+      <!-- Pass: white on primary -->
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200);">
+        <div style="background: #0066CC; padding: 1rem; text-align: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Aa</span>
+        </div>
+        <div style="background: var(--white); padding: 8px; text-align: center; border-top: 1px solid var(--gray-100);">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span style="font-size: 0.6rem; font-weight: 700; color: #10B981;">PASS</span>
+          </div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">5.9:1</div>
+        </div>
+      </div>
+      <!-- Pass: text on gray -->
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200);">
+        <div style="background: #F0F4F8; padding: 1rem; text-align: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #475569;">Aa</span>
+        </div>
+        <div style="background: var(--white); padding: 8px; text-align: center; border-top: 1px solid var(--gray-100);">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span style="font-size: 0.6rem; font-weight: 700; color: #10B981;">PASS</span>
+          </div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">5.1:1</div>
+        </div>
+      </div>
+      <!-- Fail: light on light -->
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200);">
+        <div style="background: #F0F4F8; padding: 1rem; text-align: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #CBD5E1;">Aa</span>
+        </div>
+        <div style="background: var(--white); padding: 8px; text-align: center; border-top: 1px solid var(--gray-100);">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span style="font-size: 0.6rem; font-weight: 700; color: #EF4444;">FAIL</span>
+          </div>
+          <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">1.8:1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Focus States -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Focus Ring — Estados de Foco</div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+      <!-- Button focus -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="margin-bottom: 0.75rem;">
+          <div style="display: inline-block; padding: 8px 20px; background: var(--primary); color: white; border-radius: 8px; font-size: 0.7rem; font-weight: 600; box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);">Botão</div>
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--dark-text);">Button :focus-visible</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">outline 2px + offset 2px</div>
+      </div>
+      <!-- Input focus -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="margin-bottom: 0.75rem;">
+          <div style="display: inline-block; padding: 8px 16px; background: var(--white); border: 2px solid var(--primary); border-radius: 8px; font-size: 0.65rem; color: var(--dark-text); box-shadow: 0 0 0 3px rgba(0,102,204,0.2); min-width: 100px; text-align: left;">Input</div>
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--dark-text);">Input :focus</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">border primary + shadow ring</div>
+      </div>
+      <!-- Link focus -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="margin-bottom: 0.75rem; padding: 8px;">
+          <span style="font-size: 0.7rem; font-weight: 600; color: var(--primary); text-decoration: underline; outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 2px; padding: 2px;">Link texto</span>
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--dark-text);">Link :focus-visible</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">outline 2px + offset 3px</div>
+      </div>
+      <!-- Card focus -->
+      <div style="background: var(--white); border-radius: 10px; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: center;">
+        <div style="margin-bottom: 0.75rem;">
+          <div style="display: inline-block; padding: 10px 14px; background: var(--gray-50); border-radius: 8px; font-size: 0.6rem; color: var(--dark-text); box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);">Card item</div>
+        </div>
+        <div style="font-size: 0.6rem; font-weight: 600; color: var(--dark-text);">Card :focus-within</div>
+        <div style="font-size: 0.5rem; color: var(--gray-400); margin-top: 2px;">double ring (white + primary)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard Navigation -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1.5rem;">Navegação por Teclado</div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">Tab</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Navegar entre elementos focáveis</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">Enter</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Ativar botão, link ou submeter form</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">Space</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Toggle checkbox, radio, switch</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">Esc</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Fechar modal, dropdown, popover</span>
+          </div>
+        </div>
+      </div>
+      <div style="background: var(--white); border-radius: 10px; padding: 1rem; border: 1px solid var(--gray-200);">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">↑ ↓</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Navegar em lista, menu, select</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">← →</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Navegar em tabs, slider, carousel</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">Home</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Primeiro item da lista/slider</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="padding: 4px 10px; background: var(--gray-100); border: 1px solid var(--gray-300); border-radius: 6px; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; color: var(--dark-text); min-width: 44px; text-align: center;">End</div>
+            <span style="font-size: 0.65rem; color: var(--gray-500);">Último item da lista/slider</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARIA Labels -->
+  <div style="background: var(--gray-100); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+    <div style="font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-500); margin-bottom: 1rem;">ARIA — Atributos Essenciais</div>
+
+    <div style="background: #1A1A2E; border-radius: 10px; padding: 1.25rem; overflow-x: auto;">
+      <pre style="margin: 0; font-family: var(--font-mono); font-size: 0.62rem; line-height: 1.8; color: #E2E8F0;"><span style="color: #7C8BA1;">/* Botão com ação descrita */</span>
+&lt;<span style="color: #FF6600;">button</span> <span style="color: #8B9DC3;">aria-label</span>=<span style="color: #10B981;">"Fechar modal"</span>&gt;
+  &lt;<span style="color: #FF6600;">svg</span>&gt;...&lt;/<span style="color: #FF6600;">svg</span>&gt;
+&lt;/<span style="color: #FF6600;">button</span>&gt;
+
+<span style="color: #7C8BA1;">/* Live region para alertas */</span>
+&lt;<span style="color: #FF6600;">div</span> <span style="color: #8B9DC3;">role</span>=<span style="color: #10B981;">"alert"</span> <span style="color: #8B9DC3;">aria-live</span>=<span style="color: #10B981;">"assertive"</span>&gt;
+  OEE caiu para 45% — ação necessária
+&lt;/<span style="color: #FF6600;">div</span>&gt;
+
+<span style="color: #7C8BA1;">/* Toggle com estado */</span>
+&lt;<span style="color: #FF6600;">button</span> <span style="color: #8B9DC3;">role</span>=<span style="color: #10B981;">"switch"</span> <span style="color: #8B9DC3;">aria-checked</span>=<span style="color: #10B981;">"true"</span>
+  <span style="color: #8B9DC3;">aria-label</span>=<span style="color: #10B981;">"Notificações push"</span>&gt;
+&lt;/<span style="color: #FF6600;">button</span>&gt;
+
+<span style="color: #7C8BA1;">/* Tabela com caption */</span>
+&lt;<span style="color: #FF6600;">table</span> <span style="color: #8B9DC3;">aria-label</span>=<span style="color: #10B981;">"Equipamentos da Linha 3"</span>&gt;
+  &lt;<span style="color: #FF6600;">thead</span>&gt;...&lt;/<span style="color: #FF6600;">thead</span>&gt;
+&lt;/<span style="color: #FF6600;">table</span>&gt;</pre>
+    </div>
+  </div>
+
+  <!-- Specs Table -->
+  <table class="spec-table">
+    <thead><tr><th>Critério</th><th>Requisito</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Contraste Texto</td><td><code>4.5:1</code> (normal) / <code>3:1</code> (large 18px+)</td><td>WCAG AA obrigatório</td></tr>
+      <tr><td>Contraste UI</td><td><code>3:1</code> contra fundo adjacente</td><td>Ícones, bordas, focus rings</td></tr>
+      <tr><td>Focus Ring</td><td><code>2px</code> solid + <code>2px</code> offset</td><td>Cor primary, visível em light e dark</td></tr>
+      <tr><td>Touch Target</td><td>Mínimo <code>44×44px</code></td><td>WCAG 2.5.5 (hit area, não visual)</td></tr>
+      <tr><td>Tab Order</td><td>Segue DOM order lógica</td><td>Nunca tabindex > 0</td></tr>
+      <tr><td>Alt Text</td><td>Obrigatório em <code>&lt;img&gt;</code> informativos</td><td>Decorativos: alt="" (vazio)</td></tr>
+      <tr><td>aria-live</td><td><code>polite</code> (toast) / <code>assertive</code> (alerta crítico)</td><td>Screen reader anuncia mudanças</td></tr>
+      <tr><td>Heading Hierarchy</td><td>Sequencial: h1 → h2 → h3</td><td>Nunca pular níveis</td></tr>
+      <tr><td>Color Independence</td><td>Não depender só de cor para informação</td><td>Usar ícone + cor + texto</td></tr>
+      <tr><td>Zoom</td><td>Funcional até <code>200%</code> zoom</td><td>Sem scroll horizontal</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Do's & Don'ts -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+    <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #10B981; margin-bottom: 0.5rem;">DO</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>Usar :focus-visible (não :focus simples)</li>
+        <li>Testar com screen reader (VoiceOver/NVDA)</li>
+        <li>aria-label em botões com apenas ícone</li>
+        <li>role="alert" para notificações críticas</li>
+        <li>Garantir touch target 44×44px mínimo</li>
+      </ul>
+    </div>
+    <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.25rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; color: #EF4444; margin-bottom: 0.5rem;">DON'T</div>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--dark-text); line-height: 1.7;">
+        <li>outline: none sem alternativa de foco</li>
+        <li>Depender apenas de cor para status</li>
+        <li>tabindex positivo (usar 0 ou -1)</li>
+        <li>Texto em imagens (usar HTML real)</li>
+        <li>Auto-play de mídia sem controle</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== CLOSING HTML ==================== -->
 

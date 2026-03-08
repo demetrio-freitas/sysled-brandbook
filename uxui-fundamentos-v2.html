@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — UX/UI Fundamentos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-primary: #2B6CB0; --blue-medium: #3A8FD6; --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4; --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1; --cyan-medium: #3AAFCF; --cyan-light: #48C9B0;
+      --dark-primary: #0F172A; --dark-secondary: #1E293B; --dark-text: #1E293B;
+      --gray-600: #475569; --gray-400: #94A3B8; --gray-200: #E2E8F0; --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px; --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a; --gradient-mid: #1d6ea0; --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+    }
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3,
+    [data-theme="dark"] .card-demo h4, [data-theme="dark"] .input-demo label { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .spec-table tr:hover td { background: rgba(30,41,59,0.5); }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+    [data-theme="dark"] .component-demo { background: #1E293B; }
+    [data-theme="dark"] .input-demo input, [data-theme="dark"] .input-demo select {
+      background: #1E293B; color: #E2E8F0; border-color: #334155;
+    }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .principle-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .principle-card h4 { color: #E2E8F0; }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Top bar */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+    .cover-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+    .cover-stat { text-align: center; }
+    .cover-stat-num { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; }
+    .cover-stat-label { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Icon Grid */
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.25rem 0.75rem;
+      border: 1px solid var(--gray-200); border-radius: var(--radius-md); transition: all 0.2s;
+      background: var(--white); box-shadow: var(--shadow-card); cursor: default; }
+    .icon-item:hover { border-color: var(--blue-light); background: rgba(91,184,245,0.04);
+      transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .icon-item svg { width: 22px; height: 22px; color: var(--blue-primary); }
+    .icon-item span { font-size: 0.65rem; color: var(--gray-400); text-align: center; font-weight: 500; }
+    [data-theme="dark"] .icon-item:hover { background: rgba(91,184,245,0.08); }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table tr:hover td { background: var(--gray-100); }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); cursor: pointer; }
+    .spec-table code:hover { background: rgba(91,184,245,0.15); }
+
+    /* Do/Dont */
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 1rem; min-height: 140px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    /* Code block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem;
+      margin: 1rem 0; overflow-x: auto; position: relative; display: none;
+      font-family: var(--font-mono); font-size: 0.72rem; color: #CBD5E1;
+      line-height: 1.8; white-space: pre; }
+    .code-block.visible { display: block; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.72rem; color: #CBD5E1;
+      line-height: 1.8; white-space: pre; margin: 0; }
+    .code-block .comment { color: #64748B; }
+    .code-block .property { color: #7ECEF4; }
+    .code-block .value { color: #48C9B0; }
+    .code-block .string { color: #FDE68A; }
+    .code-copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.3rem 0.7rem;
+      border-radius: 6px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
+      border: none; cursor: pointer; font-family: var(--font-heading); font-size: 0.6rem;
+      font-weight: 600; transition: all 0.18s; }
+    .code-copy-btn:hover { background: rgba(255,255,255,0.2); color: #FFFFFF; }
+
+    /* Component toggle */
+    .component-toggle { display: flex; gap: 0; margin-bottom: 1rem; border: 1px solid var(--gray-200);
+      border-radius: 8px; overflow: hidden; width: fit-content; }
+    .component-toggle button { padding: 0.4rem 1rem; font-family: var(--font-heading); font-size: 0.68rem;
+      font-weight: 600; border: none; cursor: pointer; background: transparent;
+      color: var(--gray-400); transition: all 0.18s; }
+    .component-toggle button.active { background: var(--blue-primary); color: #FFFFFF; }
+
+    /* Component demos */
+    .component-demo { margin: 2rem 0; padding: 2rem 2.5rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg); background: var(--white); box-shadow: var(--shadow-card); }
+
+    /* Button demos */
+    .btn-demo { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.5rem;
+      border-radius: var(--radius-md); font-family: var(--font-heading); font-size: 0.82rem;
+      font-weight: 600; text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+      transition: all 0.18s; margin-right: 0.75rem; margin-bottom: 0.75rem; }
+    .btn-primary { background: var(--blue-primary); color: #fff;
+      box-shadow: 0 2px 8px rgba(43,108,176,0.3); }
+    .btn-primary:hover { background: var(--blue-medium);
+      box-shadow: 0 4px 16px rgba(43,108,176,0.4); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--blue-primary); border-color: var(--blue-primary); }
+    .btn-secondary:hover { background: var(--blue-primary); color: #fff; }
+    .btn-ghost { background: transparent; color: var(--gray-600); border-color: var(--gray-200); }
+    .btn-ghost:hover { border-color: var(--gray-400); color: var(--dark-text); }
+    .btn-sm { padding: 0.45rem 1.1rem; font-size: 0.75rem; }
+    .btn-lg { padding: 0.875rem 2rem; font-size: 0.9rem; }
+
+    /* Input demos */
+    .input-demo { display: flex; flex-direction: column; gap: 0.4rem; max-width: 380px; margin: 1rem 0; }
+    .input-demo label { font-size: 0.78rem; font-weight: 600; color: var(--dark-primary); }
+    .input-demo input, .input-demo select { padding: 0.65rem 1rem; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-md); font-family: var(--font-body); font-size: 0.875rem;
+      color: var(--dark-text); transition: all 0.18s; outline: none; background: var(--white); }
+    .input-demo input:focus, .input-demo select:focus {
+      border-color: var(--blue-medium); box-shadow: 0 0 0 3px rgba(58,143,214,0.12); }
+
+    /* Card demos */
+    .card-demo { border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem; background: var(--white); max-width: 380px;
+      box-shadow: var(--shadow-card); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+    .card-demo:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .card-demo h4 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.4rem; color: var(--dark-primary); }
+    .card-demo p { font-size: 0.875rem; color: var(--gray-400); margin: 0; }
+
+    /* Grid system demo */
+    .grid-demo { display: grid; gap: 0.75rem; margin: 2rem 0; }
+    .grid-demo-12 { grid-template-columns: repeat(12, 1fr); }
+    .grid-cell { background: rgba(168,224,248,0.35); border: 1px solid rgba(43,108,176,0.15);
+      border-radius: 6px; padding: 0.75rem; text-align: center; font-size: 0.7rem;
+      font-weight: 600; color: var(--blue-primary); }
+
+    /* Spacing system */
+    .spacing-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; align-items: flex-end; }
+    .spacing-item { text-align: center; }
+    .spacing-box { background: linear-gradient(135deg, var(--blue-light), var(--cyan-medium));
+      border-radius: 6px; margin-bottom: 0.5rem; opacity: 0.7; }
+    .spacing-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); }
+
+    /* Type labels */
+    .type-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 1rem; }
+
+    /* Skeleton Loading */
+    @keyframes skeletonShimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .skel { background: linear-gradient(90deg, #E2E8F0 25%, #EDF2F7 50%, #E2E8F0 75%);
+      background-size: 200% 100%; animation: skeletonShimmer 1.5s ease infinite; border-radius: 6px; }
+    [data-theme="dark"] .skel { background: linear-gradient(90deg, #2D3748 25%, #4A5568 50%, #2D3748 75%);
+      background-size: 200% 100%; animation: skeletonShimmer 1.5s ease infinite; }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--dark-primary); color: #fff; padding: 12px 24px; border-radius: 12px;
+      font-size: 0.82rem; font-weight: 500; opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      z-index: 9999; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3.5rem 1.5rem 3rem; }
+      .do-dont-grid { grid-template-columns: 1fr; }
+      .grid-demo-12 { grid-template-columns: repeat(6, 1fr); }
+      .cover-stats { gap: 1.5rem; }
+      .component-demo { padding: 1.5rem 1rem; }
+    }
+    @media (max-width: 480px) {
+      .grid-demo-12 { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover reveal">
+    <div class="cover-badge"><span></span>Parte 1 de 4 — Design System</div>
+    <h1>UX/UI — Fundamentos</h1>
+    <p class="cover-subtitle">Princípios de design, grid, espaçamento, botões, formulários, cards, modais, notificações, tabelas e tabs.</p>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-num">10</div><div class="cover-stat-label">Seções</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">01–10</div><div class="cover-stat-label">Capítulos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">Base</div><div class="cover-stat-label">Nível</div></div>
+    </div>
+    <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+      <a href="uxui-componentes-v2.html" style="padding: 6px 14px; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.7rem; color: #fff; text-decoration: none; font-weight: 500; border: 1px solid rgba(255,255,255,0.2);">Parte 2 → Componentes</a>
+      <a href="uxui-patterns-v2.html" style="padding: 6px 14px; background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem; color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; border: 1px solid rgba(255,255,255,0.1);">Parte 3 → Patterns</a>
+      <a href="uxui-referencia-v2.html" style="padding: 6px 14px; background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem; color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; border: 1px solid rgba(255,255,255,0.1);">Parte 4 → Referência</a>
+    </div>
+  </div>
+
+  <!-- 01 — PRINCÍPIOS DE DESIGN -->
+  <div class="section reveal">
+    <div class="section-number">01 — Manual UX/UI — Princípios</div>
+    <h2>Princípios de Design</h2>
+
+    <p>O design de interfaces da Sysled segue princípios que refletem os valores da marca e garantem uma experiência de usuário consistente, eficiente e profissional em todas as plataformas.</p>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Princípio</th>
+          <th>Descrição</th>
+          <th>Aplicação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Clareza</strong></td>
+          <td>Informações devem ser apresentadas de forma direta e sem ambiguidade</td>
+          <td>Labels claros, hierarquia visual definida, feedback imediato</td>
+        </tr>
+        <tr>
+          <td><strong>Consistência</strong></td>
+          <td>Padrões visuais e de interação devem ser uniformes em toda a plataforma</td>
+          <td>Componentes reutilizáveis, tokens de design, nomenclatura padronizada</td>
+        </tr>
+        <tr>
+          <td><strong>Eficiência</strong></td>
+          <td>O usuário deve completar tarefas com o mínimo de esforço possível</td>
+          <td>Atalhos, autocompletar, valores padrão inteligentes, fluxos otimizados</td>
+        </tr>
+        <tr>
+          <td><strong>Confiabilidade</strong></td>
+          <td>O sistema deve transmitir segurança e previsibilidade</td>
+          <td>Estados de loading, confirmações, tratamento de erros, dados em tempo real</td>
+        </tr>
+        <tr>
+          <td><strong>Acessibilidade</strong></td>
+          <td>A interface deve ser utilizável por todos, independente de limitações</td>
+          <td>Contraste WCAG AA, navegação por teclado, textos alternativos, ARIA labels</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 02 — SISTEMA DE GRID -->
+  <div class="section reveal">
+    <div class="section-number">02 — Sistema de Grid</div>
+    <h2>Sistema de Grid</h2>
+
+    <p>A Sysled utiliza um sistema de grid de <strong>12 colunas</strong> com gutters de 24px para layouts desktop e 16px para mobile. O grid garante alinhamento consistente e facilita a criação de layouts responsivos.</p>
+
+    <div class="grid-demo grid-demo-12">
+      <div class="grid-cell">1</div>
+      <div class="grid-cell">2</div>
+      <div class="grid-cell">3</div>
+      <div class="grid-cell">4</div>
+      <div class="grid-cell">5</div>
+      <div class="grid-cell">6</div>
+      <div class="grid-cell">7</div>
+      <div class="grid-cell">8</div>
+      <div class="grid-cell">9</div>
+      <div class="grid-cell">10</div>
+      <div class="grid-cell">11</div>
+      <div class="grid-cell">12</div>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Breakpoint</th>
+          <th>Largura</th>
+          <th>Colunas</th>
+          <th>Gutter</th>
+          <th>Margem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mobile</td>
+          <td>360px — 767px</td>
+          <td>4</td>
+          <td>16px</td>
+          <td>16px</td>
+        </tr>
+        <tr>
+          <td>Tablet</td>
+          <td>768px — 1023px</td>
+          <td>8</td>
+          <td>20px</td>
+          <td>24px</td>
+        </tr>
+        <tr>
+          <td>Desktop</td>
+          <td>1024px — 1439px</td>
+          <td>12</td>
+          <td>24px</td>
+          <td>32px</td>
+        </tr>
+        <tr>
+          <td>Large Desktop</td>
+          <td>1440px+</td>
+          <td>12</td>
+          <td>24px</td>
+          <td>Auto (max 1200px)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 03 — SISTEMA DE ESPAÇAMENTO -->
+  <div class="section reveal">
+    <div class="section-number">03 — Espaçamento</div>
+    <h2>Sistema de Espaçamento</h2>
+
+    <p>O sistema de espaçamento da Sysled é baseado em uma escala de <strong>4px</strong>, garantindo consistência e harmonia visual em todos os componentes e layouts. Cada token de espaçamento é um múltiplo de 4px.</p>
+
+    <div class="spacing-grid">
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 4px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">4px<br>xs</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 8px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">8px<br>sm</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 12px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">12px<br>md</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 16px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">16px<br>lg</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 24px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">24px<br>xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 32px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">32px<br>2xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 48px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">48px<br>3xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 64px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">64px<br>4xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-box" style="width: 96px; height: 40px; margin: 0 auto 0.5rem;"></div>
+        <div class="spacing-label">96px<br>5xl</div>
+      </div>
+    </div>
+
+    <h3>Border Radius</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Valor</th>
+          <th>Uso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>radius-sm</td>
+          <td>4px</td>
+          <td>Badges, tags, chips</td>
+        </tr>
+        <tr>
+          <td>radius-md</td>
+          <td>8px</td>
+          <td>Botões, inputs, dropdowns</td>
+        </tr>
+        <tr>
+          <td>radius-lg</td>
+          <td>12px</td>
+          <td>Cards pequenos, tooltips</td>
+        </tr>
+        <tr>
+          <td>radius-xl</td>
+          <td>16px</td>
+          <td>Cards grandes, modais, painéis</td>
+        </tr>
+        <tr>
+          <td>radius-full</td>
+          <td>9999px</td>
+          <td>Avatares, pills, toggles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 04 — BOTÕES -->
+  <div class="section reveal">
+    <div class="section-number">04 — Botões</div>
+    <h2>Botões</h2>
+
+    <p>Os botões são os principais elementos de ação da interface. Devem ser claramente distinguíveis e hierarquizados conforme a importância da ação que representam.</p>
+
+    <h3>Hierarquia de Botões</h3>
+    <div class="component-toggle" data-target="code-buttons">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+    <div class="code-block" id="code-buttons-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;!-- Botão Primário --&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Ação Principal&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Ação Principal&lt;/button&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Ação Principal&lt;/button&gt;
+
+&lt;!-- Botão Secundário --&gt;
+&lt;button class="btn btn-secondary"&gt;Ação Secundária&lt;/button&gt;
+
+&lt;!-- Botão Ghost --&gt;
+&lt;button class="btn btn-ghost"&gt;Ação Terciária&lt;/button&gt;</div>
+    <div class="code-block" id="code-buttons-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.btn-primary {
+  background: #2B6CB0;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(43,108,176,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #2B6CB0;
+  border-color: #2B6CB0;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #475569;
+  border-color: #E2E8F0;
+}
+
+.btn-sm { padding: 0.45rem 1.1rem; font-size: 0.75rem; }
+.btn-lg { padding: 0.875rem 2rem; font-size: 0.9rem; }</div>
+    <div class="component-demo">
+      <div style="margin-bottom: 1.5rem;">
+        <div class="type-label">Primário — Ação principal</div>
+        <button class="btn-demo btn-primary btn-lg">Ação Principal</button>
+        <button class="btn-demo btn-primary">Ação Principal</button>
+        <button class="btn-demo btn-primary btn-sm">Ação Principal</button>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <div class="type-label">Secundário — Ação alternativa</div>
+        <button class="btn-demo btn-secondary btn-lg">Ação Secundária</button>
+        <button class="btn-demo btn-secondary">Ação Secundária</button>
+        <button class="btn-demo btn-secondary btn-sm">Ação Secundária</button>
+      </div>
+      <div>
+        <div class="type-label">Ghost — Ação terciária</div>
+        <button class="btn-demo btn-ghost btn-lg">Ação Terciária</button>
+        <button class="btn-demo btn-ghost">Ação Terciária</button>
+        <button class="btn-demo btn-ghost btn-sm">Ação Terciária</button>
+      </div>
+    </div>
+
+    <h3>Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Small</th>
+          <th>Default</th>
+          <th>Large</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Padding</td>
+          <td>8px 20px</td>
+          <td>12px 28px</td>
+          <td>16px 36px</td>
+        </tr>
+        <tr>
+          <td>Font Size</td>
+          <td>0.8rem</td>
+          <td>0.875rem</td>
+          <td>1rem</td>
+        </tr>
+        <tr>
+          <td>Font Weight</td>
+          <td>600</td>
+          <td>600</td>
+          <td>600</td>
+        </tr>
+        <tr>
+          <td>Border Radius</td>
+          <td>8px</td>
+          <td>8px</td>
+          <td>8px</td>
+        </tr>
+        <tr>
+          <td>Min Height</td>
+          <td>32px</td>
+          <td>40px</td>
+          <td>48px</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 05 — FORMULÁRIOS E INPUTS -->
+  <div class="section reveal">
+    <div class="section-number">05 — Formulários</div>
+    <h2>Formulários e Inputs</h2>
+
+    <p>Os campos de formulário devem ser claros, acessíveis e fornecer feedback visual imediato ao usuário. Labels devem estar sempre visíveis (não usar apenas placeholders como labels).</p>
+
+    <div class="component-toggle" data-target="code-forms">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+    <div class="code-block" id="code-forms-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="form-group"&gt;
+  &lt;label for="company"&gt;Nome da Empresa&lt;/label&gt;
+  &lt;input type="text" id="company"
+    placeholder="Ex: Indústria ABC Ltda"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+  &lt;label for="module"&gt;Módulo&lt;/label&gt;
+  &lt;select id="module"&gt;
+    &lt;option&gt;Selecione um módulo&lt;/option&gt;
+    &lt;option&gt;Gestão de Estoque&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-forms-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 380px;
+  margin: 1rem 0;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #1E293B;
+  outline: none;
+  transition: all 0.18s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3A8FD6;
+  box-shadow: 0 0 0 3px rgba(58,143,214,0.12);
+}</div>
+    <div class="component-demo">
+      <div class="input-demo">
+        <label>Nome da Empresa</label>
+        <input type="text" placeholder="Ex: Indústria ABC Ltda">
+      </div>
+      <div class="input-demo">
+        <label>E-mail Corporativo</label>
+        <input type="email" placeholder="contato@empresa.com.br">
+      </div>
+      <div class="input-demo">
+        <label>Módulo de Interesse</label>
+        <select>
+          <option>Selecione um módulo</option>
+          <option>Gestão de Estoque</option>
+          <option>Automação Logística</option>
+          <option>Rastreabilidade</option>
+          <option>Dashboards e KPIs</option>
+        </select>
+      </div>
+    </div>
+
+    <h3>Especificações de Input</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Padding</td>
+          <td>12px 16px</td>
+        </tr>
+        <tr>
+          <td>Border</td>
+          <td>1.5px solid #E2E8F0</td>
+        </tr>
+        <tr>
+          <td>Border (focus)</td>
+          <td>1.5px solid #3A8FD6</td>
+        </tr>
+        <tr>
+          <td>Border Radius</td>
+          <td>8px</td>
+        </tr>
+        <tr>
+          <td>Font Size</td>
+          <td>0.9rem (Inter)</td>
+        </tr>
+        <tr>
+          <td>Label Font Size</td>
+          <td>0.8rem (Inter, weight 600)</td>
+        </tr>
+        <tr>
+          <td>Focus Ring</td>
+          <td>0 0 0 3px rgba(58,143,214,0.15)</td>
+        </tr>
+        <tr>
+          <td>Min Height</td>
+          <td>44px</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 06 — CARDS -->
+  <div class="section reveal">
+    <div class="section-number">06 — Cards</div>
+    <h2>Cards</h2>
+
+    <p>Cards são containers versáteis para agrupar informações relacionadas. Na plataforma Sysled, são utilizados para módulos, métricas, alertas e itens de lista. O design deve ser limpo, com hierarquia clara entre título, conteúdo e ações.</p>
+
+    <div class="component-toggle" data-target="code-cards">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+    <div class="code-block" id="code-cards-html"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>&lt;div class="card"&gt;
+  &lt;h4&gt;Gestão de Estoque&lt;/h4&gt;
+  &lt;p&gt;Controle inteligente de entradas,
+  saídas e posições em tempo real.&lt;/p&gt;
+  &lt;button class="btn btn-primary btn-sm"&gt;
+    Acessar Módulo
+  &lt;/button&gt;
+&lt;/div&gt;</div>
+    <div class="code-block" id="code-cards-css"><button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>.card {
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  background: #FFFFFF;
+  max-width: 380px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06),
+              0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+.card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+}
+
+.card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: #94A3B8;
+}</div>
+    <div class="component-demo" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+      <div class="card-demo">
+        <h4>Gestão de Estoque</h4>
+        <p>Controle inteligente de entradas, saídas e posições de estoque em tempo real com alertas automáticos.</p>
+        <div style="margin-top: 1rem;">
+          <button class="btn-demo btn-primary btn-sm">Acessar Módulo</button>
+        </div>
+      </div>
+      <div class="card-demo">
+        <h4>Automação Logística</h4>
+        <p>Automatize separações, alocações e movimentações com regras configuráveis por operação.</p>
+        <div style="margin-top: 1rem;">
+          <button class="btn-demo btn-secondary btn-sm">Saiba Mais</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>Especificações de Card</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Padding</td>
+          <td>24px — 32px</td>
+        </tr>
+        <tr>
+          <td>Border</td>
+          <td>1px solid #E2E8F0</td>
+        </tr>
+        <tr>
+          <td>Border Radius</td>
+          <td>16px</td>
+        </tr>
+        <tr>
+          <td>Background</td>
+          <td>#FFFFFF</td>
+        </tr>
+        <tr>
+          <td>Hover Shadow</td>
+          <td>0 8px 32px rgba(0,0,0,0.08)</td>
+        </tr>
+        <tr>
+          <td>Hover Transform</td>
+          <td>translateY(-2px)</td>
+        </tr>
+        <tr>
+          <td>Transition</td>
+          <td>0.3s ease</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 07 — MODAIS E DIALOGS -->
+  <div class="section reveal">
+    <div class="section-number">07 — Modais e Dialogs</div>
+    <h2>Modais e Dialogs</h2>
+
+    <p>Modais são sobreposições que capturam a atenção do usuário para ações importantes — confirmações, formulários, alertas e visualização de conteúdo. Devem ser usados com parcimônia para não interromper o fluxo.</p>
+
+    <h3>Tipos de Modal</h3>
+
+    <div class="component-toggle" data-target="code-modais">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-modais-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Modal Overlay --&gt;
+&lt;div class="modal-overlay" id="myModal"&gt;
+  &lt;div class="modal-container modal-md"&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h3&gt;Título do Modal&lt;/h3&gt;
+      &lt;button class="modal-close" aria-label="Fechar"&gt;
+        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2"&gt;
+          &lt;line x1="18" y1="6" x2="6" y2="18"/&gt;
+          &lt;line x1="6" y1="6" x2="18" y2="18"/&gt;
+        &lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Body --&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Conteúdo do modal aqui.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn-secondary-sm"&gt;Cancelar&lt;/button&gt;
+      &lt;button class="btn-primary-sm"&gt;Confirmar&lt;/button&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tamanhos: modal-sm | modal-md | modal-lg | modal-full --&gt;
+
+&lt;!-- Dialog de Confirmação --&gt;
+&lt;div class="modal-overlay"&gt;
+  &lt;div class="modal-container modal-sm"&gt;
+    &lt;div class="modal-body" style="text-align:center; padding-top:2rem;"&gt;
+      &lt;div class="modal-icon modal-icon-warning"&gt;!&lt;/div&gt;
+      &lt;h3&gt;Tem certeza?&lt;/h3&gt;
+      &lt;p&gt;Esta ação não pode ser desfeita.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer" style="justify-content:center;"&gt;
+      &lt;button class="btn-secondary-sm"&gt;Cancelar&lt;/button&gt;
+      &lt;button class="btn-danger-sm"&gt;Excluir&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dialog de Alerta / Sucesso --&gt;
+&lt;div class="modal-overlay"&gt;
+  &lt;div class="modal-container modal-sm"&gt;
+    &lt;div class="modal-body" style="text-align:center; padding-top:2rem;"&gt;
+      &lt;div class="modal-icon modal-icon-success"&gt;&#10003;&lt;/div&gt;
+      &lt;h3&gt;Operação concluída&lt;/h3&gt;
+      &lt;p&gt;Os dados foram salvos com sucesso.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer" style="justify-content:center;"&gt;
+      &lt;button class="btn-primary-sm"&gt;OK&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-modais-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Modal Container */
+.modal-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15),
+              0 2px 12px rgba(0,0,0,0.08);
+  width: 100%;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.25s ease;
+}
+
+/* Tamanhos */
+.modal-sm  { max-width: 400px; }
+.modal-md  { max-width: 560px; }
+.modal-lg  { max-width: 720px; }
+.modal-full { max-width: 95vw; max-height: 95vh; }
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.modal-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.modal-close {
+  width: 32px; height: 32px;
+  border: none; background: transparent;
+  border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center;
+  justify-content: center; color: #64748B;
+  transition: all 0.15s;
+}
+.modal-close:hover {
+  background: #F1F5F9; color: #0F172A;
+}
+.modal-close svg { width: 18px; height: 18px; }
+
+/* Body */
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Footer */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+/* Icon para Dialogs */
+.modal-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; font-weight: 700;
+  margin: 0 auto 1rem;
+}
+.modal-icon-warning {
+  background: #FEF3C7; color: #D97706;
+}
+.modal-icon-success {
+  background: #D1FAE5; color: #059669;
+}
+.modal-icon-danger {
+  background: #FEE2E2; color: #DC2626;
+}
+.modal-icon-info {
+  background: #DBEAFE; color: #2B6CB0;
+}
+
+/* Botão Danger */
+.btn-danger-sm {
+  padding: 8px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem; font-weight: 600;
+  border: none; border-radius: 8px;
+  background: #DC2626; color: #FFFFFF;
+  cursor: pointer; transition: all 0.15s;
+}
+.btn-danger-sm:hover { background: #C53030; }</code></pre>
+    </div>
+
+    <!-- Preview: Modal Padrão -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Modal Padrão (md)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 320px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 480px; overflow: hidden;">
+          <!-- Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #E2E8F0;">
+            <span style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A;">Editar Produto</span>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; color: #64748B; font-size: 1.1rem; cursor: pointer;">&#10005;</div>
+          </div>
+          <!-- Body -->
+          <div style="padding: 1.5rem;">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Nome do Produto</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: #0F172A; background: #FFFFFF;">LED Painel Solar 200W</div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Categoria</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: #64748B; background: #FFFFFF;">Selecione uma categoria &#9662;</div>
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: #64748B; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em;">Descrição</label>
+              <div style="padding: 10px 14px; border: 1.5px solid #E2E8F0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: #94A3B8; background: #FFFFFF; min-height: 60px;">Adicione uma descrição...</div>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid #E2E8F0;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cancelar</button>
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Dialog de Confirmação -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Dialog de Confirmação (sm)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 260px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 360px; overflow: hidden;">
+          <div style="padding: 2rem 1.5rem 1rem; text-align: center;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem;">!</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin: 0 0 0.5rem;">Excluir item?</h4>
+            <p style="font-family: var(--font-body); font-size: 0.9rem; color: #64748B; margin: 0;">Esta ação não pode ser desfeita. O item será removido permanentemente.</p>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem 1.5rem;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: 1.5px solid #E2E8F0; border-radius: 8px; background: transparent; color: #64748B; cursor: pointer;">Cancelar</button>
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #DC2626; color: #FFFFFF; cursor: pointer;">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Dialog de Sucesso -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Dialog de Sucesso (sm)</p>
+      <div style="background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); border-radius: 16px; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 240px;">
+        <div style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.15); width: 100%; max-width: 360px; overflow: hidden;">
+          <div style="padding: 2rem 1.5rem 1rem; text-align: center;">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem;">&#10003;</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #0F172A; margin: 0 0 0.5rem;">Produto cadastrado!</h4>
+            <p style="font-family: var(--font-body); font-size: 0.9rem; color: #64748B; margin: 0;">O item foi adicionado ao estoque com sucesso.</p>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem 1.5rem;">
+            <button style="padding: 8px 20px; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; border: none; border-radius: 8px; background: #2B6CB0; color: #FFFFFF; cursor: pointer; box-shadow: 0 2px 8px rgba(43,108,176,0.3);">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tamanhos -->
+    <h3 style="margin-top: 2.5rem;">Tamanhos de Modal</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Small</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400); margin-top: 0.25rem;">max-width: 400px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Confirmações, alertas</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; text-align: center; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Medium</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400); margin-top: 0.25rem;">max-width: 560px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Formulários, detalhes</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Large</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400); margin-top: 0.25rem;">max-width: 720px</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Tabelas, conteúdo rico</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Full</div>
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400); margin-top: 0.25rem;">max-width: 95vw</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Editores, dashboards</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Focus Trap</strong></td><td>O foco do teclado deve ficar preso dentro do modal enquanto aberto. Tab e Shift+Tab ciclam entre os elementos focáveis.</td></tr>
+        <tr><td><strong>Fechar com ESC</strong></td><td>Pressionar Escape deve fechar o modal. Clicar no overlay (fundo escuro) também fecha.</td></tr>
+        <tr><td><strong>Animação</strong></td><td>Entrada com <code>fadeIn</code> (overlay) + <code>slideUp</code> (container). Duração: 200-250ms, easing: ease.</td></tr>
+        <tr><td><strong>Scroll do Body</strong></td><td>Adicionar <code>overflow: hidden</code> ao <code>&lt;body&gt;</code> quando modal está aberto para evitar scroll duplo.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Usar <code>role="dialog"</code>, <code>aria-modal="true"</code>, e <code>aria-labelledby</code> apontando para o título.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Em telas &lt; 640px, modais devem expandir para largura total com <code>border-radius</code> apenas no topo (estilo bottom sheet).</td></tr>
+        <tr><td><strong>Ações Destrutivas</strong></td><td>Botões de exclusão/perigo usam cor <code>#DC2626</code>. Sempre exigir confirmação explícita.</td></tr>
+        <tr><td><strong>Máximo de Profundidade</strong></td><td>Evitar modais sobre modais (máximo 1 nível). Para fluxos complexos, usar stepper dentro do modal.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Overlay Background</td><td><code>rgba(15, 23, 42, 0.6)</code> + <code>backdrop-filter: blur(4px)</code></td></tr>
+        <tr><td>Container Border Radius</td><td><code>16px</code></td></tr>
+        <tr><td>Container Shadow</td><td><code>0 8px 40px rgba(0,0,0,0.15), 0 2px 12px rgba(0,0,0,0.08)</code></td></tr>
+        <tr><td>Header Padding</td><td><code>1.25rem 1.5rem</code></td></tr>
+        <tr><td>Body Padding</td><td><code>1.5rem</code></td></tr>
+        <tr><td>Footer Padding</td><td><code>1rem 1.5rem</code></td></tr>
+        <tr><td>Header Border</td><td><code>1px solid #E2E8F0</code></td></tr>
+        <tr><td>Footer Border</td><td><code>1px solid #E2E8F0</code></td></tr>
+        <tr><td>Close Button</td><td><code>32px × 32px</code>, radius <code>8px</code></td></tr>
+        <tr><td>Title Font</td><td>Montserrat, <code>1.1rem</code>, weight <code>700</code></td></tr>
+        <tr><td>Max Height</td><td><code>85vh</code> (body com overflow-y: auto)</td></tr>
+        <tr><td>Z-Index</td><td><code>1000</code> (--z-modal)</td></tr>
+        <tr><td>Animation</td><td>fadeIn <code>200ms</code> + slideUp <code>250ms</code>, easing: ease</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 08 — NOTIFICAÇÕES E TOASTS -->
+  <div class="section reveal">
+    <div class="section-number">08 — Notificações e Toasts</div>
+    <h2>Notificações e Toasts</h2>
+
+    <p>Notificações fornecem feedback contextual ao usuário sobre ações realizadas, erros, avisos ou informações importantes. Toasts são temporários e não-intrusivos; Banners são persistentes e exigem ação.</p>
+
+    <h3>Toast Notifications</h3>
+
+    <div class="component-toggle" data-target="code-toasts">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-toasts-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Toast Container (posição fixa) --&gt;
+&lt;div class="toast-container" role="alert" aria-live="polite"&gt;
+
+  &lt;!-- Toast Sucesso --&gt;
+  &lt;div class="toast toast-success"&gt;
+    &lt;div class="toast-icon"&gt;
+      &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2"&gt;
+        &lt;polyline points="20 6 9 17 4 12"/&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class="toast-content"&gt;
+      &lt;strong&gt;Sucesso&lt;/strong&gt;
+      &lt;span&gt;Produto cadastrado com sucesso.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="toast-close" aria-label="Fechar"&gt;&amp;times;&lt;/button&gt;
+    &lt;div class="toast-progress"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Toast Erro --&gt;
+  &lt;div class="toast toast-error"&gt;...&lt;/div&gt;
+
+  &lt;!-- Toast Aviso --&gt;
+  &lt;div class="toast toast-warning"&gt;...&lt;/div&gt;
+
+  &lt;!-- Toast Info --&gt;
+  &lt;div class="toast toast-info"&gt;...&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Banner de Alerta (inline, persistente) --&gt;
+&lt;div class="alert-banner alert-warning"&gt;
+  &lt;div class="alert-icon"&gt;&#9888;&lt;/div&gt;
+  &lt;div class="alert-content"&gt;
+    &lt;strong&gt;Atenção:&lt;/strong&gt;
+    Sua licença expira em 7 dias.
+    &lt;a href="#"&gt;Renovar agora&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;button class="alert-dismiss"&gt;&amp;times;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-toasts-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Toast Container */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 380px;
+}
+
+/* Toast Base */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border-left: 4px solid;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12),
+              0 1px 4px rgba(0,0,0,0.06);
+  animation: toastSlideIn 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Variantes */
+.toast-success { border-color: #059669; }
+.toast-error   { border-color: #DC2626; }
+.toast-warning { border-color: #D97706; }
+.toast-info    { border-color: #2B6CB0; }
+
+/* Ícone */
+.toast-icon {
+  width: 24px; height: 24px;
+  border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center;
+  justify-content: center;
+}
+.toast-icon svg { width: 16px; height: 16px; }
+
+.toast-success .toast-icon { background: #D1FAE5; color: #059669; }
+.toast-error .toast-icon   { background: #FEE2E2; color: #DC2626; }
+.toast-warning .toast-icon { background: #FEF3C7; color: #D97706; }
+.toast-info .toast-icon    { background: #DBEAFE; color: #2B6CB0; }
+
+/* Alert Banners (inline) */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+}
+.alert-success { background: #F0FDF4; border-color: #BBF7D0; color: #166534; }
+.alert-error   { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+.alert-warning { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
+.alert-info    { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }</code></pre>
+    </div>
+
+    <!-- Preview: Toasts -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Toast Notifications</p>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px;">
+
+        <!-- Toast Sucesso -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #059669; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #D1FAE5; color: #059669; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">&#10003;</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Sucesso</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Produto cadastrado com sucesso.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">&#10005;</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 70%; background: #059669; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Erro -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #DC2626; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #FEE2E2; color: #DC2626; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">&#10005;</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Erro</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Falha ao conectar com o servidor.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">&#10005;</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 45%; background: #DC2626; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Aviso -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #D97706; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">!</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Aviso</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Sua sessão expira em 5 minutos.</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">&#10005;</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 90%; background: #D97706; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+        <!-- Toast Info -->
+        <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: 12px; background: #FFFFFF; border-left: 4px solid #2B6CB0; box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #DBEAFE; color: #2B6CB0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; font-weight: 700;">i</div>
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: #0F172A;">Informação</div>
+            <div style="font-family: var(--font-body); font-size: 0.8rem; color: #64748B; margin-top: 2px;">Nova atualização disponível (v2.1).</div>
+          </div>
+          <span style="color: #94A3B8; font-size: 1.1rem; cursor: pointer; line-height: 1;">&#10005;</span>
+          <div style="position: absolute; bottom: 0; left: 0; height: 3px; width: 20%; background: #2B6CB0; border-radius: 0 2px 2px 0;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Preview: Alert Banners -->
+    <h3 style="margin-top: 2.5rem;">Alert Banners (Inline)</h3>
+    <p>Banners são persistentes e exibidos inline no conteúdo. Usados para mensagens que exigem atenção contínua ou ação do usuário.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+        <!-- Banner Sucesso -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #F0FDF4; border: 1px solid #BBF7D0; font-family: var(--font-body); font-size: 0.85rem; color: #166534;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">&#9989;</span>
+          <div style="flex: 1;"><strong>Importação concluída.</strong> 248 produtos foram adicionados ao catálogo.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">&#10005;</span>
+        </div>
+
+        <!-- Banner Erro -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #FEF2F2; border: 1px solid #FECACA; font-family: var(--font-body); font-size: 0.85rem; color: #991B1B;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">&#10060;</span>
+          <div style="flex: 1;"><strong>Erro de sincronização.</strong> Verifique sua conexão e <a href="#" style="color: #991B1B; font-weight: 600; text-decoration: underline;">tente novamente</a>.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">&#10005;</span>
+        </div>
+
+        <!-- Banner Aviso -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #FFFBEB; border: 1px solid #FDE68A; font-family: var(--font-body); font-size: 0.85rem; color: #92400E;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">&#9888;&#65039;</span>
+          <div style="flex: 1;"><strong>Atenção:</strong> Sua licença expira em 7 dias. <a href="#" style="color: #92400E; font-weight: 600; text-decoration: underline;">Renovar agora</a></div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">&#10005;</span>
+        </div>
+
+        <!-- Banner Info -->
+        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; border-radius: 10px; background: #EFF6FF; border: 1px solid #BFDBFE; font-family: var(--font-body); font-size: 0.85rem; color: #1E40AF;">
+          <span style="font-size: 1.1rem; flex-shrink: 0;">&#8505;&#65039;</span>
+          <div style="flex: 1;"><strong>Manutenção programada</strong> para sábado, 08/03, das 02h às 06h.</div>
+          <span style="opacity: 0.5; cursor: pointer; font-size: 1.1rem;">&#10005;</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Posicionamento -->
+    <h3 style="margin-top: 2.5rem;">Posicionamento dos Toasts</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; text-align: center; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Top Right</div>
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.25rem;">top: 1.5rem; right: 1.5rem;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Padrão recomendado</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Top Center</div>
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.25rem;">top: 1.5rem; left: 50%;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Ações globais</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Bottom Right</div>
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.25rem;">bottom: 1.5rem; right: 1.5rem;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Chat, uploads</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Bottom Center</div>
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.25rem;">bottom: 1.5rem; left: 50%;</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Mobile (snackbar)</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Duração</strong></td><td>Toasts de sucesso/info: 5 segundos. Toasts de erro: persistente até dismiss manual. Avisos: 8 segundos.</td></tr>
+        <tr><td><strong>Empilhamento</strong></td><td>Máximo de 3 toasts visíveis. Novos toasts empurram os anteriores para baixo. Mais antigos saem primeiro (FIFO).</td></tr>
+        <tr><td><strong>Progress Bar</strong></td><td>Barra de progresso na base indica tempo restante antes do auto-dismiss. Pausar ao hover.</td></tr>
+        <tr><td><strong>Ações</strong></td><td>Toasts podem ter 1 ação (ex: "Desfazer"). Máximo de 1 botão de ação + botão de fechar.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td>Container com <code>role="alert"</code> e <code>aria-live="polite"</code>. Toasts de erro usar <code>aria-live="assertive"</code>.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Em telas &lt; 640px, toasts ocupam largura total com <code>margin: 0 1rem</code>. Posição: bottom center (snackbar).</td></tr>
+        <tr><td><strong>Banners vs Toasts</strong></td><td>Usar <strong>toast</strong> para feedback de ação (salvar, excluir). Usar <strong>banner</strong> para estados persistentes (expiração, manutenção).</td></tr>
+        <tr><td><strong>Cores Semânticas</strong></td><td>Success: <code>#059669</code> · Error: <code>#DC2626</code> · Warning: <code>#D97706</code> · Info: <code>#2B6CB0</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Toast</th><th>Banner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Max Width</td><td><code>380px</code></td><td><code>100%</code> (inline)</td></tr>
+        <tr><td>Padding</td><td><code>1rem 1.25rem</code></td><td><code>0.875rem 1.25rem</code></td></tr>
+        <tr><td>Border Radius</td><td><code>12px</code></td><td><code>10px</code></td></tr>
+        <tr><td>Border</td><td><code>4px left</code> (cor semântica)</td><td><code>1px solid</code> (cor clara)</td></tr>
+        <tr><td>Background</td><td><code>#FFFFFF</code></td><td>Cor semântica clara (ex: <code>#F0FDF4</code>)</td></tr>
+        <tr><td>Shadow</td><td><code>0 4px 20px rgba(0,0,0,0.12)</code></td><td>Nenhuma</td></tr>
+        <tr><td>Ícone</td><td><code>28px</code> circular com bg</td><td>Emoji ou SVG <code>1.1rem</code></td></tr>
+        <tr><td>Título</td><td>Montserrat, <code>0.85rem</code>, 600</td><td>Inter bold inline</td></tr>
+        <tr><td>Texto</td><td>Inter, <code>0.8rem</code>, #64748B</td><td>Inter, <code>0.875rem</code></td></tr>
+        <tr><td>Animação</td><td><code>slideIn 300ms</code> ease</td><td>Nenhuma (inline)</td></tr>
+        <tr><td>Z-Index</td><td><code>9999</code> (--z-toast)</td><td>Herda do contexto</td></tr>
+        <tr><td>Auto-dismiss</td><td>5s (progress bar)</td><td>Não (manual)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 09 — TABELAS DE DADOS -->
+  <div class="section reveal">
+    <div class="section-number">09 — Tabelas de Dados</div>
+    <h2>Tabelas de Dados</h2>
+
+    <p>Tabelas organizam dados estruturados em linhas e colunas para facilitar leitura, comparação e análise. No contexto Sysled, são usadas em listagens de produtos, relatórios logísticos, dashboards de estoque e históricos de operações.</p>
+
+    <h3>Tabela Padrão</h3>
+
+    <div class="component-toggle" data-target="code-tabelas">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-tabelas-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;div class="table-wrapper"&gt;
+  &lt;table class="data-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;input type="checkbox" class="table-check" /&gt;&lt;/th&gt;
+        &lt;th class="sortable"&gt;Código &lt;span class="sort-icon"&gt;&amp;#x25B4;&amp;#x25BE;&lt;/span&gt;&lt;/th&gt;
+        &lt;th class="sortable active-sort"&gt;Produto &lt;span class="sort-icon"&gt;&amp;#x25B4;&lt;/span&gt;&lt;/th&gt;
+        &lt;th&gt;Categoria&lt;/th&gt;
+        &lt;th class="text-right"&gt;Estoque&lt;/th&gt;
+        &lt;th class="text-right"&gt;Preço&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th&gt;Ações&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="checkbox" class="table-check" /&gt;&lt;/td&gt;
+        &lt;td class="text-mono"&gt;#LED-001&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;Painel Solar 200W&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;Energia Solar&lt;/td&gt;
+        &lt;td class="text-right"&gt;1.240&lt;/td&gt;
+        &lt;td class="text-right"&gt;R$ 489,90&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-success"&gt;Ativo&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;button class="table-action"&gt;•••&lt;/button&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-tabelas-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Table Wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+}
+
+.data-table thead {
+  background: #F8FAFC;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.data-table th {
+  padding: 0.75rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { color: #2B6CB0; }
+.active-sort { color: #2B6CB0; }
+
+.data-table td {
+  padding: 0.75rem 1rem;
+  color: #334155;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.badge-success { background: #D1FAE5; color: #059669; }
+.badge-warning { background: #FEF3C7; color: #D97706; }
+.badge-error   { background: #FEE2E2; color: #DC2626; }
+.badge-info    { background: #DBEAFE; color: #2B6CB0; }
+.badge-neutral { background: #F1F5F9; color: #64748B; }</code></pre>
+    </div>
+
+    <!-- Preview: Tabela completa -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Tabela com Sorting, Badges e Paginação</p>
+
+      <div style="overflow-x: auto; border: 1px solid #E2E8F0; border-radius: 12px; background: #FFFFFF;">
+        <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.85rem;">
+          <thead>
+            <tr style="background: #F8FAFC; border-bottom: 2px solid #E2E8F0;">
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; width: 36px;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap;">Código <span style="font-size: 0.6rem; opacity: 0.4;">&#9652;&#9662;</span></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #2B6CB0; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; white-space: nowrap;">Produto <span style="font-size: 0.6rem;">&#9652;</span></th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Categoria</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Estoque</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Preço</th>
+              <th style="padding: 0.75rem 1rem; text-align: left; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em;">Status</th>
+              <th style="padding: 0.75rem 1rem; text-align: center; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; width: 60px;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">#LED-001</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Painel Solar 200W</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Energia Solar</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">1.240</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 489,90</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="background: #FAFBFC; border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" checked /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">#LED-042</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Luminária Industrial 150W</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Iluminação</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">856</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 329,00</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">#LED-078</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Refletor LED 500W IP65</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Iluminação Externa</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #D97706; font-weight: 500;">23</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 1.249,00</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #FEF3C7; color: #D97706;">Baixo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="background: #FAFBFC; border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">#LED-103</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Fita LED RGB 5m</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Decoração</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #DC2626; font-weight: 500;">0</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 89,90</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #FEE2E2; color: #DC2626;">Esgotado</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F1F5F9;">
+              <td style="padding: 0.75rem 1rem;"><input type="checkbox" style="accent-color: #2B6CB0; width: 15px; height: 15px;" /></td>
+              <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: #64748B;">#LED-156</td>
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0F172A;">Sensor de Presença PIR</td>
+              <td style="padding: 0.75rem 1rem; color: #475569;">Automação</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">3.720</td>
+              <td style="padding: 0.75rem 1rem; text-align: right; color: #334155; font-weight: 500;">R$ 42,50</td>
+              <td style="padding: 0.75rem 1rem;"><span style="display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span></td>
+              <td style="padding: 0.75rem 1rem; text-align: center;"><span style="color: #94A3B8; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px;">•••</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination footer -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-top: 1px solid #E2E8F0; font-family: var(--font-body); font-size: 0.78rem; color: #64748B;">
+          <span>Mostrando 1–5 de 48 itens</span>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #CBD5E1; cursor: not-allowed;">«</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 0.78rem; background: #2B6CB0; color: #FFFFFF; font-weight: 600;">1</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">2</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">3</span>
+            <span style="color: #94A3B8; padding: 0 4px;">…</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">10</span>
+            <span style="min-width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; border-radius: 8px; font-size: 0.78rem; color: #475569; cursor: pointer;">»</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges / Status -->
+    <h3 style="margin-top: 2.5rem;">Badges de Status</h3>
+    <p>Badges comunicam estados de forma visual e compacta. Use cores semânticas consistentes em toda a aplicação.</p>
+
+    <div class="component-demo" style="margin-top: 1rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #D1FAE5; color: #059669;">Ativo</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #FEF3C7; color: #D97706;">Pendente</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #FEE2E2; color: #DC2626;">Esgotado</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #DBEAFE; color: #2B6CB0;">Em Trânsito</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #F1F5F9; color: #64748B;">Rascunho</span>
+        <span style="display: inline-block; padding: 4px 12px; border-radius: 99px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; background: #EDE9FE; color: #7C3AED;">Premium</span>
+      </div>
+    </div>
+
+    <!-- Variantes -->
+    <h3 style="margin-top: 2.5rem;">Variantes de Tabela</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: var(--white); border: 1.5px solid var(--blue-primary); border-radius: 12px; padding: 1.25rem; box-shadow: 0 0 0 3px rgba(43,108,176,0.1);">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--blue-primary);">Padrão</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Hover row, borders sutis. Uso geral para listagens.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Striped</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Linhas zebradas para tabelas densas e relatórios.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Compacta</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Padding reduzido (0.5rem). Para dashboards com muitos dados.</div>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 1.25rem;">
+        <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--dark-text);">Card View</div>
+        <div style="font-family: var(--font-body); font-size: 0.7rem; color: var(--gray-400); margin-top: 0.5rem;">Em mobile, cada row vira card com labels. Responsivo.</div>
+      </div>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Alinhamento</strong></td><td>Texto à esquerda. Números à direita (para facilitar comparação). Ações centralizadas.</td></tr>
+        <tr><td><strong>Sorting</strong></td><td>Indicar coluna ativa com cor <code>#2B6CB0</code>. Setas &#9652;&#9662; para direção. Uma coluna ordenada por vez.</td></tr>
+        <tr><td><strong>Seleção</strong></td><td>Checkbox na primeira coluna. Header checkbox seleciona todos. Destacar row selecionada com <code>background: #EFF6FF</code>.</td></tr>
+        <tr><td><strong>Empty State</strong></td><td>Quando sem dados, exibir ilustração + mensagem + CTA. Nunca deixar a tabela vazia sem feedback.</td></tr>
+        <tr><td><strong>Loading</strong></td><td>Usar skeleton rows (5 linhas) com animação pulse enquanto dados carregam.</td></tr>
+        <tr><td><strong>Paginação</strong></td><td>Exibir "Mostrando X-Y de Z" + controles. Padrão: 10 itens/página. Opções: 10, 25, 50.</td></tr>
+        <tr><td><strong>Responsivo</strong></td><td>Desktop: tabela completa. Tablet: scroll horizontal. Mobile: card view com <code>data-label</code> em cada <code>&lt;td&gt;</code>.</td></tr>
+        <tr><td><strong>Ações</strong></td><td>Botão "•••" abre dropdown com opções (Editar, Duplicar, Excluir). Máximo 4 ações no dropdown.</td></tr>
+        <tr><td><strong>Badges</strong></td><td>Sempre usar <code>white-space: nowrap</code>. Texto curto (1 palavra). Se precisar de texto longo, abreviar e usar <code>title</code> para tooltip no hover.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Wrapper Border</td><td><code>1px solid #E2E8F0</code>, radius <code>12px</code></td></tr>
+        <tr><td>Header Background</td><td><code>#F8FAFC</code></td></tr>
+        <tr><td>Header Font</td><td>Montserrat, <code>0.75rem</code>, 600, uppercase, <code>#64748B</code></td></tr>
+        <tr><td>Header Border</td><td><code>2px solid #E2E8F0</code> (bottom)</td></tr>
+        <tr><td>Cell Padding</td><td><code>0.75rem 1rem</code> (padrão) · <code>0.5rem 0.75rem</code> (compacta)</td></tr>
+        <tr><td>Cell Font</td><td>Inter, <code>0.875rem</code>, <code>#334155</code></td></tr>
+        <tr><td>Row Border</td><td><code>1px solid #F1F5F9</code></td></tr>
+        <tr><td>Row Hover</td><td><code>background: #F8FAFC</code></td></tr>
+        <tr><td>Selected Row</td><td><code>background: #EFF6FF</code></td></tr>
+        <tr><td>Badge Padding</td><td><code>3px 10px</code>, radius <code>99px</code>, font <code>0.7rem</code> 600</td></tr>
+        <tr><td>Pagination Button</td><td><code>32px × 32px</code>, radius <code>8px</code>, border <code>1px #E2E8F0</code></td></tr>
+        <tr><td>Checkbox</td><td><code>16px × 16px</code>, <code>accent-color: #2B6CB0</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10 — TABS E NAVEGAÇÃO POR ABAS -->
+  <div class="section reveal">
+    <div class="section-number">10 — Tabs e Navegação por Abas</div>
+    <h2>Tabs e Navegação por Abas</h2>
+
+    <p>Tabs organizam conteúdo em painéis alternáveis, permitindo ao usuário navegar entre seções relacionadas sem sair da página. Essenciais para dashboards, configurações e páginas de detalhe de produtos.</p>
+
+    <h3>Variantes de Tabs</h3>
+
+    <div class="component-toggle" data-target="code-tabs">
+      <button class="active" onclick="showPreview(this)">Preview</button>
+      <button onclick="showCode(this, 'html')">HTML</button>
+      <button onclick="showCode(this, 'css')">CSS</button>
+    </div>
+
+    <div class="code-block" id="code-tabs-html">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>&lt;!-- Tabs Underline (padrão) --&gt;
+&lt;div class="tabs-container"&gt;
+  &lt;nav class="tabs tabs-underline" role="tablist"&gt;
+    &lt;button class="tab active" role="tab"
+            aria-selected="true" aria-controls="panel-1"&gt;
+      Visão Geral
+    &lt;/button&gt;
+    &lt;button class="tab" role="tab"
+            aria-selected="false" aria-controls="panel-2"&gt;
+      Estoque
+    &lt;/button&gt;
+    &lt;button class="tab" role="tab"
+            aria-selected="false" aria-controls="panel-3"&gt;
+      Histórico
+    &lt;/button&gt;
+    &lt;button class="tab disabled" role="tab"
+            aria-disabled="true"&gt;
+      Relatórios
+    &lt;/button&gt;
+  &lt;/nav&gt;
+  &lt;div class="tab-panel active" id="panel-1" role="tabpanel"&gt;
+    &lt;!-- Conteúdo da aba --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tabs Pill --&gt;
+&lt;nav class="tabs tabs-pill" role="tablist"&gt;
+  &lt;button class="tab active"&gt;Todos&lt;/button&gt;
+  &lt;button class="tab"&gt;Ativos&lt;/button&gt;
+  &lt;button class="tab"&gt;Inativos&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tabs Boxed --&gt;
+&lt;nav class="tabs tabs-boxed" role="tablist"&gt;
+  &lt;button class="tab active"&gt;Mensal&lt;/button&gt;
+  &lt;button class="tab"&gt;Trimestral&lt;/button&gt;
+  &lt;button class="tab"&gt;Anual&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tabs com Ícone + Badge --&gt;
+&lt;nav class="tabs tabs-underline" role="tablist"&gt;
+  &lt;button class="tab active"&gt;
+    &lt;svg&gt;...&lt;/svg&gt; Pedidos
+    &lt;span class="tab-badge"&gt;12&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="tab"&gt;
+    &lt;svg&gt;...&lt;/svg&gt; Devoluções
+    &lt;span class="tab-badge"&gt;3&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="code-block" id="code-tabs-css">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)">Copiar</button>
+      <pre><code>/* Tabs Container */
+.tabs-container { width: 100%; }
+
+/* Tabs Nav Base */
+.tabs {
+  display: flex; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+/* Tab Button Base */
+.tab {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem; font-weight: 600;
+  color: #64748B; background: none;
+  border: none; cursor: pointer;
+  white-space: nowrap; transition: all 0.15s;
+  position: relative;
+}
+.tab:hover { color: #2B6CB0; }
+.tab.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+/* Underline Variant */
+.tabs-underline { border-bottom: 2px solid #E2E8F0; }
+.tabs-underline .tab { margin-bottom: -2px; border-bottom: 2px solid transparent; }
+.tabs-underline .tab.active { color: #2B6CB0; border-bottom-color: #2B6CB0; }
+
+/* Pill Variant */
+.tabs-pill { background: #F1F5F9; border-radius: 10px; padding: 4px; gap: 4px; }
+.tabs-pill .tab { border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.tabs-pill .tab.active { background: #FFFFFF; color: #0F172A; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+/* Boxed Variant */
+.tabs-boxed { border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 4px; gap: 0; display: inline-flex; }
+.tabs-boxed .tab { border-radius: 8px; padding: 0.5rem 1.25rem; font-size: 0.75rem; }
+.tabs-boxed .tab.active { background: #2B6CB0; color: #FFFFFF; }
+
+/* Tab Badge */
+.tab-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; border-radius: 99px;
+  font-size: 0.65rem; font-weight: 700;
+  background: #EFF6FF; color: #2B6CB0; padding: 0 5px;
+}
+.tab.active .tab-badge { background: #2B6CB0; color: #FFFFFF; }</code></pre>
+    </div>
+
+    <!-- Preview: Underline Tabs -->
+    <div class="component-demo">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Underline (Padrão)</p>
+
+      <div style="width: 100%;">
+        <nav id="demo-tabs-underline" style="display: flex; border-bottom: 2px solid #E2E8F0; gap: 0;">
+          <button onclick="switchDemoTab(this, 'underline')" class="demo-tab-active" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #2B6CB0; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid #2B6CB0;">Visão Geral</button>
+          <button onclick="switchDemoTab(this, 'underline')" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">Estoque</button>
+          <button onclick="switchDemoTab(this, 'underline')" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">Histórico</button>
+          <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent; opacity: 0.4; cursor: not-allowed;">Relatórios</button>
+        </nav>
+        <div style="padding: 1.25rem 0.5rem; font-family: var(--font-body); font-size: 0.85rem; color: var(--gray-400);">
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Produtos</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">1.248</div>
+            </div>
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Categorias</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">24</div>
+            </div>
+            <div style="flex: 1; min-width: 140px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.7rem; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">Valor Total</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: var(--dark-text); margin-top: 0.25rem;">R$ 2.4M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview: Pill Tabs -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Pill</p>
+      <nav id="demo-tabs-pill" style="display: inline-flex; background: #F1F5F9; border-radius: 10px; padding: 4px; gap: 4px;">
+        <button onclick="switchDemoTab(this, 'pill')" class="demo-tab-active" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: #FFFFFF; color: #0F172A; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">Todos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Ativos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Inativos</button>
+        <button onclick="switchDemoTab(this, 'pill')" style="padding: 0.5rem 1rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Esgotados</button>
+      </nav>
+    </div>
+
+    <!-- Preview: Boxed Tabs -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Boxed</p>
+      <nav id="demo-tabs-boxed" style="display: inline-flex; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 4px; gap: 0;">
+        <button onclick="switchDemoTab(this, 'boxed')" class="demo-tab-active" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: #2B6CB0; color: #FFFFFF;">Mensal</button>
+        <button onclick="switchDemoTab(this, 'boxed')" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Trimestral</button>
+        <button onclick="switchDemoTab(this, 'boxed')" style="padding: 0.5rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; border-radius: 8px; background: transparent; color: #64748B;">Anual</button>
+      </nav>
+    </div>
+
+    <!-- Preview: Tabs com Ícone + Badge -->
+    <div class="component-demo" style="margin-top: 2rem;">
+      <p style="font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--gray-400); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Com Ícone + Badge</p>
+      <nav style="display: flex; border-bottom: 2px solid #E2E8F0; gap: 0;">
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #2B6CB0; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid #2B6CB0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Pedidos
+          <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; background: #2B6CB0; color: #FFFFFF; padding: 0 5px;">12</span>
+        </button>
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Devoluções
+          <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; background: #EFF6FF; color: #2B6CB0; padding: 0 5px;">3</span>
+        </button>
+        <button style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: #64748B; background: none; border: none; cursor: pointer; white-space: nowrap; margin-bottom: -2px; border-bottom: 2px solid transparent;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Notas Fiscais
+        </button>
+      </nav>
+    </div>
+
+    <!-- Diretrizes -->
+    <h3 style="margin-top: 2.5rem;">Diretrizes de Uso</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Diretriz</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quando Usar</strong></td><td>Para alternar entre visões do mesmo contexto (ex: abas de um produto). <strong>Não usar</strong> para navegação entre páginas diferentes — use menu/sidebar.</td></tr>
+        <tr><td><strong>Quantidade</strong></td><td>Mínimo 2, máximo 6 tabs. Se precisar de mais, agrupar ou usar dropdown "Mais &#9662;".</td></tr>
+        <tr><td><strong>Labels</strong></td><td>Curtos (1-2 palavras). Substantivos, não verbos. Capitalização: Title Case.</td></tr>
+        <tr><td><strong>Underline vs Pill</strong></td><td><strong>Underline</strong>: navegação principal de página. <strong>Pill</strong>: filtros dentro de uma seção. <strong>Boxed</strong>: alternância binária/ternária (ex: período).</td></tr>
+        <tr><td><strong>Estado Disabled</strong></td><td>Opacidade 0.4, <code>cursor: not-allowed</code>. Usar tooltip para explicar por que está desabilitado.</td></tr>
+        <tr><td><strong>Badge</strong></td><td>Contador numérico ao lado do label. Ativo: fundo azul + texto branco. Inativo: fundo claro + texto azul. Máx 3 dígitos.</td></tr>
+        <tr><td><strong>ARIA</strong></td><td><code>role="tablist"</code> no nav, <code>role="tab"</code> nos botões, <code>role="tabpanel"</code> nos painéis. <code>aria-selected</code> e <code>aria-controls</code>.</td></tr>
+        <tr><td><strong>Teclado</strong></td><td>Setas ← → navegam entre tabs. Enter/Space ativa. Home/End vai para primeira/última.</td></tr>
+        <tr><td><strong>Mobile</strong></td><td>Scroll horizontal com <code>overflow-x: auto</code> e <code>scrollbar-width: none</code>. Nunca quebrar tabs em múltiplas linhas.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Especificações -->
+    <h3 style="margin-top: 2.5rem;">Especificações</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Propriedade</th><th>Underline</th><th>Pill</th><th>Boxed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Padding</td><td><code>0.75rem 1.25rem</code></td><td><code>0.5rem 1rem</code></td><td><code>0.5rem 1.25rem</code></td></tr>
+        <tr><td>Font Size</td><td><code>0.8rem</code></td><td><code>0.75rem</code></td><td><code>0.75rem</code></td></tr>
+        <tr><td>Font</td><td colspan="3">Montserrat, weight 600</td></tr>
+        <tr><td>Cor Inativo</td><td colspan="3"><code>#64748B</code></td></tr>
+        <tr><td>Cor Ativo</td><td><code>#2B6CB0</code></td><td><code>#0F172A</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Indicador Ativo</td><td>Border-bottom <code>2px #2B6CB0</code></td><td>Background <code>#FFF</code> + shadow</td><td>Background <code>#2B6CB0</code></td></tr>
+        <tr><td>Container</td><td>Border-bottom <code>2px #E2E8F0</code></td><td>Background <code>#F1F5F9</code>, radius <code>10px</code></td><td>Border <code>1.5px #E2E8F0</code>, radius <code>10px</code></td></tr>
+        <tr><td>Gap</td><td><code>0</code></td><td><code>4px</code></td><td><code>0</code></td></tr>
+        <tr><td>Tab Radius</td><td>Nenhum</td><td><code>8px</code></td><td><code>8px</code></td></tr>
+        <tr><td>Badge Size</td><td colspan="3"><code>20px</code> height, radius <code>99px</code>, font <code>0.65rem</code> 700</td></tr>
+        <tr><td>Transição</td><td colspan="3"><code>all 0.15s ease</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- END OF SECTIONS (file left open for continuation) -->
+
+<!-- Toast element -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('sysled-theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('sysled-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// Copy to clipboard
+function copyText(text) {
+  navigator.clipboard.writeText(text.trim()).then(() => showToast('Copiado: ' + text.trim().substring(0, 50)));
+}
+
+// Code block copy
+function copyCodeBlock(btn) {
+  const block = btn.parentElement;
+  const code = block.querySelector('code') || block;
+  const text = code.textContent || code.innerText;
+  navigator.clipboard.writeText(text.replace('Copiar', '').trim()).then(() => {
+    btn.textContent = 'Copiado!';
+    showToast('Código copiado!');
+    setTimeout(() => btn.textContent = 'Copiar', 2000);
+  });
+}
+
+// Component toggle (Preview / HTML / CSS)
+function showPreview(btn) {
+  const toggle = btn.closest('.component-toggle');
+  const target = toggle.dataset.target;
+  toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[id^="' + target + '"]').forEach(el => el.classList.remove('visible'));
+}
+
+function showCode(btn, type) {
+  const toggle = btn.closest('.component-toggle');
+  const target = toggle.dataset.target;
+  toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[id^="' + target + '"]').forEach(el => el.classList.remove('visible'));
+  const codeEl = document.getElementById(target + '-' + type);
+  if (codeEl) codeEl.classList.add('visible');
+}
+
+// Demo tabs interaction
+function switchDemoTab(btn, variant) {
+  const nav = btn.parentElement;
+  const buttons = nav.querySelectorAll('button[onclick]');
+  buttons.forEach(b => {
+    b.classList.remove('demo-tab-active');
+    if (variant === 'underline') {
+      b.style.color = '#64748B';
+      b.style.borderBottomColor = 'transparent';
+    } else if (variant === 'pill') {
+      b.style.background = 'transparent';
+      b.style.color = '#64748B';
+      b.style.boxShadow = 'none';
+    } else if (variant === 'boxed') {
+      b.style.background = 'transparent';
+      b.style.color = '#64748B';
+    }
+  });
+  btn.classList.add('demo-tab-active');
+  if (variant === 'underline') {
+    btn.style.color = '#2B6CB0';
+    btn.style.borderBottomColor = '#2B6CB0';
+  } else if (variant === 'pill') {
+    btn.style.background = '#FFFFFF';
+    btn.style.color = '#0F172A';
+    btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+  } else if (variant === 'boxed') {
+    btn.style.background = '#2B6CB0';
+    btn.style.color = '#FFFFFF';
+  }
+}
+
+// Scroll reveal with IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Copy spec-table code on click
+document.querySelectorAll('.spec-table code').forEach(el => {
+  el.addEventListener('click', () => {
+    navigator.clipboard.writeText(el.textContent).then(() => showToast('Copiado: ' + el.textContent));
+  });
+});
+
+// Replay animation helper
+function replayAnim(el, animStr) {
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = animStr;
+}
+</script>
+
+<!-- ==================== LOADING E SKELETON STATES ==================== -->
+
+<!-- ==================== CLOSING HTML ==================== -->
+
+<div style="display: flex; justify-content: flex-end; padding: 1rem 0;">
+  <a href="uxui-componentes-v2.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--blue-primary); color: #fff; border-radius: 10px; text-decoration: none; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600;">
+    Parte 2 — Componentes
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </a>
+</div>
+
+</div><!-- /main -->
+
+<footer style="text-align: center; padding: 3rem 1rem 2rem; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">
+  SYSLED Brandbook — UX/UI Fundamentos (1/4) — 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>

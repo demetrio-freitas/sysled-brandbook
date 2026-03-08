@@ -36,6 +36,15 @@
       --radius-md: 12px;
       --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
       --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a;
+      --gradient-mid: #1d6ea0;
+      --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5;
+      --success-text: #065F46;
+      --success-border: #34D399;
+      --error-bg: #FEF2F2;
+      --error-text: #991B1B;
+      --error-border: #F87171;
     }
 
     /* ===== DARK MODE ===== */
@@ -110,6 +119,7 @@
     [data-theme="dark"] .input-demo select {
       background: #1E293B;
       color: #E2E8F0;
+      border-color: #334155;
     }
 
     [data-theme="dark"] .cover-badge {
@@ -353,7 +363,7 @@
       color: #E2E8F0;
       padding: 1.25rem 1.5rem;
       border-radius: var(--radius-md);
-      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
       font-size: 0.72rem;
       line-height: 1.7;
       overflow-x: auto;
@@ -438,7 +448,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       cursor: pointer;
       box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      z-index: 1500;
+      z-index: 1400;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -666,7 +676,7 @@
     }
 
     .tints-output .swatch span {
-      font-family: 'SF Mono', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
       font-size: 0.5rem;
       font-weight: 600;
       opacity: 0.8;
@@ -1065,7 +1075,7 @@
     .section h2 {
       font-family: var(--font-heading);
       font-size: 2.25rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--dark-primary);
       letter-spacing: -0.025em;
       line-height: 1.2;
@@ -1203,7 +1213,7 @@
     }
 
     .color-info .color-codes {
-      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
       font-size: 0.7rem;
       color: var(--gray-400);
       line-height: 1.9;
@@ -1481,7 +1491,7 @@
     }
 
     .spacing-label {
-      font-family: 'SF Mono', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
       font-size: 0.7rem;
       color: var(--gray-400);
     }
@@ -1563,7 +1573,12 @@
     }
 
     .spec-table tr:hover td {
-      background: rgba(248,250,252,1);
+      background: var(--gray-100);
+    }
+
+    .spec-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     /* ===== SLOGAN ===== */
@@ -13061,7 +13076,7 @@ kbd {
 
     <h3>Exemplo de Implementação</h3>
     <div style="background: #0F172A; border-radius: 10px; padding: 20px 24px; overflow-x: auto; margin: 1rem 0;">
-      <pre style="font-family: 'JetBrains Mono', 'SF Mono', monospace; font-size: 0.7rem; line-height: 1.8; color: #E2E8F0; margin: 0;"><span style="color: #475569;">/* Design Tokens — Sysled */</span>
+      <pre style="font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace; font-size: 0.7rem; line-height: 1.8; color: #E2E8F0; margin: 0;"><span style="color: #475569;">/* Design Tokens — Sysled */</span>
 <span style="color: #5BB8F5;">:root</span> {
   <span style="color: #475569;">/* Colors */</span>
   <span style="color: #3A8FD6;">--color-blue-primary</span>: <span style="color: #48C9B0;">#2B6CB0</span>;

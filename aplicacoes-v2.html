@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Aplicacoes e Materiais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-primary: #2B6CB0; --blue-medium: #3A8FD6; --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4; --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1; --cyan-medium: #3AAFCF; --cyan-light: #48C9B0;
+      --dark-primary: #0F172A; --dark-secondary: #1E293B; --dark-text: #1E293B;
+      --gray-600: #475569; --gray-400: #94A3B8; --gray-200: #E2E8F0; --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px; --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a; --gradient-mid: #1d6ea0; --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46;
+      --error-bg: #FEF2F2; --error-text: #991B1B;
+    }
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .app-preview { background: #1E293B !important; border-color: #334155 !important; }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+    .cover-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+    .cover-stat { text-align: center; }
+    .cover-stat-num { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; }
+    .cover-stat-label { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); cursor: pointer; }
+    .spec-table code:hover { background: rgba(91,184,245,0.15); }
+
+    /* App preview cards */
+    .app-preview { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card);
+      margin: 1.5rem 0; border: 1px solid var(--gray-200); }
+    .app-preview-label { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary);
+      text-align: center; margin-bottom: 0.5rem; }
+    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 0.75rem; min-height: 120px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--dark-primary); color: #fff; padding: 12px 24px; border-radius: 12px;
+      font-size: 0.82rem; font-weight: 500; opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      z-index: 9999; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3.5rem 1.5rem 3rem; }
+      .preview-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <div class="cover reveal">
+    <div class="cover-badge"><span></span>Modulo 11</div>
+    <h1>Aplicacoes e Materiais</h1>
+    <p class="cover-subtitle">Mockups e especificacoes tecnicas de todos os materiais impressos e digitais com a identidade visual SYSLED.</p>
+    <div class="cover-stats">
+      <div class="cover-stat"><div class="cover-stat-num">13</div><div class="cover-stat-label">Aplicacoes</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">7</div><div class="cover-stat-label">Impressos</div></div>
+      <div class="cover-stat"><div class="cover-stat-num">6</div><div class="cover-stat-label">Digitais</div></div>
+    </div>
+  </div>
+
+  <!-- 01 CARTAO DE VISITA -->
+  <div class="section reveal" id="cartao-visita">
+    <div class="section-number">01 — Cartao de Visita</div>
+    <h2>Cartao de Visita</h2>
+    <p>Padrao visual institucional com gradiente azul oficial na frente e fundo branco no verso. Reforco da identidade em cada contato comercial.</p>
+
+    <h3>Preview — Frente e Verso</h3>
+    <div class="preview-grid">
+      <div>
+        <div class="app-preview-label">Frente</div>
+        <div class="app-preview" style="background: linear-gradient(135deg, #1a4e8a, #1d6ea0, #1a7a8f); padding: 2.5rem; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -60px; right: -30px; width: 160px; height: 160px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06);"></div>
+          <svg viewBox="0 0 240 160" width="60" height="40" style="margin-bottom: 12px;"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem; color: #fff; letter-spacing: 0.15em;">SYSLED</div>
+          <div style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 300;">Inteligencia que conecta sua industria</div>
+        </div>
+      </div>
+      <div>
+        <div class="app-preview-label">Verso</div>
+        <div class="app-preview" style="background: #FFFFFF; padding: 2rem; min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; color: #0F172A; margin-bottom: 4px;">João Silva</div>
+          <div style="font-size: 0.65rem; color: var(--blue-primary); font-weight: 600; margin-bottom: 12px;">Diretor de Tecnologia</div>
+          <div style="font-size: 0.65rem; color: #64748B; line-height: 1.8;">
+            joao.silva@sysled.com.br<br>
+            +55 (11) 99999-0000<br>
+            sysled.com.br
+          </div>
+          <svg viewBox="0 0 240 160" width="28" height="19" style="position: absolute; bottom: 16px; right: 16px; opacity: 0.08;"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="#0F172A"/></g></svg>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dimensoes</strong></td><td><code onclick="copyText('90 × 50 mm')">90 × 50 mm</code> (padrao brasileiro)</td></tr>
+        <tr><td><strong>Sangria</strong></td><td>3 mm em todos os lados</td></tr>
+        <tr><td><strong>Margem de seguranca</strong></td><td>5 mm internos</td></tr>
+        <tr><td><strong>Papel</strong></td><td>Couche fosco 300g/m²</td></tr>
+        <tr><td><strong>Acabamento</strong></td><td>Laminacao fosca + verniz UV localizado na logo</td></tr>
+        <tr><td><strong>Impressao</strong></td><td>4×4 cores (CMYK frente e verso)</td></tr>
+        <tr><td><strong>Tipografia Nome</strong></td><td>Montserrat Bold, 9pt</td></tr>
+        <tr><td><strong>Tipografia Contatos</strong></td><td>Inter Regular, 6.5pt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 02 ASSINATURA DE E-MAIL -->
+  <div class="section reveal" id="assinatura-email">
+    <div class="section-number">02 — Assinatura de E-mail</div>
+    <h2>Assinatura de E-mail</h2>
+    <p>Padroniza a comunicacao digital de todos os colaboradores com a logo principal, divisor gradiente e dados organizados em grid.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: #FFFFFF; padding: 2rem;">
+      <div style="font-size: 0.8rem; color: #4A5568; line-height: 1.7; padding-bottom: 1rem; border-bottom: 1px solid #E2E8F0; margin-bottom: 1rem;">
+        Prezado(a),<br>Segue em anexo a proposta conforme alinhado. Atenciosamente,
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <div style="width: 3px; height: 52px; background: linear-gradient(180deg, #5BB8F5, #48C9B0); border-radius: 2px;"></div>
+        <div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.82rem; color: #0F172A;">Joao Silva</div>
+          <div style="font-size: 0.65rem; color: var(--blue-primary); font-weight: 600;">Diretor de Tecnologia</div>
+          <div style="font-size: 0.62rem; color: #94A3B8; margin-top: 4px;">joao.silva@sysled.com.br | +55 (11) 99999-0000</div>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.55rem; color: #0F172A; letter-spacing: 0.1em; margin-top: 6px;">SYSLED</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Largura max.</strong></td><td><code onclick="copyText('580px')">580px</code></td></tr>
+        <tr><td><strong>Formato</strong></td><td>HTML inline (sem CSS externo)</td></tr>
+        <tr><td><strong>Logo</strong></td><td>PNG com link para sysled.com.br</td></tr>
+        <tr><td><strong>Divisor</strong></td><td>Gradiente vertical #5BB8F5 → #48C9B0, 3px largura</td></tr>
+        <tr><td><strong>Tipografia</strong></td><td>Arial/Helvetica (fallback seguro para e-mail)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 03 CAPA DO LINKEDIN -->
+  <div class="section reveal" id="capa-linkedin">
+    <div class="section-number">03 — Capa do LinkedIn</div>
+    <h2>Capa do LinkedIn</h2>
+    <p>Banner de perfil corporativo no LinkedIn com gradiente institucional, slogan e elementos graficos da marca.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: linear-gradient(135deg, #1a4e8a, #1d6ea0, #1a7a8f); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; min-height: 120px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -80px; right: -40px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05);"></div>
+      <div>
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.4rem; color: #fff; letter-spacing: 0.08em;">SYSLED</div>
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-top: 4px; font-weight: 300;">Inteligencia que conecta sua industria</div>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <div style="text-align: right;">
+          <div style="font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em;">Plataforma IndTech</div>
+          <div style="font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 2px;">sysled.com.br</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dimensoes</strong></td><td><code onclick="copyText('1584 × 396')">1584 × 396px</code></td></tr>
+        <tr><td><strong>Safe area</strong></td><td>Margem de 60px (elementos cortados em mobile)</td></tr>
+        <tr><td><strong>Formato</strong></td><td>PNG ou JPEG, max 8MB</td></tr>
+        <tr><td><strong>Fundo</strong></td><td>Gradiente institucional 135deg</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 04 PAPEL TIMBRADO -->
+  <div class="section reveal" id="papel-timbrado">
+    <div class="section-number">04 — Papel Timbrado</div>
+    <h2>Papel Timbrado</h2>
+    <p>Documento padrao para comunicacoes oficiais, propostas, contratos e correspondencias. Header com logo e barra gradiente, footer com dados da empresa.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: #FFFFFF; padding: 0; max-width: 480px; margin: 1.5rem auto;">
+      <div style="height: 4px; background: linear-gradient(90deg, #5BB8F5, #3A8FD6, #2B6CB0);"></div>
+      <div style="padding: 1.5rem 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.9rem; color: #0F172A; letter-spacing: 0.1em;">SYSLED</div>
+          <div style="font-size: 0.55rem; color: #94A3B8; text-align: right;">Sao Paulo, 08 de Marco de 2026<br>Ref: DOC-2026-001</div>
+        </div>
+        <div style="font-size: 0.7rem; color: #64748B; line-height: 2;">
+          <div style="height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 8px; width: 100%;"></div>
+          <div style="height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 8px; width: 90%;"></div>
+          <div style="height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 8px; width: 95%;"></div>
+          <div style="height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 8px; width: 60%;"></div>
+        </div>
+      </div>
+      <div style="padding: 1rem 2rem; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 0.55rem; color: #94A3B8;">sysled.com.br | contato@sysled.com.br</div>
+        <div style="font-size: 0.55rem; color: #94A3B8;">CNPJ: 00.000.000/0001-00</div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formato</strong></td><td>A4 (210 × 297 mm)</td></tr>
+        <tr><td><strong>Margens</strong></td><td>Superior: 30mm, Inferior: 25mm, Laterais: 25mm</td></tr>
+        <tr><td><strong>Header</strong></td><td>Barra gradiente 4px + logo + data</td></tr>
+        <tr><td><strong>Footer</strong></td><td>Linha separadora + dados da empresa</td></tr>
+        <tr><td><strong>Papel</strong></td><td>Offset 90g/m² ou Couche fosco 120g/m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 05 PITCH DECK -->
+  <div class="section reveal" id="pitch-deck">
+    <div class="section-number">05 — Apresentacao / Pitch Deck</div>
+    <h2>Apresentacao / Pitch Deck</h2>
+    <p>Slides institucionais padronizados para apresentacoes comerciais, webinars e pitch para investidores.</p>
+
+    <h3>Preview — Slides</h3>
+    <div class="preview-grid">
+      <div>
+        <div class="app-preview-label">Capa</div>
+        <div class="app-preview" style="background: linear-gradient(135deg, #0F172A, #1E3A5F); padding: 2rem; aspect-ratio: 16/9; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.5rem; color: #fff; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SYSLED</div>
+          <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem;">Plataforma IndTech para Digitalizacao Industrial</div>
+          <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #5BB8F5, #48C9B0); border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div class="app-preview-label">Conteudo</div>
+        <div class="app-preview" style="background: #FFFFFF; padding: 1.5rem; aspect-ratio: 16/9; display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.55rem; color: #2B6CB0; letter-spacing: 0.1em;">SYSLED</div>
+            <div style="width: 20px; height: 2px; background: linear-gradient(90deg, #5BB8F5, #48C9B0); border-radius: 2px;"></div>
+          </div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; color: #0F172A; margin-bottom: 0.75rem;">Titulo do Slide</div>
+          <div style="flex: 1; display: flex; gap: 0.5rem;">
+            <div style="flex: 1; height: 100%; background: #F1F5F9; border-radius: 6px;"></div>
+            <div style="flex: 1; height: 100%; background: #F1F5F9; border-radius: 6px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Proporcao</strong></td><td>16:9 widescreen</td></tr>
+        <tr><td><strong>Dimensoes</strong></td><td><code onclick="copyText('1920 × 1080')">1920 × 1080px</code></td></tr>
+        <tr><td><strong>Capa</strong></td><td>Gradiente dark (#0F172A → #1E3A5F)</td></tr>
+        <tr><td><strong>Conteudo</strong></td><td>Fundo branco, header com logo + accent line</td></tr>
+        <tr><td><strong>Tipografia</strong></td><td>Montserrat (titulos) + Inter (corpo)</td></tr>
+        <tr><td><strong>Ferramenta</strong></td><td>Google Slides, PowerPoint ou Figma</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 06 FAVICON E OG IMAGE -->
+  <div class="section reveal" id="favicon-og">
+    <div class="section-number">06 — Favicon e Open Graph</div>
+    <h2>Favicon e Open Graph</h2>
+    <p>Icone do navegador (favicon) e imagem de preview para compartilhamento em redes sociais (OG Image).</p>
+
+    <h3>Preview</h3>
+    <div class="preview-grid">
+      <div>
+        <div class="app-preview-label">Favicon</div>
+        <div class="app-preview" style="background: #FFFFFF; padding: 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem;">
+          <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #5BB8F5, #2B6CB0); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 240 160" width="18" height="12"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+          </div>
+          <div style="width: 16px; height: 16px; background: linear-gradient(135deg, #5BB8F5, #2B6CB0); border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 240 160" width="9" height="6"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="app-preview-label">OG Image</div>
+        <div class="app-preview" style="background: linear-gradient(135deg, #0F172A, #1E3A5F); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; aspect-ratio: 1200/630;">
+          <div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1rem; color: #fff; letter-spacing: 0.08em;">SYSLED</div>
+            <div style="font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-top: 4px;">Plataforma IndTech</div>
+          </div>
+          <svg viewBox="0 0 240 160" width="50" height="34" style="opacity: 0.15;"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Asset</th><th>Dimensao</th><th>Formato</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Favicon ICO</strong></td><td>16×16, 32×32, 48×48</td><td>.ico (multi-size)</td></tr>
+        <tr><td><strong>Apple Touch</strong></td><td><code onclick="copyText('180 × 180')">180 × 180px</code></td><td>PNG</td></tr>
+        <tr><td><strong>Android Chrome</strong></td><td><code onclick="copyText('192 × 192')">192 × 192px</code></td><td>PNG</td></tr>
+        <tr><td><strong>OG Image</strong></td><td><code onclick="copyText('1200 × 630')">1200 × 630px</code></td><td>PNG/JPEG</td></tr>
+        <tr><td><strong>Twitter Card</strong></td><td><code onclick="copyText('1200 × 628')">1200 × 628px</code></td><td>PNG/JPEG</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 07 CRACHA / ID BADGE -->
+  <div class="section reveal" id="cracha">
+    <div class="section-number">07 — Cracha / ID Badge</div>
+    <h2>Cracha / ID Badge</h2>
+    <p>Cracha de identificacao para colaboradores e eventos. Frente com foto, nome e cargo. Verso com QR code e dados da empresa.</p>
+
+    <h3>Preview</h3>
+    <div class="preview-grid">
+      <div>
+        <div class="app-preview-label">Colaborador</div>
+        <div class="app-preview" style="background: #FFFFFF; padding: 0; max-width: 220px; margin: 0 auto; border-radius: 12px; overflow: hidden;">
+          <div style="height: 4px; background: linear-gradient(90deg, #5BB8F5, #3A8FD6, #2B6CB0);"></div>
+          <div style="padding: 1.5rem; text-align: center;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #E2E8F0, #CBD5E1); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#94A3B8" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            </div>
+            <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: #0F172A;">Maria Santos</div>
+            <div style="font-size: 0.65rem; color: var(--blue-primary); font-weight: 600; margin-top: 2px;">Eng. de Software</div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.55rem; color: #94A3B8; letter-spacing: 0.15em; margin-top: 12px;">SYSLED</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="app-preview-label">Evento</div>
+        <div class="app-preview" style="background: linear-gradient(135deg, #0F172A, #1E3A5F); padding: 0; max-width: 220px; margin: 0 auto; border-radius: 12px; overflow: hidden;">
+          <div style="height: 4px; background: linear-gradient(90deg, #5BB8F5, #48C9B0);"></div>
+          <div style="padding: 1.5rem; text-align: center;">
+            <div style="font-size: 0.55rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 12px;">SYSLED SUMMIT 2026</div>
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.08); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            </div>
+            <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: #fff;">Participante</div>
+            <div style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 2px;">Empresa / Cargo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dimensoes</strong></td><td><code onclick="copyText('86 × 54 mm')">86 × 54 mm</code> (padrao CR80)</td></tr>
+        <tr><td><strong>Material</strong></td><td>PVC rigido ou PET reciclavel</td></tr>
+        <tr><td><strong>Foto</strong></td><td>Circular, 300dpi, fundo neutro</td></tr>
+        <tr><td><strong>Furo</strong></td><td>Slot para cordao, topo central</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 08 PROPOSTA COMERCIAL -->
+  <div class="section reveal" id="proposta">
+    <div class="section-number">08 — Proposta Comercial</div>
+    <h2>Proposta Comercial</h2>
+    <p>Documento multi-pagina para propostas comerciais com capa institucional, paginas de conteudo e contracapa. Formato padrao A4.</p>
+
+    <h3>Preview — Capa</h3>
+    <div class="app-preview" style="background: linear-gradient(135deg, #0F172A, #1E3A5F); padding: 3rem 2.5rem; max-width: 400px; margin: 1.5rem auto; aspect-ratio: 210/297; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+      <div style="position: absolute; bottom: -100px; right: -50px; width: 250px; height: 250px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04);"></div>
+      <div>
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.8rem; color: #fff; letter-spacing: 0.15em;">SYSLED</div>
+        <div style="width: 30px; height: 2px; background: linear-gradient(90deg, #5BB8F5, #48C9B0); margin-top: 8px; border-radius: 2px;"></div>
+      </div>
+      <div>
+        <div style="font-family: var(--font-heading); font-weight: 900; font-size: 1.6rem; color: #fff; line-height: 1.2;">Proposta<br>Comercial</div>
+        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 12px;">Cliente: Empresa XYZ<br>Data: Marco 2026</div>
+      </div>
+      <div style="font-size: 0.55rem; color: rgba(255,255,255,0.3);">Confidencial — SYSLED Tecnologia</div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formato</strong></td><td>A4 (210 × 297 mm) / PDF digital</td></tr>
+        <tr><td><strong>Capa</strong></td><td>Gradiente dark com logo e titulo</td></tr>
+        <tr><td><strong>Paginas internas</strong></td><td>Fundo branco, header minimalista</td></tr>
+        <tr><td><strong>Contracapa</strong></td><td>Gradiente dark com dados de contato</td></tr>
+        <tr><td><strong>Tipografia</strong></td><td>Montserrat (titulos 24pt) + Inter (corpo 11pt)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 09 NEWSLETTER -->
+  <div class="section reveal" id="newsletter">
+    <div class="section-number">09 — Newsletter</div>
+    <h2>Newsletter</h2>
+    <p>Template de e-mail marketing para comunicados, lancamentos de features, artigos do blog e conteudo educativo.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: #F8FAFC; padding: 0; max-width: 400px; margin: 1.5rem auto;">
+      <div style="background: linear-gradient(135deg, #1a4e8a, #1d6ea0, #1a7a8f); padding: 2rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.8rem; color: #fff; letter-spacing: 0.15em;">SYSLED</div>
+        <div style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px;">Newsletter | Marco 2026</div>
+      </div>
+      <div style="background: #FFFFFF; padding: 2rem;">
+        <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: #0F172A; margin-bottom: 8px;">Nova Feature: Dashboard em Tempo Real</div>
+        <div style="height: 6px; background: #E2E8F0; border-radius: 3px; margin-bottom: 6px; width: 100%;"></div>
+        <div style="height: 6px; background: #E2E8F0; border-radius: 3px; margin-bottom: 6px; width: 85%;"></div>
+        <div style="height: 6px; background: #E2E8F0; border-radius: 3px; margin-bottom: 16px; width: 60%;"></div>
+        <div style="display: inline-block; padding: 8px 20px; background: var(--blue-primary); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem; border-radius: 6px;">Saiba Mais</div>
+      </div>
+      <div style="background: #F8FAFC; padding: 1rem 2rem; text-align: center; font-size: 0.55rem; color: #94A3B8;">
+        SYSLED Tecnologia | Cancelar inscricao
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Largura</strong></td><td><code onclick="copyText('600px')">600px</code> (max)</td></tr>
+        <tr><td><strong>Header</strong></td><td>Gradiente institucional + logo branca</td></tr>
+        <tr><td><strong>CTA</strong></td><td>Botao azul primario, border-radius 6px</td></tr>
+        <tr><td><strong>Footer</strong></td><td>Links uteis + unsubscribe obrigatorio</td></tr>
+        <tr><td><strong>Ferramenta</strong></td><td>Mailchimp, SendGrid ou HTML custom</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 10 CERTIFICADO -->
+  <div class="section reveal" id="certificado">
+    <div class="section-number">10 — Certificado</div>
+    <h2>Certificado</h2>
+    <p>Certificados para treinamentos, cursos, webinars e eventos realizados pela SYSLED ou parceiros.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: #FFFFFF; padding: 0; max-width: 500px; margin: 1.5rem auto; border: 2px solid #E2E8F0;">
+      <div style="height: 4px; background: linear-gradient(90deg, #5BB8F5, #3A8FD6, #2B6CB0, #48C9B0);"></div>
+      <div style="padding: 2.5rem; text-align: center;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.65rem; color: var(--blue-primary); letter-spacing: 0.2em; margin-bottom: 1.5rem;">SYSLED ACADEMY</div>
+        <div style="font-family: var(--font-heading); font-weight: 300; font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.15em;">Certificado de Conclusao</div>
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.4rem; color: #0F172A; margin: 1rem 0;">Joao Silva</div>
+        <div style="font-size: 0.75rem; color: #64748B; line-height: 1.7; max-width: 360px; margin: 0 auto;">Concluiu com exito o curso<br><strong style="color:#0F172A;">Fundamentos de IoT Industrial</strong><br>com carga horaria de 40 horas.</div>
+        <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #E2E8F0;">
+          <div style="text-align: center;">
+            <div style="width: 80px; border-bottom: 1px solid #CBD5E1; margin-bottom: 4px;"></div>
+            <div style="font-size: 0.55rem; color: #94A3B8;">Instrutor</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="width: 80px; border-bottom: 1px solid #CBD5E1; margin-bottom: 4px;"></div>
+            <div style="font-size: 0.55rem; color: #94A3B8;">Data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formato</strong></td><td>A4 paisagem (297 × 210 mm)</td></tr>
+        <tr><td><strong>Borda</strong></td><td>Barra gradiente superior 4px</td></tr>
+        <tr><td><strong>Papel</strong></td><td>Couche fosco 250g/m² (impresso)</td></tr>
+        <tr><td><strong>Digital</strong></td><td>PDF com codigo de validacao unico</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 11 NOTA FISCAL -->
+  <div class="section reveal" id="nota-fiscal">
+    <div class="section-number">11 — Nota Fiscal</div>
+    <h2>Nota Fiscal</h2>
+    <p>Layout padrao para documentos fiscais, boletos e recibos. Identidade visual aplicada de forma discreta e profissional.</p>
+
+    <h3>Preview</h3>
+    <div class="app-preview" style="background: #FFFFFF; padding: 0; max-width: 480px; margin: 1.5rem auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 2px solid #2B6CB0;">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.8rem; color: #0F172A; letter-spacing: 0.1em;">SYSLED</div>
+        <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.65rem; color: var(--blue-primary);">NF-e 000.001.234</div>
+      </div>
+      <div style="padding: 1.5rem 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+          <div style="font-size: 0.65rem; color: #64748B;"><strong style="color:#0F172A;">Emitente:</strong> SYSLED Tecnologia</div>
+          <div style="font-size: 0.65rem; color: #64748B;">Data: 08/03/2026</div>
+        </div>
+        <div style="height: 6px; background: #F1F5F9; border-radius: 3px; margin-bottom: 6px;"></div>
+        <div style="height: 6px; background: #F1F5F9; border-radius: 3px; margin-bottom: 6px; width: 70%;"></div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E2E8F0;">
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: #0F172A;">Total: R$ 12.500,00</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Especificacao</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Formato</strong></td><td>A4 (210 × 297 mm)</td></tr>
+        <tr><td><strong>Logo</strong></td><td>Versao monocromatica no header</td></tr>
+        <tr><td><strong>Cor accent</strong></td><td>Linha azul primaria (#2B6CB0) no header</td></tr>
+        <tr><td><strong>Tipografia</strong></td><td>Inter Regular 9pt (corpo), Montserrat Bold (header)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 12 MOCKUPS -->
+  <div class="section reveal" id="mockups">
+    <div class="section-number">12 — Mockups e Composicoes</div>
+    <h2>Mockups e Composicoes</h2>
+    <p>Diretrizes para composicoes flat lay e mockups com todos os materiais da marca SYSLED aplicados juntos.</p>
+
+    <h3>Elementos da Composicao</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1.5rem 0;">
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Cartao de Visita</div>
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Papel Timbrado</div>
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Envelope</div>
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Cracha</div>
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Caneta/Brinde</div>
+      <div style="padding: 1rem; background: var(--gray-100); border-radius: 8px; text-align: center; font-size: 0.75rem; color: var(--gray-600);">Notebook/Caderno</div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Diretriz</th><th>Detalhe</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fundo</strong></td><td>Superficie neutra: concreto claro, madeira natural ou branco</td></tr>
+        <tr><td><strong>Iluminacao</strong></td><td>Luz natural lateral, sombras suaves</td></tr>
+        <tr><td><strong>Angulo</strong></td><td>Flat lay (90°) ou perspectiva leve (15-30°)</td></tr>
+        <tr><td><strong>Espacamento</strong></td><td>Minimo 20mm entre itens</td></tr>
+        <tr><td><strong>Resolucao</strong></td><td>Minimo 300dpi para impressao, 72dpi para web</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 13 PADRAO FOTOGRAFIA APLICADA -->
+  <div class="section reveal" id="foto-aplicada">
+    <div class="section-number">13 — Fotografia Aplicada</div>
+    <h2>Fotografia Aplicada</h2>
+    <p>Diretrizes para fotos de ambientes industriais com materiais de marca SYSLED em contexto real: fabricas, escritorios, eventos e feiras.</p>
+
+    <table class="spec-table">
+      <thead><tr><th>Contexto</th><th>Orientacao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fabrica</strong></td><td>Foto de paineis/dashboards SYSLED em operacao, com operadores ao fundo</td></tr>
+        <tr><td><strong>Escritorio</strong></td><td>Materiais de marca sobre mesa: cartao, caderno, notebook com dashboard</td></tr>
+        <tr><td><strong>Evento</strong></td><td>Stand com banner, crachas, backdrop com logo. Participantes em networking</td></tr>
+        <tr><td><strong>Feira</strong></td><td>Totem, display digital, demos ao vivo com tablet/tela</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Tratamento de Cor</h3>
+    <p>Todas as fotos aplicadas devem seguir o filtro padrao da marca (ver <a href="fotografia-v2.html" style="color:var(--blue-primary);font-weight:600;">pagina de Fotografia</a>): temperatura fria (+5%), contraste leve (+10%), saturacao moderada (-15%).</p>
+  </div>
+
+  <!-- DIRETRIZES GERAIS -->
+  <div class="section reveal">
+    <div class="section-number">14 — Diretrizes Gerais</div>
+    <h2>Do's &amp; Don'ts</h2>
+    <p>Regras gerais para uso dos materiais de marca em todas as aplicacoes.</p>
+
+    <div class="dodont-grid">
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use sempre os templates oficiais como base para novos materiais</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca crie materiais do zero sem consultar o brandbook</p>
+        </div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Mantenha as proporcoes e safe areas em todos os formatos</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca distorca, estique ou corte elementos visuais da marca</p>
+        </div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Envie materiais para aprovacao antes de impressao/publicacao</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca use versoes desatualizadas do logo ou materiais antigos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('sysled-theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('sysled-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text.trim()).then(() => showToast('Copiado: ' + text.trim().substring(0, 50)));
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

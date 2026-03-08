@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #E8E8E8; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 40px 20px; font-family: Inter, sans-serif; gap: 32px; }
+  .card { background: #FFF; border-radius: 12px; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); max-width: 700px; width: 100%; }
+  h3 { font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; color: #1A1A2E; margin-bottom: 16px; }
+  .tag { display: inline-block; font-family: Montserrat, sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-right: 6px; margin-bottom: 6px; }
+  .tag-blue { background: #EBF4FF; color: #2B6CB0; }
+  .tag-cyan { background: #E6FAF5; color: #38A89D; }
+  .tag-dark { background: #F0F0F4; color: #1A1A2E; }
+  p { font-family: Inter, sans-serif; font-size: 12px; color: #4A5568; line-height: 1.7; margin-bottom: 12px; }
+  .photo-placeholder { border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 10px; color: #A0AEC0; }
+  .grid-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+</style>
+</head>
+<title>Fotografia — Opção 1: Foco Industrial</title>
+<body>
+  <div style="text-align:center;">
+    <h2 style="font-family: Montserrat, sans-serif; font-size: 22px; color: #1A1A2E; font-weight: 300;">Opção 1 — <strong>Foco Industrial</strong></h2>
+    <p style="font-size: 13px; margin-top: 6px;">Ênfase em ambientes industriais, maquinário e tecnologia operacional</p>
+  </div>
+
+  <div class="card">
+    <h3>Estilo Fotográfico</h3>
+    <div style="margin-bottom: 16px;">
+      <span class="tag tag-blue">Tons frios</span>
+      <span class="tag tag-cyan">Alta tecnologia</span>
+      <span class="tag tag-dark">Iluminação controlada</span>
+      <span class="tag tag-blue">Profundidade de campo</span>
+    </div>
+    <p>Fotografias devem transmitir <strong>precisão, tecnologia e escala industrial</strong>. Priorizar iluminação fria com tons azulados, fundos desfocados (bokeh) e enquadramentos que valorizem linhas geométricas e simetria.</p>
+    <div class="grid-photos">
+      <div class="photo-placeholder" style="height: 140px; background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);">
+        <div style="text-align: center; color: rgba(255,255,255,0.3); font-size: 9px;">Chão de fábrica<br>com sensores IoT</div>
+      </div>
+      <div class="photo-placeholder" style="height: 140px; background: linear-gradient(135deg, #0f1923 0%, #1a3a5c 100%);">
+        <div style="text-align: center; color: rgba(255,255,255,0.3); font-size: 9px;">Dashboard em<br>tela industrial</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Tratamento de Cor</h3>
+    <p>Aplicar overlay sutil nos tons da marca para manter coerência visual. Reduzir saturação em 15-20%. Aumentar contraste levemente. Sombras tendendo ao azul escuro (#1A1A2E).</p>
+    <div style="display: flex; gap: 8px; margin-top: 12px;">
+      <div style="flex: 1; height: 40px; background: #1A1A2E; border-radius: 6px;"></div>
+      <div style="flex: 1; height: 40px; background: #2C3E50; border-radius: 6px;"></div>
+      <div style="flex: 1; height: 40px; background: #2B6CB0; border-radius: 6px;"></div>
+      <div style="flex: 1; height: 40px; background: #3A8FD6; border-radius: 6px;"></div>
+      <div style="flex: 1; height: 40px; background: #5BB8F5; border-radius: 6px;"></div>
+    </div>
+    <p style="font-size: 10px; color: #A0AEC0; margin-top: 8px;">Paleta de sombras e highlights para tratamento fotográfico</p>
+  </div>
+
+  <div class="card">
+    <h3>Do's and Don'ts</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div style="font-family: Montserrat, sans-serif; font-size: 10px; font-weight: 700; color: #48C9B0; margin-bottom: 8px;">✓ CORRETO</div>
+        <p style="font-size: 11px;">Iluminação fria e controlada</p>
+        <p style="font-size: 11px;">Fundos limpos ou industriais</p>
+        <p style="font-size: 11px;">Detalhes de tecnologia em foco</p>
+      </div>
+      <div>
+        <div style="font-family: Montserrat, sans-serif; font-size: 10px; font-weight: 700; color: #E53E3E; margin-bottom: 8px;">✗ INCORRETO</div>
+        <p style="font-size: 11px;">Fotos genéricas de banco de imagens</p>
+        <p style="font-size: 11px;">Tons quentes ou saturados</p>
+        <p style="font-size: 11px;">Ambientes desorganizados</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

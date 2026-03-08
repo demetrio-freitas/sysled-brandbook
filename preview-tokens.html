@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — Design Tokens</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F8FAFC; font-family: 'Inter', sans-serif; color: #1E293B; line-height: 1.7; padding: 48px; max-width: 900px; margin: 0 auto; }
+  h2 { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+  h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; margin: 2.5rem 0 1rem; color: #1E293B; }
+  p { font-size: 0.9rem; color: #475569; margin-bottom: 1.5rem; }
+  .section-number { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #3A8FD6; margin-bottom: 0.5rem; }
+  .token-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
+  .token-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+  .token-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .token-name { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: #2B6CB0; font-weight: 600; }
+  .token-value { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; font-size: 0.7rem; color: #94A3B8; }
+  .token-label { font-size: 0.78rem; color: #475569; font-weight: 500; }
+  .color-dot { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06); }
+  .shadow-box { width: 48px; height: 32px; border-radius: 8px; background: #FFF; flex-shrink: 0; }
+  .radius-box { width: 32px; height: 32px; background: #2B6CB0; flex-shrink: 0; }
+  .code-block { background: #0F172A; border-radius: 10px; padding: 20px 24px; overflow-x: auto; margin: 1rem 0 2rem; }
+  .code-block code { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace; font-size: 0.72rem; line-height: 1.8; color: #E2E8F0; }
+  .code-comment { color: #475569; }
+  .code-prop { color: #5BB8F5; }
+  .code-val { color: #48C9B0; }
+  .code-var { color: #3A8FD6; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th { background: #F1F5F9; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #475569; padding: 10px 16px; text-align: left; border-bottom: 2px solid #E2E8F0; }
+  td { padding: 10px 16px; border-bottom: 1px solid #F1F5F9; font-size: 0.82rem; }
+  td code { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; background: #F1F5F9; padding: 2px 6px; border-radius: 4px; color: #2B6CB0; }
+  .spacing-demo { display: flex; gap: 12px; align-items: end; margin: 1rem 0 2rem; }
+  .spacing-item { text-align: center; }
+  .spacing-bar { background: linear-gradient(135deg, #2B6CB0, #48C9B0); border-radius: 4px; width: 32px; margin: 0 auto 6px; }
+  .spacing-label { font-family: monospace; font-size: 0.6rem; color: #94A3B8; }
+  .z-stack { position: relative; height: 120px; margin: 1rem 0 2rem; }
+  .z-layer { position: absolute; border-radius: 8px; display: flex; align-items: center; padding: 0 16px; font-family: monospace; font-size: 0.7rem; }
+</style>
+</head>
+<body>
+
+<div class="section-number">10 — Design Tokens</div>
+<h2>Design Tokens</h2>
+
+<p>
+  Design tokens são as <strong>variáveis fundamentais</strong> do sistema de design da Sysled. Eles centralizam todas as decisões visuais — cores, tipografia, espaçamento, sombras, bordas e z-index — em um único ponto de verdade. Qualquer alteração em um token se propaga automaticamente por toda a interface.
+</p>
+
+<!-- ===== COLORS ===== -->
+<h3>Cores</h3>
+<div class="token-grid">
+  <div class="token-card">
+    <div class="color-dot" style="background: #2B6CB0;"></div>
+    <div>
+      <div class="token-name">--color-blue-primary</div>
+      <div class="token-value">#2B6CB0</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #3A8FD6;"></div>
+    <div>
+      <div class="token-name">--color-blue-medium</div>
+      <div class="token-value">#3A8FD6</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #5BB8F5;"></div>
+    <div>
+      <div class="token-name">--color-blue-light</div>
+      <div class="token-value">#5BB8F5</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #48C9B0;"></div>
+    <div>
+      <div class="token-name">--color-cyan</div>
+      <div class="token-value">#48C9B0</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #0F172A;"></div>
+    <div>
+      <div class="token-name">--color-dark-primary</div>
+      <div class="token-value">#0F172A</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #1E293B;"></div>
+    <div>
+      <div class="token-name">--color-dark-secondary</div>
+      <div class="token-value">#1E293B</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #475569;"></div>
+    <div>
+      <div class="token-name">--color-gray-600</div>
+      <div class="token-value">#475569</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #E2E8F0;"></div>
+    <div>
+      <div class="token-name">--color-gray-200</div>
+      <div class="token-value">#E2E8F0</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #48C9B0;"></div>
+    <div>
+      <div class="token-name">--color-success</div>
+      <div class="token-value">#48C9B0</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #E53E3E;"></div>
+    <div>
+      <div class="token-name">--color-error</div>
+      <div class="token-value">#E53E3E</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #ECC94B;"></div>
+    <div>
+      <div class="token-name">--color-warning</div>
+      <div class="token-value">#ECC94B</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="color-dot" style="background: #3A8FD6;"></div>
+    <div>
+      <div class="token-name">--color-info</div>
+      <div class="token-value">#3A8FD6</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TYPOGRAPHY ===== -->
+<h3>Tipografia</h3>
+<table>
+  <thead>
+    <tr><th>Token</th><th>Valor</th><th>Uso</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--font-heading</code></td><td>'Montserrat', sans-serif</td><td>Títulos, labels, badges</td></tr>
+    <tr><td><code>--font-body</code></td><td>'Inter', sans-serif</td><td>Corpo, inputs, botões</td></tr>
+    <tr><td><code>--font-mono</code></td><td>'JetBrains Mono', monospace</td><td>Código, dados técnicos</td></tr>
+    <tr><td><code>--text-xs</code></td><td>0.75rem (12px)</td><td>Captions, hints</td></tr>
+    <tr><td><code>--text-sm</code></td><td>0.875rem (14px)</td><td>Corpo secundário, labels</td></tr>
+    <tr><td><code>--text-base</code></td><td>1rem (16px)</td><td>Corpo principal</td></tr>
+    <tr><td><code>--text-lg</code></td><td>1.25rem (20px)</td><td>Subtítulos</td></tr>
+    <tr><td><code>--text-xl</code></td><td>1.5rem (24px)</td><td>Títulos de seção</td></tr>
+    <tr><td><code>--text-2xl</code></td><td>2rem (32px)</td><td>Títulos de página</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== SPACING ===== -->
+<h3>Espaçamento</h3>
+<p>Sistema baseado em múltiplos de <strong>4px</strong>, garantindo ritmo vertical e horizontal consistente.</p>
+<div class="spacing-demo">
+  <div class="spacing-item"><div class="spacing-bar" style="height: 4px;"></div><div class="spacing-label">4px</div><div class="spacing-label">--space-1</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 8px;"></div><div class="spacing-label">8px</div><div class="spacing-label">--space-2</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 12px;"></div><div class="spacing-label">12px</div><div class="spacing-label">--space-3</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 16px;"></div><div class="spacing-label">16px</div><div class="spacing-label">--space-4</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 24px;"></div><div class="spacing-label">24px</div><div class="spacing-label">--space-6</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 32px;"></div><div class="spacing-label">32px</div><div class="spacing-label">--space-8</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 48px;"></div><div class="spacing-label">48px</div><div class="spacing-label">--space-12</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 64px;"></div><div class="spacing-label">64px</div><div class="spacing-label">--space-16</div></div>
+  <div class="spacing-item"><div class="spacing-bar" style="height: 80px;"></div><div class="spacing-label">80px</div><div class="spacing-label">--space-20</div></div>
+</div>
+
+<!-- ===== SHADOWS ===== -->
+<h3>Sombras</h3>
+<div class="token-grid">
+  <div class="token-card">
+    <div class="shadow-box" style="box-shadow: 0 1px 2px rgba(0,0,0,0.05);"></div>
+    <div>
+      <div class="token-name">--shadow-xs</div>
+      <div class="token-value">0 1px 2px rgba(0,0,0,0.05)</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="shadow-box" style="box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);"></div>
+    <div>
+      <div class="token-name">--shadow-sm</div>
+      <div class="token-value">0 1px 3px, 0 4px 16px</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="shadow-box" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.08);"></div>
+    <div>
+      <div class="token-name">--shadow-md</div>
+      <div class="token-value">0 4px 12px, 0 8px 32px</div>
+    </div>
+  </div>
+  <div class="token-card">
+    <div class="shadow-box" style="box-shadow: 0 8px 40px rgba(0,0,0,0.12);"></div>
+    <div>
+      <div class="token-name">--shadow-lg</div>
+      <div class="token-value">0 8px 40px rgba(0,0,0,0.12)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BORDER RADIUS ===== -->
+<h3>Border Radius</h3>
+<div style="display: flex; gap: 20px; align-items: end; margin: 1rem 0 2rem;">
+  <div style="text-align: center;">
+    <div class="radius-box" style="border-radius: 4px;"></div>
+    <div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8; margin-top: 6px;">--radius-sm</div>
+    <div style="font-family: monospace; font-size: 0.6rem; color: #CBD5E0;">4px</div>
+  </div>
+  <div style="text-align: center;">
+    <div class="radius-box" style="border-radius: 8px;"></div>
+    <div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8; margin-top: 6px;">--radius-md</div>
+    <div style="font-family: monospace; font-size: 0.6rem; color: #CBD5E0;">8px</div>
+  </div>
+  <div style="text-align: center;">
+    <div class="radius-box" style="border-radius: 12px;"></div>
+    <div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8; margin-top: 6px;">--radius-lg</div>
+    <div style="font-family: monospace; font-size: 0.6rem; color: #CBD5E0;">12px</div>
+  </div>
+  <div style="text-align: center;">
+    <div class="radius-box" style="border-radius: 20px;"></div>
+    <div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8; margin-top: 6px;">--radius-xl</div>
+    <div style="font-family: monospace; font-size: 0.6rem; color: #CBD5E0;">20px</div>
+  </div>
+  <div style="text-align: center;">
+    <div class="radius-box" style="border-radius: 99px;"></div>
+    <div style="font-family: monospace; font-size: 0.65rem; color: #94A3B8; margin-top: 6px;">--radius-full</div>
+    <div style="font-family: monospace; font-size: 0.6rem; color: #CBD5E0;">99px</div>
+  </div>
+</div>
+
+<!-- ===== Z-INDEX ===== -->
+<h3>Z-Index</h3>
+<div class="z-stack">
+  <div class="z-layer" style="bottom: 0; left: 0; width: 100%; height: 30px; background: #E2E8F0; color: #475569; z-index: 1;">
+    <span>--z-base <span style="color: #94A3B8; margin-left: 8px;">1</span> — Conteúdo</span>
+  </div>
+  <div class="z-layer" style="bottom: 20px; left: 16px; width: 85%; height: 30px; background: #CBD5E0; color: #475569; z-index: 10;">
+    <span>--z-dropdown <span style="color: #94A3B8; margin-left: 8px;">10</span> — Dropdowns</span>
+  </div>
+  <div class="z-layer" style="bottom: 40px; left: 32px; width: 70%; height: 30px; background: #94A3B8; color: #FFF; z-index: 100;">
+    <span>--z-sticky <span style="color: rgba(255,255,255,0.6); margin-left: 8px;">100</span> — Headers fixos</span>
+  </div>
+  <div class="z-layer" style="bottom: 60px; left: 48px; width: 55%; height: 30px; background: #475569; color: #FFF; z-index: 1000;">
+    <span>--z-modal <span style="color: rgba(255,255,255,0.5); margin-left: 8px;">1000</span> — Modais</span>
+  </div>
+  <div class="z-layer" style="bottom: 80px; left: 64px; width: 40%; height: 30px; background: #1E293B; color: #FFF; z-index: 9999;">
+    <span>--z-toast <span style="color: rgba(255,255,255,0.4); margin-left: 8px;">9999</span> — Toasts</span>
+  </div>
+</div>
+
+<!-- ===== TRANSITIONS ===== -->
+<h3>Transições</h3>
+<table>
+  <thead>
+    <tr><th>Token</th><th>Valor</th><th>Uso</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--transition-fast</code></td><td>0.12s ease</td><td>Hover de botões, ícones</td></tr>
+    <tr><td><code>--transition-base</code></td><td>0.18s ease</td><td>Transições gerais, foco</td></tr>
+    <tr><td><code>--transition-slow</code></td><td>0.3s cubic-bezier(0.4,0,0.2,1)</td><td>Modais, sidebars, expansão</td></tr>
+    <tr><td><code>--transition-spring</code></td><td>0.5s cubic-bezier(0.34,1.56,0.64,1)</td><td>Animações com bounce</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== CODE EXAMPLE ===== -->
+<h3>Exemplo de Implementação</h3>
+<div class="code-block"><code><span class="code-comment">/* Design Tokens — Sysled */</span>
+<span class="code-prop">:root</span> {
+  <span class="code-comment">/* Colors */</span>
+  <span class="code-var">--color-blue-primary</span>: <span class="code-val">#2B6CB0</span>;
+  <span class="code-var">--color-blue-medium</span>: <span class="code-val">#3A8FD6</span>;
+  <span class="code-var">--color-blue-light</span>: <span class="code-val">#5BB8F5</span>;
+  <span class="code-var">--color-cyan</span>: <span class="code-val">#48C9B0</span>;
+  <span class="code-var">--color-dark-primary</span>: <span class="code-val">#0F172A</span>;
+  <span class="code-var">--color-dark-secondary</span>: <span class="code-val">#1E293B</span>;
+
+  <span class="code-comment">/* Typography */</span>
+  <span class="code-var">--font-heading</span>: <span class="code-val">'Montserrat', sans-serif</span>;
+  <span class="code-var">--font-body</span>: <span class="code-val">'Inter', sans-serif</span>;
+
+  <span class="code-comment">/* Spacing (base: 4px) */</span>
+  <span class="code-var">--space-1</span>: <span class="code-val">4px</span>;
+  <span class="code-var">--space-2</span>: <span class="code-val">8px</span>;
+  <span class="code-var">--space-4</span>: <span class="code-val">16px</span>;
+  <span class="code-var">--space-8</span>: <span class="code-val">32px</span>;
+
+  <span class="code-comment">/* Shadows */</span>
+  <span class="code-var">--shadow-sm</span>: <span class="code-val">0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06)</span>;
+  <span class="code-var">--shadow-lg</span>: <span class="code-val">0 8px 40px rgba(0,0,0,0.12)</span>;
+
+  <span class="code-comment">/* Radius */</span>
+  <span class="code-var">--radius-md</span>: <span class="code-val">8px</span>;
+  <span class="code-var">--radius-lg</span>: <span class="code-val">12px</span>;
+
+  <span class="code-comment">/* Transitions */</span>
+  <span class="code-var">--transition-base</span>: <span class="code-val">0.18s ease</span>;
+  <span class="code-var">--transition-slow</span>: <span class="code-val">0.3s cubic-bezier(0.4,0,0.2,1)</span>;
+}</code></div>
+
+</body>
+</html>

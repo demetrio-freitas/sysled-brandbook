@@ -36,17 +36,41 @@
     }, { passive: true });
   }
 
-  // ─── 3. Back to Top FAB ───
+  // ─── 3. Back to Top + Scroll to Bottom FABs ───
   function initBackToTop() {
-    const btn = document.createElement('button');
-    btn.className = 'back-to-top';
-    btn.setAttribute('aria-label', 'Voltar ao topo');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
-    document.body.appendChild(btn);
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    // Back to top (appears after scrolling down)
+    const btnUp = document.createElement('button');
+    btnUp.className = 'back-to-top';
+    btnUp.setAttribute('aria-label', 'Voltar ao topo');
+    btnUp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+    document.body.appendChild(btnUp);
+    btnUp.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Scroll to bottom (appears when near top)
+    const btnDown = document.createElement('button');
+    btnDown.className = 'scroll-to-bottom';
+    btnDown.setAttribute('aria-label', 'Ir para o fundo');
+    btnDown.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+    document.body.appendChild(btnDown);
+    btnDown.addEventListener('click', () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' }));
+
     window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 400);
+      const scrolled = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const nearBottom = scrolled > maxScroll - 200;
+      // Show up arrow after scrolling 400px
+      btnUp.classList.toggle('visible', scrolled > 400);
+      // Show down arrow when near top and not near bottom
+      btnDown.classList.toggle('visible', scrolled < 400 && !nearBottom);
     }, { passive: true });
+
+    // Initial state: show down arrow
+    setTimeout(() => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY < 400 && maxScroll > 200) {
+        btnDown.classList.add('visible');
+      }
+    }, 500);
   }
 
   // ─── 4. TOC Dropdown ───

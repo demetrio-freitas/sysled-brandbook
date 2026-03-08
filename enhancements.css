@@ -29,6 +29,25 @@
 }
 .back-to-top svg { width: 20px; height: 20px; }
 
+/* --- Scroll to Bottom FAB --- */
+.scroll-to-bottom {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--blue-primary); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(43,108,176,0.35);
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+}
+.scroll-to-bottom.visible {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.scroll-to-bottom:hover {
+  background: var(--blue-medium);
+  box-shadow: 0 6px 24px rgba(43,108,176,0.45);
+}
+.scroll-to-bottom svg { width: 20px; height: 20px; }
+
 /* --- TOC Dropdown --- */
 .toc-trigger {
   display: inline-flex; align-items: center; gap: 6px;

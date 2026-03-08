@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Marca e Propósito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-primary: #2B6CB0;
+      --blue-medium: #3A8FD6;
+      --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4;
+      --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1;
+      --cyan-medium: #3AAFCF;
+      --cyan-light: #48C9B0;
+      --dark-primary: #0F172A;
+      --dark-secondary: #1E293B;
+      --dark-text: #1E293B;
+      --gray-600: #475569;
+      --gray-400: #94A3B8;
+      --gray-200: #E2E8F0;
+      --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a;
+      --gradient-mid: #1d6ea0;
+      --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+      --warning-bg: #FFFBEB; --warning-text: #92400E; --warning-border: #FBBF24;
+    }
+
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .spec-table tr:hover td { background: rgba(30,41,59,0.5); }
+    [data-theme="dark"] .value-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .value-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .pillar-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .pillar-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .trait-label { color: #CBD5E1; }
+    [data-theme="dark"] .trait-row { background: #1E293B; }
+    [data-theme="dark"] .audience-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .audience-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .positioning-box { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .mission-quote { background: #1E293B; border-left-color: var(--blue-primary); }
+    [data-theme="dark"] .mission-quote p { color: #CBD5E1; }
+    [data-theme="dark"] .about-highlight { background: #1E293B; border-color: #334155; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-header { margin-bottom: 2rem; }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table tr:hover td { background: var(--gray-100); }
+
+    /* Theme toggle & Back button */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* About Highlights */
+    .about-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .about-highlight { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem;
+      border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--white); }
+    .about-highlight svg { width: 22px; height: 22px; color: var(--blue-primary); flex-shrink: 0; margin-top: 2px; }
+    .about-highlight-text { display: flex; flex-direction: column; gap: 2px; }
+    .about-highlight-text strong { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+      color: var(--dark-text); text-transform: uppercase; letter-spacing: 0.04em; }
+    .about-highlight-text span { font-size: 0.8rem; color: var(--gray-600); line-height: 1.4; }
+
+    /* Mission Quote */
+    .mission-quote { background: var(--gray-100); border-left: 4px solid var(--blue-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 2rem 2.5rem; margin: 1.5rem 0; }
+    .mission-quote p { font-size: 1.1rem; font-weight: 400; line-height: 1.8;
+      color: var(--dark-text); margin: 0; font-style: italic; }
+
+    /* Value Cards */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem; margin: 1.5rem 0; }
+    .value-card { padding: 1.75rem; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      background: var(--white); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); position: relative;
+      overflow: hidden; }
+    .value-card:hover { border-color: var(--blue-light); transform: translateY(-3px);
+      box-shadow: var(--shadow-hover); }
+    .value-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-primary), var(--cyan-light)); opacity: 0;
+      transition: opacity 0.25s; }
+    .value-card:hover::before { opacity: 1; }
+    .value-icon { width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(43,108,176,0.08); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 1rem; }
+    .value-icon svg { width: 24px; height: 24px; color: var(--blue-primary); }
+    .value-card h4 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.85rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+
+    /* Personality Traits */
+    .traits-container { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem; }
+    .trait-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+      border-radius: var(--radius-md); background: var(--gray-100); }
+    .trait-label { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600;
+      color: var(--dark-text); min-width: 100px; text-align: right; }
+    .trait-bar-wrap { flex: 1; display: flex; align-items: center; gap: 0; }
+    .trait-bar { height: 8px; background: var(--gray-200); border-radius: 100px; flex: 1; position: relative; overflow: hidden; }
+    .trait-bar-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--blue-primary), var(--cyan-light)); transition: width 0.6s ease; }
+    .trait-label-end { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600;
+      color: var(--gray-400); min-width: 100px; }
+
+    /* Pillar Cards */
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem; margin: 1.5rem 0; }
+    .pillar-card { padding: 2rem 1.5rem; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      background: var(--white); text-align: center; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+    .pillar-card:hover { border-color: var(--blue-light); transform: translateY(-3px);
+      box-shadow: var(--shadow-hover); }
+    .pillar-icon { width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 1.25rem;
+      display: flex; align-items: center; justify-content: center; }
+    .pillar-icon svg { width: 28px; height: 28px; color: #fff; }
+    .pillar-card h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.5rem; }
+    .pillar-card p { font-size: 0.8rem; color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+    /* Positioning */
+    .positioning-box { padding: 2.5rem; border: 2px solid var(--gray-200); border-radius: var(--radius-lg);
+      text-align: center; margin: 1.5rem 0; background: var(--white); position: relative; }
+    .positioning-box::before { content: ''; position: absolute; inset: -2px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--blue-primary), var(--cyan-light)); z-index: -1; }
+    .positioning-label { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 1rem; }
+    .positioning-statement { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700;
+      color: var(--dark-text); line-height: 1.5; max-width: 700px; margin: 0 auto; }
+    .positioning-statement em { font-style: normal; color: var(--blue-primary); }
+
+    /* Audience Cards */
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem; margin: 1.5rem 0; }
+    .audience-card { padding: 1.75rem; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      background: var(--white); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+    .audience-card:hover { border-color: var(--blue-light); transform: translateY(-3px);
+      box-shadow: var(--shadow-hover); }
+    .audience-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .audience-icon { width: 44px; height: 44px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0; }
+    .audience-icon svg { width: 22px; height: 22px; color: #fff; }
+    .audience-card h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      color: var(--dark-primary); }
+    .audience-card p { font-size: 0.8rem; color: var(--gray-600); margin: 0 0 0.75rem; line-height: 1.6; }
+    .audience-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .audience-tag { font-size: 0.65rem; font-weight: 600; padding: 3px 10px; border-radius: 100px;
+      background: rgba(43,108,176,0.08); color: var(--blue-primary); font-family: var(--font-body); }
+
+    /* Tom de voz section */
+    .tone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .tone-card { padding: 1.25rem; border-radius: var(--radius-md); text-align: center; }
+    .tone-card svg { width: 28px; height: 28px; margin-bottom: 0.75rem; }
+    .tone-card h4 { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .tone-card p { font-size: 0.78rem; margin: 0; line-height: 1.5; }
+    .tone-do { background: var(--success-bg); color: var(--success-text); }
+    .tone-do svg { color: var(--success-text); }
+    .tone-dont { background: var(--error-bg); color: var(--error-text); }
+    .tone-dont svg { color: var(--error-text); }
+
+    @media (max-width: 640px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3rem 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .trait-label, .trait-label-end { min-width: 70px; font-size: 0.65rem; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .tone-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: #065F46; color: #fff; padding: 10px 20px; border-radius: 10px;
+      font-size: 0.8rem; font-weight: 500; z-index: 999; transition: transform 0.3s; pointer-events: none; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .copyable { cursor: pointer; transition: opacity 0.2s; }
+    .copyable:hover { opacity: 0.7; }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-badge"><span></span>SYSLED — BRANDBOOK</div>
+    <h1>Marca e<br>Propósito</h1>
+    <p class="cover-subtitle">Identidade, missão, valores e posicionamento da marca Sysled no ecossistema de tecnologia industrial.</p>
+  </div>
+
+  <!-- ========== SEÇÃO 1: SOBRE A MARCA ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 01</div>
+      <h2>Sobre a Marca</h2>
+    </div>
+
+    <p>A Sysled é uma solução tecnológica modular voltada à digitalização, automação e otimização de processos industriais. A plataforma integra dados operacionais, logísticos e produtivos em tempo real, atuando como um <strong>hub central de inteligência</strong> que conecta sistemas legados, bancos de dados, sensores, processos logísticos e regras de negócio específicas de cada indústria.</p>
+
+    <p>Posicionada no segmento de <strong>IndTech</strong> (Tecnologia Industrial), a Sysled atua nas áreas de Indústria 4.0 e 5.0, Automação Industrial, Internet das Coisas (IoT), Engenharia de Software e Business Intelligence Industrial. A marca transmite <strong>confiança, inovação tecnológica e eficiência operacional</strong>.</p>
+
+    <div class="about-highlights">
+      <div class="about-highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="about-highlight-text">
+          <strong>IndTech</strong>
+          <span>Tecnologia Industrial de ponta</span>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <div class="about-highlight-text">
+          <strong>Plataforma Modular</strong>
+          <span>Arquitetura flexível e escalável</span>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <div class="about-highlight-text">
+          <strong>IoT &amp; Indústria 4.0</strong>
+          <span>Sensores e dados em tempo real</span>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <div class="about-highlight-text">
+          <strong>BI Industrial</strong>
+          <span>Business Intelligence aplicado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO 2: MISSÃO ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 02</div>
+      <h2>Missão</h2>
+    </div>
+
+    <div class="mission-quote copyable" data-copy="Transformar a gestão industrial por meio de soluções digitais inteligentes que conectam dados, automatizam processos e potencializam a tomada de decisão, tornando a indústria mais eficiente, rastreável e competitiva." title="Clique para copiar">
+      <p>Transformar a gestão industrial por meio de soluções digitais inteligentes que conectam dados, automatizam processos e potencializam a tomada de decisão, tornando a indústria mais eficiente, rastreável e competitiva.</p>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO 3: VALORES DA MARCA ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 03</div>
+      <h2>Valores da Marca</h2>
+    </div>
+
+    <p>Os valores da Sysled orientam todas as decisões de produto, comunicação e relacionamento com clientes e parceiros.</p>
+
+    <div class="values-grid">
+      <!-- Inovação -->
+      <div class="value-card">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+        </div>
+        <h4>Inovação</h4>
+        <p>Tecnologia de ponta aplicada à realidade do chão de fábrica, transformando desafios industriais em oportunidades de evolução.</p>
+      </div>
+
+      <!-- Confiabilidade -->
+      <div class="value-card">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Confiabilidade</h4>
+        <p>Dados precisos e sistemas robustos para decisões seguras. Cada informação é tratada com rigor e responsabilidade.</p>
+      </div>
+
+      <!-- Integração -->
+      <div class="value-card">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></svg>
+        </div>
+        <h4>Integração</h4>
+        <p>Conexão harmoniosa entre sistemas, pessoas e processos. A Sysled une o que antes operava em silos isolados.</p>
+      </div>
+
+      <!-- Eficiência -->
+      <div class="value-card">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Eficiência</h4>
+        <p>Otimização contínua de recursos e operações. Cada funcionalidade é projetada para maximizar resultados com o mínimo de desperdício.</p>
+      </div>
+
+      <!-- Adaptabilidade -->
+      <div class="value-card">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h4>Adaptabilidade</h4>
+        <p>Soluções flexíveis para diferentes realidades industriais. A plataforma se molda ao contexto, não o contrário.</p>
+      </div>
+    </div>
+
+    <h3>Referência Rápida</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Valor</th>
+          <th>Definição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Inovação</strong></td><td>Tecnologia de ponta aplicada à realidade do chão de fábrica</td></tr>
+        <tr><td><strong>Confiabilidade</strong></td><td>Dados precisos e sistemas robustos para decisões seguras</td></tr>
+        <tr><td><strong>Integração</strong></td><td>Conexão harmoniosa entre sistemas, pessoas e processos</td></tr>
+        <tr><td><strong>Eficiência</strong></td><td>Otimização contínua de recursos e operações</td></tr>
+        <tr><td><strong>Adaptabilidade</strong></td><td>Soluções flexíveis para diferentes realidades industriais</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== SEÇÃO 4: PERSONALIDADE DA MARCA ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 04</div>
+      <h2>Personalidade da Marca</h2>
+    </div>
+
+    <p>A Sysled se comunica de forma profissional, técnica e acessível. Não é uma marca fria ou distante — é uma <strong>parceira tecnológica</strong> que entende a realidade da indústria. O tom é confiante sem ser arrogante, técnico sem ser incompreensível, inovador sem ser futurista demais.</p>
+
+    <h3>Espectro de Personalidade</h3>
+
+    <div class="traits-container">
+      <div class="trait-row">
+        <span class="trait-label">Formal</span>
+        <div class="trait-bar-wrap">
+          <div class="trait-bar"><div class="trait-bar-fill" style="width: 65%"></div></div>
+        </div>
+        <span class="trait-label-end">Casual</span>
+      </div>
+      <div class="trait-row">
+        <span class="trait-label">Técnica</span>
+        <div class="trait-bar-wrap">
+          <div class="trait-bar"><div class="trait-bar-fill" style="width: 30%"></div></div>
+        </div>
+        <span class="trait-label-end">Leiga</span>
+      </div>
+      <div class="trait-row">
+        <span class="trait-label">Confiante</span>
+        <div class="trait-bar-wrap">
+          <div class="trait-bar"><div class="trait-bar-fill" style="width: 25%"></div></div>
+        </div>
+        <span class="trait-label-end">Humilde</span>
+      </div>
+      <div class="trait-row">
+        <span class="trait-label">Inovadora</span>
+        <div class="trait-bar-wrap">
+          <div class="trait-bar"><div class="trait-bar-fill" style="width: 35%"></div></div>
+        </div>
+        <span class="trait-label-end">Tradicional</span>
+      </div>
+      <div class="trait-row">
+        <span class="trait-label">Próxima</span>
+        <div class="trait-bar-wrap">
+          <div class="trait-bar"><div class="trait-bar-fill" style="width: 40%"></div></div>
+        </div>
+        <span class="trait-label-end">Distante</span>
+      </div>
+    </div>
+
+    <h3>Tom de Voz</h3>
+
+    <div class="tone-grid">
+      <div class="tone-card tone-do">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Confiante</h4>
+        <p>Apresentar soluções com segurança e embasamento técnico</p>
+      </div>
+      <div class="tone-card tone-do">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Acessível</h4>
+        <p>Linguagem clara que traduz complexidade em simplicidade</p>
+      </div>
+      <div class="tone-card tone-dont">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <h4>Arrogante</h4>
+        <p>Nunca menosprezar o conhecimento do cliente ou parceiro</p>
+      </div>
+      <div class="tone-card tone-dont">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <h4>Hermética</h4>
+        <p>Evitar jargões desnecessários que afastam o público</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO 5: PILARES ESTRATÉGICOS ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 05</div>
+      <h2>Pilares Estratégicos</h2>
+    </div>
+
+    <p>Os pilares estratégicos da Sysled sustentam a proposta de valor da marca e direcionam o desenvolvimento de produtos, serviços e comunicação.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: linear-gradient(135deg, #2B6CB0, #3A8FD6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h4>Digitalização</h4>
+        <p>Transformar processos manuais e analógicos em fluxos digitais inteligentes e rastreáveis.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: linear-gradient(135deg, #3A8FD6, #5BB8F5);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h4>Integração</h4>
+        <p>Conectar sistemas, sensores e equipes em uma plataforma unificada de dados e operações.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: linear-gradient(135deg, #2E86C1, #3AAFCF);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h4>Automação</h4>
+        <p>Eliminar tarefas repetitivas e manuais com fluxos automatizados e regras de negócio inteligentes.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon" style="background: linear-gradient(135deg, #3AAFCF, #48C9B0);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h4>Inteligência</h4>
+        <p>Transformar dados brutos em insights acionáveis para decisões estratégicas e operacionais.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO 6: POSICIONAMENTO ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 06</div>
+      <h2>Posicionamento</h2>
+    </div>
+
+    <p>O posicionamento da Sysled define como a marca se diferencia no mercado e comunica seu valor único aos stakeholders.</p>
+
+    <div class="positioning-box">
+      <div class="positioning-label">Declaração de Posicionamento</div>
+      <p class="positioning-statement">Para <em>indústrias que buscam eficiência operacional</em>, a Sysled é a <em>plataforma modular de inteligência industrial</em> que conecta, automatiza e otimiza processos produtivos em tempo real — porque acreditamos que <em>dados conectados geram decisões mais inteligentes</em>.</p>
+    </div>
+
+    <h3>Diferenciais Competitivos</h3>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Diferencial</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Modularidade</strong></td><td>Cada módulo pode ser implementado de forma independente, permitindo adoção gradual</td></tr>
+        <tr><td><strong>Integração Nativa</strong></td><td>Conecta-se a sistemas legados, ERPs, sensores IoT e bancos de dados existentes</td></tr>
+        <tr><td><strong>Tempo Real</strong></td><td>Dados operacionais processados e disponíveis instantaneamente para tomada de decisão</td></tr>
+        <tr><td><strong>Customização Industrial</strong></td><td>Regras de negócio configuráveis para atender especificidades de cada segmento</td></tr>
+        <tr><td><strong>Escalabilidade</strong></td><td>Arquitetura preparada para crescer junto com a operação do cliente</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== SEÇÃO 7: PÚBLICO-ALVO ========== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">Seção 07</div>
+      <h2>Público-Alvo</h2>
+    </div>
+
+    <p>A Sysled atende diferentes perfis dentro do ecossistema industrial, desde a liderança executiva até equipes operacionais no chão de fábrica.</p>
+
+    <div class="audience-grid">
+      <!-- Decisores -->
+      <div class="audience-card">
+        <div class="audience-card-header">
+          <div class="audience-icon" style="background: linear-gradient(135deg, #2B6CB0, #3A8FD6);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h4>Decisores Executivos</h4>
+        </div>
+        <p>CEOs, CTOs e diretores industriais que buscam transformação digital com retorno mensurável e visão estratégica de dados.</p>
+        <div class="audience-tags">
+          <span class="audience-tag">C-Level</span>
+          <span class="audience-tag">ROI</span>
+          <span class="audience-tag">Estratégia</span>
+        </div>
+      </div>
+
+      <!-- Gestores -->
+      <div class="audience-card">
+        <div class="audience-card-header">
+          <div class="audience-icon" style="background: linear-gradient(135deg, #3A8FD6, #5BB8F5);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Gestores de Produção</h4>
+        </div>
+        <p>Gerentes e coordenadores de produção, qualidade e logística que precisam de controle operacional em tempo real.</p>
+        <div class="audience-tags">
+          <span class="audience-tag">Produção</span>
+          <span class="audience-tag">Qualidade</span>
+          <span class="audience-tag">Logística</span>
+        </div>
+      </div>
+
+      <!-- Engenheiros -->
+      <div class="audience-card">
+        <div class="audience-card-header">
+          <div class="audience-icon" style="background: linear-gradient(135deg, #2E86C1, #3AAFCF);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>Engenheiros e TI</h4>
+        </div>
+        <p>Engenheiros de automação, analistas de sistemas e equipes de TI industrial responsáveis pela implementação e manutenção.</p>
+        <div class="audience-tags">
+          <span class="audience-tag">Automação</span>
+          <span class="audience-tag">Integração</span>
+          <span class="audience-tag">DevOps</span>
+        </div>
+      </div>
+
+      <!-- Operacional -->
+      <div class="audience-card">
+        <div class="audience-card-header">
+          <div class="audience-icon" style="background: linear-gradient(135deg, #3AAFCF, #48C9B0);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>Equipe Operacional</h4>
+        </div>
+        <p>Operadores de máquinas, supervisores de linha e técnicos de manutenção que interagem diariamente com a plataforma.</p>
+        <div class="audience-tags">
+          <span class="audience-tag">Chão de Fábrica</span>
+          <span class="audience-tag">Manutenção</span>
+          <span class="audience-tag">Operação</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.main -->
+
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    localStorage.setItem('sysled-theme', current === 'dark' ? 'light' : 'dark');
+  }
+  (function() {
+    const saved = localStorage.getItem('sysled-theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg || 'Copiado!';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  }
+  function copyText(el) {
+    const text = el.getAttribute('data-copy') || el.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => showToast('Copiado: ' + text));
+  }
+  document.querySelectorAll('.copyable').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => copyText(el));
+  });
+</script>
+
+</body>
+</html>

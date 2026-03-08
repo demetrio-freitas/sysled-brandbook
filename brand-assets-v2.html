@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Brand Assets &amp; Kit de Marca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-primary: #2B6CB0; --blue-medium: #3A8FD6; --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4; --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1; --cyan-medium: #3AAFCF; --cyan-light: #48C9B0;
+      --dark-primary: #0F172A; --dark-secondary: #1E293B; --dark-text: #1E293B;
+      --gray-600: #475569; --gray-400: #94A3B8; --gray-200: #E2E8F0; --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px; --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a; --gradient-mid: #1d6ea0; --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46;
+      --error-bg: #FEF2F2; --error-text: #991B1B;
+    }
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .asset-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .asset-card:hover { border-color: var(--blue-light); }
+    [data-theme="dark"] .asset-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .principle-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .principle-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .download-btn { background: #1E293B; border-color: #334155; color: #E2E8F0; }
+    [data-theme="dark"] .download-btn:hover { border-color: var(--blue-light); background: #253548; }
+    [data-theme="dark"] .ref-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .ref-card h4 { color: #E2E8F0; }
+    [data-theme="dark"] .token-row { border-bottom-color: #334155; }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Top bar */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); cursor: pointer; }
+    .spec-table code:hover { background: rgba(91,184,245,0.15); }
+
+    /* Asset cards */
+    .asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .asset-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      overflow: hidden; background: var(--white); transition: all 0.3s; }
+    .asset-card:hover { border-color: var(--blue-light); transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .asset-preview { padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 160px; }
+    .asset-info { padding: 1.25rem; border-top: 1px solid var(--gray-200); }
+    .asset-info h4 { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .asset-info p { font-size: 0.75rem; color: var(--gray-400); margin: 0 0 0.75rem; }
+    .asset-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .asset-tag { font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600;
+      padding: 3px 8px; border-radius: 6px; background: rgba(43,108,176,0.06);
+      color: var(--blue-primary); text-transform: uppercase; letter-spacing: 0.03em; }
+    [data-theme="dark"] .asset-tag { background: rgba(91,184,245,0.1); color: var(--blue-light); }
+    [data-theme="dark"] .asset-info { border-top-color: #334155; }
+
+    /* Download buttons */
+    .download-group { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+    .download-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border: 1px solid var(--gray-200); border-radius: 8px; background: var(--white);
+      color: var(--dark-text); font-size: 0.72rem; font-weight: 600; font-family: var(--font-heading);
+      cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .download-btn:hover { border-color: var(--blue-primary); color: var(--blue-primary); background: rgba(43,108,176,0.04); }
+    .download-btn svg { width: 14px; height: 14px; }
+    .download-btn-primary { background: var(--blue-primary); color: #fff; border-color: var(--blue-primary); }
+    .download-btn-primary:hover { background: var(--blue-medium); border-color: var(--blue-medium); color: #fff; }
+    [data-theme="dark"] .download-btn-primary { background: var(--blue-primary); color: #fff; }
+
+    /* Principle cards */
+    .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .principle-card { text-align: center; padding: 2rem 1.25rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); background: var(--white); transition: all 0.3s; }
+    .principle-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--blue-light); }
+    .principle-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .principle-card h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 0.5rem; color: var(--dark-primary); }
+    .principle-card p { font-size: 0.8rem; color: var(--gray-400); margin: 0; line-height: 1.5; }
+
+    /* Reference cards */
+    .ref-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .ref-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      padding: 1.5rem; background: var(--white); transition: all 0.2s; }
+    .ref-card:hover { border-color: var(--blue-light); }
+    .ref-card h4 { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .ref-card p { font-size: 0.8rem; color: var(--gray-400); margin: 0; line-height: 1.5; }
+    .ref-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem;
+      color: var(--blue-primary); font-weight: 600; margin-top: 0.75rem; text-decoration: none; }
+    .ref-link:hover { text-decoration: underline; }
+
+    /* Token rows */
+    .token-grid { margin: 1.5rem 0; }
+    .token-row { display: flex; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--gray-200); gap: 1rem; }
+    .token-row:last-child { border-bottom: none; }
+    .token-swatch { width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0; cursor: pointer;
+      transition: transform 0.2s; }
+    .token-swatch:hover { transform: scale(1.1); }
+    .token-info { flex: 1; }
+    .token-name { font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; }
+    .token-value { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400);
+      cursor: pointer; }
+    .token-value:hover { color: var(--blue-primary); }
+    .token-usage { font-size: 0.75rem; color: var(--gray-400); }
+
+    /* Code block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem;
+      margin: 1rem 0; overflow-x: auto; position: relative; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.78rem; color: #CBD5E1;
+      line-height: 1.8; white-space: pre; margin: 0; }
+    .code-block .comment { color: #64748B; }
+    .code-block .property { color: #7ECEF4; }
+    .code-block .value { color: #48C9B0; }
+    .code-block .string { color: #FDE68A; }
+    .copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; padding: 6px 12px;
+      border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: var(--font-body);
+      transition: all 0.2s; }
+    .copy-btn:hover { background: rgba(255,255,255,0.15); color: #E2E8F0; }
+
+    /* Do/Dont */
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 1rem; min-height: 130px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    /* File tree */
+    .file-tree { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem 2rem;
+      font-family: var(--font-mono); font-size: 0.78rem; color: #CBD5E1; line-height: 2;
+      margin: 1.5rem 0; overflow-x: auto; }
+    .file-tree .folder { color: #7ECEF4; }
+    .file-tree .file { color: #CBD5E1; }
+    .file-tree .comment { color: #64748B; }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--dark-primary); color: #fff; padding: 12px 24px; border-radius: 12px;
+      font-size: 0.82rem; font-weight: 500; opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      z-index: 9999; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3.5rem 1.5rem 3rem; }
+      .principles-grid, .ref-grid { grid-template-columns: 1fr; }
+      .asset-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover reveal">
+    <div class="cover-badge"><span></span>Modulo 12</div>
+    <h1>Brand Assets</h1>
+    <p class="cover-subtitle">Kit completo da marca SYSLED: logos, cores, tipografia, templates e todos os recursos necessarios para aplicar a identidade visual corretamente.</p>
+  </div>
+
+  <!-- 01 VISAO GERAL -->
+  <div class="section reveal">
+    <div class="section-number">01 — Visao Geral</div>
+    <h2>Kit de Marca SYSLED</h2>
+    <p>Este kit reune todos os assets oficiais da marca SYSLED em um unico lugar. Siga as diretrizes de uso para manter a consistencia visual em todas as aplicacoes — digitais, impressas e institucionais.</p>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-icon">📦</div>
+        <h4>Pronto para Uso</h4>
+        <p>Todos os arquivos em formatos vetoriais e rasterizados, prontos para aplicacao imediata.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🎯</div>
+        <h4>Consistencia</h4>
+        <p>Assets padronizados que garantem uniformidade em todas as plataformas e materiais.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🔒</div>
+        <h4>Protecao da Marca</h4>
+        <p>Regras claras de uso que preservam a integridade e o reconhecimento da marca.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 LOGOS -->
+  <div class="section reveal">
+    <div class="section-number">02 — Logotipos</div>
+    <h2>Arquivos do Logotipo</h2>
+    <p>4 variantes oficiais do logotipo SYSLED. Todos os SVGs sao vetoriais e escalaveis sem perda de qualidade. Para specs completas, consulte a <a href="logotipo-v2.html" style="color:var(--blue-primary);font-weight:600;">pagina do Logotipo</a>.</p>
+
+    <div class="asset-grid">
+      <!-- Logo Principal -->
+      <div class="asset-card">
+        <div class="asset-preview" style="background: #FFFFFF;">
+          <svg viewBox="0 0 600 180" width="280" height="84">
+            <defs>
+              <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#5BB8F5"/><stop offset="50%" style="stop-color:#3A8FD6"/><stop offset="100%" style="stop-color:#2B6CB0"/></linearGradient>
+              <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7ECEF4;stop-opacity:0.7"/><stop offset="100%" style="stop-color:#4AA3D8;stop-opacity:0.5"/></linearGradient>
+              <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#A8E0F8;stop-opacity:0.6"/><stop offset="100%" style="stop-color:#5DADE2;stop-opacity:0.4"/></linearGradient>
+              <linearGradient id="bg3" x1="30%" y1="0%" x2="70%" y2="100%"><stop offset="0%" style="stop-color:#B8E6FA;stop-opacity:0.8"/><stop offset="100%" style="stop-color:#6BC1EB;stop-opacity:0.5"/></linearGradient>
+            </defs>
+            <g transform="translate(15,15)">
+              <path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="url(#cg1)"/>
+              <ellipse cx="150" cy="50" rx="38" ry="35" fill="url(#bg1)"/>
+              <ellipse cx="80" cy="55" rx="32" ry="30" fill="url(#bg2)"/>
+              <ellipse cx="120" cy="35" rx="22" ry="20" fill="url(#bg3)"/>
+              <ellipse cx="110" cy="90" rx="45" ry="25" fill="url(#bg1)"/>
+              <ellipse cx="45" cy="85" rx="22" ry="20" fill="url(#bg2)"/>
+              <ellipse cx="175" cy="80" rx="20" ry="18" fill="url(#bg3)"/>
+              <ellipse cx="90" cy="38" rx="18" ry="10" fill="white" opacity="0.25"/>
+              <ellipse cx="155" cy="32" rx="14" ry="8" fill="white" opacity="0.2"/>
+            </g>
+            <text x="260" y="115" font-family="'Montserrat','Helvetica Neue',Arial,sans-serif" font-weight="800" font-size="72" letter-spacing="4" fill="#1A1A2E">SYSLED</text>
+          </svg>
+        </div>
+        <div class="asset-info">
+          <h4>Logo Principal</h4>
+          <p>Versao completa colorida para fundos claros</p>
+          <div class="asset-meta">
+            <span class="asset-tag">SVG</span>
+            <span class="asset-tag">Fundo Claro</span>
+            <span class="asset-tag">3.4 KB</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn download-btn-primary" onclick="downloadSVG('principal')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              SVG
+            </button>
+            <button class="download-btn" onclick="downloadPNG('principal')">PNG</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo Branca -->
+      <div class="asset-card">
+        <div class="asset-preview" style="background: #0F172A;">
+          <svg viewBox="0 0 600 180" width="280" height="84">
+            <g transform="translate(15,15)">
+              <path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white" opacity="0.9"/>
+              <ellipse cx="150" cy="50" rx="38" ry="35" fill="white" opacity="0.15"/>
+              <ellipse cx="80" cy="55" rx="32" ry="30" fill="white" opacity="0.12"/>
+              <ellipse cx="120" cy="35" rx="22" ry="20" fill="white" opacity="0.18"/>
+              <ellipse cx="110" cy="90" rx="45" ry="25" fill="white" opacity="0.1"/>
+              <ellipse cx="90" cy="38" rx="18" ry="10" fill="white" opacity="0.2"/>
+            </g>
+            <text x="260" y="115" font-family="'Montserrat','Helvetica Neue',Arial,sans-serif" font-weight="800" font-size="72" letter-spacing="4" fill="white">SYSLED</text>
+          </svg>
+        </div>
+        <div class="asset-info">
+          <h4>Logo Branca</h4>
+          <p>Para fundos escuros ou coloridos</p>
+          <div class="asset-meta">
+            <span class="asset-tag">SVG</span>
+            <span class="asset-tag">Fundo Escuro</span>
+            <span class="asset-tag">1.1 KB</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn download-btn-primary" onclick="downloadSVG('branca')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              SVG
+            </button>
+            <button class="download-btn" onclick="downloadPNG('branca')">PNG</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo Mono -->
+      <div class="asset-card">
+        <div class="asset-preview" style="background: #FFFFFF;">
+          <svg viewBox="0 0 600 180" width="280" height="84">
+            <g transform="translate(15,15)">
+              <path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="#1A1A2E"/>
+            </g>
+            <text x="260" y="115" font-family="'Montserrat','Helvetica Neue',Arial,sans-serif" font-weight="800" font-size="72" letter-spacing="4" fill="#1A1A2E">SYSLED</text>
+          </svg>
+        </div>
+        <div class="asset-info">
+          <h4>Logo Monocromatica</h4>
+          <p>Impressao P&B, contextos minimalistas</p>
+          <div class="asset-meta">
+            <span class="asset-tag">SVG</span>
+            <span class="asset-tag">P&B</span>
+            <span class="asset-tag">853 B</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn download-btn-primary" onclick="downloadSVG('mono')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              SVG
+            </button>
+            <button class="download-btn" onclick="downloadPNG('mono')">PNG</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icone -->
+      <div class="asset-card">
+        <div class="asset-preview" style="background: linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0);">
+          <svg viewBox="0 0 240 160" width="140" height="93">
+            <defs>
+              <linearGradient id="ig1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fff;stop-opacity:0.7"/><stop offset="100%" style="stop-color:#fff;stop-opacity:0.3"/></linearGradient>
+            </defs>
+            <g transform="translate(12,12)">
+              <path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/>
+              <ellipse cx="150" cy="50" rx="38" ry="35" fill="url(#ig1)" opacity="0.3"/>
+              <ellipse cx="80" cy="55" rx="32" ry="30" fill="url(#ig1)" opacity="0.25"/>
+              <ellipse cx="120" cy="35" rx="22" ry="20" fill="url(#ig1)" opacity="0.35"/>
+              <ellipse cx="90" cy="38" rx="18" ry="10" fill="white" opacity="0.3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="asset-info">
+          <h4>Icone (Nuvem)</h4>
+          <p>Favicons, avatares, espacos reduzidos</p>
+          <div class="asset-meta">
+            <span class="asset-tag">SVG</span>
+            <span class="asset-tag">Icone</span>
+            <span class="asset-tag">2.2 KB</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn download-btn-primary" onclick="downloadSVG('icone')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              SVG
+            </button>
+            <button class="download-btn" onclick="downloadPNG('icone')">PNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 PALETA DE CORES -->
+  <div class="section reveal">
+    <div class="section-number">03 — Cores</div>
+    <h2>Paleta Resumida</h2>
+    <p>Cores oficiais da marca para uso rapido. Clique em qualquer swatch ou valor hex para copiar. Para a paleta completa, consulte a <a href="cores-v2.html" style="color:var(--blue-primary);font-weight:600;">pagina de Cores</a>.</p>
+
+    <h3>Cores Primarias</h3>
+    <div class="token-grid">
+      <div class="token-row">
+        <div class="token-swatch" style="background:#2B6CB0;" onclick="copyText('#2B6CB0')"></div>
+        <div class="token-info">
+          <div class="token-name">Azul Primario</div>
+          <div class="token-value" onclick="copyText('#2B6CB0')">#2B6CB0</div>
+        </div>
+        <div class="token-usage">Cor principal da marca, CTAs, links</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#3A8FD6;" onclick="copyText('#3A8FD6')"></div>
+        <div class="token-info">
+          <div class="token-name">Azul Medio</div>
+          <div class="token-value" onclick="copyText('#3A8FD6')">#3A8FD6</div>
+        </div>
+        <div class="token-usage">Gradientes, hover states</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#5BB8F5;" onclick="copyText('#5BB8F5')"></div>
+        <div class="token-info">
+          <div class="token-name">Azul Claro</div>
+          <div class="token-value" onclick="copyText('#5BB8F5')">#5BB8F5</div>
+        </div>
+        <div class="token-usage">Acentos, destaques, icones</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#48C9B0;" onclick="copyText('#48C9B0')"></div>
+        <div class="token-info">
+          <div class="token-name">Ciano / Verde-agua</div>
+          <div class="token-value" onclick="copyText('#48C9B0')">#48C9B0</div>
+        </div>
+        <div class="token-usage">Acentos secundarios, sucesso</div>
+      </div>
+    </div>
+
+    <h3>Cores Neutras</h3>
+    <div class="token-grid">
+      <div class="token-row">
+        <div class="token-swatch" style="background:#0F172A;" onclick="copyText('#0F172A')"></div>
+        <div class="token-info">
+          <div class="token-name">Dark Primary</div>
+          <div class="token-value" onclick="copyText('#0F172A')">#0F172A</div>
+        </div>
+        <div class="token-usage">Fundos escuros, dark mode</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#1E293B;" onclick="copyText('#1E293B')"></div>
+        <div class="token-info">
+          <div class="token-name">Dark Secondary</div>
+          <div class="token-value" onclick="copyText('#1E293B')">#1E293B</div>
+        </div>
+        <div class="token-usage">Cards dark mode, superficies</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#F8FAFC;" onclick="copyText('#F8FAFC')"></div>
+        <div class="token-info">
+          <div class="token-name">Gray 100</div>
+          <div class="token-value" onclick="copyText('#F8FAFC')">#F8FAFC</div>
+        </div>
+        <div class="token-usage">Fundo da pagina, backgrounds claros</div>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#FFFFFF; border: 1px solid #E2E8F0;" onclick="copyText('#FFFFFF')"></div>
+        <div class="token-info">
+          <div class="token-name">Branco</div>
+          <div class="token-value" onclick="copyText('#FFFFFF')">#FFFFFF</div>
+        </div>
+        <div class="token-usage">Cards, superficies, textos sobre fundo escuro</div>
+      </div>
+    </div>
+
+    <h3>Gradientes</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+      <div style="cursor:pointer;" onclick="copyText('linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0)')">
+        <div style="height: 64px; border-radius: 10px; background: linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0);"></div>
+        <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem;">Brand Gradient</div>
+        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-400);">#5BB8F5 → #3A8FD6 → #2B6CB0</div>
+      </div>
+      <div style="cursor:pointer;" onclick="copyText('linear-gradient(135deg, #5BB8F5, #48C9B0)')">
+        <div style="height: 64px; border-radius: 10px; background: linear-gradient(135deg, #5BB8F5, #48C9B0);"></div>
+        <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem;">Accent Gradient</div>
+        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-400);">#5BB8F5 → #48C9B0</div>
+      </div>
+      <div style="cursor:pointer;" onclick="copyText('linear-gradient(135deg, #0F172A, #1E3A5F)')">
+        <div style="height: 64px; border-radius: 10px; background: linear-gradient(135deg, #0F172A, #1E3A5F);"></div>
+        <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem;">Dark Gradient</div>
+        <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-400);">#0F172A → #1E3A5F</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 TIPOGRAFIA -->
+  <div class="section reveal">
+    <div class="section-number">04 — Tipografia</div>
+    <h2>Fontes Oficiais</h2>
+    <p>Para diretrizes completas de tipografia, consulte a <a href="tipografia-v2.html" style="color:var(--blue-primary);font-weight:600;">pagina de Tipografia</a>.</p>
+
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-preview" style="background: var(--gray-100); flex-direction: column; gap: 0.5rem;">
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.5rem; color: var(--dark-primary);">Aa</div>
+          <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--gray-600);">MONTSERRAT</div>
+        </div>
+        <div class="asset-info">
+          <h4>Montserrat</h4>
+          <p>Titulos, headings, logotipo, numeros de destaque</p>
+          <div class="asset-meta">
+            <span class="asset-tag">Pesos: 700, 800, 900</span>
+            <span class="asset-tag">Google Fonts</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn" onclick="copyText('font-family: Montserrat, sans-serif; font-weight: 800;')">Copiar CSS</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-preview" style="background: var(--gray-100); flex-direction: column; gap: 0.5rem;">
+          <div style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 2.5rem; color: var(--dark-primary);">Aa</div>
+          <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; color: var(--gray-600);">INTER</div>
+        </div>
+        <div class="asset-info">
+          <h4>Inter</h4>
+          <p>Corpo de texto, paragrafos, UI, labels</p>
+          <div class="asset-meta">
+            <span class="asset-tag">Pesos: 300-700</span>
+            <span class="asset-tag">Google Fonts</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn" onclick="copyText('font-family: Inter, sans-serif; font-weight: 400;')">Copiar CSS</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-preview" style="background: var(--gray-100); flex-direction: column; gap: 0.5rem;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 2.5rem; color: var(--dark-primary);">Aa</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.06em; color: var(--gray-600);">JETBRAINS MONO</div>
+        </div>
+        <div class="asset-info">
+          <h4>JetBrains Mono</h4>
+          <p>Codigo, valores tecnicos, specs, tokens</p>
+          <div class="asset-meta">
+            <span class="asset-tag">Pesos: 400, 500</span>
+            <span class="asset-tag">Google Fonts</span>
+          </div>
+          <div class="download-group">
+            <button class="download-btn" onclick="copyText(&quot;font-family: 'JetBrains Mono', monospace; font-weight: 400;&quot;)">Copiar CSS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 ESTRUTURA DE ARQUIVOS -->
+  <div class="section reveal">
+    <div class="section-number">05 — Estrutura</div>
+    <h2>Organizacao dos Arquivos</h2>
+    <p>Estrutura recomendada para organizar os brand assets em qualquer projeto ou repositorio.</p>
+
+    <div class="file-tree">
+<span class="folder">sysled-brand/</span>
+├── <span class="folder">logos/</span>
+│   ├── <span class="file">sysled-logo-principal.svg</span>     <span class="comment"># Logo colorida, fundo claro</span>
+│   ├── <span class="file">sysled-logo-branca.svg</span>        <span class="comment"># Logo branca, fundo escuro</span>
+│   ├── <span class="file">sysled-logo-mono.svg</span>          <span class="comment"># Monocromatica, P&B</span>
+│   ├── <span class="file">sysled-icone.svg</span>              <span class="comment"># Apenas nuvem</span>
+│   └── <span class="folder">png/</span>
+│       ├── <span class="file">sysled-logo-principal@1x.png</span>
+│       ├── <span class="file">sysled-logo-principal@2x.png</span>
+│       └── <span class="file">sysled-logo-principal@3x.png</span>
+├── <span class="folder">cores/</span>
+│   ├── <span class="file">paleta.ase</span>                    <span class="comment"># Adobe Swatch Exchange</span>
+│   └── <span class="file">tokens.css</span>                    <span class="comment"># CSS Custom Properties</span>
+├── <span class="folder">tipografia/</span>
+│   └── <span class="file">fonts.css</span>                     <span class="comment"># Google Fonts import</span>
+├── <span class="folder">templates/</span>
+│   ├── <span class="folder">social/</span>                     <span class="comment"># Templates redes sociais</span>
+│   ├── <span class="folder">apresentacao/</span>               <span class="comment"># Pitch deck, slides</span>
+│   └── <span class="folder">impressos/</span>                  <span class="comment"># Cartao, timbrado</span>
+├── <span class="file">brandbook.pdf</span>                     <span class="comment"># Manual completo</span>
+└── <span class="file">README.md</span>                         <span class="comment"># Instrucoes de uso</span>
+    </div>
+  </div>
+
+  <!-- 06 TOKENS CSS -->
+  <div class="section reveal">
+    <div class="section-number">06 — Design Tokens</div>
+    <h2>Tokens CSS Completos</h2>
+    <p>Bloco CSS pronto para copiar e colar em qualquer projeto. Inclui cores, tipografia, espacamento, sombras e border-radius padrao da marca.</p>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyText(document.getElementById('tokens-css').textContent)">Copiar Tudo</button>
+      <pre id="tokens-css"><span class="comment">/* ================================================
+   SYSLED — Design Tokens
+   Versao 2.0 | Marco 2026
+   ================================================ */</span>
+
+:root {
+  <span class="comment">/* Cores Primarias */</span>
+  <span class="property">--sysled-blue-primary</span>: <span class="value">#2B6CB0</span>;
+  <span class="property">--sysled-blue-medium</span>: <span class="value">#3A8FD6</span>;
+  <span class="property">--sysled-blue-light</span>: <span class="value">#5BB8F5</span>;
+  <span class="property">--sysled-blue-lighter</span>: <span class="value">#7ECEF4</span>;
+  <span class="property">--sysled-blue-pale</span>: <span class="value">#A8E0F8</span>;
+
+  <span class="comment">/* Cores Secundarias */</span>
+  <span class="property">--sysled-cyan-dark</span>: <span class="value">#2E86C1</span>;
+  <span class="property">--sysled-cyan-medium</span>: <span class="value">#3AAFCF</span>;
+  <span class="property">--sysled-cyan-light</span>: <span class="value">#48C9B0</span>;
+
+  <span class="comment">/* Neutras */</span>
+  <span class="property">--sysled-dark-primary</span>: <span class="value">#0F172A</span>;
+  <span class="property">--sysled-dark-secondary</span>: <span class="value">#1E293B</span>;
+  <span class="property">--sysled-gray-600</span>: <span class="value">#475569</span>;
+  <span class="property">--sysled-gray-400</span>: <span class="value">#94A3B8</span>;
+  <span class="property">--sysled-gray-200</span>: <span class="value">#E2E8F0</span>;
+  <span class="property">--sysled-gray-100</span>: <span class="value">#F8FAFC</span>;
+  <span class="property">--sysled-white</span>: <span class="value">#FFFFFF</span>;
+
+  <span class="comment">/* Gradientes */</span>
+  <span class="property">--sysled-gradient-brand</span>: <span class="string">linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0)</span>;
+  <span class="property">--sysled-gradient-accent</span>: <span class="string">linear-gradient(135deg, #5BB8F5, #48C9B0)</span>;
+  <span class="property">--sysled-gradient-dark</span>: <span class="string">linear-gradient(135deg, #0F172A, #1E3A5F)</span>;
+  <span class="property">--sysled-gradient-cover</span>: <span class="string">linear-gradient(135deg, #1a4e8a, #1d6ea0, #1a7a8f)</span>;
+
+  <span class="comment">/* Tipografia */</span>
+  <span class="property">--sysled-font-heading</span>: <span class="string">'Montserrat', sans-serif</span>;
+  <span class="property">--sysled-font-body</span>: <span class="string">'Inter', sans-serif</span>;
+  <span class="property">--sysled-font-mono</span>: <span class="string">'JetBrains Mono', monospace</span>;
+
+  <span class="comment">/* Espacamento */</span>
+  <span class="property">--sysled-space-xs</span>: <span class="value">4px</span>;
+  <span class="property">--sysled-space-sm</span>: <span class="value">8px</span>;
+  <span class="property">--sysled-space-md</span>: <span class="value">16px</span>;
+  <span class="property">--sysled-space-lg</span>: <span class="value">24px</span>;
+  <span class="property">--sysled-space-xl</span>: <span class="value">32px</span>;
+  <span class="property">--sysled-space-2xl</span>: <span class="value">48px</span>;
+  <span class="property">--sysled-space-3xl</span>: <span class="value">64px</span>;
+
+  <span class="comment">/* Border Radius */</span>
+  <span class="property">--sysled-radius-sm</span>: <span class="value">6px</span>;
+  <span class="property">--sysled-radius-md</span>: <span class="value">12px</span>;
+  <span class="property">--sysled-radius-lg</span>: <span class="value">20px</span>;
+  <span class="property">--sysled-radius-full</span>: <span class="value">9999px</span>;
+
+  <span class="comment">/* Sombras */</span>
+  <span class="property">--sysled-shadow-sm</span>: <span class="string">0 1px 2px rgba(0,0,0,0.05)</span>;
+  <span class="property">--sysled-shadow-md</span>: <span class="string">0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06)</span>;
+  <span class="property">--sysled-shadow-lg</span>: <span class="string">0 8px 40px rgba(0,0,0,0.12)</span>;
+
+  <span class="comment">/* Transicoes */</span>
+  <span class="property">--sysled-ease-standard</span>: <span class="string">cubic-bezier(0.4, 0.0, 0.2, 1)</span>;
+  <span class="property">--sysled-ease-enter</span>: <span class="string">cubic-bezier(0.0, 0.0, 0.2, 1)</span>;
+  <span class="property">--sysled-ease-exit</span>: <span class="string">cubic-bezier(0.4, 0.0, 1, 1)</span>;
+  <span class="property">--sysled-duration-fast</span>: <span class="value">200ms</span>;
+  <span class="property">--sysled-duration-normal</span>: <span class="value">300ms</span>;
+  <span class="property">--sysled-duration-slow</span>: <span class="value">400ms</span>;
+}</pre>
+    </div>
+
+    <h3>Google Fonts Import</h3>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyText(document.getElementById('fonts-import').textContent)">Copiar</button>
+      <pre id="fonts-import"><span class="comment">/* Adicionar no &lt;head&gt; do HTML ou no topo do CSS */</span>
+@import url(<span class="string">'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap'</span>);</pre>
+    </div>
+  </div>
+
+  <!-- 07 REFERENCIA RAPIDA -->
+  <div class="section reveal">
+    <div class="section-number">07 — Referencia Rapida</div>
+    <h2>Links do Brandbook</h2>
+    <p>Acesso direto a cada modulo do manual de identidade visual SYSLED.</p>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <h4>01 — Marca e Proposito</h4>
+        <p>Missao, valores, personalidade e essencia da marca.</p>
+        <a href="marca-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>02 — Logotipo</h4>
+        <p>SVGs, 4 variantes, specs tecnicas, downloads.</p>
+        <a href="logotipo-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>03 — Paleta de Cores</h4>
+        <p>Primarias, secundarias, neutras, acessibilidade.</p>
+        <a href="cores-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>04 — Tipografia</h4>
+        <p>Montserrat, Inter, escala, hierarquia.</p>
+        <a href="tipografia-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>05 — Tom de Voz</h4>
+        <p>Comunicacao, slogans, palavras-chave.</p>
+        <a href="tom-de-voz-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>06 — Fotografia</h4>
+        <p>Estilo, filtros, overlays, composicao.</p>
+        <a href="fotografia-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>07 — Motion</h4>
+        <p>Easing, duracoes, micro-interacoes, tokens.</p>
+        <a href="motion-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>08 — Manual UX/UI</h4>
+        <p>75+ componentes, patterns, dark mode.</p>
+        <a href="manual-uxui.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>09 — Iconografia</h4>
+        <p>Lucide icons, 34 icones, 7 categorias.</p>
+        <a href="iconografia-preview.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>10 — Social Media</h4>
+        <p>Templates, hashtags, calendario editorial.</p>
+        <a href="social-media-v2.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>11 — Aplicacoes</h4>
+        <p>Cartao, timbrado, pitch deck, 13+ materiais.</p>
+        <a href="aplicacoes.html" class="ref-link">Abrir pagina →</a>
+      </div>
+      <div class="ref-card">
+        <h4>12 — Brand Assets</h4>
+        <p>Voce esta aqui. Kit completo da marca.</p>
+        <span class="ref-link" style="color:var(--gray-400);cursor:default;">Pagina atual</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 DO'S & DON'TS -->
+  <div class="section reveal">
+    <div class="section-number">08 — Do's &amp; Don'ts</div>
+    <h2>Uso dos Brand Assets</h2>
+    <p>Regras fundamentais para uso correto dos assets da marca SYSLED.</p>
+
+    <div class="dodont-grid">
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Sempre use os arquivos SVG oficiais do kit — nunca recrie o logo manualmente</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca altere cores, proporcoes ou elementos do logotipo</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use a versao correta do logo para cada tipo de fundo (claro, escuro, colorido)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca use a logo colorida sobre fundos escuros ou a branca sobre fundos claros</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Mantenha a area de protecao ao redor do logo (min. 50% da altura da nuvem)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca coloque elementos visuais invadindo a area de protecao do logo</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use apenas Montserrat, Inter e JetBrains Mono — as fontes oficiais da marca</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca substitua as fontes por alternativas — mesmo que visualmente parecidas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 CHECKLIST -->
+  <div class="section reveal" style="background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end)); color: #fff; border: none;">
+    <div class="section-number" style="color: rgba(255,255,255,0.6);">09 — Checklist</div>
+    <h2 style="color: #fff;">Checklist de Implementacao</h2>
+    <p style="color: rgba(255,255,255,0.75);">Verifique cada item ao implementar a identidade visual SYSLED em qualquer projeto ou material.</p>
+
+    <div style="display: grid; gap: 0.5rem; margin-top: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem; backdrop-filter: blur(4px);">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Logos SVG oficiais copiados para o projeto (4 variantes)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Google Fonts importadas (Montserrat + Inter + JetBrains Mono)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        CSS Design Tokens configurados (:root com custom properties)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Paleta de cores aplicada conforme o brandbook
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Gradientes de marca utilizados corretamente (brand, accent, dark)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Favicon configurado com sysled-icone.svg
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Dark mode implementado com [data-theme="dark"] e tokens corretos
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Acessibilidade verificada (contraste WCAG AA, alt texts, aria-labels)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Responsividade testada em mobile, tablet e desktop
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        OG Image (1200x630) com identidade visual para compartilhamento
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('sysled-theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('sysled-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// Copy
+function copyText(text) {
+  navigator.clipboard.writeText(text.trim()).then(() => showToast('Copiado: ' + text.trim().substring(0, 50)));
+}
+
+// Download SVG
+function downloadSVG(variant) {
+  const link = document.createElement('a');
+  link.href = 'assets/sysled-logo-' + (variant === 'icone' ? '' : '') + variant.replace('icone', 'icone') + '.svg';
+
+  const filenames = {
+    principal: 'assets/sysled-logo-principal.svg',
+    branca: 'assets/sysled-logo-branca.svg',
+    mono: 'assets/sysled-logo-mono.svg',
+    icone: 'assets/sysled-icone.svg'
+  };
+
+  link.href = filenames[variant];
+  link.download = filenames[variant].split('/').pop();
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('Download: ' + link.download);
+}
+
+// Download PNG (via Canvas)
+function downloadPNG(variant) {
+  const card = event.target.closest('.asset-card');
+  const svg = card.querySelector('.asset-preview svg');
+  if (!svg) return;
+
+  const svgData = new XMLSerializer().serializeToString(svg);
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const img = new Image();
+
+  const scale = 3;
+  canvas.width = svg.viewBox.baseVal.width * scale;
+  canvas.height = svg.viewBox.baseVal.height * scale;
+
+  img.onload = function() {
+    // Draw background for variants that need it
+    if (variant === 'branca') {
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    } else if (variant === 'icone') {
+      const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grd.addColorStop(0, '#5BB8F5');
+      grd.addColorStop(0.5, '#3A8FD6');
+      grd.addColorStop(1, '#2B6CB0');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    } else {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    const link = document.createElement('a');
+    link.download = 'sysled-' + variant + '@3x.png';
+    link.href = canvas.toDataURL('image/png');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('Download: ' + link.download);
+  };
+
+  img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

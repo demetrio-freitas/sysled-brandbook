@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 180" width="600" height="180">
+  <defs>
+    <!-- Gradiente principal da nuvem -->
+    <linearGradient id="cloudGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5BB8F5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3A8FD6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2B6CB0;stop-opacity:1" />
+    </linearGradient>
+    <!-- Gradiente para bolhas/esferas internas -->
+    <linearGradient id="bubbleGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7ECEF4;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4AA3D8;stop-opacity:0.5" />
+    </linearGradient>
+    <linearGradient id="bubbleGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A8E0F8;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#5DADE2;stop-opacity:0.4" />
+    </linearGradient>
+    <linearGradient id="bubbleGrad3" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" style="stop-color:#B8E6FA;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#6BC1EB;stop-opacity:0.5" />
+    </linearGradient>
+    <linearGradient id="cloudBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4AABE0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980B9;stop-opacity:1" />
+    </linearGradient>
+    <!-- Sombra suave -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000020"/>
+    </filter>
+  </defs>
+  
+  <!-- Grupo da Nuvem -->
+  <g transform="translate(15, 15)" filter="url(#shadow)">
+    <!-- Forma base da nuvem -->
+    <path d="M 30,120 
+             C 10,120 0,108 0,95 
+             C 0,80 12,68 28,68 
+             C 28,45 45,25 70,25 
+             C 82,25 93,30 100,38 
+             C 108,22 125,12 145,12 
+             C 172,12 194,34 194,60 
+             C 194,62 194,64 193,66 
+             C 205,70 214,82 214,95 
+             C 214,112 200,120 185,120 
+             Z" 
+          fill="url(#cloudGrad1)" />
+    
+    <!-- Bolhas/esferas decorativas internas -->
+    <!-- Bolha grande superior direita -->
+    <ellipse cx="150" cy="50" rx="38" ry="35" fill="url(#bubbleGrad1)" />
+    
+    <!-- Bolha média superior esquerda -->
+    <ellipse cx="80" cy="55" rx="32" ry="30" fill="url(#bubbleGrad2)" />
+    
+    <!-- Bolha pequena topo -->
+    <ellipse cx="120" cy="35" rx="22" ry="20" fill="url(#bubbleGrad3)" />
+    
+    <!-- Bolha inferior central -->
+    <ellipse cx="110" cy="90" rx="45" ry="25" fill="url(#bubbleGrad1)" />
+    
+    <!-- Bolha pequena esquerda -->
+    <ellipse cx="45" cy="85" rx="22" ry="20" fill="url(#bubbleGrad2)" />
+    
+    <!-- Bolha pequena direita -->
+    <ellipse cx="175" cy="80" rx="20" ry="18" fill="url(#bubbleGrad3)" />
+    
+    <!-- Reflexo de luz superior -->
+    <ellipse cx="90" cy="38" rx="18" ry="10" fill="white" opacity="0.25" />
+    <ellipse cx="155" cy="32" rx="14" ry="8" fill="white" opacity="0.2" />
+  </g>
+  
+  <!-- Texto SYSLED -->
+  <text x="260" y="115" 
+        font-family="'Montserrat', 'Helvetica Neue', 'Arial', sans-serif" 
+        font-weight="800" 
+        font-size="72" 
+        letter-spacing="4" 
+        fill="#1A1A2E">SYSLED</text>
+</svg>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Social Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-primary: #2B6CB0; --blue-medium: #3A8FD6; --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4; --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1; --cyan-medium: #3AAFCF; --cyan-light: #48C9B0;
+      --dark-primary: #0F172A; --dark-secondary: #1E293B; --dark-text: #1E293B;
+      --gray-600: #475569; --gray-400: #94A3B8; --gray-200: #E2E8F0; --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px; --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a; --gradient-mid: #1d6ea0; --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+    }
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+    [data-theme="dark"] .platform-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .template-preview { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .principle-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .hashtag-tag { background: rgba(91,184,245,0.1); color: var(--blue-light); }
+    [data-theme="dark"] .calendar-cell { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .format-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .tone-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .caption-example { background: #1E293B; border-color: #334155; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Top bar */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); cursor: pointer; }
+    .spec-table code:hover { background: rgba(91,184,245,0.15); }
+
+    /* Do/Dont */
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 1rem; min-height: 140px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    /* Principle cards */
+    .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .principle-card { text-align: center; padding: 2rem 1.25rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); background: var(--white); transition: all 0.3s; }
+    .principle-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--blue-light); }
+    .principle-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .principle-card h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 0.5rem; color: var(--dark-primary); }
+    [data-theme="dark"] .principle-card h4 { color: #E2E8F0; }
+    .principle-card p { font-size: 0.8rem; color: var(--gray-400); margin: 0; line-height: 1.5; }
+
+    /* Platform cards */
+    .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 1.5rem 0; }
+    .platform-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      padding: 1.75rem; background: var(--white); transition: all 0.3s; }
+    .platform-card:hover { border-color: var(--blue-light); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .platform-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    .platform-logo { width: 44px; height: 44px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.25rem; }
+    .platform-name { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
+    .platform-handle { font-size: 0.75rem; color: var(--gray-400); }
+    .platform-specs { list-style: none; }
+    .platform-specs li { font-size: 0.8rem; color: var(--gray-600); padding: 0.4rem 0;
+      border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; }
+    .platform-specs li:last-child { border-bottom: none; }
+    .platform-specs li strong { color: var(--dark-text); font-weight: 600; }
+
+    /* Template previews */
+    .template-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .template-preview { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      overflow: hidden; background: var(--white); transition: all 0.3s; }
+    .template-preview:hover { border-color: var(--blue-light); box-shadow: var(--shadow-hover); }
+    .template-visual { aspect-ratio: 1/1; position: relative; overflow: hidden; }
+    .template-info { padding: 1.25rem; }
+    .template-info h4 { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; }
+    [data-theme="dark"] .template-info h4 { color: #E2E8F0; }
+    .template-info p { font-size: 0.75rem; color: var(--gray-400); margin: 0; }
+    .template-badge { display: inline-block; font-family: var(--font-heading); font-size: 0.6rem;
+      font-weight: 700; padding: 3px 8px; border-radius: 6px; background: rgba(43,108,176,0.08);
+      color: var(--blue-primary); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* Format cards */
+    .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .format-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      padding: 1.5rem; text-align: center; background: var(--white); transition: all 0.3s; }
+    .format-card:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+    .format-ratio { width: 100%; aspect-ratio: var(--ratio, 1/1); background: linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0);
+      border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
+      color: white; font-family: var(--font-heading); font-weight: 800; font-size: 0.85rem; max-height: 120px; }
+    .format-card h4 { font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; margin-bottom: 0.25rem; }
+    [data-theme="dark"] .format-card h4 { color: #E2E8F0; }
+    .format-card p { font-size: 0.72rem; color: var(--gray-400); margin: 0; }
+
+    /* Hashtag tags */
+    .hashtag-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .hashtag-tag { display: inline-flex; align-items: center; gap: 4px; padding: 6px 14px;
+      background: rgba(43,108,176,0.06); color: var(--blue-primary); border-radius: 100px;
+      font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; border: 1px solid transparent; }
+    .hashtag-tag:hover { background: rgba(43,108,176,0.12); border-color: var(--blue-light); }
+
+    /* Tone cards */
+    .tone-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .tone-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      padding: 1.5rem; background: var(--white); }
+    .tone-card h4 { font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    [data-theme="dark"] .tone-card h4 { color: #E2E8F0; }
+    .tone-card p { font-size: 0.82rem; color: var(--gray-400); margin: 0; line-height: 1.6; }
+    .tone-label { display: inline-block; font-family: var(--font-heading); font-size: 0.6rem;
+      font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-bottom: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.04em; }
+    .tone-label.primary { background: rgba(43,108,176,0.08); color: var(--blue-primary); }
+    .tone-label.secondary { background: rgba(72,201,176,0.1); color: #0D9488; }
+
+    /* Caption examples */
+    .caption-example { border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      padding: 1.5rem; margin: 1rem 0; background: var(--white); cursor: pointer; transition: all 0.2s; }
+    .caption-example:hover { border-color: var(--blue-light); }
+    .caption-label { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.75rem; }
+    .caption-text { font-size: 0.88rem; color: var(--gray-600); line-height: 1.7; margin: 0; }
+    .caption-text .hashtags { color: var(--blue-primary); font-weight: 500; }
+
+    /* Calendar */
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 1.5rem 0; }
+    .calendar-header { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      text-align: center; padding: 8px 4px; color: var(--gray-400); text-transform: uppercase;
+      letter-spacing: 0.06em; }
+    .calendar-cell { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--gray-200);
+      background: var(--white); color: var(--gray-600); transition: all 0.2s; position: relative; }
+    .calendar-cell.post { background: rgba(43,108,176,0.08); border-color: var(--blue-light); color: var(--blue-primary); }
+    .calendar-cell.story { background: rgba(72,201,176,0.08); border-color: var(--cyan-light); color: #0D9488; }
+    .calendar-cell.reels { background: rgba(168,224,248,0.15); border-color: var(--blue-pale); color: var(--blue-medium); }
+    .calendar-cell.empty { border: none; background: none; }
+    .calendar-legend { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .calendar-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--gray-600); }
+    .calendar-legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+    /* Code block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem;
+      margin: 1rem 0; overflow-x: auto; position: relative; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.78rem; color: #CBD5E1;
+      line-height: 1.8; white-space: pre; margin: 0; }
+    .code-block .comment { color: #64748B; }
+    .code-block .property { color: #7ECEF4; }
+    .code-block .value { color: #48C9B0; }
+    .code-block .string { color: #FDE68A; }
+    .copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; padding: 6px 12px;
+      border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: var(--font-body);
+      transition: all 0.2s; }
+    .copy-btn:hover { background: rgba(255,255,255,0.15); color: #E2E8F0; }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--dark-primary); color: #fff; padding: 12px 24px; border-radius: 12px;
+      font-size: 0.82rem; font-weight: 500; opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      z-index: 9999; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3.5rem 1.5rem 3rem; }
+      .principles-grid, .platform-grid, .tone-grid, .format-grid { grid-template-columns: 1fr; }
+      .calendar-grid { grid-template-columns: repeat(7, 1fr); gap: 3px; }
+      .calendar-cell { font-size: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .template-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover reveal">
+    <div class="cover-badge"><span></span>Modulo 11</div>
+    <h1>Social Media</h1>
+    <p class="cover-subtitle">Diretrizes completas para presenca digital da SYSLED nas redes sociais: formatos, tom de voz, templates, calendario e boas praticas.</p>
+  </div>
+
+  <!-- 01 PRINCIPIOS -->
+  <div class="section reveal">
+    <div class="section-number">01 — Principios</div>
+    <h2>Pilares da Presenca Digital</h2>
+    <p>A comunicacao da SYSLED nas redes sociais segue tres pilares fundamentais que garantem consistencia, relevancia e conexao com o publico-alvo industrial.</p>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-icon">🏭</div>
+        <h4>Autoridade Tecnica</h4>
+        <p>Conteudo que demonstra expertise em digitalizacao industrial, IoT e automacao.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🤝</div>
+        <h4>Proximidade Humana</h4>
+        <p>Linguagem acessivel que traduz tecnologia complexa em beneficios claros.</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">📊</div>
+        <h4>Resultados Reais</h4>
+        <p>Cases, dados e metricas que comprovam o impacto da plataforma na industria.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 PLATAFORMAS E FORMATOS -->
+  <div class="section reveal">
+    <div class="section-number">02 — Plataformas</div>
+    <h2>Redes Sociais e Formatos</h2>
+    <p>Cada plataforma tem seu formato, publico e linguagem. A SYSLED deve adaptar o conteudo mantendo a identidade visual e o tom de voz da marca.</p>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo" style="background:linear-gradient(135deg,#0077B5,#005885);color:#fff;">in</div>
+          <div>
+            <div class="platform-name">LinkedIn</div>
+            <div class="platform-handle">Plataforma principal</div>
+          </div>
+        </div>
+        <ul class="platform-specs">
+          <li><span>Publico</span> <strong>Gestores, C-level, engenheiros</strong></li>
+          <li><span>Formato principal</span> <strong>Carrossel + Artigo</strong></li>
+          <li><span>Post imagem</span> <strong>1200 × 1200px</strong></li>
+          <li><span>Carrossel</span> <strong>1080 × 1350px (PDF)</strong></li>
+          <li><span>Banner</span> <strong>1584 × 396px</strong></li>
+          <li><span>Frequencia</span> <strong>3-4x por semana</strong></li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo" style="background:linear-gradient(135deg,#E1306C,#F77737,#FCAF45);color:#fff;">IG</div>
+          <div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-handle">Vitrine visual</div>
+          </div>
+        </div>
+        <ul class="platform-specs">
+          <li><span>Publico</span> <strong>Equipes tecnicas, RH industrial</strong></li>
+          <li><span>Formato principal</span> <strong>Reels + Carrossel</strong></li>
+          <li><span>Feed quadrado</span> <strong>1080 × 1080px</strong></li>
+          <li><span>Feed retrato</span> <strong>1080 × 1350px</strong></li>
+          <li><span>Stories/Reels</span> <strong>1080 × 1920px</strong></li>
+          <li><span>Frequencia</span> <strong>3-5x por semana</strong></li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo" style="background:#1DA1F2;color:#fff;">𝕏</div>
+          <div>
+            <div class="platform-name">X (Twitter)</div>
+            <div class="platform-handle">Engajamento rapido</div>
+          </div>
+        </div>
+        <ul class="platform-specs">
+          <li><span>Publico</span> <strong>Devs, startups, tech leaders</strong></li>
+          <li><span>Formato principal</span> <strong>Threads + Imagem unica</strong></li>
+          <li><span>Imagem post</span> <strong>1600 × 900px</strong></li>
+          <li><span>Header</span> <strong>1500 × 500px</strong></li>
+          <li><span>Caracteres</span> <strong>Max 280 (ideal: 100-200)</strong></li>
+          <li><span>Frequencia</span> <strong>1-2x por dia</strong></li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-logo" style="background:#FF0000;color:#fff;">▶</div>
+          <div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-handle">Conteudo educativo</div>
+          </div>
+        </div>
+        <ul class="platform-specs">
+          <li><span>Publico</span> <strong>Tecnicos, estudantes, gestores</strong></li>
+          <li><span>Formato principal</span> <strong>Tutorial + Webinar</strong></li>
+          <li><span>Thumbnail</span> <strong>1280 × 720px</strong></li>
+          <li><span>Banner canal</span> <strong>2560 × 1440px</strong></li>
+          <li><span>Shorts</span> <strong>1080 × 1920px</strong></li>
+          <li><span>Frequencia</span> <strong>1-2x por semana</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 FORMATOS E DIMENSOES -->
+  <div class="section reveal">
+    <div class="section-number">03 — Formatos</div>
+    <h2>Dimensoes e Proporcoes</h2>
+    <p>Referencia rapida dos formatos visuais mais utilizados nas redes sociais da SYSLED.</p>
+
+    <div class="format-grid">
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 1/1;">1:1</div>
+        <h4>Quadrado</h4>
+        <p>1080 × 1080px<br>Feed Instagram / LinkedIn</p>
+      </div>
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 4/5;">4:5</div>
+        <h4>Retrato</h4>
+        <p>1080 × 1350px<br>Feed otimizado / Carrossel</p>
+      </div>
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 9/16;">9:16</div>
+        <h4>Vertical</h4>
+        <p>1080 × 1920px<br>Stories / Reels / Shorts</p>
+      </div>
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 16/9;">16:9</div>
+        <h4>Paisagem</h4>
+        <p>1920 × 1080px<br>YouTube / Thumbnails</p>
+      </div>
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 1200/628;">1.91:1</div>
+        <h4>Link Preview</h4>
+        <p>1200 × 628px<br>OG Image / Ads</p>
+      </div>
+      <div class="format-card">
+        <div class="format-ratio" style="--ratio: 4/1;">4:1</div>
+        <h4>Banner</h4>
+        <p>1584 × 396px<br>LinkedIn / X Header</p>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th>Formato</th><th>Dimensao (px)</th><th>Proporcao</th><th>Uso</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Feed Quadrado</td><td><code onclick="copyText('1080 × 1080')">1080 × 1080</code></td><td>1:1</td><td>Instagram, LinkedIn, Facebook</td></tr>
+        <tr><td>Feed Retrato</td><td><code onclick="copyText('1080 × 1350')">1080 × 1350</code></td><td>4:5</td><td>Instagram, LinkedIn Carrossel</td></tr>
+        <tr><td>Stories / Reels</td><td><code onclick="copyText('1080 × 1920')">1080 × 1920</code></td><td>9:16</td><td>Instagram, TikTok, YouTube Shorts</td></tr>
+        <tr><td>YouTube Thumbnail</td><td><code onclick="copyText('1280 × 720')">1280 × 720</code></td><td>16:9</td><td>Thumbnails de video</td></tr>
+        <tr><td>OG Image</td><td><code onclick="copyText('1200 × 630')">1200 × 630</code></td><td>1.91:1</td><td>Link preview, Open Graph</td></tr>
+        <tr><td>LinkedIn Banner</td><td><code onclick="copyText('1584 × 396')">1584 × 396</code></td><td>4:1</td><td>Capa do perfil LinkedIn</td></tr>
+        <tr><td>X Header</td><td><code onclick="copyText('1500 × 500')">1500 × 500</code></td><td>3:1</td><td>Capa do perfil X</td></tr>
+        <tr><td>YouTube Banner</td><td><code onclick="copyText('2560 × 1440')">2560 × 1440</code></td><td>16:9</td><td>Banner do canal</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 04 TEMPLATES VISUAIS -->
+  <div class="section reveal">
+    <div class="section-number">04 — Templates</div>
+    <h2>Templates Visuais</h2>
+    <p>6 templates padrao para garantir consistencia visual em todas as publicacoes. Cada template segue as cores, tipografia e espacamento do brandbook.</p>
+
+    <div class="template-grid">
+      <!-- Template 1: Post Informativo -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: linear-gradient(135deg, #2B6CB0, #3A8FD6); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 300; font-size: 0.65rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.15em;">SYSLED</div>
+          <div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #fff; line-height: 1.2; margin-bottom: 0.75rem;">Titulo do Post Informativo</div>
+            <div style="font-size: 0.72rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Subtitulo ou descricao breve do conteudo compartilhado.</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 1rem;">
+            <div style="width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 240 160" width="14" height="10"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+            </div>
+            <span style="font-family: var(--font-heading); font-size: 0.6rem; color: rgba(255,255,255,0.5); font-weight: 600;">sysled.com.br</span>
+          </div>
+        </div>
+        <div class="template-info">
+          <h4>Post Informativo</h4>
+          <p>Novidades, features, atualizacoes da plataforma</p>
+          <span class="template-badge">1080 × 1080px</span>
+        </div>
+      </div>
+
+      <!-- Template 2: Dado/Estatistica -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: #0F172A; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+          <div style="font-family: var(--font-heading); font-weight: 300; font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem;">SYSLED INSIGHTS</div>
+          <div style="font-family: var(--font-heading); font-weight: 900; font-size: 3rem; background: linear-gradient(135deg, #5BB8F5, #48C9B0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;">87%</div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; line-height: 1.5;">das industrias que digitalizaram<br>seus processos aumentaram a eficiencia</div>
+          <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #5BB8F5, #48C9B0); margin-top: 1.5rem; border-radius: 2px;"></div>
+        </div>
+        <div class="template-info">
+          <h4>Dado / Estatistica</h4>
+          <p>Numeros de impacto, insights do setor, pesquisas</p>
+          <span class="template-badge">1080 × 1080px</span>
+        </div>
+      </div>
+
+      <!-- Template 3: Citacao -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 2.5rem; color: rgba(255,255,255,0.2); font-family: Georgia, serif; line-height: 1;">"</div>
+          <div style="font-family: var(--font-heading); font-weight: 600; font-size: 1rem; color: #fff; line-height: 1.5; margin: 0.5rem 0 1rem; font-style: italic;">Inteligencia que conecta sua industria.</div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 240 160" width="16" height="11"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; color: #fff;">SYSLED</div>
+              <div style="font-size: 0.6rem; color: rgba(255,255,255,0.5);">Plataforma IndTech</div>
+            </div>
+          </div>
+        </div>
+        <div class="template-info">
+          <h4>Citacao / Slogan</h4>
+          <p>Frases de impacto, depoimentos, slogans da marca</p>
+          <span class="template-badge">1080 × 1080px</span>
+        </div>
+      </div>
+
+      <!-- Template 4: Carrossel Slide -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: #FFFFFF; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid #2B6CB0; aspect-ratio: 4/5;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.65rem; color: #2B6CB0; letter-spacing: 0.1em;">SYSLED</div>
+            <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.6rem; color: #94A3B8;">01/05</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: #0F172A; line-height: 1.25; margin-bottom: 0.75rem;">Como Digitalizar seu Chao de Fabrica</div>
+            <div style="font-size: 0.72rem; color: #64748B; line-height: 1.6;">Guia pratico em 5 passos para iniciar a transformacao digital na sua industria.</div>
+          </div>
+          <div style="font-family: var(--font-heading); font-size: 0.6rem; color: #94A3B8; font-weight: 500;">Arraste para o lado →</div>
+        </div>
+        <div class="template-info">
+          <h4>Carrossel (Capa)</h4>
+          <p>Primeira pagina de carrosseis educativos</p>
+          <span class="template-badge">1080 × 1350px</span>
+        </div>
+      </div>
+
+      <!-- Template 5: Story / Reels -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: linear-gradient(180deg, #0F172A 0%, #1E3A5F 100%); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 9/16; max-height: 320px;">
+          <div style="text-align: center;">
+            <div style="font-family: var(--font-heading); font-weight: 300; font-size: 0.55rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.2em;">SYSLED TIPS</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-family: var(--font-heading); font-weight: 900; font-size: 1.1rem; color: #fff; line-height: 1.3;">Voce sabia?</div>
+            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.65); margin-top: 0.75rem; line-height: 1.6;">Sensores IoT podem reduzir custos de manutencao em ate 40%.</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #5BB8F5, #48C9B0); border-radius: 100px; font-family: var(--font-heading); font-weight: 700; font-size: 0.65rem; color: #fff;">Saiba Mais</div>
+          </div>
+        </div>
+        <div class="template-info">
+          <h4>Story / Reels</h4>
+          <p>Stories informativos, tips rapidos, CTAs</p>
+          <span class="template-badge">1080 × 1920px</span>
+        </div>
+      </div>
+
+      <!-- Template 6: Thumbnail YouTube -->
+      <div class="template-preview">
+        <div class="template-visual" style="background: linear-gradient(135deg, #0F172A, #1E3A5F); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; aspect-ratio: 16/9;">
+          <div style="flex: 1;">
+            <div style="font-family: var(--font-heading); font-weight: 900; font-size: 1rem; color: #fff; line-height: 1.2; margin-bottom: 0.5rem;">COMO MONITORAR<br><span style="color: #5BB8F5;">ENERGIA EM TEMPO REAL</span></div>
+            <div style="font-family: var(--font-heading); font-size: 0.55rem; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.1em;">TUTORIAL COMPLETO</div>
+          </div>
+          <div style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #5BB8F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#5BB8F5"><polygon points="9,6 18,12 9,18"/></svg>
+          </div>
+        </div>
+        <div class="template-info">
+          <h4>YouTube Thumbnail</h4>
+          <p>Capas de video com titulo destacado</p>
+          <span class="template-badge">1280 × 720px</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 TOM DE VOZ PARA REDES -->
+  <div class="section reveal">
+    <div class="section-number">05 — Tom de Voz</div>
+    <h2>Comunicacao nas Redes</h2>
+    <p>O tom de voz da SYSLED nas redes sociais adapta a personalidade da marca para cada contexto, mantendo a essencia profissional mas acessivel.</p>
+
+    <div class="tone-grid">
+      <div class="tone-card">
+        <span class="tone-label primary">LinkedIn</span>
+        <h4>Profissional e Estrategico</h4>
+        <p>Tom consultivo, dados concretos, linguagem de negocios. Foco em ROI, eficiencia operacional e transformacao digital. Usar "voce" em vez de "tu".</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-label secondary">Instagram</span>
+        <h4>Visual e Inspirador</h4>
+        <p>Mais leve e visual. Mostrar o dia-a-dia da industria moderna, bastidores e cultura tech. Emojis com moderacao (max 3 por post).</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-label primary">X (Twitter)</span>
+        <h4>Direto e Engajador</h4>
+        <p>Frases curtas, opiniao sobre tendencias, threads educativas. Tom de conversa entre profissionais do setor. Hashtags relevantes.</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-label secondary">YouTube</span>
+        <h4>Educativo e Detalhado</h4>
+        <p>Tom de mentor/professor. Explicacoes claras, passo-a-passo, demonstracoes praticas. Chamar o espectador para acao.</p>
+      </div>
+    </div>
+
+    <h3>Exemplos de Legendas</h3>
+
+    <div class="caption-example" onclick="copyText(this.querySelector('.caption-text').textContent)" data-copy>
+      <div class="caption-label">LinkedIn — Post Informativo</div>
+      <p class="caption-text">A industria 4.0 nao e mais futuro — e agora. Com a SYSLED, sua operacao ganha visibilidade em tempo real: desde o consumo energetico ate a performance de cada linha de producao. Resultados? Reducao media de 32% nos custos operacionais nos primeiros 6 meses. Quer saber como? Link na bio. <span class="hashtags">#Industria40 #IoT #TransformacaoDigital #SYSLED</span></p>
+    </div>
+
+    <div class="caption-example" onclick="copyText(this.querySelector('.caption-text').textContent)" data-copy>
+      <div class="caption-label">Instagram — Carrossel</div>
+      <p class="caption-text">5 sinais de que sua industria precisa de digitalizacao 👆 Arraste para conferir cada um deles e descubra como a SYSLED pode ajudar sua operacao a dar o proximo passo. Salve esse post para consultar depois! <span class="hashtags">#SYSLED #IndTech #ChaoFabrica #GestaoIndustrial</span></p>
+    </div>
+
+    <div class="caption-example" onclick="copyText(this.querySelector('.caption-text').textContent)" data-copy>
+      <div class="caption-label">X — Thread</div>
+      <p class="caption-text">🧵 Thread: Por que 73% das industrias brasileiras ainda nao monitoram energia em tempo real? Vamos falar sobre os 5 principais motivos — e como resolver cada um deles. <span class="hashtags">#EnergiaIndustrial #IoT #SYSLED</span></p>
+    </div>
+  </div>
+
+  <!-- 06 HASHTAGS -->
+  <div class="section reveal">
+    <div class="section-number">06 — Hashtags</div>
+    <h2>Estrategia de Hashtags</h2>
+    <p>Hashtags organizadas por categoria para maximizar alcance e manter consistencia. Clique em qualquer hashtag para copiar.</p>
+
+    <h3>Hashtags de Marca</h3>
+    <div class="hashtag-grid">
+      <span class="hashtag-tag" onclick="copyText('#SYSLED')">#SYSLED</span>
+      <span class="hashtag-tag" onclick="copyText('#SYSLEDPlatform')">#SYSLEDPlatform</span>
+      <span class="hashtag-tag" onclick="copyText('#SYSLEDInsights')">#SYSLEDInsights</span>
+      <span class="hashtag-tag" onclick="copyText('#ConectaSuaIndustria')">#ConectaSuaIndustria</span>
+      <span class="hashtag-tag" onclick="copyText('#InteligenciaIndustrial')">#InteligenciaIndustrial</span>
+    </div>
+
+    <h3>Hashtags do Setor</h3>
+    <div class="hashtag-grid">
+      <span class="hashtag-tag" onclick="copyText('#Industria40')">#Industria40</span>
+      <span class="hashtag-tag" onclick="copyText('#IoT')">#IoT</span>
+      <span class="hashtag-tag" onclick="copyText('#TransformacaoDigital')">#TransformacaoDigital</span>
+      <span class="hashtag-tag" onclick="copyText('#Automacao')">#Automacao</span>
+      <span class="hashtag-tag" onclick="copyText('#IndTech')">#IndTech</span>
+      <span class="hashtag-tag" onclick="copyText('#SmartFactory')">#SmartFactory</span>
+      <span class="hashtag-tag" onclick="copyText('#ManutencaoPreditiva')">#ManutencaoPreditiva</span>
+      <span class="hashtag-tag" onclick="copyText('#EficienciaEnergetica')">#EficienciaEnergetica</span>
+    </div>
+
+    <h3>Hashtags de Conteudo</h3>
+    <div class="hashtag-grid">
+      <span class="hashtag-tag" onclick="copyText('#DicaIndustrial')">#DicaIndustrial</span>
+      <span class="hashtag-tag" onclick="copyText('#ChaoFabrica')">#ChaoFabrica</span>
+      <span class="hashtag-tag" onclick="copyText('#GestaoIndustrial')">#GestaoIndustrial</span>
+      <span class="hashtag-tag" onclick="copyText('#DadosIndustriais')">#DadosIndustriais</span>
+      <span class="hashtag-tag" onclick="copyText('#TechIndustrial')">#TechIndustrial</span>
+      <span class="hashtag-tag" onclick="copyText('#InovacaoIndustrial')">#InovacaoIndustrial</span>
+    </div>
+
+    <table class="spec-table" style="margin-top: 2rem;">
+      <thead>
+        <tr><th>Plataforma</th><th>Qtd. Ideal</th><th>Posicionamento</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>LinkedIn</td><td>3-5 hashtags</td><td>Final do post, separadas do texto</td></tr>
+        <tr><td>Instagram</td><td>8-15 hashtags</td><td>Primeiro comentario ou final da legenda</td></tr>
+        <tr><td>X (Twitter)</td><td>1-3 hashtags</td><td>Integradas ao texto ou no final</td></tr>
+        <tr><td>YouTube</td><td>3-5 tags</td><td>Descricao do video + tags do video</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 07 CALENDARIO EDITORIAL -->
+  <div class="section reveal">
+    <div class="section-number">07 — Calendario</div>
+    <h2>Calendario Editorial</h2>
+    <p>Modelo de calendario semanal com a distribuicao ideal de conteudo por plataforma e formato. Adaptar conforme a estrategia de cada mes.</p>
+
+    <div class="calendar-grid">
+      <div class="calendar-header">Seg</div>
+      <div class="calendar-header">Ter</div>
+      <div class="calendar-header">Qua</div>
+      <div class="calendar-header">Qui</div>
+      <div class="calendar-header">Sex</div>
+      <div class="calendar-header">Sab</div>
+      <div class="calendar-header">Dom</div>
+
+      <div class="calendar-cell post" title="LinkedIn: Post informativo">LI</div>
+      <div class="calendar-cell story" title="Instagram: Story">IG</div>
+      <div class="calendar-cell post" title="LinkedIn: Carrossel">LI</div>
+      <div class="calendar-cell reels" title="Instagram: Reels">RL</div>
+      <div class="calendar-cell post" title="LinkedIn: Artigo">LI</div>
+      <div class="calendar-cell story" title="Instagram: Story">IG</div>
+      <div class="calendar-cell empty"></div>
+
+      <div class="calendar-cell reels" title="Instagram: Carrossel">IG</div>
+      <div class="calendar-cell post" title="X: Thread">X</div>
+      <div class="calendar-cell story" title="Instagram: Story">IG</div>
+      <div class="calendar-cell post" title="LinkedIn: Post dado">LI</div>
+      <div class="calendar-cell reels" title="YouTube: Video">YT</div>
+      <div class="calendar-cell empty"></div>
+      <div class="calendar-cell empty"></div>
+    </div>
+
+    <div class="calendar-legend">
+      <div class="calendar-legend-item">
+        <div class="calendar-legend-dot" style="background: rgba(43,108,176,0.3); border: 1px solid var(--blue-light);"></div>
+        Post / Carrossel
+      </div>
+      <div class="calendar-legend-item">
+        <div class="calendar-legend-dot" style="background: rgba(72,201,176,0.3); border: 1px solid var(--cyan-light);"></div>
+        Story
+      </div>
+      <div class="calendar-legend-item">
+        <div class="calendar-legend-dot" style="background: rgba(168,224,248,0.3); border: 1px solid var(--blue-pale);"></div>
+        Reels / Video
+      </div>
+    </div>
+
+    <h3>Pilares de Conteudo</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Pilar</th><th>%</th><th>Exemplos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Educativo</strong></td><td>40%</td><td>Tutoriais, dicas, threads, how-to, glossario industria 4.0</td></tr>
+        <tr><td><strong>Institucional</strong></td><td>20%</td><td>Novidades da plataforma, features, cases de sucesso</td></tr>
+        <tr><td><strong>Engajamento</strong></td><td>25%</td><td>Enquetes, perguntas, tendencias do setor, opinioes</td></tr>
+        <tr><td><strong>Humanizacao</strong></td><td>15%</td><td>Bastidores, equipe, cultura, eventos, parcerias</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 08 REGRAS VISUAIS -->
+  <div class="section reveal">
+    <div class="section-number">08 — Regras Visuais</div>
+    <h2>Identidade Visual nos Posts</h2>
+    <p>Diretrizes visuais que garantem que todo conteudo publicado seja reconhecido como SYSLED a primeira vista.</p>
+
+    <h3>Elementos Obrigatorios</h3>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Elemento</th><th>Regra</th><th>Observacao</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Logo / Icone</strong></td><td>Presente em todos os posts</td><td>Canto superior esquerdo ou inferior esquerdo. Tamanho minimo 32px</td></tr>
+        <tr><td><strong>Tipografia</strong></td><td>Montserrat (titulos) + Inter (corpo)</td><td>Nunca usar fontes decorativas ou serif</td></tr>
+        <tr><td><strong>Cores</strong></td><td>Paleta oficial do brandbook</td><td>Gradiente azul como assinatura visual</td></tr>
+        <tr><td><strong>Safe area</strong></td><td>Margem interna minima de 48px</td><td>Nenhum texto ou logo pode tocar a borda</td></tr>
+        <tr><td><strong>Contraste</strong></td><td>WCAG AA minimo</td><td>Texto sempre legivel sobre o fundo</td></tr>
+        <tr><td><strong>Assinatura</strong></td><td>URL ou @handle</td><td>sysled.com.br ou @sysled_oficial</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Paleta para Posts</h3>
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 1rem 0;">
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #2B6CB0; border-radius: 10px; cursor: pointer;" onclick="copyText('#2B6CB0')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#2B6CB0</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #3A8FD6; border-radius: 10px; cursor: pointer;" onclick="copyText('#3A8FD6')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#3A8FD6</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #5BB8F5; border-radius: 10px; cursor: pointer;" onclick="copyText('#5BB8F5')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#5BB8F5</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #48C9B0; border-radius: 10px; cursor: pointer;" onclick="copyText('#48C9B0')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#48C9B0</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #0F172A; border-radius: 10px; cursor: pointer;" onclick="copyText('#0F172A')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#0F172A</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #FFFFFF; border: 1px solid var(--gray-200); border-radius: 10px; cursor: pointer;" onclick="copyText('#FFFFFF')" title="Clique para copiar"></div>
+        <div style="font-size: 0.65rem; color: var(--gray-400); margin-top: 6px; font-family: var(--font-mono);">#FFFFFF</div>
+      </div>
+    </div>
+
+    <h3>Codigo CSS para Templates</h3>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyText(document.getElementById('css-templates').textContent)">Copiar</button>
+      <pre id="css-templates"><span class="comment">/* === SYSLED Social Media Tokens === */</span>
+
+<span class="comment">/* Cores */</span>
+<span class="property">--sm-blue-primary</span>: <span class="value">#2B6CB0</span>;
+<span class="property">--sm-blue-medium</span>: <span class="value">#3A8FD6</span>;
+<span class="property">--sm-blue-light</span>: <span class="value">#5BB8F5</span>;
+<span class="property">--sm-cyan</span>: <span class="value">#48C9B0</span>;
+<span class="property">--sm-dark</span>: <span class="value">#0F172A</span>;
+<span class="property">--sm-white</span>: <span class="value">#FFFFFF</span>;
+
+<span class="comment">/* Gradientes */</span>
+<span class="property">--sm-gradient-brand</span>: <span class="string">linear-gradient(135deg, #5BB8F5, #3A8FD6, #2B6CB0)</span>;
+<span class="property">--sm-gradient-accent</span>: <span class="string">linear-gradient(135deg, #5BB8F5, #48C9B0)</span>;
+<span class="property">--sm-gradient-dark</span>: <span class="string">linear-gradient(135deg, #0F172A, #1E3A5F)</span>;
+
+<span class="comment">/* Tipografia */</span>
+<span class="property">--sm-font-title</span>: <span class="string">'Montserrat', sans-serif</span>;
+<span class="property">--sm-font-body</span>: <span class="string">'Inter', sans-serif</span>;
+<span class="property">--sm-title-weight</span>: <span class="value">800</span>;
+<span class="property">--sm-body-weight</span>: <span class="value">400</span>;
+
+<span class="comment">/* Espacamento */</span>
+<span class="property">--sm-safe-area</span>: <span class="value">48px</span>;
+<span class="property">--sm-logo-min</span>: <span class="value">32px</span>;
+<span class="property">--sm-border-radius</span>: <span class="value">12px</span>;</pre>
+    </div>
+  </div>
+
+  <!-- 09 DO'S & DON'TS -->
+  <div class="section reveal">
+    <div class="section-number">09 — Do's &amp; Don'ts</div>
+    <h2>Boas Praticas</h2>
+    <p>Regras claras para manter a qualidade e consistencia da marca em todas as publicacoes.</p>
+
+    <div class="dodont-grid">
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use sempre a paleta de cores oficial do brandbook em todos os posts</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca use cores fora da paleta ou gradientes nao-oficiais</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Mantenha a safe area de 48px em todos os posts — texto e logo longe das bordas</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nao coloque texto ou elementos colados nas bordas do post</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use Montserrat para titulos e Inter para texto corrido — tipografia consistente</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca use fontes decorativas, serif, comic sans ou tipografias nao-aprovadas</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Adapte o tom de voz para cada plataforma mantendo a essencia profissional</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nao use girias excessivas, memes sem contexto ou humor que nao combina com a marca</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Inclua sempre o icone/logo SYSLED e a URL ou @handle como assinatura</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nunca publique sem identificacao visual da marca no post</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">✓ Faca</div>
+        <div class="card-body">
+          <p>Use fotos de alta qualidade com filtro de marca (ver pagina Fotografia)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">✕ Nao Faca</div>
+        <div class="card-body">
+          <p>Nao use fotos pixeladas, com marca d'agua de banco de imagens ou sem tratamento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 CHECKLIST -->
+  <div class="section reveal" style="background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end)); color: #fff; border: none;">
+    <div class="section-number" style="color: rgba(255,255,255,0.6);">10 — Checklist</div>
+    <h2 style="color: #fff;">Checklist Pre-Publicacao</h2>
+    <p style="color: rgba(255,255,255,0.75);">Verifique cada item antes de publicar qualquer conteudo nas redes sociais da SYSLED.</p>
+
+    <div style="display: grid; gap: 0.5rem; margin-top: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem; backdrop-filter: blur(4px);">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Dimensoes corretas para a plataforma (ver tabela de formatos)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Logo/icone SYSLED presente no post
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Cores da paleta oficial do brandbook
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Tipografia Montserrat (titulos) + Inter (corpo)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Safe area de 48px respeitada
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Contraste de texto WCAG AA ou superior
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Tom de voz adequado para a plataforma
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Hashtags estrategicas incluidas (quantidade por plataforma)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        Texto revisado (sem erros de portugues)
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.08); border-radius: 10px; font-size: 0.88rem;">
+        <span style="width: 22px; height: 22px; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; flex-shrink: 0;"></span>
+        CTA (call-to-action) presente quando aplicavel
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('sysled-theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('sysled-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// Copy
+function copyText(text) {
+  navigator.clipboard.writeText(text.trim()).then(() => showToast('Copiado: ' + text.trim().substring(0, 50)));
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

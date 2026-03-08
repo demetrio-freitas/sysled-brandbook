@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Iconografia Completa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-primary: #2B6CB0;
+      --blue-medium: #3A8FD6;
+      --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4;
+      --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1;
+      --cyan-medium: #3AAFCF;
+      --cyan-light: #48C9B0;
+      --dark-primary: #0F172A;
+      --dark-secondary: #1E293B;
+      --dark-text: #1E293B;
+      --gray-600: #475569;
+      --gray-400: #94A3B8;
+      --gray-200: #E2E8F0;
+      --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a;
+      --gradient-mid: #1d6ea0;
+      --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+      --warning-bg: #FFFBEB; --warning-text: #92400E; --warning-border: #FBBF24;
+    }
+
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3,
+    [data-theme="dark"] .icon-item span, [data-theme="dark"] .grid-anatomy-label,
+    [data-theme="dark"] .state-label { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .spec-table tr:hover td { background: rgba(30,41,59,0.5); }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .category-header { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .icon-item { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .state-demo-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .grid-canvas { background: #1E293B; }
+    [data-theme="dark"] .spacing-example { background: #1E293B; border-color: #334155; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-dark { background: var(--gray-100); }
+    .section-header { margin-bottom: 2rem; }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Icon Grid */
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.75rem; margin: 1.5rem 0; }
+    .icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      padding: 1.25rem 0.5rem; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1); background: var(--white);
+      box-shadow: var(--shadow-card); cursor: default; position: relative; }
+    .icon-item:hover { border-color: var(--blue-light); background: rgba(91,184,245,0.04);
+      transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .icon-item svg { width: 24px; height: 24px; color: var(--blue-primary); flex-shrink: 0; }
+    .icon-item span { font-size: 0.6rem; color: var(--gray-400); text-align: center;
+      font-weight: 500; line-height: 1.3; }
+    .icon-item .icon-name-code { font-family: var(--font-mono); font-size: 0.55rem;
+      color: var(--gray-400); opacity: 0; transition: opacity 0.2s; }
+    .icon-item:hover .icon-name-code { opacity: 1; }
+
+    /* Category Header */
+    .category-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem;
+      background: var(--gray-100); border-radius: 8px; margin: 2rem 0 1rem;
+      border: 1px solid var(--gray-200); }
+    .category-header svg { width: 18px; height: 18px; color: var(--blue-primary); }
+    .category-header span { font-family: var(--font-heading); font-size: 0.8rem;
+      font-weight: 700; color: var(--dark-primary); text-transform: uppercase; letter-spacing: 0.06em; }
+    .category-count { font-size: 0.65rem; color: var(--gray-400); font-weight: 500;
+      margin-left: auto; font-family: var(--font-mono); }
+
+    /* Grid Anatomy */
+    .grid-canvas { display: flex; justify-content: center; align-items: center;
+      background: var(--gray-100); border-radius: var(--radius-md); padding: 3rem;
+      margin: 1.5rem 0; position: relative; }
+    .grid-icon-box { width: 200px; height: 200px; position: relative;
+      border: 2px dashed var(--gray-200); border-radius: 8px; }
+    .grid-icon-box .grid-line { position: absolute; background: rgba(91,184,245,0.2); }
+    .grid-icon-box .grid-line-h { height: 1px; width: 100%; left: 0; }
+    .grid-icon-box .grid-line-v { width: 1px; height: 100%; top: 0; }
+    .grid-icon-box .safe-area { position: absolute; top: 12.5%; left: 12.5%; right: 12.5%; bottom: 12.5%;
+      border: 2px solid var(--blue-light); border-radius: 4px; }
+    .grid-icon-box .content-area { position: absolute; top: 20%; left: 20%; right: 20%; bottom: 20%;
+      border: 1px dashed var(--cyan-medium); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center; }
+    .grid-icon-box .content-area svg { width: 60%; height: 60%; color: var(--blue-primary); }
+    .grid-annotation { position: absolute; font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--gray-400); display: flex; align-items: center; gap: 4px; }
+    .grid-annotation-line { height: 1px; width: 30px; background: var(--gray-400); }
+    .grid-legends { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+    .grid-legend { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--gray-600); }
+    .grid-legend-swatch { width: 20px; height: 3px; border-radius: 2px; }
+
+    /* Size Compare */
+    .size-compare { display: flex; align-items: flex-end; gap: 2.5rem; justify-content: center;
+      padding: 3rem 2rem; margin: 1.5rem 0; background: var(--gray-100); border-radius: var(--radius-md); }
+    .size-item { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+    .size-box { display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--blue-light); border-radius: 8px; position: relative; }
+    .size-box svg { color: var(--blue-primary); }
+    .size-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); font-weight: 500; }
+    .size-tag { font-size: 0.6rem; color: var(--gray-600); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* States */
+    .states-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .state-demo-card { padding: 1.5rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); background: var(--white); text-align: center; }
+    .state-label { font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark-primary); margin-bottom: 1rem; }
+    .state-icon-wrap { width: 48px; height: 48px; border-radius: 10px; display: flex;
+      align-items: center; justify-content: center; margin: 0 auto 0.75rem; transition: all 0.2s; }
+    .state-icon-wrap svg { width: 22px; height: 22px; }
+    .state-desc { font-size: 0.7rem; color: var(--gray-400); line-height: 1.4; }
+
+    /* Spacing Examples */
+    .spacing-demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .spacing-example { padding: 1.5rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); background: var(--white); }
+    .spacing-example-title { font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--dark-primary); margin-bottom: 1rem; }
+    .btn-demo { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      background: var(--blue-primary); color: #fff; border: none; border-radius: 8px;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+    .btn-demo svg { width: 16px; height: 16px; }
+    .input-demo-wrap { display: flex; align-items: center; border: 1px solid var(--gray-200);
+      border-radius: 8px; padding: 10px 12px; gap: 8px; }
+    .input-demo-wrap svg { width: 16px; height: 16px; color: var(--gray-400); flex-shrink: 0; }
+    .input-demo-wrap span { font-size: 0.85rem; color: var(--gray-400); }
+    .nav-demo { display: flex; flex-direction: column; gap: 2px; }
+    .nav-demo-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+      border-radius: 6px; font-size: 0.8rem; color: var(--gray-600); cursor: default; }
+    .nav-demo-item.active { background: rgba(43,108,176,0.08); color: var(--blue-primary); font-weight: 600; }
+    .nav-demo-item svg { width: 18px; height: 18px; }
+    .spacing-note { display: flex; align-items: center; gap: 6px; margin-top: 0.75rem;
+      font-size: 0.65rem; color: var(--gray-400); font-family: var(--font-mono); }
+    .spacing-note .gap-indicator { height: 8px; background: rgba(91,184,245,0.2);
+      border: 1px solid rgba(91,184,245,0.4); border-radius: 2px; }
+
+    /* Do's & Don'ts */
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 1rem; min-height: 140px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    /* Code Block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem;
+      margin: 1.5rem 0; overflow-x: auto; position: relative; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.8rem; color: #E2E8F0;
+      line-height: 1.7; white-space: pre; margin: 0; }
+    .code-block .code-lang { position: absolute; top: 0.75rem; right: 1rem;
+      font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;
+      text-transform: uppercase; letter-spacing: 0.1em; }
+    .code-comment { color: #64748B; }
+    .code-keyword { color: #C084FC; }
+    .code-string { color: #34D399; }
+    .code-tag { color: #F472B6; }
+    .code-attr { color: #60A5FA; }
+    .code-value { color: #FBBF24; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table tr:hover td { background: var(--gray-100); }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); }
+
+    /* Theme toggle & Back button */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Stroke compare */
+    .stroke-compare { display: flex; align-items: center; gap: 3rem; justify-content: center;
+      padding: 2.5rem; background: var(--gray-100); border-radius: var(--radius-md); margin: 1.5rem 0; }
+    .stroke-item { text-align: center; }
+    .stroke-item svg { width: 40px; height: 40px; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .stroke-item .stroke-val { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-600); font-weight: 600; }
+    .stroke-item .stroke-label { font-size: 0.65rem; color: var(--gray-400); margin-top: 0.25rem; }
+    .stroke-rec { border: 2px solid var(--success-border); border-radius: 12px; padding: 0.25rem 0.5rem;
+      font-size: 0.55rem; color: var(--success-text); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-top: 0.5rem; display: inline-block; }
+
+    @media (max-width: 640px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3rem 1.5rem; }
+      .icon-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+      .dodont-grid { grid-template-columns: 1fr; }
+      .size-compare { flex-wrap: wrap; gap: 1.5rem; }
+      .stroke-compare { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-badge"><span></span>SYSLED — PREVIEW</div>
+    <h1>Iconografia<br>Completa</h1>
+    <p class="cover-subtitle">Sistema de icones, grid de construcao, variantes de estado, espacamento, regras de uso e implementacao.</p>
+  </div>
+
+  <!-- ========== SECAO 1: FUNDAMENTOS ========== -->
+  <section class="section" id="fundamentos">
+    <div class="section-header">
+      <div class="section-number">01 — Fundamentos</div>
+      <h2>Principios e Estilo</h2>
+    </div>
+    <p>A Sysled utiliza icones no estilo <strong>outline</strong> (contorno), com tracos limpos e geometricos que refletem a identidade moderna e profissional da marca. A biblioteca oficial e a <strong>Lucide Icons</strong>, com <strong>Heroicons</strong> como alternativa compativel.</p>
+
+    <h3>Stroke Width — Comparativo</h3>
+    <div class="stroke-compare">
+      <div class="stroke-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="stroke-val">1.0px</div>
+        <div class="stroke-label">Muito fino</div>
+      </div>
+      <div class="stroke-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="stroke-val">1.5px</div>
+        <div class="stroke-label">Padrao UI</div>
+        <div class="stroke-rec">Recomendado</div>
+      </div>
+      <div class="stroke-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="stroke-val">2.0px</div>
+        <div class="stroke-label">Navegacao / destaque</div>
+        <div class="stroke-rec">Recomendado</div>
+      </div>
+      <div class="stroke-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="stroke-val">2.5px</div>
+        <div class="stroke-label">Pesado demais</div>
+      </div>
+    </div>
+
+    <h3>Especificacoes Tecnicas</h3>
+    <table class="spec-table">
+      <thead><tr><th>Propriedade</th><th>Valor</th><th>Observacao</th></tr></thead>
+      <tbody>
+        <tr><td>Estilo</td><td>Outline (contorno)</td><td>Nunca usar filled como padrao</td></tr>
+        <tr><td>Stroke Width</td><td><code>1.5px</code> — <code>2px</code></td><td>1.5 para UI, 2.0 para nav/destaque</td></tr>
+        <tr><td>Stroke Caps</td><td><code>round</code></td><td>stroke-linecap e stroke-linejoin</td></tr>
+        <tr><td>Viewbox</td><td><code>0 0 24 24</code></td><td>Padrao Lucide/Heroicons</td></tr>
+        <tr><td>Cor padrao</td><td><code>currentColor</code></td><td>Herda a cor do elemento pai</td></tr>
+        <tr><td>Biblioteca primaria</td><td>Lucide Icons</td><td>lucide.dev</td></tr>
+        <tr><td>Biblioteca alternativa</td><td>Heroicons (outline)</td><td>heroicons.com</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 2: BIBLIOTECA POR CATEGORIA ========== -->
+  <section class="section section-dark" id="biblioteca">
+    <div class="section-header">
+      <div class="section-number">02 — Biblioteca</div>
+      <h2>Icones por Categoria</h2>
+    </div>
+    <p>Catalogo organizado por contexto de uso. Todos os icones seguem o padrao Lucide Icons com <code>stroke-width="1.5"</code>.</p>
+
+    <!-- Navegacao -->
+    <div class="category-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Navegacao</span>
+      <span class="category-count">8 icones</span>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span><span class="icon-name-code">home</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Buscar</span><span class="icon-name-code">search</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span>Menu</span><span class="icon-name-code">menu</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <span>Fechar</span><span class="icon-name-code">x</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Voltar</span><span class="icon-name-code">chevron-left</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Avancar</span><span class="icon-name-code">chevron-right</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <span>Expandir</span><span class="icon-name-code">chevron-down</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        <span>Mais</span><span class="icon-name-code">more-horizontal</span>
+      </div>
+    </div>
+
+    <!-- Acoes -->
+    <div class="category-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Acoes</span>
+      <span class="category-count">10 icones</span>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Adicionar</span><span class="icon-name-code">plus</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <span>Editar</span><span class="icon-name-code">edit</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <span>Excluir</span><span class="icon-name-code">trash-2</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span>Salvar</span><span class="icon-name-code">save</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download</span><span class="icon-name-code">download</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Upload</span><span class="icon-name-code">upload</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copiar</span><span class="icon-name-code">copy</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        <span>Desfazer</span><span class="icon-name-code">undo</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <span>Enviar</span><span class="icon-name-code">send</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Confirmar</span><span class="icon-name-code">check</span>
+      </div>
+    </div>
+
+    <!-- Sistema/Dominio -->
+    <div class="category-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span>Sistema / Dominio Sysled</span>
+      <span class="category-count">8 icones</span>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>Estoque</span><span class="icon-name-code">box</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Logistica</span><span class="icon-name-code">truck</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Dashboard</span><span class="icon-name-code">bar-chart</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Monitoramento</span><span class="icon-name-code">activity</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852 1.003 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Config</span><span class="icon-name-code">settings</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span>Producao</span><span class="icon-name-code">coffee</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Seguranca</span><span class="icon-name-code">shield</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Usuarios</span><span class="icon-name-code">users</span>
+      </div>
+    </div>
+
+    <!-- Feedback -->
+    <div class="category-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span>Feedback & Status</span>
+      <span class="category-count">8 icones</span>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Sucesso</span><span class="icon-name-code">check</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <span>Erro</span><span class="icon-name-code">x-circle</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Alerta</span><span class="icon-name-code">alert-triangle</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Info</span><span class="icon-name-code">info</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span>Notificacao</span><span class="icon-name-code">bell</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Aguardando</span><span class="icon-name-code">clock</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Completo</span><span class="icon-name-code">check-circle</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Pendente</span><span class="icon-name-code">alert-circle</span>
+      </div>
+    </div>
+
+    <!-- Dados & Filtros -->
+    <div class="category-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      <span>Dados & Filtros</span>
+      <span class="category-count">8 icones</span>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <span>Filtrar</span><span class="icon-name-code">filter</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        <span>Ajustes</span><span class="icon-name-code">sliders</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Exportar</span><span class="icon-name-code">download</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span>Lista</span><span class="icon-name-code">list</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Grid</span><span class="icon-name-code">grid</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Tendencia</span><span class="icon-name-code">trending-up</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Relatorio</span><span class="icon-name-code">file-text</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <span>Database</span><span class="icon-name-code">database</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 3: GRID E AREA DE SEGURANCA ========== -->
+  <section class="section" id="grid">
+    <div class="section-header">
+      <div class="section-number">03 — Construcao</div>
+      <h2>Grid e Area de Seguranca</h2>
+    </div>
+    <p>Todo icone e construido dentro de um viewbox de <strong>24x24px</strong>. A area de seguranca (padding) de <strong>2px</strong> em cada lado garante alinhamento optico consistente. O conteudo do icone deve ficar dentro da area ativa de <strong>20x20px</strong>.</p>
+
+    <div class="grid-canvas">
+      <div style="position:relative;">
+        <div class="grid-icon-box">
+          <!-- Grid lines -->
+          <div class="grid-line grid-line-h" style="top:25%"></div>
+          <div class="grid-line grid-line-h" style="top:50%"></div>
+          <div class="grid-line grid-line-h" style="top:75%"></div>
+          <div class="grid-line grid-line-v" style="left:25%"></div>
+          <div class="grid-line grid-line-v" style="left:50%"></div>
+          <div class="grid-line grid-line-v" style="left:75%"></div>
+          <!-- Safe area -->
+          <div class="safe-area"></div>
+          <!-- Content area -->
+          <div class="content-area">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <!-- Annotations -->
+        <div class="grid-annotation" style="top:-20px;left:50%;transform:translateX(-50%)">24px</div>
+        <div class="grid-annotation" style="right:-55px;top:50%;transform:translateY(-50%)">24px</div>
+        <div class="grid-annotation" style="left:4%;top:-20px;font-size:0.55rem;color:var(--blue-light)">2px pad</div>
+      </div>
+    </div>
+    <div class="grid-legends">
+      <div class="grid-legend">
+        <div class="grid-legend-swatch" style="background:var(--gray-200)"></div> Viewbox 24x24
+      </div>
+      <div class="grid-legend">
+        <div class="grid-legend-swatch" style="background:var(--blue-light)"></div> Area de Seguranca (2px)
+      </div>
+      <div class="grid-legend">
+        <div class="grid-legend-swatch" style="background:var(--cyan-medium);border:1px dashed var(--cyan-medium)"></div> Area Ativa (20x20)
+      </div>
+    </div>
+
+    <h3>Tamanhos Padrao</h3>
+    <div class="size-compare">
+      <div class="size-item">
+        <div class="size-box" style="width:32px;height:32px;">
+          <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="size-label">16px</div>
+        <div class="size-tag">Inline / compacto</div>
+      </div>
+      <div class="size-item">
+        <div class="size-box" style="width:40px;height:40px;">
+          <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="size-label">20px</div>
+        <div class="size-tag">Botoes / inputs</div>
+      </div>
+      <div class="size-item">
+        <div class="size-box" style="width:48px;height:48px;">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="size-label">24px</div>
+        <div class="size-tag">Padrao / navegacao</div>
+      </div>
+      <div class="size-item">
+        <div class="size-box" style="width:56px;height:56px;">
+          <svg style="width:32px;height:32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="size-label">32px</div>
+        <div class="size-tag">Destaque / empty state</div>
+      </div>
+      <div class="size-item">
+        <div class="size-box" style="width:72px;height:72px;">
+          <svg style="width:48px;height:48px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="size-label">48px</div>
+        <div class="size-tag">Ilustrativo / hero</div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Tamanho</th><th>Uso</th><th>Stroke</th></tr></thead>
+      <tbody>
+        <tr><td><code>16px</code></td><td>Dentro de badges, tags, inputs compactos</td><td><code>1.5px</code></td></tr>
+        <tr><td><code>20px</code></td><td>Botoes, inputs, tabelas</td><td><code>1.5px</code></td></tr>
+        <tr><td><code>24px</code></td><td>Navegacao, sidebar, toolbar</td><td><code>1.5px — 2px</code></td></tr>
+        <tr><td><code>32px</code></td><td>Empty states, cards de destaque</td><td><code>1.5px</code></td></tr>
+        <tr><td><code>48px</code></td><td>Ilustracoes, paginas de erro, onboarding</td><td><code>1px — 1.5px</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 4: ESTADOS ========== -->
+  <section class="section section-dark" id="estados">
+    <div class="section-header">
+      <div class="section-number">04 — Estados</div>
+      <h2>Variantes de Estado</h2>
+    </div>
+    <p>Icones mudam de aparencia conforme o estado do elemento em que estao inseridos. Abaixo, como cada estado se manifesta visualmente.</p>
+
+    <div class="states-grid">
+      <div class="state-demo-card">
+        <div class="state-label">Default</div>
+        <div class="state-icon-wrap" style="background:rgba(43,108,176,0.06);">
+          <svg style="color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Cor primaria, opacidade 100%</div>
+      </div>
+      <div class="state-demo-card">
+        <div class="state-label">Hover</div>
+        <div class="state-icon-wrap" style="background:rgba(43,108,176,0.12);">
+          <svg style="color:var(--blue-medium)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Cor mais clara + bg sutil</div>
+      </div>
+      <div class="state-demo-card">
+        <div class="state-label">Active</div>
+        <div class="state-icon-wrap" style="background:rgba(43,108,176,0.15);">
+          <svg style="color:var(--blue-primary);transform:scale(0.95)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Scale 0.95 + stroke 2px</div>
+      </div>
+      <div class="state-demo-card">
+        <div class="state-label">Focused</div>
+        <div class="state-icon-wrap" style="background:rgba(43,108,176,0.06);box-shadow:0 0 0 3px rgba(91,184,245,0.4);border-radius:10px;">
+          <svg style="color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Focus ring 3px azul claro</div>
+      </div>
+      <div class="state-demo-card">
+        <div class="state-label">Disabled</div>
+        <div class="state-icon-wrap" style="background:rgba(148,163,184,0.06);">
+          <svg style="color:var(--gray-400);opacity:0.4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Gray + opacity 40%</div>
+      </div>
+      <div class="state-demo-card">
+        <div class="state-label">Selected</div>
+        <div class="state-icon-wrap" style="background:var(--blue-primary);">
+          <svg style="color:#fff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="state-desc">Fundo primario + icone branco</div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Estado</th><th>Cor do Icone</th><th>Background</th><th>Extra</th></tr></thead>
+      <tbody>
+        <tr><td>Default</td><td><code>var(--blue-primary)</code></td><td><code>rgba(43,108,176,0.06)</code></td><td>—</td></tr>
+        <tr><td>Hover</td><td><code>var(--blue-medium)</code></td><td><code>rgba(43,108,176,0.12)</code></td><td><code>transition: 0.2s</code></td></tr>
+        <tr><td>Active / Pressed</td><td><code>var(--blue-primary)</code></td><td><code>rgba(43,108,176,0.15)</code></td><td><code>scale(0.95)</code></td></tr>
+        <tr><td>Focused</td><td><code>var(--blue-primary)</code></td><td>—</td><td><code>box-shadow: 0 0 0 3px</code></td></tr>
+        <tr><td>Disabled</td><td><code>var(--gray-400)</code></td><td>—</td><td><code>opacity: 0.4</code></td></tr>
+        <tr><td>Selected</td><td><code>#FFFFFF</code></td><td><code>var(--blue-primary)</code></td><td>Inversao total</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 5: ICONES COM TEXTO ========== -->
+  <section class="section" id="espacamento">
+    <div class="section-header">
+      <div class="section-number">05 — Espacamento</div>
+      <h2>Icones com Texto e Componentes</h2>
+    </div>
+    <p>O espacamento entre icone e texto deve ser consistente em toda a interface. Use <code>gap</code> via flexbox para garantir alinhamento perfeito em qualquer contexto.</p>
+
+    <div class="spacing-demos">
+      <div class="spacing-example">
+        <div class="spacing-example-title">Botao com Icone</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div class="btn-demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Produto
+          </div>
+          <div class="btn-demo" style="background:transparent;color:var(--blue-primary);border:1px solid var(--blue-primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exportar
+          </div>
+        </div>
+        <div class="spacing-note">
+          <div class="gap-indicator" style="width:8px;"></div> gap: 8px
+        </div>
+      </div>
+
+      <div class="spacing-example">
+        <div class="spacing-example-title">Input com Icone</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div class="input-demo-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Buscar produtos...</span>
+          </div>
+          <div class="input-demo-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Selecionar data</span>
+          </div>
+        </div>
+        <div class="spacing-note">
+          <div class="gap-indicator" style="width:8px;"></div> gap: 8px
+        </div>
+      </div>
+
+      <div class="spacing-example">
+        <div class="spacing-example-title">Navegacao Lateral</div>
+        <div class="nav-demo">
+          <div class="nav-demo-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Dashboard
+          </div>
+          <div class="nav-demo-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Estoque
+          </div>
+          <div class="nav-demo-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Clientes
+          </div>
+        </div>
+        <div class="spacing-note">
+          <div class="gap-indicator" style="width:10px;"></div> gap: 10px
+        </div>
+      </div>
+    </div>
+
+    <h3>Regras de Espacamento</h3>
+    <table class="spec-table">
+      <thead><tr><th>Contexto</th><th>Tamanho do Icone</th><th>Gap icone-texto</th><th>Alinhamento</th></tr></thead>
+      <tbody>
+        <tr><td>Botao primario</td><td><code>16px — 20px</code></td><td><code>8px</code></td><td><code>align-items: center</code></td></tr>
+        <tr><td>Botao compacto</td><td><code>14px — 16px</code></td><td><code>6px</code></td><td><code>align-items: center</code></td></tr>
+        <tr><td>Input com icone</td><td><code>16px</code></td><td><code>8px</code></td><td>Icone a esquerda, centralizado vertical</td></tr>
+        <tr><td>Sidebar / nav</td><td><code>18px — 20px</code></td><td><code>10px — 12px</code></td><td><code>align-items: center</code></td></tr>
+        <tr><td>Tabela (acoes)</td><td><code>16px</code></td><td><code>0</code> (icone only)</td><td>Centralizado na celula</td></tr>
+        <tr><td>Badge / tag</td><td><code>12px — 14px</code></td><td><code>4px</code></td><td><code>align-items: center</code></td></tr>
+        <tr><td>Toast / alert</td><td><code>16px — 20px</code></td><td><code>8px — 12px</code></td><td><code>align-items: flex-start</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Quando usar icone sozinho vs. com label</h3>
+    <table class="spec-table">
+      <thead><tr><th>Situacao</th><th>Recomendacao</th><th>Motivo</th></tr></thead>
+      <tbody>
+        <tr><td>Acao na toolbar (editar, excluir)</td><td>Icone + tooltip</td><td>Espaco limitado, tooltip para contexto</td></tr>
+        <tr><td>Navegacao principal</td><td>Icone + label</td><td>Discoverability para novos usuarios</td></tr>
+        <tr><td>Sidebar colapsada</td><td>Icone + tooltip</td><td>Label aparece ao expandir</td></tr>
+        <tr><td>Botao de acao primaria</td><td>Icone + label</td><td>Clareza na intencao da acao</td></tr>
+        <tr><td>Acao recorrente (favoritar, curtir)</td><td>Icone sozinho</td><td>Convencao universal reconhecida</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 6: DO'S AND DON'TS ========== -->
+  <section class="section section-dark" id="dos-donts">
+    <div class="section-header">
+      <div class="section-number">06 — Regras de Uso</div>
+      <h2>Do's & Don'ts</h2>
+    </div>
+    <p>Regras visuais para manter a consistencia do sistema de icones em todos os contextos e equipes.</p>
+
+    <div class="dodont-grid">
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <div style="display:flex;gap:1rem;">
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <p>Usar todos em outline com mesmo stroke-width</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <div style="display:flex;gap:1rem;">
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <p>Misturar outline com filled ou strokes diferentes</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <div style="display:flex;gap:1rem;align-items:center;">
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <p>Manter tamanhos iguais no mesmo contexto</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <div style="display:flex;gap:1rem;align-items:center;">
+            <svg style="width:16px;height:16px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <svg style="width:32px;height:32px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <p>Usar tamanhos diferentes no mesmo nivel hierarquico</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Usar cores da paleta oficial (currentColor ou variavel CSS)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <svg style="width:24px;height:24px;color:#FF6B35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Usar cores arbitrarias fora do design system</p>
+        </div>
+      </div>
+
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <svg style="width:24px;height:24px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Manter proporcoes originais do icone (1:1)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <svg style="width:32px;height:20px;color:var(--blue-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Distorcer ou esticar o icone</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 7: IMPLEMENTACAO ========== -->
+  <section class="section" id="implementacao">
+    <div class="section-header">
+      <div class="section-number">07 — Implementacao</div>
+      <h2>Codigo e Uso no Projeto</h2>
+    </div>
+    <p>Exemplos praticos de como implementar os icones no codigo, usando a biblioteca Lucide com React/TypeScript.</p>
+
+    <h3>Instalacao</h3>
+    <div class="code-block">
+      <span class="code-lang">bash</span>
+      <pre><span class="code-comment"># Instalar Lucide para React</span>
+<span class="code-keyword">npm</span> install lucide-react
+
+<span class="code-comment"># Ou com Yarn</span>
+<span class="code-keyword">yarn</span> add lucide-react</pre>
+    </div>
+
+    <h3>Uso Basico</h3>
+    <div class="code-block">
+      <span class="code-lang">tsx</span>
+      <pre><span class="code-keyword">import</span> { <span class="code-value">Search</span>, <span class="code-value">Home</span>, <span class="code-value">Settings</span>, <span class="code-value">Plus</span> } <span class="code-keyword">from</span> <span class="code-string">'lucide-react'</span>
+
+<span class="code-comment">// Tamanho padrao (24px)</span>
+<span class="code-tag">&lt;Search</span> <span class="code-attr">strokeWidth</span>=<span class="code-string">{1.5}</span> <span class="code-tag">/&gt;</span>
+
+<span class="code-comment">// Tamanho personalizado</span>
+<span class="code-tag">&lt;Home</span> <span class="code-attr">size</span>=<span class="code-string">{20}</span> <span class="code-attr">strokeWidth</span>=<span class="code-string">{1.5}</span> <span class="code-tag">/&gt;</span>
+
+<span class="code-comment">// Dentro de um botao</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">className</span>=<span class="code-string">"btn-primary"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;Plus</span> <span class="code-attr">size</span>=<span class="code-string">{16}</span> <span class="code-attr">strokeWidth</span>=<span class="code-string">{2}</span> <span class="code-tag">/&gt;</span>
+  Novo Produto
+<span class="code-tag">&lt;/button&gt;</span></pre>
+    </div>
+
+    <h3>Componente Wrapper (Recomendado)</h3>
+    <div class="code-block">
+      <span class="code-lang">tsx</span>
+      <pre><span class="code-keyword">import</span> { <span class="code-value">LucideIcon</span> } <span class="code-keyword">from</span> <span class="code-string">'lucide-react'</span>
+
+<span class="code-keyword">type</span> <span class="code-value">IconSize</span> = <span class="code-string">'xs'</span> | <span class="code-string">'sm'</span> | <span class="code-string">'md'</span> | <span class="code-string">'lg'</span> | <span class="code-string">'xl'</span>
+
+<span class="code-keyword">const</span> sizeMap: Record&lt;IconSize, number&gt; = {
+  xs: <span class="code-value">14</span>, sm: <span class="code-value">16</span>, md: <span class="code-value">20</span>, lg: <span class="code-value">24</span>, xl: <span class="code-value">32</span>
+}
+
+<span class="code-keyword">interface</span> <span class="code-value">Props</span> {
+  icon: LucideIcon
+  size?: IconSize
+  className?: string
+}
+
+<span class="code-keyword">export function</span> <span class="code-value">Icon</span>({ icon: LucideIcon, size = <span class="code-string">'lg'</span>, className }: Props) {
+  <span class="code-keyword">return</span> (
+    <span class="code-tag">&lt;LucideIcon</span>
+      <span class="code-attr">size</span>=<span class="code-string">{sizeMap[size]}</span>
+      <span class="code-attr">strokeWidth</span>=<span class="code-string">{size === 'xl' ? 1 : 1.5}</span>
+      <span class="code-attr">className</span>=<span class="code-string">{className}</span>
+    <span class="code-tag">/&gt;</span>
+  )
+}</pre>
+    </div>
+
+    <h3>Uso com SVG Inline (Fallback)</h3>
+    <div class="code-block">
+      <span class="code-lang">html</span>
+      <pre><span class="code-comment">&lt;!-- Padrao Sysled: outline, round caps, 24x24 --&gt;</span>
+<span class="code-tag">&lt;svg</span>
+  <span class="code-attr">viewBox</span>=<span class="code-string">"0 0 24 24"</span>
+  <span class="code-attr">width</span>=<span class="code-string">"24"</span>
+  <span class="code-attr">height</span>=<span class="code-string">"24"</span>
+  <span class="code-attr">fill</span>=<span class="code-string">"none"</span>
+  <span class="code-attr">stroke</span>=<span class="code-string">"currentColor"</span>
+  <span class="code-attr">stroke-width</span>=<span class="code-string">"1.5"</span>
+  <span class="code-attr">stroke-linecap</span>=<span class="code-string">"round"</span>
+  <span class="code-attr">stroke-linejoin</span>=<span class="code-string">"round"</span>
+<span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;circle</span> <span class="code-attr">cx</span>=<span class="code-string">"11"</span> <span class="code-attr">cy</span>=<span class="code-string">"11"</span> <span class="code-attr">r</span>=<span class="code-string">"8"</span> <span class="code-tag">/&gt;</span>
+  <span class="code-tag">&lt;line</span> <span class="code-attr">x1</span>=<span class="code-string">"21"</span> <span class="code-attr">y1</span>=<span class="code-string">"21"</span> <span class="code-attr">x2</span>=<span class="code-string">"16.65"</span> <span class="code-attr">y2</span>=<span class="code-string">"16.65"</span> <span class="code-tag">/&gt;</span>
+<span class="code-tag">&lt;/svg&gt;</span></pre>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+</script>
+</body>
+</html>

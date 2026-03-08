@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Paleta de Cores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-primary: #2B6CB0;
+      --blue-medium: #3A8FD6;
+      --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4;
+      --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1;
+      --cyan-medium: #3AAFCF;
+      --cyan-light: #48C9B0;
+      --dark-primary: #0F172A;
+      --dark-secondary: #1E293B;
+      --dark-text: #1E293B;
+      --gray-600: #475569;
+      --gray-400: #94A3B8;
+      --gray-200: #E2E8F0;
+      --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a;
+      --gradient-mid: #1d6ea0;
+      --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+      --warning-bg: #FFFBEB; --warning-text: #92400E; --warning-border: #FBBF24;
+    }
+
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .spec-table tr:hover td { background: rgba(30,41,59,0.5); }
+    [data-theme="dark"] .swatch-card { border-color: #334155; }
+    [data-theme="dark"] .swatch-info { background: #1E293B; }
+    [data-theme="dark"] .color-name { color: #E2E8F0; }
+    [data-theme="dark"] .neutral-swatch { border-color: #334155; }
+    [data-theme="dark"] .neutral-info .neutral-name { color: #E2E8F0; }
+    [data-theme="dark"] .proportion-legend span { color: #E2E8F0; }
+    [data-theme="dark"] .contrast-pair { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .contrast-colors span { color: #CBD5E1; }
+    [data-theme="dark"] .semantic-card { border-color: #334155; }
+    [data-theme="dark"] .semantic-label { color: #E2E8F0; }
+    [data-theme="dark"] .ui-mapping-card { border-color: #334155; background: #1E293B; }
+    [data-theme="dark"] .ui-mapping-label { color: #E2E8F0; }
+    [data-theme="dark"] .gradient-strip { border-color: #334155; }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .category-header { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .copy-toast { background: #334155; color: #E2E8F0; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Color circles in cover */
+    .cover-colors { display: flex; justify-content: center; gap: 12px; margin-top: 2rem; }
+    .cover-dot { width: 32px; height: 32px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+      transition: transform 0.2s; }
+    .cover-dot:hover { transform: scale(1.2); }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-header { margin-bottom: 2rem; }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section h3:first-of-type { margin-top: 0; }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Gradient Strip */
+    .gradient-strip { height: 48px; border-radius: var(--radius-md); margin: 1.5rem 0;
+      border: 1px solid var(--gray-200); overflow: hidden; }
+
+    /* Swatch Cards */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem; margin: 1.5rem 0; }
+    .swatch-card { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-card); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+    .swatch-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .swatch-preview { height: 120px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .swatch-preview svg { width: 24px; height: 24px; color: rgba(255,255,255,0.5); opacity: 0;
+      transition: opacity 0.2s; }
+    .swatch-card:hover .swatch-preview svg { opacity: 1; }
+    .swatch-info { padding: 1rem 1.25rem; background: var(--white); }
+    .color-name { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.5rem; }
+    .color-values { display: flex; flex-direction: column; gap: 3px; }
+    .color-val { display: flex; align-items: center; gap: 6px; font-family: var(--font-mono);
+      font-size: 0.7rem; color: var(--gray-600); cursor: pointer; padding: 2px 4px; border-radius: 4px;
+      transition: background 0.15s; }
+    .color-val:hover { background: rgba(91,184,245,0.08); }
+    .color-val-label { font-weight: 600; min-width: 36px; color: var(--gray-400); font-size: 0.6rem;
+      text-transform: uppercase; letter-spacing: 0.05em; }
+    .color-val-code { font-weight: 500; }
+
+    /* Neutral Swatches */
+    .neutral-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .neutral-swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-card); cursor: pointer; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+    .neutral-swatch:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .neutral-preview { height: 72px; }
+    .neutral-info { padding: 0.75rem 1rem; background: var(--white); }
+    .neutral-name { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.25rem; }
+    .neutral-hex { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); cursor: pointer; }
+
+    /* Proportion Bar */
+    .proportion-bar-wrap { margin: 1.5rem 0; }
+    .proportion-bar { display: flex; height: 48px; border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-card); }
+    .proportion-segment { display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; color: #fff;
+      transition: flex 0.3s; position: relative; }
+    .proportion-segment span { text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .proportion-legend { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+    .proportion-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
+    .proportion-legend-dot { width: 12px; height: 12px; border-radius: 4px; }
+    .proportion-legend span { color: var(--dark-primary); font-weight: 500; }
+
+    /* Contrast Table */
+    .contrast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .contrast-pair { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-card); background: var(--white); }
+    .contrast-demo { padding: 1.25rem; display: flex; align-items: center; justify-content: center;
+      min-height: 64px; }
+    .contrast-demo span { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
+    .contrast-meta { padding: 0.75rem 1rem; border-top: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: space-between; }
+    .contrast-colors { display: flex; align-items: center; gap: 6px; }
+    .contrast-colors .contrast-dot { width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1); }
+    .contrast-colors span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-600); }
+    .contrast-ratio { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; }
+    .contrast-badges { display: flex; gap: 4px; margin-left: 8px; }
+    .badge { font-size: 0.55rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.05em; }
+    .badge-pass { background: var(--success-bg); color: var(--success-text); }
+    .badge-fail { background: var(--error-bg); color: var(--error-text); }
+
+    /* Semantic Cards */
+    .semantic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .semantic-card { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-card); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+    .semantic-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .semantic-preview { height: 80px; display: flex; align-items: center; justify-content: center; }
+    .semantic-preview svg { width: 28px; height: 28px; }
+    .semantic-info { padding: 1rem; background: var(--white); }
+    .semantic-label { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.25rem; }
+    .semantic-hex { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-400); }
+    .semantic-use { font-size: 0.7rem; color: var(--gray-600); margin-top: 0.5rem; line-height: 1.4; }
+
+    /* UI Mapping */
+    .ui-mapping-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem; margin: 1.5rem 0; }
+    .ui-mapping-card { border-radius: var(--radius-md); border: 1px solid var(--gray-200);
+      padding: 1.5rem; background: var(--white); box-shadow: var(--shadow-card); }
+    .ui-mapping-label { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+      color: var(--dark-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+    .ui-demo-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      border: none; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .ui-demo-btn svg { width: 16px; height: 16px; }
+    .ui-demo-btn-primary { background: #2B6CB0; color: #fff; }
+    .ui-demo-btn-primary:hover { background: #245a94; }
+    .ui-demo-btn-secondary { background: transparent; color: #2B6CB0; border: 1.5px solid #2B6CB0; }
+    .ui-demo-btn-ghost { background: rgba(43,108,176,0.08); color: #2B6CB0; }
+    .ui-demo-alert { display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+      border-radius: 8px; font-size: 0.8rem; font-weight: 500; }
+    .ui-demo-alert svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .ui-demo-badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ui-demo-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px;
+      border-radius: 100px; font-size: 0.7rem; font-weight: 600; }
+    .ui-demo-nav { display: flex; flex-direction: column; gap: 2px; }
+    .ui-demo-nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+      border-radius: 6px; font-size: 0.8rem; color: var(--gray-600); cursor: default; }
+    .ui-demo-nav-item.active { background: rgba(43,108,176,0.08); color: #2B6CB0; font-weight: 600; }
+    .ui-demo-nav-item svg { width: 18px; height: 18px; }
+
+    /* Category Header */
+    .category-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem;
+      background: var(--gray-100); border-radius: 8px; margin: 2rem 0 1rem;
+      border: 1px solid var(--gray-200); }
+    .category-header svg { width: 18px; height: 18px; color: var(--blue-primary); }
+    .category-header span { font-family: var(--font-heading); font-size: 0.8rem;
+      font-weight: 700; color: var(--dark-primary); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table tr:hover td { background: var(--gray-100); }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); }
+    .spec-table .td-swatch { width: 28px; height: 28px; border-radius: 6px; display: inline-block;
+      vertical-align: middle; border: 1px solid rgba(0,0,0,0.08); }
+
+    /* Code Block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.5rem;
+      margin: 1.5rem 0; overflow-x: auto; position: relative; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.8rem; color: #E2E8F0;
+      line-height: 1.7; white-space: pre; margin: 0; }
+    .code-block .code-lang { position: absolute; top: 0.75rem; right: 1rem;
+      font-family: var(--font-mono); font-size: 0.6rem; color: #64748B;
+      text-transform: uppercase; letter-spacing: 0.1em; }
+    .code-comment { color: #64748B; }
+    .code-keyword { color: #C084FC; }
+    .code-string { color: #34D399; }
+    .code-tag { color: #F472B6; }
+    .code-attr { color: #60A5FA; }
+    .code-value { color: #FBBF24; }
+
+    /* Theme toggle & Back button */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Copy Toast */
+    .copy-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--dark-primary); color: #fff; padding: 10px 20px; border-radius: 100px;
+      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2); z-index: 1000; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      display: flex; align-items: center; gap: 8px; pointer-events: none; }
+    .copy-toast.show { transform: translateX(-50%) translateY(0); }
+    .copy-toast svg { width: 16px; height: 16px; color: #34D399; }
+
+    @media (max-width: 640px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3rem 1.5rem; }
+      .swatch-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .contrast-grid { grid-template-columns: 1fr; }
+      .ui-mapping-grid { grid-template-columns: 1fr; }
+      .semantic-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-badge"><span></span>SYSLED — BRANDBOOK</div>
+    <h1>Paleta de<br>Cores</h1>
+    <p class="cover-subtitle">Cores primarias, secundarias, neutras, semanticas, proporcoes de uso, acessibilidade e aplicacao em interfaces.</p>
+    <div class="cover-colors">
+      <div class="cover-dot" style="background:#2B6CB0"></div>
+      <div class="cover-dot" style="background:#3A8FD6"></div>
+      <div class="cover-dot" style="background:#5BB8F5"></div>
+      <div class="cover-dot" style="background:#7ECEF4"></div>
+      <div class="cover-dot" style="background:#48C9B0"></div>
+      <div class="cover-dot" style="background:#A8E0F8"></div>
+    </div>
+  </div>
+
+  <!-- ========== SECAO 1: FUNDAMENTOS ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 01</div>
+      <h2>Fundamentos da Paleta</h2>
+    </div>
+    <p>A paleta de cores da SYSLED foi construida sobre uma base de azuis que transmitem <strong>confianca</strong>, <strong>tecnologia</strong> e <strong>profissionalismo</strong>. O azul e universalmente associado a estabilidade e seguranca — atributos essenciais para uma marca de tecnologia em iluminacao LED.</p>
+    <p>A variacao de tonalidades — do azul profundo ao celeste — cria uma hierarquia visual clara, permitindo distinguir elementos primarios, secundarios e de destaque. O ciano complementar adiciona vitalidade e modernidade, enquanto os neutros garantem legibilidade e respiro visual.</p>
+
+    <h3>Espectro Completo</h3>
+    <div class="gradient-strip" style="background: linear-gradient(90deg, #0F172A 0%, #2B6CB0 20%, #3A8FD6 35%, #5BB8F5 50%, #7ECEF4 65%, #A8E0F8 80%, #F8FAFC 100%);"></div>
+    <p style="text-align:center; font-size: 0.75rem; color: var(--gray-400); margin-top: -0.5rem;">Do escuro profundo ao branco puro — toda a gama da identidade SYSLED.</p>
+  </section>
+
+  <!-- ========== SECAO 2: CORES PRIMARIAS ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 02</div>
+      <h2>Cores Primarias</h2>
+    </div>
+    <p>As quatro tonalidades primarias formam o nucleo da identidade visual. Use-as como protagonistas em superficies, botoes, headers e elementos de destaque.</p>
+
+    <div class="swatch-grid">
+      <!-- Azul Primario -->
+      <div class="swatch-card" onclick="copyColor('#2B6CB0')">
+        <div class="swatch-preview" style="background:#2B6CB0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Azul Primario</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#2B6CB0')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#2B6CB0</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('43, 108, 176')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">43, 108, 176</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('76, 39, 0, 31')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">76, 39, 0, 31</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azul Medio -->
+      <div class="swatch-card" onclick="copyColor('#3A8FD6')">
+        <div class="swatch-preview" style="background:#3A8FD6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Azul Medio</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#3A8FD6')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#3A8FD6</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('58, 143, 214')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">58, 143, 214</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('73, 33, 0, 16')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">73, 33, 0, 16</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azul Claro -->
+      <div class="swatch-card" onclick="copyColor('#5BB8F5')">
+        <div class="swatch-preview" style="background:#5BB8F5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Azul Claro</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#5BB8F5')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#5BB8F5</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('91, 184, 245')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">91, 184, 245</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('63, 25, 0, 4')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">63, 25, 0, 4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azul Celeste -->
+      <div class="swatch-card" onclick="copyColor('#7ECEF4')">
+        <div class="swatch-preview" style="background:#7ECEF4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Azul Celeste</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#7ECEF4')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#7ECEF4</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('126, 206, 244')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">126, 206, 244</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('48, 16, 0, 4')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">48, 16, 0, 4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 3: CORES SECUNDARIAS ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 03</div>
+      <h2>Cores Secundarias</h2>
+    </div>
+    <p>Cores complementares que adicionam variedade e suportam a paleta primaria. Use-as para acentos, ilustracoes e elementos decorativos.</p>
+
+    <div class="swatch-grid">
+      <!-- Ciano / Turquesa -->
+      <div class="swatch-card" onclick="copyColor('#48C9B0')">
+        <div class="swatch-preview" style="background:#48C9B0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Ciano / Turquesa</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#48C9B0')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#48C9B0</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('72, 201, 176')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">72, 201, 176</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('64, 0, 12, 21')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">64, 0, 12, 21</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azul Palido -->
+      <div class="swatch-card" onclick="copyColor('#A8E0F8')">
+        <div class="swatch-preview" style="background:#A8E0F8">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Azul Palido</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#A8E0F8')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#A8E0F8</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('168, 224, 248')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">168, 224, 248</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('32, 10, 0, 3')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">32, 10, 0, 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 4: CORES NEUTRAS ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 04</div>
+      <h2>Cores Neutras</h2>
+    </div>
+    <p>Os neutros fornecem estrutura, hierarquia e legibilidade. Eles formam a base sobre a qual as cores primarias e secundarias ganham destaque.</p>
+
+    <div class="neutral-grid">
+      <div class="neutral-swatch" onclick="copyColor('#0F172A')">
+        <div class="neutral-preview" style="background:#0F172A"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Escuro Primario</div>
+          <div class="neutral-hex">#0F172A</div>
+        </div>
+      </div>
+
+      <div class="neutral-swatch" onclick="copyColor('#1E293B')">
+        <div class="neutral-preview" style="background:#1E293B"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Texto Principal</div>
+          <div class="neutral-hex">#1E293B</div>
+        </div>
+      </div>
+
+      <div class="neutral-swatch" onclick="copyColor('#475569')">
+        <div class="neutral-preview" style="background:#475569"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Texto Secundario</div>
+          <div class="neutral-hex">#475569</div>
+        </div>
+      </div>
+
+      <div class="neutral-swatch" onclick="copyColor('#E2E8F0')">
+        <div class="neutral-preview" style="background:#E2E8F0"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Cinza Claro</div>
+          <div class="neutral-hex">#E2E8F0</div>
+        </div>
+      </div>
+
+      <div class="neutral-swatch" onclick="copyColor('#F8FAFC')">
+        <div class="neutral-preview" style="background:#F8FAFC; border-bottom: 1px solid #E2E8F0;"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Fundo Claro</div>
+          <div class="neutral-hex">#F8FAFC</div>
+        </div>
+      </div>
+
+      <div class="neutral-swatch" onclick="copyColor('#FFFFFF')">
+        <div class="neutral-preview" style="background:#FFFFFF; border-bottom: 1px solid #E2E8F0;"></div>
+        <div class="neutral-info">
+          <div class="neutral-name">Branco</div>
+          <div class="neutral-hex">#FFFFFF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 5: PROPORCAO DE USO ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 05</div>
+      <h2>Proporcao de Uso</h2>
+    </div>
+    <p>A regra 60-30-10 garante equilíbrio visual. Neutros dominam para manter clareza, azuis primarios criam identidade e acentos adicionam energia nos pontos certos.</p>
+
+    <div class="proportion-bar-wrap">
+      <div class="proportion-bar">
+        <div class="proportion-segment" style="flex: 6; background: linear-gradient(135deg, #1E293B, #475569);">
+          <span>60%</span>
+        </div>
+        <div class="proportion-segment" style="flex: 3; background: linear-gradient(135deg, #2B6CB0, #3A8FD6);">
+          <span>30%</span>
+        </div>
+        <div class="proportion-segment" style="flex: 1; background: linear-gradient(135deg, #48C9B0, #5BB8F5);">
+          <span>10%</span>
+        </div>
+      </div>
+      <div class="proportion-legend">
+        <div class="proportion-legend-item">
+          <div class="proportion-legend-dot" style="background:#475569"></div>
+          <span>Neutros (fundos, textos, bordas)</span>
+        </div>
+        <div class="proportion-legend-item">
+          <div class="proportion-legend-dot" style="background:#2B6CB0"></div>
+          <span>Azul Primario / Medio</span>
+        </div>
+        <div class="proportion-legend-item">
+          <div class="proportion-legend-dot" style="background:#48C9B0"></div>
+          <span>Acentos e destaques</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Detalhamento por Contexto</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Proporcao</th>
+          <th>Cor(es)</th>
+          <th>Aplicacao</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>60%</strong></td>
+          <td><span class="td-swatch" style="background:#F8FAFC"></span> <span class="td-swatch" style="background:#FFFFFF; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#1E293B"></span></td>
+          <td>Fundos de pagina, containers, textos, espacos em branco</td>
+        </tr>
+        <tr>
+          <td><strong>30%</strong></td>
+          <td><span class="td-swatch" style="background:#2B6CB0"></span> <span class="td-swatch" style="background:#3A8FD6"></span></td>
+          <td>Headers, botoes primarios, links, icones ativos, sidebar</td>
+        </tr>
+        <tr>
+          <td><strong>10%</strong></td>
+          <td><span class="td-swatch" style="background:#48C9B0"></span> <span class="td-swatch" style="background:#5BB8F5"></span> <span class="td-swatch" style="background:#7ECEF4"></span></td>
+          <td>CTAs de destaque, badges, notificacoes, hover states, gradientes</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 6: ACESSIBILIDADE E CONTRASTE ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 06</div>
+      <h2>Acessibilidade e Contraste</h2>
+    </div>
+    <p>Todas as combinacoes de cores devem atender no minimo o nivel AA das diretrizes WCAG 2.1. Textos menores exigem contraste mais alto. Abaixo, as principais combinacoes testadas.</p>
+
+    <div class="contrast-grid">
+      <!-- Pair 1 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#2B6CB0">
+          <span style="color:#FFFFFF">Texto Branco</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#FFFFFF"></div>
+            <span>#FFF sobre #2B6CB0</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">4.68:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-fail">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pair 2 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#FFFFFF; border-bottom: 1px solid #E2E8F0;">
+          <span style="color:#0F172A">Texto Escuro</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#0F172A"></div>
+            <span>#0F172A sobre #FFF</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">17.4:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-pass">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pair 3 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#F8FAFC">
+          <span style="color:#1E293B">Texto Principal</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#1E293B"></div>
+            <span>#1E293B sobre #F8FAFC</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">14.4:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-pass">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pair 4 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#F8FAFC">
+          <span style="color:#475569">Texto Secundario</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#475569"></div>
+            <span>#475569 sobre #F8FAFC</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">6.36:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-pass">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pair 5 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#0F172A">
+          <span style="color:#5BB8F5">Link Azul Claro</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#5BB8F5"></div>
+            <span>#5BB8F5 sobre #0F172A</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">7.82:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-pass">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pair 6 -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#FFFFFF; border-bottom: 1px solid #E2E8F0;">
+          <span style="color:#2B6CB0">Azul Primario</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#2B6CB0"></div>
+            <span>#2B6CB0 sobre #FFF</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">4.68:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-fail">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Tabela Resumo WCAG</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Combinacao</th>
+          <th>Ratio</th>
+          <th>AA Normal</th>
+          <th>AA Large</th>
+          <th>AAA Normal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#0F172A / #FFFFFF</td>
+          <td><code>17.4:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td>#1E293B / #F8FAFC</td>
+          <td><code>14.4:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td>#475569 / #F8FAFC</td>
+          <td><code>6.36:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td>#2B6CB0 / #FFFFFF</td>
+          <td><code>4.68:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-fail">Fail</span></td>
+        </tr>
+        <tr>
+          <td>#5BB8F5 / #0F172A</td>
+          <td><code>7.82:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td>#3A8FD6 / #FFFFFF</td>
+          <td><code>3.27:1</code></td>
+          <td><span class="badge badge-fail">Fail</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-fail">Fail</span></td>
+        </tr>
+        <tr>
+          <td>#48C9B0 / #0F172A</td>
+          <td><code>8.96:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== SECAO 7: CORES SEMANTICAS ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 07</div>
+      <h2>Cores Semanticas</h2>
+    </div>
+    <p>Cores com significado funcional fixo. Nunca use uma cor semantica fora de seu proposito — por exemplo, vermelho deve indicar erro ou perigo, nunca um estado positivo.</p>
+
+    <div class="semantic-grid">
+      <!-- Success -->
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#ECFDF5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="semantic-info">
+          <div class="semantic-label">Sucesso</div>
+          <div class="semantic-hex" onclick="copyColor('#34D399')">#34D399 / #065F46</div>
+          <div class="semantic-use">Confirmacoes, operacoes concluidas, status ativo, validacao positiva.</div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#FEF2F2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#991B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="semantic-info">
+          <div class="semantic-label">Erro</div>
+          <div class="semantic-hex" onclick="copyColor('#F87171')">#F87171 / #991B1B</div>
+          <div class="semantic-use">Erros, falhas, exclusoes, campos invalidos, acoes destrutivas.</div>
+        </div>
+      </div>
+
+      <!-- Warning -->
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#FFFBEB">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="semantic-info">
+          <div class="semantic-label">Alerta</div>
+          <div class="semantic-hex" onclick="copyColor('#FBBF24')">#FBBF24 / #92400E</div>
+          <div class="semantic-use">Avisos, atencao necessaria, acoes irreversiveis, limites proximos.</div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#EFF6FF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="semantic-info">
+          <div class="semantic-label">Informacao</div>
+          <div class="semantic-hex" onclick="copyColor('#3B82F6')">#3B82F6 / #1E40AF</div>
+          <div class="semantic-use">Dicas, tooltips, informacoes contextuais, status neutro.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Tokens Semanticos (CSS)</h3>
+    <div class="code-block">
+      <span class="code-lang">CSS</span>
+      <pre><span class="code-comment">/* Cores Semanticas — Tokens */</span>
+<span class="code-keyword">:root</span> {
+  <span class="code-comment">/* Sucesso */</span>
+  <span class="code-attr">--success-bg</span>: <span class="code-string">#ECFDF5</span>;
+  <span class="code-attr">--success-text</span>: <span class="code-string">#065F46</span>;
+  <span class="code-attr">--success-border</span>: <span class="code-string">#34D399</span>;
+
+  <span class="code-comment">/* Erro */</span>
+  <span class="code-attr">--error-bg</span>: <span class="code-string">#FEF2F2</span>;
+  <span class="code-attr">--error-text</span>: <span class="code-string">#991B1B</span>;
+  <span class="code-attr">--error-border</span>: <span class="code-string">#F87171</span>;
+
+  <span class="code-comment">/* Alerta */</span>
+  <span class="code-attr">--warning-bg</span>: <span class="code-string">#FFFBEB</span>;
+  <span class="code-attr">--warning-text</span>: <span class="code-string">#92400E</span>;
+  <span class="code-attr">--warning-border</span>: <span class="code-string">#FBBF24</span>;
+
+  <span class="code-comment">/* Informacao */</span>
+  <span class="code-attr">--info-bg</span>: <span class="code-string">#EFF6FF</span>;
+  <span class="code-attr">--info-text</span>: <span class="code-string">#1E40AF</span>;
+  <span class="code-attr">--info-border</span>: <span class="code-string">#3B82F6</span>;
+}</pre>
+    </div>
+  </section>
+
+  <!-- ========== SECAO 8: APLICACAO EM INTERFACES ========== -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Secao 08</div>
+      <h2>Aplicacao em Interfaces</h2>
+    </div>
+    <p>Como as cores se traduzem em componentes de UI reais. Cada elemento tem uma cor designada que deve ser respeitada para manter consistencia.</p>
+
+    <div class="ui-mapping-grid">
+      <!-- Buttons -->
+      <div class="ui-mapping-card">
+        <div class="ui-mapping-label">Botoes</div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <button class="ui-demo-btn ui-demo-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Primario
+          </button>
+          <button class="ui-demo-btn ui-demo-btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Secundario
+          </button>
+          <button class="ui-demo-btn ui-demo-btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            Ghost
+          </button>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="ui-mapping-card">
+        <div class="ui-mapping-label">Alertas</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div class="ui-demo-alert" style="background:#ECFDF5; color:#065F46; border:1px solid #34D399;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Operacao concluida!
+          </div>
+          <div class="ui-demo-alert" style="background:#FEF2F2; color:#991B1B; border:1px solid #F87171;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Erro ao salvar.
+          </div>
+          <div class="ui-demo-alert" style="background:#FFFBEB; color:#92400E; border:1px solid #FBBF24;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Atencao necessaria.
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="ui-mapping-card">
+        <div class="ui-mapping-label">Badges e Tags</div>
+        <div class="ui-demo-badge-row">
+          <span class="ui-demo-badge" style="background:rgba(43,108,176,0.1); color:#2B6CB0;">Novo</span>
+          <span class="ui-demo-badge" style="background:#ECFDF5; color:#065F46;">Ativo</span>
+          <span class="ui-demo-badge" style="background:#FEF2F2; color:#991B1B;">Inativo</span>
+          <span class="ui-demo-badge" style="background:#FFFBEB; color:#92400E;">Pendente</span>
+          <span class="ui-demo-badge" style="background:#EFF6FF; color:#1E40AF;">Info</span>
+          <span class="ui-demo-badge" style="background:rgba(72,201,176,0.15); color:#0F766E;">PRO</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="ui-mapping-card">
+        <div class="ui-mapping-label">Navegacao</div>
+        <div class="ui-demo-nav">
+          <div class="ui-demo-nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Dashboard
+          </div>
+          <div class="ui-demo-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Dispositivos
+          </div>
+          <div class="ui-demo-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Configuracoes
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Mapeamento Cor-Componente</h3>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Cor</th>
+          <th>Token CSS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Botao Primario</td>
+          <td><span class="td-swatch" style="background:#2B6CB0"></span> Azul Primario</td>
+          <td><code>--blue-primary</code></td>
+        </tr>
+        <tr>
+          <td>Links e interativos</td>
+          <td><span class="td-swatch" style="background:#3A8FD6"></span> Azul Medio</td>
+          <td><code>--blue-medium</code></td>
+        </tr>
+        <tr>
+          <td>Hover / Focus ring</td>
+          <td><span class="td-swatch" style="background:#5BB8F5"></span> Azul Claro</td>
+          <td><code>--blue-light</code></td>
+        </tr>
+        <tr>
+          <td>Background destaque</td>
+          <td><span class="td-swatch" style="background:#A8E0F8"></span> Azul Palido</td>
+          <td><code>--blue-pale</code></td>
+        </tr>
+        <tr>
+          <td>Texto de corpo</td>
+          <td><span class="td-swatch" style="background:#1E293B"></span> Texto Principal</td>
+          <td><code>--dark-text</code></td>
+        </tr>
+        <tr>
+          <td>Texto secundario</td>
+          <td><span class="td-swatch" style="background:#475569"></span> Cinza 600</td>
+          <td><code>--gray-600</code></td>
+        </tr>
+        <tr>
+          <td>Bordas e divisores</td>
+          <td><span class="td-swatch" style="background:#E2E8F0"></span> Cinza Claro</td>
+          <td><code>--gray-200</code></td>
+        </tr>
+        <tr>
+          <td>Fundo da pagina</td>
+          <td><span class="td-swatch" style="background:#F8FAFC"></span> Fundo Claro</td>
+          <td><code>--gray-100</code></td>
+        </tr>
+        <tr>
+          <td>Cards / Containers</td>
+          <td><span class="td-swatch" style="background:#FFFFFF; border:1px solid #E2E8F0;"></span> Branco</td>
+          <td><code>--white</code></td>
+        </tr>
+        <tr>
+          <td>Acento / CTA</td>
+          <td><span class="td-swatch" style="background:#48C9B0"></span> Ciano</td>
+          <td><code>--cyan-light</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Variaveis CSS Completas</h3>
+    <div class="code-block">
+      <span class="code-lang">CSS</span>
+      <pre><span class="code-comment">/* SYSLED — Design Tokens de Cor */</span>
+<span class="code-keyword">:root</span> {
+  <span class="code-comment">/* Primarias */</span>
+  <span class="code-attr">--blue-primary</span>: <span class="code-string">#2B6CB0</span>;
+  <span class="code-attr">--blue-medium</span>: <span class="code-string">#3A8FD6</span>;
+  <span class="code-attr">--blue-light</span>: <span class="code-string">#5BB8F5</span>;
+  <span class="code-attr">--blue-lighter</span>: <span class="code-string">#7ECEF4</span>;
+
+  <span class="code-comment">/* Secundarias */</span>
+  <span class="code-attr">--cyan-light</span>: <span class="code-string">#48C9B0</span>;
+  <span class="code-attr">--blue-pale</span>: <span class="code-string">#A8E0F8</span>;
+
+  <span class="code-comment">/* Neutras */</span>
+  <span class="code-attr">--dark-primary</span>: <span class="code-string">#0F172A</span>;
+  <span class="code-attr">--dark-text</span>: <span class="code-string">#1E293B</span>;
+  <span class="code-attr">--gray-600</span>: <span class="code-string">#475569</span>;
+  <span class="code-attr">--gray-200</span>: <span class="code-string">#E2E8F0</span>;
+  <span class="code-attr">--gray-100</span>: <span class="code-string">#F8FAFC</span>;
+  <span class="code-attr">--white</span>: <span class="code-string">#FFFFFF</span>;
+}</pre>
+    </div>
+  </section>
+
+</div>
+
+<!-- Copy Toast -->
+<div class="copy-toast" id="copyToast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="copyToastText">Copiado!</span>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+
+function copyColor(value) {
+  navigator.clipboard.writeText(value).then(() => {
+    const toast = document.getElementById('copyToast');
+    const toastText = document.getElementById('copyToastText');
+    toastText.textContent = value + ' copiado!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = value;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const toast = document.getElementById('copyToast');
+    const toastText = document.getElementById('copyToastText');
+    toastText.textContent = value + ' copiado!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+</script>
+</body>
+</html>

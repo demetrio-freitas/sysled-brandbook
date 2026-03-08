@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Motion &amp; Animacoes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-primary: #2B6CB0; --blue-medium: #3A8FD6; --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4; --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1; --cyan-medium: #3AAFCF; --cyan-light: #48C9B0;
+      --dark-primary: #0F172A; --dark-secondary: #1E293B; --dark-text: #1E293B;
+      --gray-600: #475569; --gray-400: #94A3B8; --gray-200: #E2E8F0; --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius-lg: 20px; --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a; --gradient-mid: #1d6ea0; --gradient-end: #1a7a8f;
+      --success-bg: #ECFDF5; --success-text: #065F46; --success-border: #34D399;
+      --error-bg: #FEF2F2; --error-text: #991B1B; --error-border: #F87171;
+    }
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --gray-600: #94A3B8;
+      --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    [data-theme="dark"] .section h2, [data-theme="dark"] .section h3 { color: #E2E8F0; }
+    [data-theme="dark"] .section h3 { border-bottom-color: #334155; }
+    [data-theme="dark"] .spec-table th { background: #1E293B; }
+    [data-theme="dark"] .do-card .card-header { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .dont-card .card-header { background: #7F1D1D; color: #FCA5A5; }
+    [data-theme="dark"] .do-card .card-body, [data-theme="dark"] .dont-card .card-body { background: #1E293B; }
+    [data-theme="dark"] .demo-box { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .easing-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .code-block { background: #0B1120; }
+    [data-theme="dark"] .principle-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .micro-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .loading-demo { background: #1E293B; border-color: #334155; }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; }
+    .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+    /* Cover */
+    .cover { text-align: center; padding: 5rem 2rem 4rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(72,201,176,0.1) 0%, transparent 50%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); }
+    .cover-badge span { display: inline-block; width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto; font-weight: 300; }
+
+    /* Sections */
+    .section { background: var(--white); border-radius: var(--radius-lg); padding: 3rem;
+      margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+    .section-number { font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-primary); margin-bottom: 0.5rem; }
+    .section h2 { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;
+      color: var(--dark-primary); letter-spacing: -0.02em; }
+    .section h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--dark-primary); margin: 2.5rem 0 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200); }
+    .section p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* Top bar */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--gray-400); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--blue-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Spec Table */
+    .spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem;
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .spec-table th { text-align: left; padding: 0.85rem 1.25rem; background: var(--gray-100);
+      font-family: var(--font-heading); font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200); }
+    .spec-table td { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200); color: var(--gray-600); }
+    .spec-table tbody tr:last-child td { border-bottom: none; }
+    .spec-table code { font-family: var(--font-mono); font-size: 0.8rem; background: rgba(91,184,245,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--blue-primary); }
+
+    /* Code block */
+    .code-block { background: #0F172A; border-radius: var(--radius-md); padding: 1.25rem 1.5rem;
+      margin: 1rem 0; overflow-x: auto; position: relative; }
+    .code-block pre { font-family: var(--font-mono); font-size: 0.75rem; color: #E2E8F0;
+      line-height: 1.7; white-space: pre; }
+    .code-block .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1);
+      border: none; color: #94A3B8; padding: 6px 10px; border-radius: 6px; cursor: pointer;
+      font-size: 0.65rem; font-family: var(--font-body); transition: all 0.2s; }
+    .code-block .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* Principle cards */
+    .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .principle-card { text-align: center; padding: 2rem 1.25rem; border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md); background: var(--white); transition: all 0.25s; }
+    .principle-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .principle-card svg { width: 40px; height: 40px; color: var(--blue-primary); margin-bottom: 1rem; }
+    .principle-card-title { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 0.5rem; }
+    .principle-card-desc { font-size: 0.75rem; color: var(--gray-400); line-height: 1.5; }
+
+    /* Easing cards */
+    .easing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+    .easing-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md); overflow: hidden;
+      background: var(--white); box-shadow: var(--shadow-card); }
+    .easing-card-preview { padding: 2rem; display: flex; align-items: center; justify-content: center;
+      min-height: 120px; position: relative; background: var(--gray-100); }
+    .easing-card-info { padding: 1.25rem; border-top: 1px solid var(--gray-200); }
+    .easing-card-title { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 0.25rem; }
+    .easing-card-code { font-family: var(--font-mono); font-size: 0.7rem; color: var(--blue-primary);
+      background: rgba(91,184,245,0.08); padding: 3px 8px; border-radius: 4px; display: inline-block;
+      margin-top: 0.5rem; cursor: pointer; }
+    .easing-card-desc { font-size: 0.72rem; color: var(--gray-400); line-height: 1.5; margin-top: 0.5rem; }
+    .easing-card-tag { display: inline-block; margin-top: 0.5rem; font-size: 0.55rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px;
+      background: rgba(43,108,176,0.1); color: var(--blue-primary); }
+
+    /* Animated ball for easing demos */
+    .easing-track { width: 100%; height: 6px; background: var(--gray-200); border-radius: 3px; position: relative; }
+    .easing-ball { width: 20px; height: 20px; border-radius: 50%; background: var(--blue-primary);
+      position: absolute; top: -7px; left: 0; }
+
+    /* Micro-interaction cards */
+    .micro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .micro-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 1.5rem;
+      text-align: center; background: var(--white); box-shadow: var(--shadow-card); }
+    .micro-card-demo { min-height: 80px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; }
+    .micro-card-title { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 0.25rem; }
+    .micro-card-desc { font-size: 0.65rem; color: var(--gray-400); }
+
+    /* Interactive demo buttons */
+    .demo-btn { padding: 10px 24px; border-radius: 10px; border: none; font-family: var(--font-body);
+      font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .demo-btn-primary { background: var(--blue-primary); color: #fff; }
+    .demo-btn-primary:hover { background: var(--blue-medium); transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(43,108,176,0.3); }
+    .demo-btn-primary:active { transform: translateY(0); box-shadow: none; }
+    .demo-btn-outline { background: transparent; color: var(--blue-primary);
+      border: 1.5px solid var(--blue-primary); }
+    .demo-btn-outline:hover { background: rgba(43,108,176,0.04); transform: translateY(-2px); }
+
+    /* Loading demos */
+    .loading-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+    .loading-demo { border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 2rem 1rem;
+      text-align: center; background: var(--white); min-height: 140px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+    .loading-demo-label { font-size: 0.7rem; font-weight: 600; color: var(--gray-600); }
+
+    /* Spinner */
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--gray-200);
+      border-top: 3px solid var(--blue-primary); border-radius: 50%;
+      animation: spin 0.8s cubic-bezier(0.4,0,0.2,1) infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Pulse dot */
+    .pulse-dot { width: 12px; height: 12px; background: var(--blue-primary); border-radius: 50%;
+      animation: pulse 1.5s cubic-bezier(0.4,0,0.2,1) infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.8); opacity: 0; } }
+
+    /* Skeleton */
+    .skeleton { background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; border-radius: 6px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* Dot loading */
+    .dots-loading { display: flex; gap: 6px; }
+    .dots-loading span { width: 8px; height: 8px; background: var(--blue-primary); border-radius: 50%;
+      animation: dotBounce 1.2s cubic-bezier(0.4,0,0.2,1) infinite; }
+    .dots-loading span:nth-child(2) { animation-delay: 0.15s; }
+    .dots-loading span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes dotBounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-10px); opacity: 1; } }
+
+    /* Progress bar */
+    .progress-bar { width: 120px; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue-primary), var(--cyan-medium));
+      border-radius: 2px; animation: progressGrow 2s cubic-bezier(0.4,0,0.2,1) infinite; }
+    @keyframes progressGrow { 0% { width: 0%; } 50% { width: 80%; } 100% { width: 100%; } }
+
+    /* Transition demos */
+    .transition-demo-area { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+      padding: 2rem; margin: 1.5rem 0; background: var(--gray-100); border-radius: var(--radius-md); }
+
+    /* Card enter animation */
+    .card-enter-demo { width: 140px; height: 90px; background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 12px; box-shadow: var(--shadow-card); display: flex; align-items: center;
+      justify-content: center; font-size: 0.7rem; font-weight: 600; color: var(--gray-400);
+      cursor: pointer; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .card-enter-demo:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover);
+      border-color: var(--blue-light); color: var(--blue-primary); }
+
+    /* Fade slide demo */
+    .fade-slide-box { width: 80px; height: 80px; background: var(--blue-primary); border-radius: 12px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .fade-slide-box.visible { opacity: 1; transform: translateY(0); }
+
+    /* Toggle switch */
+    .toggle-track { width: 44px; height: 24px; background: var(--gray-200); border-radius: 12px;
+      position: relative; cursor: pointer; transition: background 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .toggle-track.on { background: var(--blue-primary); }
+    .toggle-knob { width: 20px; height: 20px; background: #fff; border-radius: 50%;
+      position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .toggle-track.on .toggle-knob { transform: translateX(20px); }
+
+    /* Alert */
+    .alert { padding: 1rem 1.25rem; border-radius: var(--radius-md); font-size: 0.85rem;
+      margin: 1.5rem 0; display: flex; gap: 10px; align-items: flex-start; }
+    .alert-info { background: #EFF6FF; border: 1px solid #93C5FD; color: #1E40AF; }
+    .alert-warning { background: #FFFBEB; border: 1px solid #FBBF24; color: #92400E; }
+    .alert svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+
+    /* Do/Dont */
+    .dodont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .do-card, .dont-card { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .card-header { padding: 0.75rem 1.25rem; font-family: var(--font-heading); font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .do-card .card-header { background: var(--success-bg); color: var(--success-text); }
+    .dont-card .card-header { background: var(--error-bg); color: var(--error-text); }
+    .card-body { padding: 1.5rem; background: var(--white); display: flex;
+      flex-direction: column; align-items: center; gap: 1rem; min-height: 140px; justify-content: center; }
+    .card-body p { font-size: 0.8rem; color: var(--gray-600); text-align: center; margin: 0; }
+
+    /* Copyable & Toast */
+    .copyable { cursor: pointer; transition: opacity 0.2s; }
+    .copyable:hover { opacity: 0.7; }
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: #065F46; color: #fff; padding: 10px 20px; border-radius: 10px;
+      font-size: 0.8rem; font-weight: 500; z-index: 999; transition: transform 0.3s; pointer-events: none; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 640px) {
+      .section { padding: 2rem 1.25rem; }
+      .cover { padding: 3rem 1.5rem; }
+      .principles-grid, .micro-grid { grid-template-columns: 1fr; }
+      .easing-grid { grid-template-columns: 1fr; }
+      .loading-grid { grid-template-columns: repeat(2, 1fr); }
+      .dodont-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <a href="hub-preview.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    Voltar ao Hub
+  </a>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    Tema
+  </button>
+</div>
+
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-badge"><span></span> Brandbook SYSLED</div>
+    <h1>Motion &amp; Animacoes</h1>
+    <p class="cover-subtitle">Curvas de easing, duracoes, micro-interacoes, loading states, transicoes de tela e principios de movimento da plataforma SYSLED.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 1: PRINCIPIOS DE MOTION -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">01 — Principios</div>
+    <h2>Filosofia de Movimento</h2>
+    <p>O motion da SYSLED e preciso, suave e proposital. Cada animacao tem uma funcao — guiar o olhar, confirmar uma acao ou revelar conteudo. Nunca animar por estetica pura.</p>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="principle-card-title">Intencional</div>
+        <div class="principle-card-desc">Toda animacao deve ter um proposito claro: feedback, orientacao ou hierarquia.</div>
+      </div>
+      <div class="principle-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="principle-card-title">Natural</div>
+        <div class="principle-card-desc">Movimentos baseados em fisica real. Ease-out para entradas, ease-in para saidas.</div>
+      </div>
+      <div class="principle-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="principle-card-title">Rapido</div>
+        <div class="principle-card-desc">A interface nunca deve parecer lenta. Duracoes curtas (150-400ms) sao o padrao.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 2: CURVAS DE EASING -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">02 — Curvas de Easing</div>
+    <h2>Timing Functions</h2>
+    <p>A SYSLED usa 4 curvas de easing padrao. Cada uma tem um contexto de uso especifico. Clique no codigo para copiar.</p>
+
+    <div class="easing-grid">
+      <!-- Standard -->
+      <div class="easing-card">
+        <div class="easing-card-preview">
+          <div class="easing-track">
+            <div class="easing-ball" id="ball-standard"></div>
+          </div>
+        </div>
+        <div class="easing-card-info">
+          <div class="easing-card-title">Standard</div>
+          <div class="easing-card-code copyable" data-copy="cubic-bezier(0.4, 0, 0.2, 1)">cubic-bezier(0.4, 0, 0.2, 1)</div>
+          <div class="easing-card-desc">Curva padrao para a maioria das transicoes. Comeca rapido, desacelera suave.</div>
+          <span class="easing-card-tag">Uso Principal</span>
+        </div>
+      </div>
+
+      <!-- Enter -->
+      <div class="easing-card">
+        <div class="easing-card-preview">
+          <div class="easing-track">
+            <div class="easing-ball" id="ball-enter"></div>
+          </div>
+        </div>
+        <div class="easing-card-info">
+          <div class="easing-card-title">Enter (Decelerate)</div>
+          <div class="easing-card-code copyable" data-copy="cubic-bezier(0, 0, 0.2, 1)">cubic-bezier(0, 0, 0.2, 1)</div>
+          <div class="easing-card-desc">Elementos entrando na tela. Comeca com velocidade maxima, desacelera ate parar.</div>
+          <span class="easing-card-tag">Fade In / Slide In</span>
+        </div>
+      </div>
+
+      <!-- Exit -->
+      <div class="easing-card">
+        <div class="easing-card-preview">
+          <div class="easing-track">
+            <div class="easing-ball" id="ball-exit"></div>
+          </div>
+        </div>
+        <div class="easing-card-info">
+          <div class="easing-card-title">Exit (Accelerate)</div>
+          <div class="easing-card-code copyable" data-copy="cubic-bezier(0.4, 0, 1, 1)">cubic-bezier(0.4, 0, 1, 1)</div>
+          <div class="easing-card-desc">Elementos saindo da tela. Comeca devagar, acelera ate desaparecer.</div>
+          <span class="easing-card-tag">Fade Out / Slide Out</span>
+        </div>
+      </div>
+
+      <!-- Spring -->
+      <div class="easing-card">
+        <div class="easing-card-preview">
+          <div class="easing-track">
+            <div class="easing-ball" id="ball-spring"></div>
+          </div>
+        </div>
+        <div class="easing-card-info">
+          <div class="easing-card-title">Spring (Overshoot)</div>
+          <div class="easing-card-code copyable" data-copy="cubic-bezier(0.34, 1.56, 0.64, 1)">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+          <div class="easing-card-desc">Leve overshoot para toasts, badges e notificacoes. Sensacao elastica e divertida.</div>
+          <span class="easing-card-tag">Toasts / Notificacoes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar CSS</button>
+      <pre>/* Design Tokens — Easing SYSLED */
+:root {
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);   /* Padrao geral */
+  --ease-enter:     cubic-bezier(0, 0, 0.2, 1);      /* Entrada na tela */
+  --ease-exit:      cubic-bezier(0.4, 0, 1, 1);      /* Saida da tela */
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastico */
+}</pre>
+    </div>
+
+    <p style="font-size:0.8rem;color:var(--gray-400);text-align:center;margin-top:0.5rem;">Passe o mouse sobre os cards acima para ver as animacoes ao vivo.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 3: DURACOES -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">03 — Duracoes</div>
+    <h2>Escala de Tempo</h2>
+    <p>Duracoes padronizadas em 5 niveis. Nunca use valores fora desta escala para manter consistencia.</p>
+
+    <table class="spec-table">
+      <thead><tr><th>Token</th><th>Valor</th><th>Uso</th><th>Exemplo</th></tr></thead>
+      <tbody>
+        <tr><td><code class="copyable" data-copy="--duration-instant: 100ms">--duration-instant</code></td><td><code>100ms</code></td><td>Feedback imediato</td><td>Hover em botao, focus ring, toggle</td></tr>
+        <tr><td><code class="copyable" data-copy="--duration-fast: 200ms">--duration-fast</code></td><td><code>200ms</code></td><td>Transicoes pequenas</td><td>Tooltip, dropdown abrir, icon swap</td></tr>
+        <tr><td><code class="copyable" data-copy="--duration-normal: 300ms">--duration-normal</code></td><td><code>300ms</code></td><td>Transicoes padrao</td><td>Modal, sidebar, card expand</td></tr>
+        <tr><td><code class="copyable" data-copy="--duration-slow: 400ms">--duration-slow</code></td><td><code>400ms</code></td><td>Transicoes grandes</td><td>Page transition, skeleton reveal</td></tr>
+        <tr><td><code class="copyable" data-copy="--duration-slower: 600ms">--duration-slower</code></td><td><code>600ms</code></td><td>Animacoes decorativas</td><td>Scroll reveal, hero entrance</td></tr>
+      </tbody>
+    </table>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar CSS</button>
+      <pre>/* Design Tokens — Duracoes SYSLED */
+:root {
+  --duration-instant: 100ms;
+  --duration-fast:    200ms;
+  --duration-normal:  300ms;
+  --duration-slow:    400ms;
+  --duration-slower:  600ms;
+}</pre>
+    </div>
+
+    <div class="alert alert-warning">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div><strong>Regra:</strong> Nenhuma animacao de interface pode ultrapassar <code>600ms</code>. Animacoes mais longas sao percebidas como travamento. Excecao: loading infinito (spinners, progress).</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 4: MICRO-INTERACOES -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">04 — Micro-Interacoes</div>
+    <h2>Feedback Visual</h2>
+    <p>Micro-interacoes confirmam acoes do usuario. Cada elemento interativo deve ter feedback visual imediato. Interaja com os exemplos abaixo.</p>
+
+    <div class="micro-grid">
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <button class="demo-btn demo-btn-primary">Hover me</button>
+        </div>
+        <div class="micro-card-title">Button Hover</div>
+        <div class="micro-card-desc">translateY(-2px) + shadow<br>100ms standard</div>
+      </div>
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <button class="demo-btn demo-btn-outline">Hover me</button>
+        </div>
+        <div class="micro-card-title">Outline Hover</div>
+        <div class="micro-card-desc">background-color + translateY(-2px)<br>100ms standard</div>
+      </div>
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <div class="toggle-track" id="toggle1" onclick="this.classList.toggle('on')">
+            <div class="toggle-knob"></div>
+          </div>
+        </div>
+        <div class="micro-card-title">Toggle Switch</div>
+        <div class="micro-card-desc">translateX + bg color<br>300ms standard</div>
+      </div>
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <div class="card-enter-demo">Hover Card</div>
+        </div>
+        <div class="micro-card-title">Card Lift</div>
+        <div class="micro-card-desc">translateY(-6px) + shadow<br>350ms standard</div>
+      </div>
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <div id="fadeBox" class="fade-slide-box visible" onclick="this.classList.toggle('visible')" style="cursor:pointer; width:50px; height:50px;"></div>
+        </div>
+        <div class="micro-card-title">Fade + Slide</div>
+        <div class="micro-card-desc">opacity + translateY<br>400ms enter</div>
+      </div>
+      <div class="micro-card">
+        <div class="micro-card-demo">
+          <div style="width:40px;height:40px;background:var(--blue-primary);border-radius:10px;cursor:pointer;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1);" onmousedown="this.style.transform='scale(0.9)'" onmouseup="this.style.transform='scale(1)'" onmouseleave="this.style.transform='scale(1)'"></div>
+        </div>
+        <div class="micro-card-title">Press Scale</div>
+        <div class="micro-card-desc">scale(0.9) on press<br>200ms spring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 5: LOADING STATES -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">05 — Loading States</div>
+    <h2>Estados de Carregamento</h2>
+    <p>4 padroes de loading para diferentes contextos. Use o mais apropriado conforme o tempo de espera e o tipo de conteudo.</p>
+
+    <div class="loading-grid">
+      <div class="loading-demo">
+        <div class="spinner"></div>
+        <div class="loading-demo-label">Spinner</div>
+      </div>
+      <div class="loading-demo">
+        <div class="dots-loading"><span></span><span></span><span></span></div>
+        <div class="loading-demo-label">Dots</div>
+      </div>
+      <div class="loading-demo">
+        <div style="width:100%;padding:0 1rem;">
+          <div style="height:14px;border-radius:6px;margin-bottom:8px;" class="skeleton"></div>
+          <div style="height:14px;border-radius:6px;width:70%;" class="skeleton"></div>
+        </div>
+        <div class="loading-demo-label">Skeleton</div>
+      </div>
+      <div class="loading-demo">
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="loading-demo-label">Progress</div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Padrao</th><th>Quando Usar</th><th>Duracao Tipica</th><th>Easing</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Spinner</strong></td><td>Acoes do usuario (submit, save)</td><td>Indeterminado</td><td><code>standard</code></td></tr>
+        <tr><td><strong>Dots</strong></td><td>Mensagens, chat, typing indicator</td><td>Indeterminado</td><td><code>standard</code></td></tr>
+        <tr><td><strong>Skeleton</strong></td><td>Carregamento de listas, cards, paginas</td><td>300-800ms</td><td><code>ease-in-out</code></td></tr>
+        <tr><td><strong>Progress</strong></td><td>Upload, download, processos longos</td><td>Determinado</td><td><code>standard</code></td></tr>
+      </tbody>
+    </table>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar CSS</button>
+      <pre>/* Spinner SYSLED */
+.sysled-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--blue-primary);
+  border-radius: 50%;
+  animation: spin 0.8s var(--ease-standard) infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Skeleton Shimmer */
+.sysled-skeleton {
+  background: linear-gradient(90deg,
+    var(--gray-200) 25%,
+    var(--gray-100) 50%,
+    var(--gray-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}</pre>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 6: TRANSICOES DE TELA -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">06 — Transicoes de Tela</div>
+    <h2>Page Transitions</h2>
+    <p>Regras para transicoes entre paginas, abertura de modais e troca de conteudo.</p>
+
+    <table class="spec-table">
+      <thead><tr><th>Transicao</th><th>Animacao</th><th>Duracao</th><th>Easing</th></tr></thead>
+      <tbody>
+        <tr><td>Navegacao entre paginas</td><td>Fade + Slide Up</td><td><code>400ms</code></td><td><code>--ease-enter</code></td></tr>
+        <tr><td>Abertura de Modal</td><td>Scale(0.95→1) + Fade</td><td><code>300ms</code></td><td><code>--ease-enter</code></td></tr>
+        <tr><td>Fechamento de Modal</td><td>Scale(1→0.95) + Fade Out</td><td><code>200ms</code></td><td><code>--ease-exit</code></td></tr>
+        <tr><td>Sidebar abrir</td><td>SlideX(-100%→0)</td><td><code>300ms</code></td><td><code>--ease-standard</code></td></tr>
+        <tr><td>Sidebar fechar</td><td>SlideX(0→-100%)</td><td><code>200ms</code></td><td><code>--ease-exit</code></td></tr>
+        <tr><td>Toast entrada</td><td>SlideY(100%→0)</td><td><code>300ms</code></td><td><code>--ease-spring</code></td></tr>
+        <tr><td>Toast saida</td><td>SlideY(0→100%)</td><td><code>200ms</code></td><td><code>--ease-exit</code></td></tr>
+        <tr><td>Dropdown</td><td>ScaleY(0→1) + Fade</td><td><code>200ms</code></td><td><code>--ease-enter</code></td></tr>
+        <tr><td>Scroll Reveal</td><td>Fade + SlideY(20px→0)</td><td><code>600ms</code></td><td><code>--ease-enter</code></td></tr>
+      </tbody>
+    </table>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar CSS</button>
+      <pre>/* Modal Enter */
+.modal-enter {
+  animation: modalIn 300ms var(--ease-enter) forwards;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Modal Exit */
+.modal-exit {
+  animation: modalOut 200ms var(--ease-exit) forwards;
+}
+@keyframes modalOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 600ms var(--ease-enter),
+              transform 600ms var(--ease-enter);
+}
+.scroll-reveal.visible {
+  opacity: 1; transform: translateY(0);
+}</pre>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 7: ACESSIBILIDADE -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">07 — Acessibilidade</div>
+    <h2>Reduced Motion</h2>
+    <p>Respeitar a preferencia do usuario por movimento reduzido e obrigatorio. Toda animacao deve ter fallback.</p>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar CSS</button>
+      <pre>/* Obrigatorio em todo projeto SYSLED */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</pre>
+    </div>
+
+    <div class="alert alert-info">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div><strong>Regra WCAG 2.3.3:</strong> Nenhuma animacao pode piscar mais de 3 vezes por segundo. Loading spinners e progress bars estao isentos pois sao movimento continuo, nao piscante.</div>
+    </div>
+
+    <table class="spec-table">
+      <thead><tr><th>Cenario</th><th>Com Motion</th><th>Reduced Motion</th></tr></thead>
+      <tbody>
+        <tr><td>Card hover</td><td>translateY + shadow transition</td><td>Apenas mudanca de cor</td></tr>
+        <tr><td>Modal</td><td>Scale + fade (300ms)</td><td>Aparece instantaneo</td></tr>
+        <tr><td>Scroll reveal</td><td>Fade + slide (600ms)</td><td>Conteudo visivel direto</td></tr>
+        <tr><td>Spinner</td><td>Rotacao continua</td><td>Texto "Carregando..."</td></tr>
+        <tr><td>Skeleton</td><td>Shimmer animado</td><td>Cor solida estatica</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 8: DO'S & DON'TS -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">08 — Do's &amp; Don'ts</div>
+    <h2>Uso Correto vs Incorreto</h2>
+
+    <div class="dodont-grid">
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <div style="width:50px;height:50px;background:var(--blue-primary);border-radius:10px;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform='translateY(0)'"></div>
+          <p>Animacao sutil e rapida (300ms), com proposito claro</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <div style="width:50px;height:50px;background:#F87171;border-radius:10px;animation:dontBounce 1s ease infinite;"></div>
+          <p>Animacao em loop infinito sem motivo funcional</p>
+        </div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <code style="font-size:0.7rem;color:var(--blue-primary);">cubic-bezier(0.4, 0, 0.2, 1)</code>
+          <p>Usar curvas de easing padrao da SYSLED</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <code style="font-size:0.7rem;color:var(--error-text);">transition: all 0.5s linear</code>
+          <p>Easing "linear" em transicoes de interface — parece mecanico</p>
+        </div>
+      </div>
+      <div class="do-card">
+        <div class="card-header">Correto</div>
+        <div class="card-body">
+          <code style="font-size:0.7rem;color:var(--blue-primary);">200ms</code>
+          <p>Fechar modal mais rapido (200ms) que abrir (300ms)</p>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="card-header">Incorreto</div>
+        <div class="card-body">
+          <code style="font-size:0.7rem;color:var(--error-text);">2000ms</code>
+          <p>Animacoes longas (>600ms) em transicoes de UI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECAO 9: TOKENS COMPLETOS -->
+  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-number">09 — Design Tokens</div>
+    <h2>Referencia Completa</h2>
+    <p>Copie este bloco de tokens CSS para incluir em qualquer projeto SYSLED. Contem todas as variaveis de motion.</p>
+
+    <div class="code-block">
+      <button class="copy-btn" onclick="copyCode(this)">Copiar Tokens</button>
+      <pre>/* ==========================================
+   SYSLED Motion Design Tokens
+   v2.0 — Março 2026
+   ========================================== */
+
+:root {
+  /* Easing */
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-enter:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Duration */
+  --duration-instant: 100ms;
+  --duration-fast:    200ms;
+  --duration-normal:  300ms;
+  --duration-slow:    400ms;
+  --duration-slower:  600ms;
+
+  /* Common Transitions */
+  --transition-button:  all var(--duration-instant) var(--ease-standard);
+  --transition-card:    all 350ms var(--ease-standard);
+  --transition-modal:   all var(--duration-normal) var(--ease-enter);
+  --transition-fade:    opacity var(--duration-normal) var(--ease-standard);
+  --transition-slide:   transform var(--duration-normal) var(--ease-enter);
+  --transition-color:   color var(--duration-instant) var(--ease-standard),
+                        background-color var(--duration-instant) var(--ease-standard);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</pre>
+    </div>
+  </div>
+
+</div><!-- .main -->
+
+<!-- Don't bounce keyframe for demo -->
+<style>
+@keyframes dontBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+</style>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+// Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  localStorage.setItem('sysled-theme', current === 'dark' ? 'light' : 'dark');
+}
+(function() {
+  const saved = localStorage.getItem('sysled-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+
+// Copy
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copiado!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+function copyText(el) {
+  const text = el.getAttribute('data-copy') || el.textContent.trim();
+  navigator.clipboard.writeText(text).then(() => showToast('Copiado: ' + text));
+}
+function copyCode(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copiado!';
+    showToast('Codigo copiado!');
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+document.querySelectorAll('.copyable').forEach(el => {
+  el.addEventListener('click', () => copyText(el));
+});
+
+// Easing ball animations
+function animateBalls() {
+  const balls = [
+    { id: 'ball-standard', easing: 'cubic-bezier(0.4, 0, 0.2, 1)' },
+    { id: 'ball-enter',    easing: 'cubic-bezier(0, 0, 0.2, 1)' },
+    { id: 'ball-exit',     easing: 'cubic-bezier(0.4, 0, 1, 1)' },
+    { id: 'ball-spring',   easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }
+  ];
+
+  balls.forEach(b => {
+    const el = document.getElementById(b.id);
+    if (!el) return;
+    let forward = true;
+
+    function run() {
+      const parent = el.parentElement;
+      const maxX = parent.offsetWidth - 20;
+      el.style.transition = `left 1s ${b.easing}`;
+      el.style.left = forward ? maxX + 'px' : '0px';
+      forward = !forward;
+    }
+
+    run();
+    setInterval(run, 1500);
+  });
+}
+animateBalls();
+</script>
+
+</body>
+</html>

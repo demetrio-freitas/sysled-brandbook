@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" width="600" height="180">
+  <!-- Grupo da Nuvem Monocromática -->
+  <g transform="translate(15, 15)">
+    <path d="M 30,120 
+             C 10,120 0,108 0,95 
+             C 0,80 12,68 28,68 
+             C 28,45 45,25 70,25 
+             C 82,25 93,30 100,38 
+             C 108,22 125,12 145,12 
+             C 172,12 194,34 194,60 
+             C 194,62 194,64 193,66 
+             C 205,70 214,82 214,95 
+             C 214,112 200,120 185,120 
+             Z" 
+          fill="#1A1A2E" />
+  </g>
+  
+  <!-- Texto SYSLED -->
+  <text x="260" y="115" 
+        font-family="'Montserrat', 'Helvetica Neue', 'Arial', sans-serif" 
+        font-weight="800" 
+        font-size="72" 
+        letter-spacing="4" 
+        fill="#1A1A2E">SYSLED</text>
+</svg>

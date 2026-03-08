@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSLED — Brandbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-primary: #2B6CB0;
+      --blue-medium: #3A8FD6;
+      --blue-light: #5BB8F5;
+      --blue-lighter: #7ECEF4;
+      --blue-pale: #A8E0F8;
+      --cyan-dark: #2E86C1;
+      --cyan-medium: #3AAFCF;
+      --cyan-light: #48C9B0;
+      --dark-primary: #0F172A;
+      --dark-secondary: #1E293B;
+      --dark-text: #1E293B;
+      --gray-600: #475569;
+      --gray-400: #94A3B8;
+      --gray-200: #E2E8F0;
+      --gray-100: #F8FAFC;
+      --white: #FFFFFF;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+      --gradient-start: #1a4e8a;
+      --gradient-mid: #1d6ea0;
+      --gradient-end: #1a7a8f;
+    }
+
+    [data-theme="dark"] {
+      --white: #0F172A; --dark-text: #E2E8F0; --dark-primary: #E2E8F0;
+      --gray-600: #94A3B8; --gray-400: #CBD5E1; --gray-200: #334155; --gray-100: #1E293B;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    [data-theme="dark"] .hub-card { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .hub-card:hover { border-color: var(--blue-light); }
+    [data-theme="dark"] .hub-card-icon { background: rgba(91,184,245,0.08); }
+    [data-theme="dark"] .hub-card h3 { color: #E2E8F0; }
+    [data-theme="dark"] .hub-section-title { color: #E2E8F0; }
+    [data-theme="dark"] .hub-section-title::after { background: #334155; }
+    [data-theme="dark"] .hub-footer { background: #1E293B; border-color: #334155; }
+    [data-theme="dark"] .hub-stat { border-color: #334155; }
+    [data-theme="dark"] .hub-stat-value { color: #E2E8F0; }
+    [data-theme="dark"] .version-badge { background: rgba(91,184,245,0.1); color: var(--blue-light); border-color: rgba(91,184,245,0.2); }
+
+    body { font-family: var(--font-body); color: var(--dark-text); background: var(--gray-100); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* ===== TOP BAR ===== */
+    .top-bar { display: flex; justify-content: space-between; align-items: center;
+      max-width: 1060px; margin: 0 auto; padding: 1.25rem 1.5rem; }
+    .top-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .top-logo-icon { width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--blue-primary), var(--cyan-medium));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .top-logo-icon svg { width: 18px; height: 18px; color: #fff; }
+    .top-logo-text { font-family: var(--font-heading); font-weight: 800; font-size: 1.1rem;
+      color: var(--dark-primary); letter-spacing: 0.06em; }
+    .top-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle { background: none; border: 1px solid var(--gray-200); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--gray-600); font-family: var(--font-body); transition: all 0.2s; }
+    .theme-toggle:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="dark"] .top-logo-text { color: #E2E8F0; }
+    [data-theme="dark"] .theme-toggle { border-color: #334155; color: #94A3B8; }
+
+    /* ===== COVER ===== */
+    .cover { text-align: center; padding: 5rem 2rem 4.5rem; margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+      border-radius: var(--radius-lg); color: #fff; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 15% 85%, rgba(91,184,245,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 85% 15%, rgba(72,201,176,0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); }
+    .cover * { position: relative; }
+    .cover-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px;
+      background: rgba(255,255,255,0.08); border-radius: 100px; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.75rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12); }
+    .cover-badge-dot { display: inline-block; width: 6px; height: 6px; background: var(--cyan-light);
+      border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .cover h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 900; line-height: 1.05; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .cover h1 span { display: block; font-weight: 300; font-size: 0.45em; letter-spacing: 0.08em;
+      text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
+    .cover-subtitle { font-size: 1.05rem; opacity: 0.8; max-width: 540px; margin: 0 auto 2rem;
+      font-weight: 300; line-height: 1.7; }
+    .cover-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .cover-stat { text-align: center; }
+    .cover-stat-num { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; }
+    .cover-stat-label { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;
+      letter-spacing: 0.08em; font-weight: 500; }
+
+    /* ===== SECTION TITLES ===== */
+    .hub-section-title { font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark-primary);
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem; position: relative; }
+    .hub-section-title::after { content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 1px; background: var(--gray-200); }
+
+    /* ===== CARD GRID ===== */
+    .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem; margin-bottom: 3rem; }
+    .hub-grid-3 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+    /* ===== CARDS ===== */
+    .hub-card { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.75rem;
+      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+      text-decoration: none; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: var(--shadow-card); position: relative; overflow: hidden; cursor: pointer; }
+    .hub-card:hover { border-color: var(--blue-light); transform: translateY(-4px);
+      box-shadow: var(--shadow-hover); }
+    .hub-card:hover .hub-card-icon { background: rgba(43,108,176,0.1); transform: scale(1.05); }
+    .hub-card:hover .hub-card-arrow { opacity: 1; transform: translateX(0); }
+    .hub-card:hover h3 { color: var(--blue-primary); }
+
+    .hub-card-icon { width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(43,108,176,0.05); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .hub-card-icon svg { width: 24px; height: 24px; color: var(--blue-primary); }
+
+    .hub-card-content { flex: 1; min-width: 0; }
+    .hub-card-num { font-family: var(--font-heading); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-primary);
+      margin-bottom: 0.35rem; }
+    .hub-card h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.4rem; transition: color 0.2s;
+      letter-spacing: -0.01em; }
+    .hub-card p { font-size: 0.8rem; color: var(--gray-400); line-height: 1.5; margin: 0; }
+    .hub-card-arrow { position: absolute; top: 1.75rem; right: 1.5rem;
+      opacity: 0; transform: translateX(-4px); transition: all 0.3s; }
+    .hub-card-arrow svg { width: 16px; height: 16px; color: var(--blue-primary); }
+
+    .hub-card-tags { display: flex; gap: 0.35rem; margin-top: 0.75rem; flex-wrap: wrap; }
+    .hub-card-tag { font-family: var(--font-heading); font-size: 0.55rem; font-weight: 600;
+      padding: 3px 8px; border-radius: 6px; background: rgba(43,108,176,0.06);
+      color: var(--blue-primary); letter-spacing: 0.03em; }
+    [data-theme="dark"] .hub-card-tag { background: rgba(91,184,245,0.1); color: var(--blue-light); }
+
+    /* ===== STATUS BADGE ===== */
+    .status-badge { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-heading);
+      font-size: 0.55rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;
+      letter-spacing: 0.04em; text-transform: uppercase; }
+    .status-ready { background: #ECFDF5; color: #065F46; }
+    .status-wip { background: #FFFBEB; color: #92400E; }
+    .status-new { background: #EFF6FF; color: #1E40AF; }
+    [data-theme="dark"] .status-ready { background: #064E3B; color: #6EE7B7; }
+    [data-theme="dark"] .status-wip { background: #78350F; color: #FDE68A; }
+    [data-theme="dark"] .status-new { background: #1E3A5F; color: #93C5FD; }
+
+    /* ===== FOOTER ===== */
+    .hub-footer { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem 3rem;
+      box-shadow: var(--shadow-card); border: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+    .hub-footer-left h4 { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+      color: var(--dark-primary); margin-bottom: 0.25rem; }
+    [data-theme="dark"] .hub-footer-left h4 { color: #E2E8F0; }
+    .hub-footer-left p { font-size: 0.8rem; color: var(--gray-400); }
+    .hub-stats { display: flex; gap: 1.5rem; }
+    .hub-stat { text-align: center; padding: 0 1.5rem; border-right: 1px solid var(--gray-200); }
+    .hub-stat:last-child { border-right: none; padding-right: 0; }
+    .hub-stat-value { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;
+      color: var(--dark-primary); }
+    [data-theme="dark"] .hub-stat-value { color: #E2E8F0; }
+    .hub-stat-label { font-size: 0.65rem; color: var(--gray-400); text-transform: uppercase;
+      letter-spacing: 0.06em; font-weight: 500; }
+
+    /* ===== VERSION ===== */
+    .version-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+      border-radius: 8px; font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600;
+      background: rgba(43,108,176,0.06); color: var(--blue-primary);
+      border: 1px solid rgba(43,108,176,0.1); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .cover { padding: 3.5rem 1.5rem 3rem; }
+      .cover h1 { font-size: 2.25rem; }
+      .hub-grid { grid-template-columns: 1fr; }
+      .hub-footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+      .hub-stats { justify-content: center; }
+      .top-bar { padding: 1rem; }
+      .cover-stats { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hub-card { flex-direction: column; gap: 1rem; }
+      .hub-card-arrow { display: none; }
+    }
+
+    /* ===== SCROLL ANIMATION ===== */
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="#" class="top-logo">
+    <div class="top-logo-icon" style="background:linear-gradient(135deg,#5BB8F5,#3A8FD6,#2B6CB0);">
+      <svg viewBox="0 0 240 160" width="18" height="12" style="margin-top:1px;"><g transform="translate(12,12)"><path d="M30,120 C10,120 0,108 0,95 C0,80 12,68 28,68 C28,45 45,25 70,25 C82,25 93,30 100,38 C108,22 125,12 145,12 C172,12 194,34 194,60 C194,62 194,64 193,66 C205,70 214,82 214,95 C214,112 200,120 185,120Z" fill="white"/></g></svg>
+    </div>
+    <span class="top-logo-text">SYSLED</span>
+  </a>
+  <div class="top-actions">
+    <span class="version-badge">
+      <svg style="width:10px;height:10px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      v2.0 — Mar 2026
+    </span>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ===== COVER ===== -->
+  <div class="cover reveal">
+    <div class="cover-badge"><span class="cover-badge-dot"></span>BRANDBOOK COMPLETO</div>
+    <h1><span>Manual de Identidade Visual</span>SYSLED</h1>
+    <p class="cover-subtitle">Guia centralizado da marca, identidade visual, sistema de design, componentes de interface e aplicacoes para todas as plataformas.</p>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-num">12</div>
+        <div class="cover-stat-label">Modulos</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">75+</div>
+        <div class="cover-stat-label">Secoes</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">13</div>
+        <div class="cover-stat-label">Aplicacoes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== IDENTIDADE DA MARCA ===== -->
+  <div class="hub-section-title reveal">Identidade da Marca</div>
+  <div class="hub-grid reveal">
+
+    <a href="marca-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">01</div>
+        <h3>Marca e Proposito</h3>
+        <p>Missao, valores, personalidade e essencia da marca Sysled.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Missao</span>
+          <span class="hub-card-tag">Valores</span>
+          <span class="hub-card-tag">Personalidade</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="logotipo-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">02</div>
+        <h3>Logotipo</h3>
+        <p>SVGs originais, 4 variantes, especificacoes tecnicas, downloads e checklist anti-falha para IAs.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">4 Variantes SVG</span>
+          <span class="hub-card-tag">Downloads</span>
+          <span class="hub-card-tag">Specs Completas</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="cores-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-1.5 4-3 4h-1.8c-.8 0-1.5.7-1.5 1.5 0 .4.2.8.4 1.1.3.3.4.6.4 1 0 .8-.7 1.4-1.5 1.4z"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">03</div>
+        <h3>Paleta de Cores</h3>
+        <p>Cores primarias, secundarias, neutras, tints & shades, proporcoes e acessibilidade.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Primarias</span>
+          <span class="hub-card-tag">Neutras</span>
+          <span class="hub-card-tag">WCAG</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="tipografia-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">04</div>
+        <h3>Tipografia</h3>
+        <p>Familias tipograficas Montserrat e Inter, escala, hierarquia e diretrizes de uso.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Montserrat</span>
+          <span class="hub-card-tag">Inter</span>
+          <span class="hub-card-tag">Escala</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="tom-de-voz-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">05</div>
+        <h3>Tom de Voz e Slogan</h3>
+        <p>Diretrizes de comunicacao, slogans, palavras-chave e personalidade verbal da marca.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Tom</span>
+          <span class="hub-card-tag">Slogan</span>
+          <span class="hub-card-tag">Palavras-chave</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="fotografia-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">06</div>
+        <h3>Fotografia &amp; Imagens</h3>
+        <p>Estilo fotografico, filtros, overlays de marca, composicao, banco de imagens e checklist.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Filtros</span>
+          <span class="hub-card-tag">Overlays</span>
+          <span class="hub-card-tag">Composicao</span>
+          <span class="status-badge status-new">Novo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="motion-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">07</div>
+        <h3>Motion &amp; Animacoes</h3>
+        <p>Curvas de easing, duracoes, micro-interacoes, loading states, transicoes e design tokens.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Easing</span>
+          <span class="hub-card-tag">Micro-interacoes</span>
+          <span class="hub-card-tag">Tokens</span>
+          <span class="status-badge status-new">Novo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+  </div>
+
+  <!-- ===== SISTEMA DE DESIGN ===== -->
+  <div class="hub-section-title reveal">Sistema de Design</div>
+  <div class="hub-grid reveal">
+
+    <a href="manual-uxui.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">08</div>
+        <h3>Manual UX/UI</h3>
+        <p>75+ componentes, padroes de interface, grid, espacamento, dark mode e acessibilidade.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Componentes</span>
+          <span class="hub-card-tag">Patterns</span>
+          <span class="hub-card-tag">Tokens</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="iconografia-preview.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">09</div>
+        <h3>Iconografia</h3>
+        <p>Sistema de icones, biblioteca por categoria, grid de construcao, estados e implementacao.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Lucide</span>
+          <span class="hub-card-tag">34 Icones</span>
+          <span class="hub-card-tag">7 Secoes</span>
+          <span class="status-badge status-new">Novo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="social-media-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">10</div>
+        <h3>Social Media</h3>
+        <p>Templates, formatos, tom de voz, hashtags, calendario editorial e checklist de publicacao.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Templates</span>
+          <span class="hub-card-tag">Hashtags</span>
+          <span class="hub-card-tag">Calendario</span>
+          <span class="status-badge status-new">Novo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+  </div>
+
+  <!-- ===== APLICACOES ===== -->
+  <div class="hub-section-title reveal">Aplicacoes</div>
+  <div class="hub-grid reveal">
+
+    <a href="aplicacoes.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">11</div>
+        <h3>Aplicacoes e Materiais</h3>
+        <p>Cartao de visita, papel timbrado, pitch deck, social media, newsletter, nota fiscal e mais 13 aplicacoes.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Impressos</span>
+          <span class="hub-card-tag">Digital</span>
+          <span class="hub-card-tag">Social</span>
+          <span class="status-badge status-ready">Completo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+    <a href="brand-assets-v2.html" class="hub-card">
+      <div class="hub-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div class="hub-card-content">
+        <div class="hub-card-num">12</div>
+        <h3>Brand Assets &amp; Kit de Marca</h3>
+        <p>Kit completo: logos, cores, tipografia, tokens CSS, estrutura de arquivos e checklist de implementacao.</p>
+        <div class="hub-card-tags">
+          <span class="hub-card-tag">Downloads</span>
+          <span class="hub-card-tag">Tokens CSS</span>
+          <span class="hub-card-tag">Kit Completo</span>
+          <span class="status-badge status-new">Novo</span>
+        </div>
+      </div>
+      <div class="hub-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </a>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="hub-footer reveal">
+    <div class="hub-footer-left">
+      <h4>SYSLED Brandbook</h4>
+      <p>Versao 2.0 — Atualizado em Marco 2026</p>
+    </div>
+    <div class="hub-stats">
+      <div class="hub-stat">
+        <div class="hub-stat-value">12</div>
+        <div class="hub-stat-label">Paginas</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-value">75+</div>
+        <div class="hub-stat-label">Secoes</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-value">34</div>
+        <div class="hub-stat-label">Icones</div>
+      </div>
+      <div class="hub-stat">
+        <div class="hub-stat-value">13</div>
+        <div class="hub-stat-label">Aplicacoes</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="enhancements.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -4919,16 +4920,9 @@
 </div><!-- /main -->
 
 <footer style="text-align: center; padding: 3rem 1rem 2rem; font-family: var(--font-body); font-size: 0.75rem; color: #94A3B8;">
-  SYSLED Brandbook — UX/UI Componentes (2/4) — 2025
+  SYSLED Brandbook — UX/UI Componentes (2/4) — 2026
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.05 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-});
-</script>
+<script src="enhancements.js"></script>
 </body>
 </html>

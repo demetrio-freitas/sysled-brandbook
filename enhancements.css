@@ -1,0 +1,152 @@
+/* ============================================
+   SYSLED Brandbook — Shared Enhancements CSS
+   ============================================ */
+
+/* --- Reading Progress Bar --- */
+.reading-progress {
+  position: fixed; top: 0; left: 0; width: 0%; height: 3px; z-index: 9999;
+  background: linear-gradient(90deg, var(--blue-primary), var(--cyan-light));
+  transition: width 0.15s ease-out;
+  pointer-events: none;
+}
+
+/* --- Back to Top FAB --- */
+.back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--blue-primary); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(43,108,176,0.35);
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+}
+.back-to-top.visible {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--blue-medium);
+  box-shadow: 0 6px 24px rgba(43,108,176,0.45);
+}
+.back-to-top svg { width: 20px; height: 20px; }
+
+/* --- TOC Dropdown --- */
+.toc-trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; background: none; border: 1px solid var(--gray-200);
+  border-radius: 8px; cursor: pointer; font-size: 0.75rem; color: var(--gray-600);
+  font-family: var(--font-body); transition: all 0.2s; position: relative;
+}
+.toc-trigger:hover { border-color: var(--blue-light); color: var(--blue-primary); }
+.toc-trigger svg { width: 14px; height: 14px; }
+.toc-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 950;
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15); min-width: 280px; max-height: 400px;
+  overflow-y: auto; display: none; padding: 8px 0;
+}
+.toc-dropdown.open { display: block; }
+.toc-dropdown a {
+  display: flex; align-items: center; gap: 10px; padding: 8px 16px;
+  text-decoration: none; color: var(--dark-text); font-size: 0.78rem;
+  font-family: var(--font-body); transition: background 0.15s;
+}
+.toc-dropdown a:hover { background: rgba(43,108,176,0.06); }
+.toc-dropdown a .toc-num {
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--blue-primary);
+  font-weight: 600; min-width: 28px;
+}
+[data-theme="dark"] .toc-dropdown {
+  background: #1E293B; border-color: #334155;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+[data-theme="dark"] .toc-dropdown a:hover { background: rgba(91,184,245,0.1); }
+
+/* --- Search Modal (Cmd+K) --- */
+.search-overlay {
+  position: fixed; inset: 0; z-index: 9990;
+  background: rgba(15,23,42,0.6); backdrop-filter: blur(4px);
+  display: none; align-items: flex-start; justify-content: center;
+  padding-top: 15vh;
+}
+.search-overlay.open { display: flex; }
+.search-modal {
+  background: var(--white); border-radius: 16px; width: 90%; max-width: 560px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.25); overflow: hidden;
+  border: 1px solid var(--gray-200);
+}
+.search-input-wrap {
+  display: flex; align-items: center; gap: 10px; padding: 14px 18px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.search-input-wrap svg { width: 18px; height: 18px; color: var(--gray-400); flex-shrink: 0; }
+.search-input-wrap input {
+  flex: 1; border: none; outline: none; font-size: 0.95rem;
+  font-family: var(--font-body); color: var(--dark-text); background: transparent;
+}
+.search-input-wrap input::placeholder { color: var(--gray-400); }
+.search-input-wrap kbd {
+  font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 8px;
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  border-radius: 4px; color: var(--gray-400);
+}
+.search-results {
+  max-height: 340px; overflow-y: auto; padding: 8px 0;
+}
+.search-results:empty::after {
+  content: 'Digite para buscar seções...';
+  display: block; padding: 24px; text-align: center;
+  font-size: 0.85rem; color: var(--gray-400);
+}
+.search-results a {
+  display: flex; align-items: center; gap: 12px; padding: 10px 18px;
+  text-decoration: none; color: var(--dark-text); font-size: 0.85rem;
+  transition: background 0.15s;
+}
+.search-results a:hover, .search-results a.active {
+  background: rgba(43,108,176,0.06);
+}
+.search-results a .sr-num {
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--blue-primary);
+  font-weight: 600; min-width: 28px;
+}
+.search-results a .sr-file {
+  font-size: 0.6rem; color: var(--gray-400); margin-left: auto; white-space: nowrap;
+}
+[data-theme="dark"] .search-modal {
+  background: #1E293B; border-color: #334155;
+}
+[data-theme="dark"] .search-input-wrap { border-bottom-color: #334155; }
+[data-theme="dark"] .search-input-wrap input { color: #E2E8F0; }
+[data-theme="dark"] .search-input-wrap kbd { background: #0F172A; border-color: #334155; }
+[data-theme="dark"] .search-results a:hover { background: rgba(91,184,245,0.1); }
+
+/* --- Print Stylesheet --- */
+@media print {
+  .top-bar, .back-to-top, .reading-progress, .toc-trigger, .toc-dropdown,
+  .search-overlay, .theme-toggle, .cover-stats a, footer { display: none !important; }
+
+  body { background: #fff !important; color: #000 !important; font-size: 10pt; }
+  .main { max-width: 100%; padding: 0; }
+  .section {
+    box-shadow: none !important; border: 1px solid #ddd;
+    break-inside: avoid; page-break-inside: avoid; margin-bottom: 1rem;
+  }
+  .cover {
+    background: #1a4e8a !important; -webkit-print-color-adjust: exact;
+    print-color-adjust: exact; break-after: page;
+  }
+  .component-demo { border-color: #ccc; }
+  .code-block { background: #f5f5f5 !important; color: #333 !important; }
+  a { color: #2B6CB0 !important; text-decoration: underline; }
+  .spec-table { box-shadow: none; border: 1px solid #ddd; }
+  .spec-table th { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; }
+}
+
+/* --- Lazy reveal animation --- */
+.section {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.section.in-view {
+  opacity: 1; transform: translateY(0);
+}

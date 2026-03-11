@@ -14,11 +14,17 @@
       --blue-primary: #2B6CB0;
       --blue-medium: #3A8FD6;
       --blue-light: #5BB8F5;
-      --blue-lighter: #7ECEF4;
       --blue-pale: #A8E0F8;
       --cyan-dark: #2E86C1;
       --cyan-medium: #3AAFCF;
       --cyan-light: #48C9B0;
+      --indigo-suave: #7C6BB5;
+      --indigo-light: #EDE9F5;
+      --indigo-dark: #5A4D8A;
+      --cream: #FFFBF0;
+      --emerald-pale: #F0FDF4;
+      --stone-50: #F5F5F4;
+      --indigo-pale: #F5F3FA;
       --dark-primary: #0F172A;
       --dark-secondary: #1E293B;
       --dark-text: #1E293B;
@@ -321,9 +327,9 @@
       <div class="cover-dot" style="background:#2B6CB0"></div>
       <div class="cover-dot" style="background:#3A8FD6"></div>
       <div class="cover-dot" style="background:#5BB8F5"></div>
-      <div class="cover-dot" style="background:#7ECEF4"></div>
       <div class="cover-dot" style="background:#48C9B0"></div>
       <div class="cover-dot" style="background:#A8E0F8"></div>
+      <div class="cover-dot" style="background:#7C6BB5"></div>
     </div>
   </div>
 
@@ -337,7 +343,7 @@
     <p>A variacao de tonalidades — do azul profundo ao celeste — cria uma hierarquia visual clara, permitindo distinguir elementos primarios, secundarios e de destaque. O ciano complementar adiciona vitalidade e modernidade, enquanto os neutros garantem legibilidade e respiro visual.</p>
 
     <h3>Espectro Completo</h3>
-    <div class="gradient-strip" style="background: linear-gradient(90deg, #0F172A 0%, #2B6CB0 20%, #3A8FD6 35%, #5BB8F5 50%, #7ECEF4 65%, #A8E0F8 80%, #F8FAFC 100%);"></div>
+    <div class="gradient-strip" style="background: linear-gradient(90deg, #0F172A 0%, #2B6CB0 25%, #3A8FD6 40%, #5BB8F5 55%, #A8E0F8 75%, #F8FAFC 100%);"></div>
     <p style="text-align:center; font-size: 0.75rem; color: var(--gray-400); margin-top: -0.5rem;">Do escuro profundo ao branco puro — toda a gama da identidade SYSLED.</p>
   </section>
 
@@ -422,29 +428,6 @@
         </div>
       </div>
 
-      <!-- Azul Celeste -->
-      <div class="swatch-card" onclick="copyColor('#7ECEF4')">
-        <div class="swatch-preview" style="background:#7ECEF4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        </div>
-        <div class="swatch-info">
-          <div class="color-name">Azul Celeste</div>
-          <div class="color-values">
-            <div class="color-val" onclick="event.stopPropagation(); copyColor('#7ECEF4')">
-              <span class="color-val-label">HEX</span>
-              <span class="color-val-code">#7ECEF4</span>
-            </div>
-            <div class="color-val" onclick="event.stopPropagation(); copyColor('126, 206, 244')">
-              <span class="color-val-label">RGB</span>
-              <span class="color-val-code">126, 206, 244</span>
-            </div>
-            <div class="color-val" onclick="event.stopPropagation(); copyColor('48, 16, 0, 4')">
-              <span class="color-val-label">CMYK</span>
-              <span class="color-val-code">48, 16, 0, 4</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -502,6 +485,93 @@
               <span class="color-val-code">32, 10, 0, 3</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Indigo Suave -->
+      <div class="swatch-card" onclick="copyColor('#7C6BB5')">
+        <div class="swatch-preview" style="background:#7C6BB5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Indigo Suave</div>
+          <div class="color-values">
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('#7C6BB5')">
+              <span class="color-val-label">HEX</span>
+              <span class="color-val-code">#7C6BB5</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('124, 107, 181')">
+              <span class="color-val-label">RGB</span>
+              <span class="color-val-code">124, 107, 181</span>
+            </div>
+            <div class="color-val" onclick="event.stopPropagation(); copyColor('31, 41, 0, 29')">
+              <span class="color-val-label">CMYK</span>
+              <span class="color-val-code">31, 41, 0, 29</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      <p style="font-size: 0.85rem; color: var(--gray-600); line-height: 1.7;">
+        <strong style="color: var(--dark-primary);">Indigo Suave</strong> — Destaques diferenciados quando o azul ja domina. Badges, tags, icones decorativos e backgrounds premium. Nunca substitui o azul em CTAs ou nav.
+      </p>
+      <p style="font-size: 0.85rem; color: var(--error-text); line-height: 1.7; background: var(--error-bg); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--error-border);">
+        <strong>Regra:</strong> O azul permanece como cor primaria de identidade em nav, logo e CTAs. Nunca usar cores de acento em botoes de acao.
+      </p>
+    </div>
+
+    <!-- Fundos Alternados -->
+    <h3 style="margin-top: 2.5rem;">Fundos Alternados para Secoes</h3>
+    <p style="margin-bottom: 1rem;">Quatro opcoes de fundo para criar ritmo visual entre secoes. Nunca usar duas secoes consecutivas com o mesmo fundo.</p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+      <div class="swatch-card" onclick="copyColor('#F5F5F4')" style="cursor:pointer;">
+        <div class="swatch-preview" style="background:#F5F5F4; border-bottom: 1px solid #E2E8F0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Cinza Suave</div>
+          <div class="color-values">
+            <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#F5F5F4</span></div>
+          </div>
+          <div style="font-size:0.72rem; color:var(--gray-400); margin-top:4px;">Secoes genericas, neutro</div>
+        </div>
+      </div>
+      <div class="swatch-card" onclick="copyColor('#FFFBF0')" style="cursor:pointer;">
+        <div class="swatch-preview" style="background:#FFFBF0; border-bottom: 1px solid #E2E8F0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Creme</div>
+          <div class="color-values">
+            <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#FFFBF0</span></div>
+          </div>
+          <div style="font-size:0.72rem; color:var(--gray-400); margin-top:4px;">Resultados, ROI, depoimentos</div>
+        </div>
+      </div>
+      <div class="swatch-card" onclick="copyColor('#F0FDF4')" style="cursor:pointer;">
+        <div class="swatch-preview" style="background:#F0FDF4; border-bottom: 1px solid #E2E8F0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Esmeralda Palido</div>
+          <div class="color-values">
+            <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#F0FDF4</span></div>
+          </div>
+          <div style="font-size:0.72rem; color:var(--gray-400); margin-top:4px;">Sucesso, cases, checklists</div>
+        </div>
+      </div>
+      <div class="swatch-card" onclick="copyColor('#F5F3FA')" style="cursor:pointer;">
+        <div class="swatch-preview" style="background:#F5F3FA; border-bottom: 1px solid #E2E8F0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7C6BB5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="swatch-info">
+          <div class="color-name">Indigo Palido</div>
+          <div class="color-values">
+            <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#F5F3FA</span></div>
+          </div>
+          <div style="font-size:0.72rem; color:var(--gray-400); margin-top:4px;">Premium, diferenciais, stats</div>
         </div>
       </div>
     </div>
@@ -572,32 +642,39 @@
       <div class="section-number">Secao 05</div>
       <h2>Proporcao de Uso</h2>
     </div>
-    <p>A regra 60-30-10 garante equilíbrio visual. Neutros dominam para manter clareza, azuis primarios criam identidade e acentos adicionam energia nos pontos certos.</p>
+    <p>A proporcao expandida garante equilibrio visual com mais variedade cromatica. Neutros dominam para manter clareza, azuis primarios criam identidade, fundos quentes adicionam ritmo e as cores de acento trazem energia nos pontos certos.</p>
 
     <div class="proportion-bar-wrap">
       <div class="proportion-bar">
-        <div class="proportion-segment" style="flex: 6; background: linear-gradient(135deg, #1E293B, #475569);">
-          <span>60%</span>
+        <div class="proportion-segment" style="flex: 4.5; background: linear-gradient(135deg, #1E293B, #475569);">
+          <span>45%</span>
         </div>
-        <div class="proportion-segment" style="flex: 3; background: linear-gradient(135deg, #2B6CB0, #3A8FD6);">
-          <span>30%</span>
+        <div class="proportion-segment" style="flex: 2.5; background: linear-gradient(135deg, #2B6CB0, #3A8FD6);">
+          <span>25%</span>
         </div>
-        <div class="proportion-segment" style="flex: 1; background: linear-gradient(135deg, #48C9B0, #5BB8F5);">
+        <div class="proportion-segment" style="flex: 2; background: linear-gradient(135deg, #FFFBF0, #F0FDF4, #F5F3FA);">
+          <span style="color:#475569">20%</span>
+        </div>
+        <div class="proportion-segment" style="flex: 1; background: linear-gradient(135deg, #10B981, #48C9B0, #7C6BB5);">
           <span>10%</span>
         </div>
       </div>
       <div class="proportion-legend">
         <div class="proportion-legend-item">
           <div class="proportion-legend-dot" style="background:#475569"></div>
-          <span>Neutros (fundos, textos, bordas)</span>
+          <span>Neutros (brancos, cinzas, dark)</span>
         </div>
         <div class="proportion-legend-item">
           <div class="proportion-legend-dot" style="background:#2B6CB0"></div>
-          <span>Azul Primario / Medio</span>
+          <span>Azuis primarios (identidade)</span>
         </div>
         <div class="proportion-legend-item">
-          <div class="proportion-legend-dot" style="background:#48C9B0"></div>
-          <span>Acentos e destaques</span>
+          <div class="proportion-legend-dot" style="background: linear-gradient(135deg, #FFFBF0, #F0FDF4, #F5F3FA)"></div>
+          <span>Fundos alternados (creme, esmeralda-pale, indigo-pale, cinza)</span>
+        </div>
+        <div class="proportion-legend-item">
+          <div class="proportion-legend-dot" style="background: linear-gradient(135deg, #10B981, #48C9B0, #7C6BB5)"></div>
+          <span>Verde + Ciano + Indigo (sucesso, premium, tags)</span>
         </div>
       </div>
     </div>
@@ -613,19 +690,68 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>60%</strong></td>
-          <td><span class="td-swatch" style="background:#F8FAFC"></span> <span class="td-swatch" style="background:#FFFFFF; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#1E293B"></span></td>
-          <td>Fundos de pagina, containers, textos, espacos em branco</td>
+          <td><strong>45%</strong></td>
+          <td><span class="td-swatch" style="background:#F8FAFC"></span> <span class="td-swatch" style="background:#FFFFFF; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#1E293B"></span> <span class="td-swatch" style="background:#0F172A"></span></td>
+          <td>Fundos de pagina, containers, textos, espacos em branco, dark sections</td>
         </tr>
         <tr>
-          <td><strong>30%</strong></td>
-          <td><span class="td-swatch" style="background:#2B6CB0"></span> <span class="td-swatch" style="background:#3A8FD6"></span></td>
-          <td>Headers, botoes primarios, links, icones ativos, sidebar</td>
+          <td><strong>25%</strong></td>
+          <td><span class="td-swatch" style="background:#2B6CB0"></span> <span class="td-swatch" style="background:#3A8FD6"></span> <span class="td-swatch" style="background:#5BB8F5"></span></td>
+          <td>Headers, botoes primarios, links, icones ativos, sidebar, nav, identidade, CTAs</td>
+        </tr>
+        <tr>
+          <td><strong>20%</strong></td>
+          <td><span class="td-swatch" style="background:#FFFBF0; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#F0FDF4; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#F5F3FA; border: 1px solid #E2E8F0;"></span> <span class="td-swatch" style="background:#F5F5F4; border: 1px solid #E2E8F0;"></span></td>
+          <td>Fundos alternados — resultado (creme), sucesso (esmeralda-pale), premium (indigo-pale), neutro (cinza suave)</td>
         </tr>
         <tr>
           <td><strong>10%</strong></td>
-          <td><span class="td-swatch" style="background:#48C9B0"></span> <span class="td-swatch" style="background:#5BB8F5"></span> <span class="td-swatch" style="background:#7ECEF4"></span></td>
-          <td>CTAs de destaque, badges, notificacoes, hover states, gradientes</td>
+          <td><span class="td-swatch" style="background:#10B981"></span> <span class="td-swatch" style="background:#48C9B0"></span> <span class="td-swatch" style="background:#7C6BB5"></span></td>
+          <td>Checkmarks, indicadores positivos, tags enterprise, badges premium, hover states</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Regra de Fundos Alternados</h3>
+    <p style="margin-bottom: 1rem;">O site alterna fundos de secao para criar ritmo visual. Nunca usar mais de 2 secoes consecutivas com o mesmo fundo.</p>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Tipo de secao</th>
+          <th>Fundo</th>
+          <th>Quando usar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Padrao</td>
+          <td><span class="td-swatch" style="background:#FFFFFF; border: 1px solid #E2E8F0;"></span> <code>#FFFFFF</code></td>
+          <td>Secoes de conteudo, features, hero</td>
+        </tr>
+        <tr>
+          <td>Alternada neutra</td>
+          <td><span class="td-swatch" style="background:#F8FAFC; border: 1px solid #E2E8F0;"></span> <code>#F8FAFC</code></td>
+          <td>Secoes genericas que precisam de contraste</td>
+        </tr>
+        <tr>
+          <td>Resultado / ROI</td>
+          <td><span class="td-swatch" style="background:#FFFBF0; border: 1px solid #E2E8F0;"></span> <code>#FFFBF0</code></td>
+          <td>Secoes de metricas, ROI, depoimentos com estrelas</td>
+        </tr>
+        <tr>
+          <td>Sucesso / Cases</td>
+          <td><span class="td-swatch" style="background:#F0FDF4; border: 1px solid #E2E8F0;"></span> <code>#F0FDF4</code></td>
+          <td>Secoes de resultados, checklists, cases de sucesso</td>
+        </tr>
+        <tr>
+          <td>Premium / Tech</td>
+          <td><span class="td-swatch" style="background:#EDE9F5; border: 1px solid #E2E8F0;"></span> <code>#EDE9F5</code></td>
+          <td>Secoes enterprise, tecnologia, diferenciais</td>
+        </tr>
+        <tr>
+          <td>Dark (CTA final)</td>
+          <td><span class="td-swatch" style="background:#0F172A"></span> <code>#0F172A</code></td>
+          <td>CTA final, hero dark, footer — gradiente com acento</td>
         </tr>
       </tbody>
     </table>
@@ -759,6 +885,67 @@
           </div>
         </div>
       </div>
+
+      <!-- Indigo sobre Branco -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#FFFFFF; border-bottom: 1px solid #E2E8F0;">
+          <span style="color:#7C6BB5">Indigo Suave</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#7C6BB5"></div>
+            <span>#7C6BB5 sobre #FFF</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">3.72:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA Large</span>
+              <span class="badge badge-fail">AA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Branco sobre Indigo -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#7C6BB5">
+          <span style="color:#FFFFFF">Texto Branco</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#FFFFFF"></div>
+            <span>#FFF sobre #7C6BB5</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">3.72:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA Large</span>
+              <span class="badge badge-fail">AA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indigo Dark sobre Branco -->
+      <div class="contrast-pair">
+        <div class="contrast-demo" style="background:#FFFFFF; border-bottom: 1px solid #E2E8F0;">
+          <span style="color:#5A4D8A">Indigo Escuro</span>
+        </div>
+        <div class="contrast-meta">
+          <div class="contrast-colors">
+            <div class="contrast-dot" style="background:#5A4D8A"></div>
+            <span>#5A4D8A sobre #FFF</span>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span class="contrast-ratio">5.84:1</span>
+            <div class="contrast-badges">
+              <span class="badge badge-pass">AA</span>
+              <span class="badge badge-pass">AAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <h3>Tabela Resumo WCAG</h3>
@@ -818,6 +1005,20 @@
         <tr>
           <td>#48C9B0 / #0F172A</td>
           <td><code>8.96:1</code></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td>#7C6BB5 / #FFFFFF</td>
+          <td><code>3.72:1</code></td>
+          <td><span class="badge badge-fail">Fail</span></td>
+          <td><span class="badge badge-pass">Pass</span></td>
+          <td><span class="badge badge-fail">Fail</span></td>
+        </tr>
+        <tr>
+          <td>#5A4D8A / #FFFFFF</td>
+          <td><code>5.84:1</code></td>
           <td><span class="badge badge-pass">Pass</span></td>
           <td><span class="badge badge-pass">Pass</span></td>
           <td><span class="badge badge-pass">Pass</span></td>
@@ -969,6 +1170,7 @@
           <span class="ui-demo-badge" style="background:#FFFBEB; color:#92400E;">Pendente</span>
           <span class="ui-demo-badge" style="background:#EFF6FF; color:#1E40AF;">Info</span>
           <span class="ui-demo-badge" style="background:rgba(72,201,176,0.15); color:#0F766E;">PRO</span>
+          <span class="ui-demo-badge" style="background:rgba(124,107,181,0.1); color:#5A4D8A;">Enterprise</span>
         </div>
       </div>
 
@@ -1064,7 +1266,6 @@
   <span class="code-attr">--blue-primary</span>: <span class="code-string">#2B6CB0</span>;
   <span class="code-attr">--blue-medium</span>: <span class="code-string">#3A8FD6</span>;
   <span class="code-attr">--blue-light</span>: <span class="code-string">#5BB8F5</span>;
-  <span class="code-attr">--blue-lighter</span>: <span class="code-string">#7ECEF4</span>;
 
   <span class="code-comment">/* Secundarias */</span>
   <span class="code-attr">--cyan-light</span>: <span class="code-string">#48C9B0</span>;
